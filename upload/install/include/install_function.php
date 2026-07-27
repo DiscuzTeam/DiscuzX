@@ -583,7 +583,7 @@ function set_lang() {
 		}
 	}
 
-	define('INSTALL_LANG', !empty($_COOKIE['LANG']) ? $_COOKIE['LANG'] : (!empty($_config['lang']) ? $_config['lang'] : 'SC_UTF8'));
+	define('INSTALL_LANG', !empty($_COOKIE['LANG']) ? $_COOKIE['LANG'] : (!empty($_config['lang']) ? $_config['lang'] : 'EN'));
 }
 
 function show_select_lang() {

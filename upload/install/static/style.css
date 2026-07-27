@@ -1,7 +1,7 @@
 /* common */
 html, body { font-family: "Microsoft YaHei",STHeiti,Arial,Helvetica,sans-serif;width: 100%; min-height: 100%; margin: 0; padding: 0; }
 html { background: #c8e2fb; background-image: linear-gradient(45deg, #8fc1f1, #fde2ba); background-attachment: fixed; }
-body { display: flex; justify-content: center; font-size: 16px; min-width: 960px; }
+body { display: flex; justify-content: center; font-size: 12px; min-width: 960px; }
 ul, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset { margin: 0; padding: 0; }
 input, select, button { line-height: 1.5; padding: 7px 11px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
 input:focus, select:focus, button:focus { outline: none; border-color: #000; box-shadow: 0 0 3px 2px rgba(43, 122, 205, 0.4); }
@@ -12,7 +12,7 @@ button { margin-bottom: 0; border-color: #000; background: #000; color: #fff; cu
 .container { display: flex; width: 900px; flex-direction: column; overflow: hidden; border-radius: 30px; position: relative; margin: 35px; }
 .header {background:#1d1f24; background-image: linear-gradient(90deg, #393f47,#1d1f24); display: flex; justify-content: space-between; align-items: center; padding: 3px 50px 60px 50px; }
 .nostep .header { padding-bottom: 5px; }
-.header h1 { font-size: 30px; font-weight: 400; margin: 20px 0;background-image: linear-gradient(to bottom, #e8a833, #ebc874, #ae7222);-webkit-background-clip: text; color: transparent; }
+.header h1 { font-size: 20px; font-weight: 400; margin: 20px 0;background-image: linear-gradient(to bottom, #e8a833, #ebc874, #ae7222);-webkit-background-clip: text; color: transparent; }
 .header h1 svg{background-image: linear-gradient(to bottom, #e8a833, #ebc874, #ae7222);    -webkit-background-clip: text; color: transparent; fill: #f7ce9e;}
 .header h1 span { font-weight: 700; margin-right: 14px; }
 .header div { text-align: right; }
@@ -68,7 +68,7 @@ button { margin-bottom: 0; border-color: #000; background: #000; color: #fff; cu
 .btnbox textarea { margin-bottom: 10px; height: 150px; }
 .btnbox .inputbox { width: 50%; margin: 0 auto; }
 .btnbox em { font-size: 12px; font-style: normal; margin-bottom: 10px; display: block;}
-.btn { margin-top: 10px; cursor: pointer; background:#1d1f24; background-image: linear-gradient(90deg, #393f47,#1d1f24);color: #f7ce9e; border-color: #213fd4;border: 0; padding: 10px 16px; font-size: 20px; border-radius: 15px; text-decoration: none; }
+.btn { margin-top: 10px; cursor: pointer; background:#1d1f24; background-image: linear-gradient(90deg, #393f47,#1d1f24);color: #f7ce9e; border-color: #213fd4;border: 0; padding: 10px 16px; font-size: 14px; border-radius: 15px; text-decoration: none; }
 .btn:hover { background-image: linear-gradient(0deg, rgba(124, 169, 217, 0.1), transparent);  }
 .btn.oldbtn { background: #fff; border-color: #fff; color: #35435c; margin-right: 15px; }
 .btn.oldbtn:hover { background-image: linear-gradient(0deg, rgba(124, 169, 217, 0.1), transparent); }
@@ -101,7 +101,7 @@ button { margin-bottom: 0; border-color: #000; background: #000; color: #fff; cu
 .box.warnbox h3 { margin-bottom: 20px; }
 .box.warnbox .red { color: #d31f0d; }
 .box.warnbox ul { padding-left: 2em; }
-h2.title { padding-bottom: 10px; border-bottom: 1px solid #c6d1e3; margin-bottom: 20px; font-size: 20px; }
+h2.title { padding-bottom: 10px; border-bottom: 1px solid #c6d1e3; margin-bottom: 20px; font-size: 18px; }
 .box.collapse h2.title { padding-bottom: 0; border: 0; margin: 0; cursor: pointer; }
 .box.valid h2.title { padding-left: 30px; background: no-repeat 0 2px; cursor: pointer; }
 .box.collapse .tb { display: none; }

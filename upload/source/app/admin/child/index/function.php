@@ -638,9 +638,9 @@ function show_hotthreads() {
 
 function show_forever_thanks() {
 	$copyRightMessage = [
-		'&#x7248;&#x6743;&#x6240;&#x6709;',
-		'&#x5408;&#x80A5;&#x8D30;&#x9053;&#x7F51;&#x7EDC;&#x79D1;&#x6280;&#x6709;&#x9650;&#x516C;&#x53F8;',
-		'&#x817E;&#x8BAF;&#x79D1;&#x6280;&#xFF08;&#x5317;&#x4EAC;&#xFF09;&#x6709;&#x9650;&#x516C;&#x53F8;',
+		'Copyright',
+		'China Hefei Erdao Network Technology Co., Ltd.',
+		'China Tencent Technology (Beijing) Co.',
 	];
 	$gitTeamStr = '';
 	$gitTeam = [
@@ -716,7 +716,7 @@ function show_forever_thanks() {
 	showboxheader('home_dev', 'listbox fixpadding', 'id="home_dev"');
 	showboxrow('', ['class="dcol d-1 lineheight"', 'class="dcol lineheight team"'], [$copyRightMessage[0], '<span class="bold">'.$copyRightMessage[1].', '.$copyRightMessage[2].'</span>']);
 	showboxrow('', ['class="dcol d-1 lineheight"', 'class="dcol lineheight team"'], [cplang('contributors'), $gitTeamStr]);
-	showboxrow('', ['class="dcol d-1 lineheight"', 'class="dcol lineheight team"'], [cplang('home_forever'), '<a href="javascript:display(\'history\')">点击查看</a>']);
+	showboxrow('', ['class="dcol d-1 lineheight"', 'class="dcol lineheight team"'], [cplang('home_forever'), '<a href="javascript:display(\'history\')">'.cplang('view').'</a>']);
 	showtagheader('div', 'history');
 	showboxrow('', ['class="dcol d-1 lineheight"', 'class="dcol lineheight team"'], [cplang('home_dev_manager'), '<a href="https://discuz.dismall.com/home.php?mod=space&uid=1" class="lightlink2" target="_blank">'.cplang('dev_manager').'</a>']);
 	showboxrow('', ['class="dcol d-1 lineheight"', 'class="dcol lineheight team"'], [cplang('home_dev_team'), $devTeamStr]);

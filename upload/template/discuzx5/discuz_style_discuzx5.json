@@ -70,7 +70,7 @@
         "var": {
             "template": {
                 "displayorder": "0",
-                "title": "界面设置",
+                "title": "Interface Settings",
                 "description": "",
                 "variable": "template",
                 "type": "stylePage",
@@ -79,7 +79,7 @@
             },
             "template_top": {
                 "displayorder": "10",
-                "title": "模版头部",
+                "title": "Template Header",
                 "description": "",
                 "variable": "template_top",
                 "type": "styleTitle",
@@ -88,8 +88,8 @@
             },
             "is_search": {
                 "displayorder": "11",
-                "title": "搜索框",
-                "description": "定义顶部搜索框的开关",
+                "title": "Search Box",
+                "description": "Define the toggle of the top search box",
                 "variable": "is_search",
                 "type": "radio",
                 "value": "1",
@@ -97,8 +97,8 @@
             },
             "is_fixtop": {
                 "displayorder": "12",
-                "title": "顶部导航固定",
-                "description": "当向上滚动屏幕时，主导航将即时出现在屏幕的顶部",
+                "title": "Fixed Top Navigation",
+                "description": "When scrolling up the screen, the main navigation will immediately appear at the top of the screen",
                 "variable": "is_fixtop",
                 "type": "radio",
                 "value": "1",
@@ -106,8 +106,8 @@
             },
             "top_navnum": {
                 "displayorder": "13",
-                "title": "导航显示数量",
-                "description": "导航最多显示几个后显示“更多”",
+                "title": "Navigation Display Count",
+                "description": "How many navigation items to show before displaying \"More\"",
                 "variable": "top_navnum",
                 "type": "number",
                 "value": "8",
@@ -115,8 +115,8 @@
             },
             "top_nav_widthauto": {
                 "displayorder": "14",
-                "title": "导航自由宽度",
-                "description": "选择“是”导航显示自由宽度，选择“否”导航显示固定宽度",
+                "title": "Navigation Auto Width",
+                "description": "Select \"Yes\" for auto width navigation, select \"No\" for fixed width navigation",
                 "variable": "top_nav_widthauto",
                 "type": "radio",
                 "value": "0",
@@ -124,8 +124,8 @@
             },
             "top_nav_bgc": {
                 "displayorder": "15",
-                "title": "导航背景颜色",
-                "description": "配色导航背景颜色，留空为默认的白色",
+                "title": "Navigation Background Color",
+                "description": "Navigation background color, leave blank for default white",
                 "variable": "top_nav_bgc",
                 "type": "color",
                 "value": "",
@@ -133,8 +133,8 @@
             },
             "top_nav_dark": {
                 "displayorder": "16",
-                "title": "导航背景深色",
-                "description": "跟上面的导航背景颜色一起使用，如果设置的是深色背景颜色，并选择了“导航背景深色”为是，导航文字颜色则会显示为白色",
+                "title": "Dark Navigation Background",
+                "description": "Used with the navigation background color above. If a dark background color is set and \"Dark Navigation Background\" is set to Yes, the navigation text color will be displayed as white",
                 "variable": "top_nav_dark",
                 "type": "radio",
                 "value": "0",
@@ -142,8 +142,8 @@
             },
             "top_fastnav": {
                 "displayorder": "17",
-                "title": "快捷导航",
-                "description": "是否显示用户名下拉中的快捷导航",
+                "title": "Quick Navigation",
+                "description": "Whether to show quick navigation in the username dropdown",
                 "variable": "top_fastnav",
                 "type": "radio",
                 "value": "1",
@@ -151,7 +151,7 @@
             },
             "sider_tool": {
                 "displayorder": "20",
-                "title": "侧边工具栏",
+                "title": "Side Toolbar",
                 "description": "",
                 "variable": "sider_tool",
                 "type": "styleTitle",
@@ -160,7 +160,7 @@
             },
             "sider_wechat": {
                 "displayorder": "22",
-                "title": "微信客服",
+                "title": "WeChat Customer Service",
                 "description": "",
                 "variable": "sider_wechat",
                 "type": "radio",
@@ -169,7 +169,7 @@
             },
             "sider_wechat_qrcode": {
                 "displayorder": "23",
-                "title": "微信客服二维码",
+                "title": "WeChat Customer Service QR Code",
                 "description": "",
                 "variable": "sider_wechat_qrcode",
                 "type": "uploadimage",
@@ -178,16 +178,16 @@
             },
             "sider_wechat_txt": {
                 "displayorder": "24",
-                "title": "微信客服文字说明",
+                "title": "WeChat Customer Service Text",
                 "description": "",
                 "variable": "sider_wechat_txt",
                 "type": "text",
-                "value": "关注公众号",
+                "value": "Follow Official Account",
                 "extra": ""
             },
             "sider_fastpost": {
                 "displayorder": "25",
-                "title": "快速发帖",
+                "title": "Quick Post",
                 "description": "",
                 "variable": "sider_fastpost",
                 "type": "radio",
@@ -196,7 +196,7 @@
             },
             "template_bottom": {
                 "displayorder": "30",
-                "title": "模版底部",
+                "title": "Template Footer",
                 "description": "",
                 "variable": "template_bottom",
                 "type": "styleTitle",
@@ -205,8 +205,8 @@
             },
             "bottom_bgc": {
                 "displayorder": "31",
-                "title": "底部背景颜色",
-                "description": "设置底部的背景颜色",
+                "title": "Footer Background Color",
+                "description": "Set the background color of the footer",
                 "variable": "bottom_bgc",
                 "type": "color",
                 "value": "#333333",
@@ -214,8 +214,8 @@
             },
             "bottom_dark": {
                 "displayorder": "32",
-                "title": "底部背景深色",
-                "description": "跟上面的底部背景颜色一起使用，如果设置的是深色背景颜色，并选择了“底部背景深色”为是，底部文字颜色则会显示为白色",
+                "title": "Dark Footer Background",
+                "description": "Used with the footer background color above. If a dark background color is set and \"Dark Footer Background\" is set to Yes, the footer text color will be displayed as white",
                 "variable": "bottom_dark",
                 "type": "radio",
                 "value": "1",
@@ -223,8 +223,8 @@
             },
             "bottom_qrcode": {
                 "displayorder": "33",
-                "title": "二维码",
-                "description": "不设置将显示默认图片，如果二维码和二维码文字都不设置，将不显示",
+                "title": "QR Code",
+                "description": "If not set, the default image will be displayed. If neither QR code nor QR code text is set, it will not be displayed",
                 "variable": "bottom_qrcode",
                 "type": "uploadimage",
                 "value": "template\/discuzx5\/static\/images\/ewm_a.jpg",
@@ -232,25 +232,25 @@
             },
             "bottom_qrcodetxt": {
                 "displayorder": "34",
-                "title": "二维码文字",
-                "description": "不设置将显示默认文字，如果二维码和二维码文字都不设置，将不显示",
+                "title": "QR Code Text",
+                "description": "If not set, the default text will be displayed. If neither QR code nor QR code text is set, it will not be displayed",
                 "variable": "bottom_qrcodetxt",
                 "type": "text",
-                "value": "关注公众号",
+                "value": "Follow Official Account",
                 "extra": ""
             },
             "bottom_txt": {
                 "displayorder": "35",
-                "title": "底部文字信息",
+                "title": "Footer Text Information",
                 "description": "",
                 "variable": "bottom_txt",
                 "type": "text",
-                "value": "相关侵权、举报、投诉及建议等，请发 E-mail：admin@discuz.vip",
+                "value": "For infringement reports, complaints and suggestions, please email: admin@discuz.vip",
                 "extra": ""
             },
             "admin": {
                 "displayorder": "100",
-                "title": "后台设置",
+                "title": "Admin Settings",
                 "description": "",
                 "variable": "admin",
                 "type": "stylePage",
@@ -259,7 +259,7 @@
             },
             "admin_color": {
                 "displayorder": "101",
-                "title": "后台主色调",
+                "title": "Admin Main Color",
                 "description": "",
                 "variable": "admin_color",
                 "type": "color",

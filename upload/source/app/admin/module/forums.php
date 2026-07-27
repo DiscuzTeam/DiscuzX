@@ -58,7 +58,7 @@ function showforum(&$forum, $type = '', $last = '', $toggle = false, $more = fal
 			if($type == 'sub') {
 				$more_text = cplang('forums_admin_view_all_sub').' ('.$more.')';
 			}
-			$return .= '<a href="'.ADMINSCRIPT.'?action=forums&fid='.$forum['fid'].'">'.$more_text.'</a></div></td><td class="td23"></td><td class="td23"></td><td width="180"></td></tr>';
+			$return .= '<a href="'.ADMINSCRIPT.'?action=forums&fid='.$forum['fid'].'">'.$more_text.'</a></div></td><td class="td23"></td><td class="td23"></td><td width="280"></td></tr>';
 		} else {
 			$vfidstr = !empty($_GET['fid']) ? '&vfid='.$_GET['fid'] : '';
 			$boardattr = '';
@@ -78,7 +78,7 @@ function showforum(&$forum, $type = '', $last = '', $toggle = false, $more = fal
 				'</div>'.$boardattr.
 				'</td><td align="right" class="td23 lightfont">('.($type == 'group' ? 'gid:' : 'fid:').$forum['fid'].')</td>'.
 				'</td><td class="td23">'.showforum_moderators($forum).'</td>
-				<td width="180"><input class="checkbox" value="'.$forum['fid'].'" type="checkbox"'.($type != 'group' ? ' chkvalue="g'.$_G['fg'].'" onclick="multiupdate(this, '.$forum['fid'].')"' : ' name="gc'.$_G['fg'].'" onclick="checkAll(\'value\', this.form, \'g'.$_G['fg'].'\', \'gc'.$_G['fg'].'\', 1)"').' />'.'
+				<td width="280"><input class="checkbox" value="'.$forum['fid'].'" type="checkbox"'.($type != 'group' ? ' chkvalue="g'.$_G['fg'].'" onclick="multiupdate(this, '.$forum['fid'].')"' : ' name="gc'.$_G['fg'].'" onclick="checkAll(\'value\', this.form, \'g'.$_G['fg'].'\', \'gc'.$_G['fg'].'\', 1)"').' />'.'
 				<a href="'.ADMINSCRIPT.'?action=forums&operation=edit&fid='.$forum['fid'].'" title="'.cplang('forums_edit_comment').'" class="act">'.cplang('edit').'</a>'.
 				($type != 'group' ? '<a href="'.ADMINSCRIPT.'?action=forums&operation=copy&source='.$forum['fid'].$vfidstr.'" title="'.cplang('forums_copy_comment').'" class="act">'.cplang('forums_copy').'</a>' : '').
 				'<a href="'.ADMINSCRIPT.'?action=forums&operation=delete&fid='.$forum['fid'].'&formhash='.FORMHASH.$vfidstr.'" title="'.cplang('forums_delete_comment').'" class="act">'.cplang('delete').'</a></td></tr>';

@@ -2032,3 +2032,9 @@ DIY图片幻灯片未加载时隐藏,模块标识隐藏
     .imgl img { border: 1px solid {LIGHTTEXT}; max-width: 110px; }
 
     .imgf .px { width: 106px; padding: 2px; height: 14px; line-height: 14px; }
+
+/* Global */
+.mt { font-size: 14px; }
+.lk .x li {
+    width: auto;
+}

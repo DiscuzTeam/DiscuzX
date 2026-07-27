@@ -286,7 +286,7 @@
 							<table cellspacing="0" cellpadding="5">
 								<tr>
 									<td width="15"><input type="radio" name="operations[]" class="pr" onclick="if(this.checked) switchitemcp('itemcp_bump');" value="bump" checked="checked"/></td>
-									<td class="hasd"><label onclick="switchitemcp('itemcp_bump');" class="labeltxt" style="width:50px;margin:5px 0 10px 0px;">{lang admin_bump}</label></td>
+									<td class="hasd"><label onclick="switchitemcp('itemcp_bump');" class="labeltxt" style="margin:5px 0 10px 0px;">{lang admin_bump}</label></td>
 								</tr>
 								<tr class="dopt">
 									<td>&nbsp;</td>
@@ -304,7 +304,7 @@
 							<table cellspacing="0" cellpadding="5">
 								<tr>
 									<td width="15"><input type="radio" name="operations[]" class="pr" onclick="if(this.checked) switchitemcp('itemcp_down');" value="down"/></td>
-									<td class="hasd"><label onclick="switchitemcp('itemcp_down');" class="labeltxt" style="width:50px;margin:5px 0 10px 0px;">{lang admin_down}</label></td>
+									<td class="hasd"><label onclick="switchitemcp('itemcp_down');" class="labeltxt" style="margin:5px 0 10px 0px;">{lang admin_down}</label></td>
 								</tr>
 								<!--
 								<tr class="dopt">

@@ -4,7 +4,7 @@
     "plugin": {
       "available": "1",
       "adminid": "1",
-      "name": "我的马甲",
+      "name": "My Alternate",
       "identifier": "myrepeats",
       "description": "",
       "datatables": "",
@@ -14,7 +14,7 @@
       "__modules": [
         {
           "name": "memcp",
-          "menu": "我的马甲",
+          "menu": "My Alternate",
           "url": "",
           "type": "7",
           "adminid": "0",
@@ -30,7 +30,7 @@
         },
         {
           "name": "admincp",
-          "menu": "管理",
+          "menu": "Admin",
           "url": "",
           "type": "3",
           "adminid": "1",
@@ -42,14 +42,14 @@
     "var": [
       {
         "displayorder": "0",
-        "title": "允许使用马甲",
-        "description": "设置哪些用户组可以使用马甲切换功能",
+        "title": "Allow Alternate Accounts",
+        "description": "Restrict Alt Switch to Selected User Groups",
         "variable": "usergroups",
         "type": "groups",
         "extra": ""
       }
     ],
-    "intro": "本插件方便用户快速的在自己的多个账户间自由切换",
+    "intro": "Quick free switching between your multiple accounts via this plugin",
     "installfile": "install.php",
     "uninstallfile": "uninstall.php"
   }

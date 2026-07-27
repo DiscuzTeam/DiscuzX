@@ -9,7 +9,6 @@ class widget_data {
 			'show_charts',
 			'show_sysinfo',
 			'show_hotthreads',
-			'show_news',
 			'show_forever_thanks',
 		],
 		'right' => [

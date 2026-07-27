@@ -695,16 +695,6 @@ function lang($file, $langvar = null, $vars = [], $default = null) {
 			}
 			$_G['lang'][$key] = (array)$lang;
 		}
-		if(defined('IN_MOBILE') && !defined('TPL_DEFAULT')) {
-			$f = 'touch/lang_template.php';
-			$lang = i18n::getLang($f);
-			if(!empty($_G['i18n']) && file_exists($loadfile = MITFRAME_APP(MITFRAME_APP).'/i18n/'.$_G['i18n'].'/'.$f)) {
-				include $loadfile;
-			} elseif(file_exists($loadfile = MITFRAME_APP(MITFRAME_APP).'/i18n/'.currentlang().'/'.$f)) {
-				include $loadfile;
-			}
-			$_G['lang'][$key] = array_merge((array)$_G['lang'][$key], (array)$lang);
-		}
 		if($file != 'error' && !isset($_G['cache']['pluginlanguage_system'])) {
 			loadcache('pluginlanguage_system');
 		}
@@ -940,11 +930,9 @@ function template($file, $templateid = 0, $tpldir = '', $gettplfile = 0, $primal
 				$file = str_replace($_G['mobiletpl'][IN_MOBILE].'/', '', $file);
 			}
 			$mobiletplfile = DISCUZ_TEMPLATE('./template/default/'.$file.'.php');
-			if(!tplfile::file_exists($mobiletplfile) && !$_G['forcemobilemessage']) {
-				$tplfile = str_replace($_G['mobiletpl'][IN_MOBILE].'/', '', $tplfile);
-				$file = str_replace($_G['mobiletpl'][IN_MOBILE].'/', '', $file);
-				define('TPL_DEFAULT', true);
-				define('TPL_DEFAULT_FILE', $mobiletplfile);
+			if(!tplfile::file_exists($mobiletplfile) && !$_G['forcemobilemessage'] && empty($_GET['mobilediy'])) {
+				$url = $_SERVER['REQUEST_URI'].(strexists($_SERVER['REQUEST_URI'], '?') ? '&' : '?').'mobile=no';
+				showmessage('mobile_template_no_found', '', ['url' => $url]);
 			} else {
 				$tplfile = $mobiletplfile;
 			}
