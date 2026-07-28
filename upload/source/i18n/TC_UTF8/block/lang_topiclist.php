@@ -25,7 +25,7 @@ $lang =
 	'topiclist_picrequired' => '過濾無封面專題',
 	'topiclist_picrequired_comment' => '是否過濾沒有封面圖片的專題',
 	'topiclist_orderby' => '專題排序方式',
-	'topiclist_orderby_comment' => '設置以哪一字段或方式對專題進行排序',
+	'topiclist_orderby_comment' => '設定以哪一字段或方式對專題進行排序',
 	'topiclist_orderby_dateline' => '按發佈時間倒序',
 	'topiclist_orderby_viewnum' => '按查看數倒序',
 	];

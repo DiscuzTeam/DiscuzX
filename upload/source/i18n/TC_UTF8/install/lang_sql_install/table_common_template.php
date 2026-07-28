@@ -8,7 +8,7 @@
 
 $data = [[
     'templateid' => '1',
-    'name' => '默認模板套系',
+    'name' => '預設模板套系',
     'directory' => './template/default',
     'copyright' => 'Discuz!',
   ],[

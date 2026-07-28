@@ -14,6 +14,6 @@ $lang =
 	[
 	'bindqq' => '您需要綁定QQ賬號後才能開啓此應用',
 	'bindqq_link' => '<a href="javascript:;" class="lightlink" onclick="BindQQ()"><b>開始綁定QQ</b></a>',
-	'back' => '點擊這裏返回上一頁',
+	'back' => '點擊這裡返回上一頁',
 	];
 

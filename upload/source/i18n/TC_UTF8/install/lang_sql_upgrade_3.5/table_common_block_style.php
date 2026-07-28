@@ -12,7 +12,7 @@ $data = [
     'name' => '[內置]標籤模版',
     'template' => 
     [
-      'raw' => '<!-- 熱門標籤模塊 -->
+      'raw' => '<!-- 熱門標籤模組 -->
 <div class="tag-cloud-module">
 	<div class="tag-cloud-container">
 		[loop]

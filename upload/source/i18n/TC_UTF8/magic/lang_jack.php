@@ -15,7 +15,7 @@ $lang =
 	'jack_name' => '千斤頂',
 	'jack_desc' => '可以將主題頂起一段時間，重複使用可延長帖子被頂起的時間',
 	'jack_expiration' => '時長',
-	'jack_expiration_comment' => '設置主題可以被頂起多長時間，默認 1 小時',
+	'jack_expiration_comment' => '設定主題可以被頂起多長時間，預設 1 小時',
 	'jack_forum' => '允許使用本道具的版塊',
 	'jack_info' => '<p class="mtn xw0 mbn">頂起指定的主題<span class="xi1 xw1 xs2"> {expiration} </span> 小時。</p> <p class="mtn xw0 mbn">您現在有<span class="xi1 xw1 xs2"> {magicnum} </span>個千斤頂可以使用。</p>',
 	'jack_num' => '本次使用數量:',

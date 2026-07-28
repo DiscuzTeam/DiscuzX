@@ -20,7 +20,7 @@ $lang =
 	'chgusername_name_badword' => '用戶名包含被系統屏蔽的字符，請您更換後再試',
 	'chgusername_name_exists' => '用戶名已經存在，請您更換後再試',
 	'chgusername_change_failed' => '用戶名修改操作提交失敗，請聯繫管理員',
-	'chgusername_change_success' => '用戶名修改操作提交成功，請幾分鐘後重新登錄，如出現任何問題請聯繫管理員',
+	'chgusername_change_success' => '用戶名修改操作提交成功，請幾分鐘後重新登入，如出現任何問題請聯繫管理員',
 
 	];
 

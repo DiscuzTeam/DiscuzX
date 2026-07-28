@@ -13,12 +13,12 @@ if(!defined('IN_DISCUZ')) {
 $lang = [
 	'blockclass_html' => '展示類',
 
-	'blockclass_html_html' => '靜態模塊',
+	'blockclass_html_html' => '靜態模組',
 	'blockclass_html_script_blank' => '自定義HTML',
 	'blockclass_html_script_search' => '搜索條',
 	'blockclass_html_script_line' => '分割線',
 	'blockclass_html_script_banner' => '圖片橫幅',
-	'blockclass_html_script_vedio' => '網絡視頻',
+	'blockclass_html_script_vedio' => '網絡影片',
 	'blockclass_html_script_stat' => '數據統計',
 	'blockclass_html_script_forumtree' => '版塊列表',
 	'blockclass_html_script_google' => 'GOOGLE',
@@ -29,7 +29,7 @@ $lang = [
 	'blockclass_html_script_api' => 'HTTP接口',
 	'blockclass_html_witframe' => '雲插件',
 
-	'blockclass_html_announcement' => '公告模塊',
+	'blockclass_html_announcement' => '公告模組',
 	'blockclass_announcement_field_url' => '公告鏈接',
 	'blockclass_announcement_field_title' => '公告標題',
 	'blockclass_announcement_field_summary' => '公告內容',
@@ -39,7 +39,7 @@ $lang = [
 
 	'blockclass_forum' => '論壇類',
 
-	'blockclass_forum_thread' => '帖子模塊',
+	'blockclass_forum_thread' => '帖子模組',
 	'blockclass_thread_field_url' => '帖子URL',
 	'blockclass_thread_field_title' => '帖子標題',
 	'blockclass_thread_field_pic' => '附件圖片',
@@ -55,7 +55,7 @@ $lang = [
 	'blockclass_thread_field_typeicon' => '主題分類圖標',
 	'blockclass_thread_field_typeurl' => '主題分類URL',
 	'blockclass_thread_field_sortname' => '分類資訊名稱',
-	'blockclass_thread_field_sorturl' => '分類信息URL',
+	'blockclass_thread_field_sorturl' => '分類資訊URL',
 	'blockclass_thread_field_posts' => '總髮帖數',
 	'blockclass_thread_field_todayposts' => '今日發帖數',
 	'blockclass_thread_field_lastposter' => '最後回覆作者',
@@ -77,7 +77,7 @@ $lang = [
 	'blockclass_thread_script_threadspecified' => '指定帖子',
 	'blockclass_thread_script_thread' => '高級自定義',
 
-	'blockclass_forum_forum' => '版塊模塊',
+	'blockclass_forum_forum' => '版塊模組',
 	'blockclass_forum_field_title' => '版塊名稱',
 	'blockclass_forum_field_url' => '版塊鏈接',
 	'blockclass_forum_field_summary' => '版塊介紹',
@@ -93,8 +93,8 @@ $lang = [
 	'blockclass_sort_field_summary' => '帖子介紹',
 	'blockclass_sort_script_sort' => '高級自定義',
 
-	'blockclass_forum_trade' => '商品模塊',
-	'blockclass_trade_trade' => '商品模塊',
+	'blockclass_forum_trade' => '商品模組',
+	'blockclass_trade_trade' => '商品模組',
 	'blockclass_trade_field_title' => '商品名稱',
 	'blockclass_trade_field_url' => '商品鏈接',
 	'blockclass_trade_field_summary' => '商品説明',
@@ -108,8 +108,8 @@ $lang = [
 	'blockclass_trade_script_tradespecified' => '指定商品',
 	'blockclass_trade_script_trade' => '高級自定義',
 
-	'blockclass_forum_activity' => '活動模塊',
-	'blockclass_activity_activity' => '活動模塊',
+	'blockclass_forum_activity' => '活動模組',
+	'blockclass_activity_activity' => '活動模組',
 	'blockclass_activity_field_url' => '活動帖URL',
 	'blockclass_activity_field_title' => '活動標題',
 	'blockclass_activity_field_pic' => '主題圖片',
@@ -130,7 +130,7 @@ $lang = [
 
 	'blockclass_portal' => '門户類',
 
-	'blockclass_portal_article' => '文章模塊',
+	'blockclass_portal_article' => '文章模組',
 	'blockclass_article_field_url' => '文章鏈接',
 	'blockclass_article_field_title' => '文章標題',
 	'blockclass_article_field_pic' => '文章封面',
@@ -159,7 +159,7 @@ $lang = [
 	'blockclass_category_field_articles' => '文章數',
 	'blockclass_category_script_portalcategory' => '文章欄目',
 
-	'blockclass_portal_topic' => '專題模塊',
+	'blockclass_portal_topic' => '專題模組',
 	'blockclass_topic_field_url' => '專題鏈接',
 	'blockclass_topic_field_title' => '專題名稱',
 	'blockclass_topic_field_pic' => '專題封面',
@@ -174,7 +174,7 @@ $lang = [
 	'blockclass_topic_script_topic' => '高級自定義',
 	'blockclass_member' => '會員類',
 
-	'blockclass_member_member' => '會員模塊',
+	'blockclass_member_member' => '會員模組',
 	'blockclass_member_field_uid' => '用戶UID',
 	'blockclass_member_field_url' => '空間鏈接',
 	'blockclass_member_field_title' => '用戶名',
@@ -256,7 +256,7 @@ $lang = [
 	'blockclass_member_script_member' => '高級自定義',
 	'blockclass_space' => '空間類',
 
-	'blockclass_space_doing' => '記錄模塊',
+	'blockclass_space_doing' => '記錄模組',
 	'blockclass_doing_field_url' => '記錄鏈接',
 	'blockclass_doing_field_title' => '記錄內容',
 	'blockclass_doing_field_uid' => '用户UID',
@@ -270,7 +270,7 @@ $lang = [
 	'blockclass_doing_script_doinghot' => '熱門記錄',
 	'blockclass_doing_script_doing' => '高級自定義',
 
-	'blockclass_space_blog' => '日誌模塊',
+	'blockclass_space_blog' => '日誌模組',
 	'blockclass_blog_field_url' => '日誌鏈接',
 	'blockclass_blog_field_title' => '日誌標題',
 	'blockclass_blog_field_pic' => '日誌圖片',
@@ -296,7 +296,7 @@ $lang = [
 	'blockclass_blog_script_blogspecified' => '指定日誌',
 	'blockclass_blog_script_blog' => '高級自定義',
 
-	'blockclass_space_album' => '相冊模塊',
+	'blockclass_space_album' => '相冊模組',
 	'blockclass_album_field_url' => '相冊鏈接',
 	'blockclass_album_field_title' => '相冊名稱',
 	'blockclass_album_field_pic' => '相冊封面',
@@ -309,7 +309,7 @@ $lang = [
 	'blockclass_album_script_albumspecified' => '指定相冊',
 	'blockclass_album_script_album' => '高級自定義',
 
-	'blockclass_space_pic' => '圖片模塊',
+	'blockclass_space_pic' => '圖片模組',
 	'blockclass_pic_field_url' => '圖片鏈接',
 	'blockclass_pic_field_title' => '圖片名稱',
 	'blockclass_pic_field_pic' => '圖片地址',
@@ -332,7 +332,7 @@ $lang = [
 	'blockclass_pic_script_pic' => '高級自定義',
 	'blockclass_group' => '圈子類',
 
-	'blockclass_group_group' => '圈子模塊',
+	'blockclass_group_group' => '圈子模組',
 	'blockclass_group_field_url' => '圈子鏈接',
 	'blockclass_group_field_title' => '圈子名稱',
 	'blockclass_group_field_pic' => '圈子圖片',
@@ -425,7 +425,7 @@ $lang = [
 	'blockclass_other_friendlink_field_summary' => '站點簡介',
 
 	'blockclass_other_script_stat' => '高級自定義',
-	'blockclass_other_stat' => '統計模塊',
+	'blockclass_other_stat' => '統計模組',
 	'blockclass_other_stat_posts' => '發帖總數',
 	'blockclass_other_stat_groups' => '圈子總數',
 	'blockclass_other_stat_members' => '會員總數',

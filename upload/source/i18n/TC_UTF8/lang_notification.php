@@ -57,9 +57,9 @@ $lang =
 
 	'group_member_join' => '{actor} 加入您的 <a href="forum.php?mod=group&fid={fid}" target="_blank">{groupname}</a> 圈子需要審核，請到圈子<a href="{url}" target="_blank">管理中心</a> 進行審核',
 	'group_member_invite' => '{actor} 邀請您加入 <a href="forum.php?mod=group&fid={fid}" target="_blank">{groupname}</a> 圈子，<a href="{url}" target="_blank">點此馬上加入</a>',
-	'group_member_check' => '您已通過了 <a href="{url}" target="_blank">{groupname}</a> 圈子的審核，請 <a href="{url}" target="_blank">點擊這裏訪問</a>',
+	'group_member_check' => '您已通過了 <a href="{url}" target="_blank">{groupname}</a> 圈子的審核，請 <a href="{url}" target="_blank">點擊這裡訪問</a>',
 	'group_member_check_failed' => '您沒有通過 <a href="{url}" target="_blank">{groupname}</a> 圈子的審核。',
-	'group_mod_check' => '您的創建的圈子 <a href="{url}" target="_blank">{groupname}</a> 審核通過了，請 <a href="{url}" target="_blank">點擊這裏訪問</a>',
+	'group_mod_check' => '您的創建的圈子 <a href="{url}" target="_blank">{groupname}</a> 審核通過了，請 <a href="{url}" target="_blank">點擊這裡訪問</a>',
 
 	'reason_moderate' => '您的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被 {actor} {modaction} <div class="quote"><blockquote>{reason}</blockquote></div>',
 
@@ -95,7 +95,7 @@ $lang =
 
 	'reason_quickclear' => '您的{cleartype} 被 {actor} 清除 <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_live_update' => '您的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被 {actor} 設置為直播貼 <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_live_update' => '您的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被 {actor} 設定為直播貼 <div class="quote"><blockquote>{reason}</blockquote></div>',
 	'reason_live_cancle' => '您的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被 {actor} 取消直播 <div class="quote"><blockquote>{reason}</blockquote></div>',
 
 	'modthreads_delete' => '您發表的主題 {threadsubject} 已由管理團隊 {modusername} 審核拒絕，現已被刪除！',
@@ -154,7 +154,7 @@ $lang =
 
 	'activity_notification' => '活動 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 的發起人 {actor} 發來通知&nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看活動 &rsaquo;</a> <div class="quote"><blockquote>{msg}</blockquote></div>',
 
-	'reward_question' => '您的懸賞主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被 {actor} 設置了最佳答案 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
+	'reward_question' => '您的懸賞主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被 {actor} 設定了最佳答案 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
 
 	'reward_bestanswer' => '您的回覆被懸賞主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 的作者 {actor} 選為最佳答案 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
 
@@ -222,6 +222,7 @@ $lang =
 	'system_adv_expiration' => '您站點的以下廣告將於 {day} 天后到期，請及時處理：<br />{advs}',
 	'report_change_credits' => '{actor} 處理了您的舉報 {creditchange} {msg}',
 	'at_message' => '<a href="home.php?mod=space&uid={buyerid}" target="_blank">{buyer}</a> 在主題 <a href="forum.php?mod=redirect&goto=findpost&ptid={tid}&pid={pid}" target="_blank">{subject}</a> 中提到了您<div class="quote"><blockquote>{message}</blockquote></div><a href="forum.php?mod=redirect&goto=findpost&ptid={tid}&pid={pid}" target="_blank">現在去看看</a>。',
+	'at_doing' => '<a href="home.php?mod=space&uid={buyerid}" target="_blank">{buyer}</a> 在記錄中提到了您<a href="home.php?mod=space&do=doing&doid={doid}" target="_blank">現在去看看</a>。',
 	'new_report' => '有新的來自 {username} 的舉報等待處理，<a href="admin.php?action=report" target="_blank">點此進入管理中心處理</a>。',
 	'new_post_report' => '有新的來自 {username} 的舉報等待處理，<a href="forum.php?mod=modcp&action=report&fid={fid}" target="_blank">點此進入管理面板</a>。',
 	'magics_receive' => '您收到 {actor} 送給您的道具 {magicname}
@@ -229,7 +230,7 @@ $lang =
 <p class="mbn"><a href="home.php?mod=magic" target="_blank">回贈道具</a><span class="pipe">|</span><a href="home.php?mod=magic&action=mybox" target="_blank">查看我的道具箱</a></p>',
 	'invite_collection' => '{actor} 邀請您參與維護淘專輯  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a>。<br /> <a href="forum.php?mod=collection&action=edit&op=acceptinvite&ctid={ctid}&dateline={dateline}">接受邀請</a>',
 	'collection_removed' => '您參與維護的淘專輯  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a> 已被 {actor} 關閉。',
-	'exit_collection' => '您已經退出維護淘專輯  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a>。',
+	'exit_collection' => '您已經登出維護淘專輯  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a>。',
 	'collection_becommented' => '您的淘專輯  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a> 收到了新評論。',
 	'collection_befollowed' => '您的淘專輯  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a> 有新用戶訂閲了！',
 	'collection_becollected' => '恭喜您的主題 <a href="forum.php?mod=viewthread&tid={tid}">{threadname}</a> 被淘專輯  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a> 收錄了！',
@@ -239,7 +240,7 @@ $lang =
 	'thread_hidden' => '您的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被多個用戶認定為垃圾帖，現已被隱藏 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
 
 	'forum_member_new' => '{actor} 申請加入 <a href="forum.php?mod=forumdisplay&fid={fid}" target="_blank">{forumname}</a> 需要審核，請到<a href="{url}" target="_blank">管理面板</a> 進行審核',
-	'forum_member_check' => '您已通過了 <a href="{url}" target="_blank">{forumname}</a> 的審核，請 <a href="{url}" target="_blank">點擊這裏訪問</a>',
+	'forum_member_check' => '您已通過了 <a href="{url}" target="_blank">{forumname}</a> 的審核，請 <a href="{url}" target="_blank">點擊這裡訪問</a>',
 	'forum_member_check_failed' => '您沒有通過 <a href="{url}" target="_blank">{forumname}</a> 的審核。',
 
 	];

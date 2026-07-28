@@ -29,7 +29,7 @@ $lang = [
 	'install_wizard' => '安裝嚮導',
 	'config_nonexistence' => '配置文件不存在',
 	'nodir' => '目錄不存在',
-	'redirect' => '瀏覽器會自動跳轉頁面，無需人工干預。<br>除非當您的瀏覽器沒有自動跳轉時，請點擊這裏',
+	'redirect' => '瀏覽器會自動跳轉頁面，無需人工干預。<br>除非當您的瀏覽器沒有自動跳轉時，請點擊這裡',
 	'auto_redirect' => '瀏覽器會自動跳轉頁面，無需人工干預',
 	'database_errno_1064' => 'SQL 語法錯誤',
 
@@ -58,7 +58,7 @@ $lang = [
 	'run_sql_error' => 'Discuz! Database Error',
 
 	'step_title_1' => '檢查安裝環境',
-	'step_title_2' => '設置運行環境',
+	'step_title_2' => '設定運行環境',
 	'step_title_3' => '創建數據庫',
 	'step_title_4' => '安裝',
 	'step_title_3u' => '注意事項',
@@ -81,24 +81,24 @@ $lang = [
 	'tips_dbinfo_comment' => '',
 	'tips_admininfo' => '填寫管理員資訊',
 	'step_ext_info_title' => '安裝成功。',
-	'step_ext_info_comment' => '點擊進入登錄',
+	'step_ext_info_comment' => '點擊進入登入',
 
 	'ext_info_succ' => '安裝成功。',
 	'install_submit' => '提交',
 	'install_locked' => '安裝鎖定，已經安裝過了，如果您確定要重新安裝，請到服務器上刪除<br /> '.str_replace(ROOT_PATH, '', $lockfile).'<br /><br />如果您要進入工具箱，請修改本安裝文件的文件名(./install/index.php)，然後用修改後的文件名訪問',
-	'error_stuck_msg' => '安裝進程已經很久沒有進展了，可能相關請求已經因網絡超時或服務器嚴重錯誤而異常退出',
+	'error_stuck_msg' => '安裝進程已經很久沒有進展了，可能相關請求已經因網絡超時或服務器嚴重錯誤而異常登出',
 	'error_quit_msg' => '您必須解決以上問題，才可以繼續進行',
 	'error_reinstall_msg' => '您的數據庫可能InnoDB性能不佳，請調高PHP超時時間，刷新頁面嘗試重新安裝',
 
-	'step_app_reg_title' => '設置運行環境',
-	'step_app_reg_desc' => '檢測服務器環境以及設置 UCenter',
+	'step_app_reg_title' => '設定運行環境',
+	'step_app_reg_desc' => '檢測服務器環境以及設定 UCenter',
 	'tips_ucenter' => '請填寫 UCenter 相關資訊',
 	'tips_ucenter_comment' => 'UCenter 是 Comsenz 公司產品的核心服務程序，Discuz! Board 的安裝和運行依賴此程序。如果您已經安裝了 UCenter，請填寫以下資訊。否則，請到 <a href="https://www.discuz.vip/" target="blank">Comsenz 產品中心</a> 下載並且安裝，然後再繼續。',
 
-	'advice_mysqli_connect' => '請檢查 mysqli 模塊是否正確加載',
+	'advice_mysqli_connect' => '請檢查 mysqli 模組是否正確加載',
 	'advice_xml_parser_create' => '該函數需要 PHP 支持 XML 。請聯繫服務商，確定開啓了此項功能',
 	'advice_json_encode' => '該函數需要 PHP 支持 JSON 。請聯繫服務商，確定開啓了此項功能',
-	'advice_dns_get_record' => '該函數需要 PHP 支持 DNS 查詢，PHP 默認自帶。錯誤的編譯安裝或缺少組件等原因容易引起此問題。請聯繫服務商，確定開啓了此項功能',
+	'advice_dns_get_record' => '該函數需要 PHP 支持 DNS 查詢，PHP 預設自帶。錯誤的編譯安裝或缺少組件等原因容易引起此問題。請聯繫服務商，確定開啓了此項功能',
 	'advice_fsockopen' => '該函數需要 php.ini 中 allow_url_fopen 選項開啓。請聯繫服務商，確定開啓了此項功能',
 	'advice_pfsockopen' => '該函數需要 php.ini 中 allow_url_fopen 選項開啓。請聯繫服務商，確定開啓了此項功能',
 	'advice_stream_socket_client' => '該函數需要 php.ini 中 stream_socket_client 函數開啓。請聯繫服務商，確定開啓了此項功能',
@@ -176,7 +176,7 @@ $lang = [
 	'admin_password_invalid' => '密碼和上面不一致，請重新輸入',
 	'admin_email_invalid' => 'Email 地址錯誤，此郵件地址已經被使用或者格式無效，請更換為其他地址',
 	'admin_invalid' => '您的資訊管理員資訊沒有填寫完整，請仔細填寫每個項目',
-	'admin_exist_password_error' => '該用戶已經存在，如果您要設置此用戶為論壇的管理員，請正確輸入該用戶的密碼，或者請更換論壇管理員的名字',
+	'admin_exist_password_error' => '該用戶已經存在，如果您要設定此用戶為論壇的管理員，請正確輸入該用戶的密碼，或者請更換論壇管理員的名字',
 
 	'tagtemplates_subject' => '標題',
 	'tagtemplates_uid' => '用戶 ID',
@@ -185,7 +185,7 @@ $lang = [
 	'tagtemplates_url' => '主題地址',
 
 	'uc_version_incorrect' => '您的 UCenter 服務端版本過低，請升級 UCenter 服務端到最新版本，並且升級，下載地址：https://www.discuz.vip/ 。',
-	'config_unwriteable' => '安裝嚮導無法寫入配置文件, 請設置 config.inc.php 程序屬性為可寫狀態(777)',
+	'config_unwriteable' => '安裝嚮導無法寫入配置文件, 請設定 config.inc.php 程序屬性為可寫狀態(777)',
 
 	'install_in_processed' => '正在安裝...',
 	'install_succeed' => '安裝成功，點擊進入',
@@ -242,14 +242,14 @@ $lang = [
 	'init_bbcode_4' => '上標',
 	'init_bbcode_5' => '下標',
 	'init_bbcode_6' => '嵌入 Windows media 音頻',
-	'init_bbcode_7' => '嵌入 Windows media 音頻或視頻',
+	'init_bbcode_7' => '嵌入 Windows media 音頻或影片',
 
 	'init_qihoo_searchboxtxt' =>'輸入關鍵詞,快速搜索本論壇',
 	'init_threadsticky' =>'全局置頂,分類置頂,本版置頂',
 
-	'init_default_style' => '默認風格',
-	'init_default_forum' => '默認版塊',
-	'init_default_template' => '默認模板套系',
+	'init_default_style' => '預設風格',
+	'init_default_forum' => '預設版塊',
+	'init_default_template' => '預設模板套系',
 	'init_default_template_copyright' => 'Discuz!',
 
 	'init_dataformat' => 'Y-n-j',
@@ -279,8 +279,8 @@ $lang = [
 
 <p>Discuz! X 項目內所包含的官方應用中心由貳道網絡公司承接運營，Discuz! X 開源項目由貳道網絡公司承接維護，Discuz! X 及其衍生產品由貳道網絡公司負責研發。Discuz! X 開源版代碼由項目開源管理委員會及社區開發者共同維護。</p>
 
-<p>用戶須知：本協議是您與貳道網絡公司及騰訊公司之間關於您使用此軟件產品及服務的法律協議。無論您是個人或組織、盈利與否、用途如何（包括以學習和研究為目的），均需仔細閲讀本協議，包括免除或者限制貳道網絡公司責任的免責條款及對您的權利限制。請您審閲並接受或不接受本服務條款。如您不同意本服務條款及/或貳道網絡公司隨時對其的修改，您應不使用或主動取消貳道網絡公司提供的產品。否則，您的任何對本產品中的相關服務的註冊、登錄、下載、查看等使用行為將被視為您對本服務條款全部的完全接受，包括接受貳道網絡公司對服務條款隨時所做的任何修改。</p>
-<p>本服務條款一旦發生變更，貳道網絡公司將在網頁上公佈修改內容。修改後的服務條款一旦在網站管理後台上公佈即有效代替原來的服務條款。您可隨時登錄開源代碼網址查閲最新版服務條款。如果您選擇接受本條款，即表示您同意接受協議各項條件的約束。如果您不同意本服務條款，則不能獲得使用本服務的權利。您若有違反本條款規定，貳道網絡公司有權隨時中止或終止您對貳道網絡公司產品的使用資格並保留追究相關法律責任的權利。</p>
+<p>用戶須知：本協議是您與貳道網絡公司及騰訊公司之間關於您使用此軟件產品及服務的法律協議。無論您是個人或組織、盈利與否、用途如何（包括以學習和研究為目的），均需仔細閲讀本協議，包括免除或者限制貳道網絡公司責任的免責條款及對您的權利限制。請您審閲並接受或不接受本服務條款。如您不同意本服務條款及/或貳道網絡公司隨時對其的修改，您應不使用或主動取消貳道網絡公司提供的產品。否則，您的任何對本產品中的相關服務的註冊、登入、下載、查看等使用行為將被視為您對本服務條款全部的完全接受，包括接受貳道網絡公司對服務條款隨時所做的任何修改。</p>
+<p>本服務條款一旦發生變更，貳道網絡公司將在網頁上公佈修改內容。修改後的服務條款一旦在網站管理後台上公佈即有效代替原來的服務條款。您可隨時登入開源代碼網址查閲最新版服務條款。如果您選擇接受本條款，即表示您同意接受協議各項條件的約束。如果您不同意本服務條款，則不能獲得使用本服務的權利。您若有違反本條款規定，貳道網絡公司有權隨時中止或終止您對貳道網絡公司產品的使用資格並保留追究相關法律責任的權利。</p>
 <p>在理解、同意、並遵守本協議的全部條款後，方可開始使用本產品。您可能與貳道網絡公司直接簽訂另一書面協議，以補充或者取代本協議的全部或者任何部分。</p>
 
 <p>貳道網絡公司及騰訊公司擁有本產品的全部知識產權。本產品只供許可協議，並非出售。貳道網絡公司只允許您在遵守本協議各項條款的情況下複製、下載、安裝、使用或者以其他方式受益於本產品的功能或者知識產權。</p>
@@ -329,7 +329,7 @@ $lang = [
 
 	'version_title' => '產品説明',
 	'version_notice' => '
-<p>- 基於 MitFrame<sup>&reg;</sup> 核心的全新框架體系重構，既是社群又是框架，全面開拓更廣闊的開放視角</p>
+<p>- 基於 MitFrame<sup>&reg;</sup> 核心的全新框架體系重構，既是社羣又是框架，全面開拓更廣闊的開放視角</p>
 <p>- 從前台到後台，開放更為徹底</p>
 <p>- 輕重兼顧的多功能一體化社區</p>
 <p>- 全新 JSON 編輯器</p>
@@ -375,12 +375,12 @@ $lang = [
 	'func_name' => '函數名稱',
 	'check_result' => '檢查結果',
 	'suggestion' => '建議',
-	'advice_mysqli' => '請檢查 mysqli 模塊是否正確加載',
+	'advice_mysqli' => '請檢查 mysqli 模組是否正確加載',
 	'advice_fopen' => '該函數需要 php.ini 中 allow_url_fopen 選項開啓。請聯繫服務商，確定開啓了此項功能',
 	'advice_xml' => '該函數需要 PHP 支持 XML。請聯繫服務商，確定開啓了此項功能',
 	'none' => '無',
 	'undefine_func' => '不存在的函數',
-	'mysqli_unsupport' => '請檢查 mysqli 模塊是否正確加載',
+	'mysqli_unsupport' => '請檢查 mysqli 模組是否正確加載',
 
 	'dbhost' => '數據庫服務器地址',
 	'dbuser' => '數據庫用戶名',
@@ -441,11 +441,11 @@ $lang = [
 
 	'tool_resetpw_uid1' => '本工具只恢復 UID 為 1 的創始人密碼，請恢復該用戶為創始人後再進行此操作',
 	'tool_resetpw_founder' => '填寫創始人資訊',
-	'tool_resetpw_loginname' => '賬號登錄名',
+	'tool_resetpw_loginname' => '賬號登入名',
 	'tool_resetpw_password' => '賬號新密碼',
 	'tool_resetpw_password2' => '請重複輸入',
 	'tool_resetpw_password_error' => '兩次輸入密碼不一致',
-	'tool_resetpw_success' => '密碼已重置，請使用新密碼登錄',
+	'tool_resetpw_success' => '密碼已重置，請使用新密碼登入',
 
 	'tool_dircheck_unwritable' => '目錄不可寫入，請檢查目錄權限',
 	'tool_dircheck_checkfile_notexists' => '校驗文件不存在，無法進行文件校驗',
@@ -459,13 +459,13 @@ $lang = [
 	'all_done_exists' => '當前腳本刪除失敗，為了安全起見請人工刪除',
 	'all_done_noexists' => '當前腳本刪除完成',
 
-	'filename' => '檔案名稱',
+	'filename' => '文件名稱',
 	'time' => '備份時間',
 	'type' => '類型',
 	'size' => '大小',
 	'db_volume' => '卷數',
 	'import' => '匯入',
-	'different_dbcharset_tablepre' => '偵測到匯入的備份資料與設定檔的{diff} 不同，您是否仍要繼續執行此程式？',
+	'different_dbcharset_tablepre' => '偵測到匯入的備份資料與設定檔的{diff} 不同，您是否仍要繼續執行此程序？',
 	'db_import_tips' => '<ul style="margin:0px 20px 20px 20px;font-size: 14px">
 		<li>請確定在執行此操作前網站已關閉，復原完成後可將網站重新開放</li>
 		<li>本工具不支援壓縮卷備份資料的匯入，請先自行解壓縮</li>
@@ -474,20 +474,20 @@ $lang = [
 	'db_export_discuz_uc' => 'Discuz! 和 UCenter 資料',
 	'db_export_custom' => '自訂備份',
 	'unknown' => '未知',
-	'backup_file_unexist' => '備份檔案不存在',
+	'backup_file_unexist' => '備份文件不存在',
 	'dbcharsetdiff' => ' 數據庫字元集('.$_config['db']['1']['dbcharset'].')',
 	'tableprediff' => ' 表格前綴('.$_config['db']['1']['tablepre'].')',
-	'database_import_file_illegal' => '資料檔案不存在：可能伺服器不允許上傳檔案或檔案大小超過限制',
-	'database_import_file_write_error' => '資料檔案解壓縮寫入失敗，請檢查伺服器是否有可寫入權限',
+	'database_import_file_illegal' => '資料文件不存在：可能服務器不允許上傳文件或文件大小超過限制',
+	'database_import_file_write_error' => '資料文件解壓縮寫入失敗，請檢查服務器是否有可寫入權限',
 	'database_import_multivol_prompt' => '分卷資料第一卷成功匯入數據庫，您需要自動匯入本次備份的其他分卷嗎？',
-	'database_import_succeed' => '資料已成功匯入網站數據庫<br />請在後台更新快取<br /><span class="red">基於安全考量，我們強烈建議您刪除備份檔案</span>',
-	'database_import_format_illegal' => '資料檔案非 Discuz! 格式，無法匯入',
+	'database_import_succeed' => '資料已成功匯入網站數據庫<br />請在後台更新快取<br /><span class="red">基於安全考量，我們強烈建議您刪除備份文件</span>',
+	'database_import_format_illegal' => '資料文件非 Discuz! 格式，無法匯入',
 	'database_import_confirm' => '匯入與目前 Discuz! 版本不一致的資料，極有可能產生無法解決的故障，您確定要繼續嗎？',
 	'database_import_confirm_sql' => '您確定要匯入此備份嗎？',
 	'database_import_confirm_zip' => '您確定要解壓縮此備份嗎？',
-	'database_import_multivol_confirm' => '所有分卷檔案解壓縮完畢，您需要自動匯入備份嗎？匯入後解壓縮的檔案將會被刪除',
-	'database_import_multivol_start' => '正在匯入備份檔案，程式將自動繼續執行',
-	'database_import_multivol_redirect' => '資料檔案 #{volume} 成功匯入，程式將自動繼續執行',
+	'database_import_multivol_confirm' => '所有分卷文件解壓縮完畢，您需要自動匯入備份嗎？匯入後解壓縮的文件將會被刪除',
+	'database_import_multivol_start' => '正在匯入備份文件，程序將自動繼續執行',
+	'database_import_multivol_redirect' => '資料文件 #{volume} 成功匯入，程序將自動繼續執行',
 	'database_waiting_link' => '瀏覽器會自動跳轉頁面，無需手動操作。除非您的瀏覽器長時間未自動跳轉，請點擊此處',
 	'database_confirm' => '確定',
 	'database_cancel' => '取消',

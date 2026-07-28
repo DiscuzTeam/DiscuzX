@@ -43,13 +43,13 @@ $lang =
 	'get_passwd_if_not' => '如果您沒有提交密碼重置的請求或不是 {$var[\'bbname\']} 的註冊用戶，請立即忽略並刪除這封郵件。只有在您確認需要重置密碼的情況下，才需要繼續閲讀下面的內容。',
 	'get_passwd_explain' => '密碼重置説明',
 	'get_passwd_click_link' => '您只需在提交請求後的三天內，通過點擊下面的鏈接重置您的密碼：',
-	'get_passwd_new_pwd' => '在上面的鏈接所打開的頁面中輸入新的密碼後提交，您即可使用新的密碼登錄網站了。您可以在用戶控制面板中隨時修改您的密碼。',
+	'get_passwd_new_pwd' => '在上面的鏈接所打開的頁面中輸入新的密碼後提交，您即可使用新的密碼登入網站了。您可以在用戶控制面板中隨時修改您的密碼。',
 
 	'password_reset_subject' => '密碼變更提示',
 	'password_reset_reason' => '在 {$var[\'bbname\']} 被登記為用戶郵箱，且該用戶操作重置或者變更了密碼所致。',
 	'password_reset_if_not' => '如果您不是 {$var[\'bbname\']} 的註冊用戶，請立即忽略並刪除這封郵件。只有在您是 {$var[\'bbname\']} 的註冊用戶的情況下，才需要繼續閲讀下面的內容。',
 	'password_reset_explain' => '您在 {$var[\'bbname\']} 的用戶賬户 {$var[\'username\']} 在 {$var[\'datetime\']} 進行了密碼變更或重置。',
-	'password_reset_if_not_user_op' => '如果您沒有操作密碼變更或者重置，請您立即登錄 {$var[\'bbname\']} 檢查賬户情況，並進行變更密碼操作。',
+	'password_reset_if_not_user_op' => '如果您沒有操作密碼變更或者重置，請您立即登入 {$var[\'bbname\']} 檢查賬户情況，並進行變更密碼操作。',
 	'password_reset_if_not_user_op_help' => '在處理問題時如果您有任何問題或需要幫助（如凍結賬户），請聯繫 {$var[\'bbname\']} 管理團隊獲取更多幫助與支持。',
 
 	'email_verify_subject' => 'Email 地址驗證',
@@ -63,7 +63,7 @@ $lang =
 	'email_reset_if_not' => '如果您不是 {$var[\'bbname\']} 的註冊用戶，請立即忽略並刪除這封郵件。只有在您是 {$var[\'bbname\']} 的註冊用戶的情況下，才需要繼續閲讀下面的內容。',
 	'email_reset_explain' => '您在 {$var[\'bbname\']} 的用戶賬户 {$var[\'username\']} 在 {$var[\'datetime\']} 進行了 Email 地址變更。',
 	'email_reset_new_email' => '新的 Email 地址為：{$var[\'email\']} ，驗證郵件發送時間為：{$var[\'request_datetime\']}',
-	'email_reset_if_not_user_op' => '如果您沒有操作 Email 地址變更，請您立即登錄 {$var[\'bbname\']} 檢查賬户情況，並進行變更密碼和 Email 地址變更操作。',
+	'email_reset_if_not_user_op' => '如果您沒有操作 Email 地址變更，請您立即登入 {$var[\'bbname\']} 檢查賬户情況，並進行變更密碼和 Email 地址變更操作。',
 	'email_reset_if_not_user_op_help' => '在處理問題時如果您有任何問題或需要幫助（如凍結賬户），請聯繫 {$var[\'bbname\']} 管理團隊獲取更多幫助與支持。',
 
 	'secmobile_reset_subject' => '安全手機號變更提示',
@@ -71,7 +71,7 @@ $lang =
 	'secmobile_reset_if_not' => '如果您不是 {$var[\'bbname\']} 的註冊用戶，請立即忽略並刪除這封郵件。只有在您是 {$var[\'bbname\']} 的註冊用戶的情況下，才需要繼續閲讀下面的內容。',
 	'secmobile_reset_explain' => '您在 {$var[\'bbname\']} 的用戶賬户 {$var[\'username\']} 在 {$var[\'datetime\']} 進行了安全手機號變更。',
 	'secmobile_reset_new_secmobile' => '新的安全手機號為：{$var[\'secmobile\']}',
-	'secmobile_reset_if_not_user_op' => '如果您沒有操作安全手機號變更，請您立即登錄 {$var[\'bbname\']} 檢查賬户情況，並進行變更密碼和安全手機號變更操作。',
+	'secmobile_reset_if_not_user_op' => '如果您沒有操作安全手機號變更，請您立即登入 {$var[\'bbname\']} 檢查賬户情況，並進行變更密碼和安全手機號變更操作。',
 	'secmobile_reset_if_not_user_op_help' => '在處理問題時如果您有任何問題或需要幫助（如凍結賬户），請聯繫 {$var[\'bbname\']} 管理團隊獲取更多幫助與支持。',
 
 	'email_register_subject' => '論壇註冊地址',
@@ -88,7 +88,7 @@ $lang =
 	'add_member_siteurl' => '網站地址：',
 	'add_member_newusername' => '用戶名：',
 	'add_member_newpassword' => '密碼：',
-	'add_member_can_login' => '從現在起您可以使用您的賬號登錄 {$var[\'bbname\']}，祝您使用愉快！',
+	'add_member_can_login' => '從現在起您可以使用您的賬號登入 {$var[\'bbname\']}，祝您使用愉快！',
 
 	'birthday_subject' => '祝您生日快樂',
 	'birthday_reason' => '這個郵箱地址在 {$var[\'bbname\']} 被登記為用戶郵箱，<br />
@@ -117,7 +117,7 @@ $lang =
 	'moderate_member_delete' => '刪除',
 	'moderate_member_validate' => '通過',
 	'moderate_member_subject' => '用戶審核結果通知',
-	'moderate_member_reason' => '這個郵箱地址在 {$var[\'bbname\']} 被新用戶註冊時所使用，且管理員設置了對新用戶需要進行人工審核，本郵件將通知您提交申請的審核結果。',
+	'moderate_member_reason' => '這個郵箱地址在 {$var[\'bbname\']} 被新用戶註冊時所使用，且管理員設定了對新用戶需要進行人工審核，本郵件將通知您提交申請的審核結果。',
 	'moderate_member_info' => '註冊資訊與審核結果',
 	'moderate_member_username' => '用戶名：',
 	'moderate_member_regdate' => '註冊時間：',
@@ -131,7 +131,7 @@ $lang =
 	'moderate_member_explain' => '審核結果説明',
 	'moderate_member_explain1' => '通過: 您的註冊已通過審核，您已成為 {$var[\'bbname\']} 的正式用戶。',
 	'moderate_member_explain2' => '否決: 您的註冊資訊不完整，或未滿足我們對新用戶的某些要求，您可以根據管理員留言，<a href="home.php?mod=spacecp&ac=profile" target="_blank">完善您的註冊資訊</a>，然後再次提交。',
-	'moderate_member_explain3' => '刪除：您的註冊由於與我們的要求偏差較大，或本站的新註冊人數已超過預期，申請已被否決。您的賬號已從數據庫中刪除，將無法再使用其登錄或提交再次審核，請您諒解。',
+	'moderate_member_explain3' => '刪除：您的註冊由於與我們的要求偏差較大，或本站的新註冊人數已超過預期，申請已被否決。您的賬號已從數據庫中刪除，將無法再使用其登入或提交再次審核，請您諒解。',
 
 	'adv_expiration_subject' => '您站點的廣告將於 {day} 天后到期，請及時處理',
 	'adv_expiration_msg' => '您站點的以下廣告將於 {$var[\'day\']} 天后到期，請及時處理：',

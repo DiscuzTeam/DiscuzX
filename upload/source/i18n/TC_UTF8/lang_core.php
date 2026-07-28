@@ -108,7 +108,7 @@ $lang =
 	'title_dateline_reward' => '最新懸賞',
 	'title_share_all' => '全部',
 	'title_share_link' => '網址',
-	'title_share_video' => '視頻',
+	'title_share_video' => '影片',
 	'title_share_music' => '音樂',
 	'title_share_flash' => 'Flash',
 	'title_share_poll' => '投票',
@@ -153,7 +153,7 @@ $lang =
 	'title_magics_user' => '我的道具',
 	'title_magics_log' => '道具記錄',
 	'title_medals_list' => '勳章',
-	'title_setup' => '設置',
+	'title_setup' => '設定',
 	'title_memcp_blog' => '發表日誌',
 	'title_memcp_upload' => '上傳',
 	'title_memcp_share' => '添加分享',
@@ -171,7 +171,7 @@ $lang =
 	'title_memcp_eccredit' => '信用評價',
 	'title_memcp_promotion' => '訪問推廣',
 	'title_task' => '任務',
-	'title_login' => '登錄',
+	'title_login' => '登入',
 	'title_getpasswd' => '找回密碼',
 	'title_ranklist_picture' => '圖片排行',
 	'title_ranklist_member' => '用戶排行',
@@ -187,8 +187,8 @@ $lang =
 	'title_search' => '搜索',
 	'title_topic_management' => '創建專題',
 	'title_portal_management' => '門户管理',
-	'title_portalblock_management' => '模塊管理',
-	'title_block_management' => '模塊管理',
+	'title_portalblock_management' => '模組管理',
+	'title_block_management' => '模組管理',
 	'title_blockdata_management' => '推送審核',
 	'title_index_management' => '頻道欄目',
 	'title_article_management' => '發佈文章',
@@ -202,7 +202,7 @@ $lang =
 	'title_stats_memberlist' => '會員列表',
 	'title_stats_trend' => '趨勢統計',
 
-	'title_memcp_pm' => '發送短消息',
+	'title_memcp_pm' => '發送短訊',
 	'title_memcp_domain' => '我的空間域名',
 
 	'title_collection' => '淘帖',
@@ -219,7 +219,7 @@ $lang =
 
 	'title_memcp_account' => '賬號管理',
 
-	'restful_auth_success' => '授權登錄成功',
-	'restful_auth_error' => '授權登錄失敗',
+	'restful_auth_success' => '授權登入成功',
+	'restful_auth_error' => '授權登入失敗',
 	];
 

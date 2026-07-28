@@ -30,7 +30,7 @@ $lang =
 	'piclist_titlelength' => '標題長度',
 	'piclist_titlelength_comment' => '指定圖片標題最大長度',
 	'piclist_orderby' => '圖片排序方式',
-	'piclist_orderby_comment' => '設置以哪一字段或方式對圖片進行排序',
+	'piclist_orderby_comment' => '設定以哪一字段或方式對圖片進行排序',
 	'piclist_orderby_dateline' => '按發佈時間倒序',
 	'piclist_orderby_hot' => '按熱度倒序'
 	];

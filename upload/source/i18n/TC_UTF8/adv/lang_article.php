@@ -20,6 +20,6 @@ $lang =
 	'article_position_up' => '相關閲讀上方(上)',
 	'article_position_down' => '相關閲讀上方(下)',
 	'article_category' => '投放頻道分類',
-	'article_category_comment' => '設置廣告投放的頻道分類',
+	'article_category_comment' => '設定廣告投放的頻道分類',
 	];
 

@@ -28,7 +28,7 @@ $data = [[
     'example' => '[qq]688888[/qq]',
     'explanation' => '顯示 QQ 在線狀態，點這個圖標可以和他（她）聊天',
     'params' => '1',
-    'prompt' => '請輸入 QQ 號碼:<a href="" class="xi2" onclick="this.href=\'https://wp.qq.com/set.html?from=discuz&uin=\'+$(\'e_cst1_qq_param_1\').value" target="_blank" style="float:right;">設置QQ在線狀態&nbsp;&nbsp;</a>',
+    'prompt' => '請輸入 QQ 號碼:<a href="" class="xi2" onclick="this.href=\'https://wp.qq.com/set.html?from=discuz&uin=\'+$(\'e_cst1_qq_param_1\').value" target="_blank" style="float:right;">設定QQ在線狀態&nbsp;&nbsp;</a>',
     'nest' => '1',
     'displayorder' => '21',
     'perm' => '1	2	3	10	11	12	13	14	15	16	17	18	19',

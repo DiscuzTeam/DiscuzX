@@ -11,7 +11,7 @@ if(!defined('IN_DISCUZ')) {
 }
 
 $lang = [
-	'block_diy_nopreview' => '<p>此模塊內容包含js代碼，不能立即預覽，請點擊保存後查看</p>',
+	'block_diy_nopreview' => '<p>此模組內容包含js代碼，不能立即預覽，請點擊保存後查看</p>',
 	'block_diy_summary_html_tag' => '自定義內容錯誤，HTML標籤：',
 	'block_diy_summary_not_closed' => ' 不匹配',
 	'block_all_category' => '全部分類',
@@ -63,7 +63,7 @@ $lang = [
 	'home/space_share_view' => '空間分享查看頁',
 	'space_share_view' => '空間分享查看頁',
 	'home/space_poll' => '空間投票頁',
-	'home/space_pm' => '空間短消息頁',
+	'home/space_pm' => '空間短訊頁',
 	'home/space_notice' => '空間提醒頁',
 	'home/space_group' => '空間'.$_G['setting']['navs'][3]['navname'].'頁',
 	'home/space_friend' => '空間好友頁',
@@ -85,7 +85,7 @@ $lang = [
 	'ranklist/group' => '圈子排行榜頁',
 	'ranklist/thread' => '帖子排行榜頁',
 	'ranklist/member' => '用戶排行榜頁',
-	'other_page' => '非DIY模塊',
+	'other_page' => '非DIY模組',
 	'upload' => '上傳',
 	'remote' => '遠程',
 	'portal_index' => '門户首頁',

@@ -9,7 +9,7 @@
 $data = [[
     'typeid' => '1',
     'available' => '1',
-    'name' => '默認',
+    'name' => '預設',
     'type' => 'smiley',
     'displayorder' => '1',
     'directory' => 'default',

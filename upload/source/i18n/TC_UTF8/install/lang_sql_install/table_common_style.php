@@ -8,7 +8,7 @@
 
 $data = [[
     'styleid' => '1',
-    'name' => '默認風格',
+    'name' => '預設風格',
     'available' => '1',
     'templateid' => '1',
     'extstyle' => 't1	t2	t3	t4	t5|',

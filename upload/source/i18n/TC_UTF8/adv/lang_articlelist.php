@@ -21,6 +21,6 @@ $lang =
 	'articlelist_position_down1' => '底部(上)',
 	'articlelist_position_down2' => '底部(下)',
 	'articlelist_category' => '投放頻道分類',
-	'articlelist_category_comment' => '設置廣告投放的頻道分類',
+	'articlelist_category_comment' => '設定廣告投放的頻道分類',
 	];
 

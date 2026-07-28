@@ -92,7 +92,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '6',
-    'rulename' => '發短消息',
+    'rulename' => '發短訊',
     'action' => 'sendpm',
     'cycletype' => '4',
     'cycletime' => '0',
@@ -194,7 +194,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '12',
-    'rulename' => '設置頭像',
+    'rulename' => '設定頭像',
     'action' => 'setavatar',
     'cycletype' => '0',
     'cycletime' => '0',
@@ -228,7 +228,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '15',
-    'rulename' => '每天登錄',
+    'rulename' => '每天登入',
     'action' => 'daylogin',
     'cycletype' => '1',
     'cycletime' => '0',

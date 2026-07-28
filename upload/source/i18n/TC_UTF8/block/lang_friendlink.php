@@ -22,8 +22,8 @@ $lang =
 	'friendlink_type_group3' => '分組3',
 	'friendlink_type_group4' => '分組4',
 	'friendlink_titlelength' => '站點名稱長度',
-	'friendlink_titlelength_comment' => '設置站點名稱的最大長度',
+	'friendlink_titlelength_comment' => '設定站點名稱的最大長度',
 	'friendlink_summarylength' => '簡介長度',
-	'friendlink_summarylength_comment' => '設置站點簡介最大長度',
+	'friendlink_summarylength_comment' => '設定站點簡介最大長度',
 	];
 

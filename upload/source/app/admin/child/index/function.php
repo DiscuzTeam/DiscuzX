@@ -716,7 +716,7 @@ function show_forever_thanks() {
 	showboxheader('home_dev', 'listbox fixpadding', 'id="home_dev"');
 	showboxrow('', ['class="dcol d-1 lineheight"', 'class="dcol lineheight team"'], [$copyRightMessage[0], '<span class="bold">'.$copyRightMessage[1].', '.$copyRightMessage[2].'</span>']);
 	showboxrow('', ['class="dcol d-1 lineheight"', 'class="dcol lineheight team"'], [cplang('contributors'), $gitTeamStr]);
-	showboxrow('', ['class="dcol d-1 lineheight"', 'class="dcol lineheight team"'], [cplang('home_forever'), '<a href="javascript:display(\'history\')">点击查看</a>']);
+	showboxrow('', ['class="dcol d-1 lineheight"', 'class="dcol lineheight team"'], [cplang('home_forever'), '<a href="javascript:display(\'history\')">'.cplang('view').'</a>']);
 	showtagheader('div', 'history');
 	showboxrow('', ['class="dcol d-1 lineheight"', 'class="dcol lineheight team"'], [cplang('home_dev_manager'), '<a href="https://discuz.dismall.com/home.php?mod=space&uid=1" class="lightlink2" target="_blank">'.cplang('dev_manager').'</a>']);
 	showboxrow('', ['class="dcol d-1 lineheight"', 'class="dcol lineheight team"'], [cplang('home_dev_team'), $devTeamStr]);

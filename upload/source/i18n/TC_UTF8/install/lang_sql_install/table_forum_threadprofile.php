@@ -8,7 +8,7 @@
 
 $data = [[
     'id' => '1',
-    'name' => '默認方案',
+    'name' => '預設方案',
     'template' => 
     [
       'left' => '{numbercard}

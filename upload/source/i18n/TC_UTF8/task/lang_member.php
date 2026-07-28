@@ -21,7 +21,7 @@ $lang =
 	'member_complete_var_num' => '執行動作次數下限',
 	'member_complete_var_num_comment' => '會員需要執行相應動作的最少次數',
 	'member_complete_var_time' => '時間限制(小時)',
-	'member_complete_var_time_comment' => '設置會員從申請任務到完成任務的時間限制，會員在此時間內未能完成任務則不能領取獎勵並標記任務失敗，0 或留空為不限制',
+	'member_complete_var_time_comment' => '設定會員從申請任務到完成任務的時間限制，會員在此時間內未能完成任務則不能領取獎勵並標記任務失敗，0 或留空為不限制',
 
 	'task_complete_time_start' => '從申請任務開始計時，',
 	'task_complete_time_limit' => '{value} 小時內，',

@@ -40,7 +40,7 @@ $lang = [
 	'friend_notice' => '好友',
 	'poll_comment' => '投票評論',
 	'poll_invite' => '投票邀請',
-	'default_albumname' => '默認相冊',
+	'default_albumname' => '預設相冊',
 	'credit' => '積分',
 	'credit_unit' => '個',
 	'man' => '男',
@@ -95,18 +95,18 @@ $lang = [
 	'sharings' => '分享',
 	'space_views' => '已有 <strong class="xi1">{views}</strong> 人來訪過',
 	'views' => '空間查看數',
-	'block1' => '自定義模塊1',
-	'block2' => '自定義模塊2',
-	'block3' => '自定義模塊3',
-	'block4' => '自定義模塊4',
-	'block5' => '自定義模塊5',
+	'block1' => '自定義模組1',
+	'block2' => '自定義模組2',
+	'block3' => '自定義模組3',
+	'block4' => '自定義模組4',
+	'block5' => '自定義模組5',
 	'blockdata' => ['personalinfo' => '個人資料', 'profile' => '頭像', 'doing' => '記錄', 'feed' => '動態',
 		'blog' => '日誌', 'stickblog' => '置頂日誌', 'album' => '相冊', 'friend' => '好友',
 		'visitor' => '最近訪客', 'wall' => '留言板', 'share' => '分享',
 		'thread' => '主題', 'group' => ($_G['setting']['navs'][3]['navname'] ?? ''), 'music' => '音樂盒',
 		'statistic' => '統計資訊',
-		'block1' => '自由模塊1', 'block2' => '自由模塊2', 'block3' => '自由模塊3',
-		'block4' => '自由模塊4', 'block5' => '自由模塊5'],
+		'block1' => '自由模組1', 'block2' => '自由模組2', 'block3' => '自由模組3',
+		'block4' => '自由模組4', 'block5' => '自由模組5'],
 
 	'block_title' => '<div class="blocktitle title"><span>{bname}</span>{more}</div>',
 	'blog_li' => '<dl class="bbda cl"><dt><a href="home.php?mod=space&uid={uid}&do=blog&id={blogid}" target="_blank">{subject}</a><span class="xg2 xw0"> {date}</span></dt>',
@@ -123,7 +123,7 @@ $lang = [
 							<input type="hidden" name="refer" value="home.php?mod=space&uid={uid}" />
 							<input type="hidden" name="id" value="{uid}" />
 							<input type="hidden" name="idtype" value="uid" />
-							<input type="hidden" name="commentsubmit" value="true" />' : ($_G['connectguest'] ? '<div class="pt hm">您需要 <a href="member.php?mod=connect" class="xi2">完善賬號資訊</a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2">綁定已有賬號</a> 後才可以回帖</div>' : '<div class="pt hm">你需要登錄後才可以留言 <a href="member.php?mod=logging&action=login" onclick="showWindow(\'login\', this.href)" class="xi2">登錄</a> | <a href="member.php?mod='.$_G['setting']['regname'].'" class="xi2">'.$_G['setting']['reglinkname'].'</a></div>')).'
+							<input type="hidden" name="commentsubmit" value="true" />' : ($_G['connectguest'] ? '<div class="pt hm">您需要 <a href="member.php?mod=connect" class="xi2">完善賬號資訊</a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2">綁定已有賬號</a> 後才可以回帖</div>' : '<div class="pt hm">你需要登入後才可以留言 <a href="member.php?mod=logging&action=login" onclick="showWindow(\'login\', this.href)" class="xi2">登入</a> | <a href="member.php?mod='.$_G['setting']['regname'].'" class="xi2">'.$_G['setting']['reglinkname'].'</a></div>')).'
 							<p class="ptn"><button '.($_G['uid'] ? 'type="submit"' : 'type="button" onclick="showWindow(\'login\', \'member.php?mod=logging&action=login&guestmessage=yes\')"').' name="commentsubmit_btn" value="true" id="commentsubmit_btn" class="pn"><strong>留言</strong></button></p>
 							<input type="hidden" name="handlekey" value="commentwall_{uid}" />
 							<span id="return_commentwall_{uid}"></span>
@@ -153,7 +153,7 @@ $lang = [
 	'wall_reply' => '<a href="home.php?mod=spacecp&ac=comment&op=reply&cid={cid}&handlekey=replycommenthk_{cid}" id="c_{cid}_reply" onclick="showWindow(this.id, this.href, \'get\', 0);">回覆</a>',
 	'group_li' => '<li><a href="forum.php?mod=group&fid={groupid}" target="_blank"><img src="{icon}" alt="{name}" /></a><p><a href="forum.php?mod=group&fid={groupid}" target="_blank">{name}</a></p></li>',
 	'poll_li' => '<div class="c z"><img alt="poll" src="'.STATICURL.'image/feed/poll.gif" alt="poll" class="t" /><h4 class="h"><a target="_blank" href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a></h4><div class="mtn xg1">發佈時間：{dateline}</div></div>',
-	'music_no_content' => '還沒有設置音樂盒的內容',
+	'music_no_content' => '還沒有設定音樂盒的內容',
 	'block_profile_diy' => '裝扮空間',
 	'block_profile_wall' => '查看留言',
 	'block_profile_avatar' => '編輯頭像',
@@ -189,8 +189,8 @@ $lang = [
 	'click_view' => '點擊查看',
 	'feed_view_only' => '只看此類動態',
 
-	'export_pm' => '導出短消息',
-	'pm_export_header' => 'Discuz! X 短消息記錄(此消息記錄不支持重新導入)',
+	'export_pm' => '導出短訊',
+	'pm_export_header' => 'Discuz! X 短訊記錄(此消息記錄不支持重新導入)',
 	'pm_export_touser' => '消息對象: {touser}',
 	'pm_export_subject' => '羣聊話題: {subject}',
 	'all' => '全部',
@@ -234,7 +234,7 @@ $lang = [
 	'viewthread_userinfo_credits' => '積分',
 	'viewthread_userinfo_readperm' => '閲讀權限',
 	'viewthread_userinfo_regtime' => '註冊時間',
-	'viewthread_userinfo_lastdate' => '最後登錄',
+	'viewthread_userinfo_lastdate' => '最後登入',
 	'viewthread_userinfo_oltime' => '在線時間',
 	'viewthread_userinfo_sellercredit' => '賣家信用',
 	'viewthread_userinfo_buyercredit' => '買家信用',
