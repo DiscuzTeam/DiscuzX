@@ -9,7 +9,7 @@
 $data = [[
     'id' => '1',
     'parentid' => '0',
-    'name' => '門户',
+    'name' => '門戶',
     'title' => 'Portal',
     'url' => 'portal.php',
     'identifier' => '1',
@@ -229,7 +229,7 @@ $data = [[
 ], [
     'id' => '12',
     'parentid' => '0',
-    'name' => '相冊',
+    'name' => '相簿',
     'title' => 'Album',
     'url' => 'home.php?mod=space&do=album',
     'identifier' => '13',
@@ -589,7 +589,7 @@ $data = [[
 ], [
     'id' => '30',
     'parentid' => '0',
-    'name' => '相冊',
+    'name' => '相簿',
     'title' => '',
     'url' => 'home.php?mod=space&do=album',
     'identifier' => 'album',
@@ -709,7 +709,7 @@ $data = [[
 ], [
     'id' => '36',
     'parentid' => '0',
-    'name' => '門户',
+    'name' => '門戶',
     'title' => '',
     'url' => 'portal.php',
     'identifier' => 'portal',
@@ -769,7 +769,7 @@ $data = [[
 ], [
     'id' => '41',
     'parentid' => '0',
-    'name' => '搜索',
+    'name' => '搜尋',
     'title' => '',
     'url' => 'search.php?mod=forum',
     'identifier' => 'search',
@@ -949,7 +949,7 @@ $data = [[
 ], [
     'id' => '50',
     'parentid' => '0',
-    'name' => '發布',
+    'name' => '發佈',
     'title' => '',
     'url' => 'forum.php?mod=misc&action=nav',
     'identifier' => 'post',

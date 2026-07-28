@@ -12,12 +12,12 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = [
 	'name' => '繁體中文',
-	'select' => '請揀選您需要安裝的語言',
+	'select' => '請選擇您需要安裝的語言',
 
 	'title_install' => SOFT_NAME.' 安裝嚮導',
 	'agreement_yes' => '同意',
 	'agreement_no' => '取消',
-	'agreement_notice' => '為確保順利進行安裝操作，請您仔細閲讀並充分理解授權協議的內容',
+	'agreement_notice' => '爲確保順利進行安裝操作，請您仔細閱讀並充分理解授權協議的內容',
 	'notset' => '不限制',
 	'enable' => '開啓',
 	'disable' => '關閉',
@@ -27,7 +27,7 @@ $lang = [
 	'message_return' => '返回',
 	'return' => '返回',
 	'install_wizard' => '安裝嚮導',
-	'config_nonexistence' => '配置文件不存在',
+	'config_nonexistence' => '配置檔案不存在',
 	'nodir' => '目錄不存在',
 	'redirect' => '瀏覽器會自動跳轉頁面，無需人工干預。<br>除非當您的瀏覽器沒有自動跳轉時，請點擊這裡',
 	'auto_redirect' => '瀏覽器會自動跳轉頁面，無需人工干預',
@@ -49,7 +49,7 @@ $lang = [
 	'new_step' => '下一步',
 	'start_install' => '開始安裝',
 
-	'database_errno_2003' => '無法連接數據庫，請檢查數據庫是否啓動，數據庫服務器地址是否正確',
+	'database_errno_2003' => '無法連接數據庫，請檢查數據庫是否啓動，數據庫伺服器地址是否正確',
 	'database_errno_1044' => '無法創建新的數據庫，請檢查數據庫名稱填寫是否正確',
 	'database_errno_1045' => '無法連接數據庫，請檢查數據庫用戶名或者密碼是否正確',
 	'database_connect_error' => '數據庫連接錯誤',
@@ -64,15 +64,15 @@ $lang = [
 	'step_title_3u' => '注意事項',
 	'step_title_4u' => '升級',
 	'step_env_check_title' => '開始安裝',
-	'step_env_check_desc' => '環境以及文件目錄權限檢查',
+	'step_env_check_desc' => '環境以及檔案目錄權限檢查',
 	'step_db_init_title' => '安裝數據庫',
 	'step_db_init_desc' => '正在執行數據庫安裝',
 	'step_upgrade_title' => '開始升級',
 	'step_upgrade_desc' => '正在執行數據庫升級',
 	'step_upgrade_confirm_title' => '注意事項',
-	'step_upgrade_confirm_desc' => '開始升級前請仔細閲讀下面的注意事項',
+	'step_upgrade_confirm_desc' => '開始升級前請仔細閱讀下面的注意事項',
 
-	'step1_file' => '目錄文件',
+	'step1_file' => '目錄檔案',
 	'step1_need_status' => '所需狀態',
 	'step1_status' => '當前狀態',
 	'not_continue' => '請將以上紅叉部分修正再試',
@@ -85,15 +85,15 @@ $lang = [
 
 	'ext_info_succ' => '安裝成功。',
 	'install_submit' => '提交',
-	'install_locked' => '安裝鎖定，已經安裝過了，如果您確定要重新安裝，請到服務器上刪除<br /> '.str_replace(ROOT_PATH, '', $lockfile).'<br /><br />如果您要進入工具箱，請修改本安裝文件的文件名(./install/index.php)，然後用修改後的文件名訪問',
-	'error_stuck_msg' => '安裝進程已經很久沒有進展了，可能相關請求已經因網絡超時或服務器嚴重錯誤而異常登出',
-	'error_quit_msg' => '您必須解決以上問題，才可以繼續進行',
+	'install_locked' => '安裝鎖定，已經安裝過了，如果您確定要重新安裝，請到伺服器上刪除<br /> '.str_replace(ROOT_PATH, '', $lockfile).'<br /><br />如果您要進入工具箱，請修改本安裝檔案的檔案名(./install/index.php)，然後用修改後的檔案名訪問',
+	'error_stuck_msg' => '安裝進程已經很久沒有進展了，可能相關請求已經因網絡超時或伺服器嚴重錯誤而異常登出',
+	'error_quit_msg' => '您必須解決以上問題，纔可以繼續進行',
 	'error_reinstall_msg' => '您的數據庫可能InnoDB性能不佳，請調高PHP超時時間，刷新頁面嘗試重新安裝',
 
 	'step_app_reg_title' => '設定運行環境',
-	'step_app_reg_desc' => '檢測服務器環境以及設定 UCenter',
+	'step_app_reg_desc' => '檢測伺服器環境以及設定 UCenter',
 	'tips_ucenter' => '請填寫 UCenter 相關資訊',
-	'tips_ucenter_comment' => 'UCenter 是 Comsenz 公司產品的核心服務程序，Discuz! Board 的安裝和運行依賴此程序。如果您已經安裝了 UCenter，請填寫以下資訊。否則，請到 <a href="https://www.discuz.vip/" target="blank">Comsenz 產品中心</a> 下載並且安裝，然後再繼續。',
+	'tips_ucenter_comment' => 'UCenter 是 Comsenz 公司產品的核心服務程式，Discuz! Board 的安裝和運行依賴此程式。如果您已經安裝了 UCenter，請填寫以下資訊。否則，請到 <a href="https://www.discuz.vip/" target="blank">Comsenz 產品中心</a> 下載並且安裝，然後再繼續。',
 
 	'advice_mysqli_connect' => '請檢查 mysqli 模組是否正確加載',
 	'advice_xml_parser_create' => '該函數需要 PHP 支持 XML 。請聯繫服務商，確定開啓了此項功能',
@@ -120,14 +120,14 @@ $lang = [
 
 	'click_to_back' => '點擊返回上一步',
 	'adminemail' => '系統信箱 Email',
-	'adminemail_comment' => '用於發送程序錯誤報告',
-	'dbhost_comment' => '一般為 127.0.0.1 或 localhost',
+	'adminemail_comment' => '用於發送程式錯誤報告',
+	'dbhost_comment' => '一般爲 127.0.0.1 或 localhost',
 	'dbname_comment' => '用於安裝 Discuz! 的數據庫',
 	'dbuser_comment' => '您的數據庫用戶名',
 	'dbpw_comment' => '您的數據庫密碼',
 	'tablepre_comment' => '同一數據庫運行多個論壇時，請修改前綴',
 	'forceinstall_check_label' => '我要刪除數據，強制安裝 !!!',
-	'myisam2innodb_check_label' => '以MyISAM方式安裝，再轉換為InnoDB',
+	'myisam2innodb_check_label' => '以MyISAM方式安裝，再轉換爲InnoDB',
 	'initdbresult_succ' => '數據庫表創建完成',
 	'initdbdataresult_succ' => '數據庫數據初始化完成',
 	'initdbinnodbresult_succ' => 'InnoDB數據錶轉換完成',
@@ -135,27 +135,27 @@ $lang = [
 
 	'uc_url_empty' => '您沒有填寫 UCenter 的 URL，請返回填寫',
 	'uc_url_invalid' => 'URL 格式錯誤',
-	'uc_url_unreachable' => 'UCenter 的 URL 地址可能填寫錯誤，可能原因有:<br />1. UCenter 路徑不正確或狀態異常<br />2. 應用查詢 UCenter 狀態請求無法發起或被攔截<br />3. UCenter 後台 “ 通過 URL 添加應用功能 ” 未開啓',
+	'uc_url_unreachable' => 'UCenter 的 URL 地址可能填寫錯誤，可能原因有:<br />1. UCenter 路徑不正確或狀態異常<br />2. 應用查詢 UCenter 狀態請求無法發起或被攔截<br />3. UCenter 後臺 “ 通過 URL 添加應用功能 ” 未開啓',
 	'uc_ip_invalid' => '無法解析該域名，請填寫站點的 IP',
-	'uc_admin_invalid' => 'UCenter 創始人密碼校驗未通過, 可能原因有:<br />1. UCenter 創始人密碼不正確<br />2. 多次錯誤輸入密碼導致創始人用戶和 IP 地址被鎖定<br />3. UCenter 後台 “ 通過 URL 添加應用功能 ” 未開啓',
+	'uc_admin_invalid' => 'UCenter 創始人密碼校驗未通過, 可能原因有:<br />1. UCenter 創始人密碼不正確<br />2. 多次錯誤輸入密碼導致創始人用戶和 IP 地址被鎖定<br />3. UCenter 後臺 “ 通過 URL 添加應用功能 ” 未開啓',
 	'uc_data_invalid' => '通信失敗，請檢查 UCenter 的URL 地址是否正確 ',
 	'uc_dbcharset_incorrect' => 'UCenter 數據庫字符集與當前應用字符集不一致',
 	'uc_api_add_app_error' => '向 UCenter 添加應用錯誤',
 	'uc_dns_error' => 'UCenter DNS解析錯誤，請返回填寫一下 UCenter 的 IP地址',
 
-	'ucenter_ucurl_invalid' => 'UCenter 的URL為空，或者格式錯誤，請檢查',
-	'ucenter_ucpw_invalid' => 'UCenter 的創始人密碼為空，或者格式錯誤，請檢查',
-	'siteinfo_siteurl_invalid' => '站點URL為空，或者格式錯誤，請檢查',
-	'siteinfo_sitename_invalid' => '站點名稱為空，或者格式錯誤，請檢查',
-	'dbinfo_dbhost_invalid' => '數據庫服務器為空，或者格式錯誤，請檢查',
-	'dbinfo_dbname_invalid' => '數據庫名為空，或者格式錯誤，請檢查',
-	'dbinfo_dbuser_invalid' => '數據庫用戶名為空，或者格式錯誤，請檢查',
-	'dbinfo_dbpw_invalid' => '數據庫密碼為空，或者格式錯誤，請檢查',
-	'dbinfo_adminemail_invalid' => '系統郵箱為空，或者格式錯誤，請檢查',
-	'dbinfo_tablepre_invalid' => '數據表前綴為空，或者格式錯誤，請檢查',
-	'admininfo_username_invalid' => '管理員用戶名為空，或者格式錯誤，請檢查',
-	'admininfo_email_invalid' => '管理員Email為空，或者格式錯誤，請檢查',
-	'admininfo_password_invalid' => '管理員密碼為空，請填寫',
+	'ucenter_ucurl_invalid' => 'UCenter 的URL爲空，或者格式錯誤，請檢查',
+	'ucenter_ucpw_invalid' => 'UCenter 的創始人密碼爲空，或者格式錯誤，請檢查',
+	'siteinfo_siteurl_invalid' => '站點URL爲空，或者格式錯誤，請檢查',
+	'siteinfo_sitename_invalid' => '站點名稱爲空，或者格式錯誤，請檢查',
+	'dbinfo_dbhost_invalid' => '數據庫伺服器爲空，或者格式錯誤，請檢查',
+	'dbinfo_dbname_invalid' => '數據庫名爲空，或者格式錯誤，請檢查',
+	'dbinfo_dbuser_invalid' => '數據庫用戶名爲空，或者格式錯誤，請檢查',
+	'dbinfo_dbpw_invalid' => '數據庫密碼爲空，或者格式錯誤，請檢查',
+	'dbinfo_adminemail_invalid' => '系統郵箱爲空，或者格式錯誤，請檢查',
+	'dbinfo_tablepre_invalid' => '數據表前綴爲空，或者格式錯誤，請檢查',
+	'admininfo_username_invalid' => '管理員用戶名爲空，或者格式錯誤，請檢查',
+	'admininfo_email_invalid' => '管理員Email爲空，或者格式錯誤，請檢查',
+	'admininfo_password_invalid' => '管理員密碼爲空，請填寫',
 	'admininfo_password2_invalid' => '兩次密碼不一致，請檢查',
 
 	'install_dzstandalone' => '<div class="selradio"><input type="radio" id="install_ucenter_standalone"'.(getgpc('install_ucenter') != 'no' ? ' checked="checked"' : '').' name="install_ucenter" value="standalone" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /><label for="install_ucenter_standalone">全新安裝 Discuz! X</label></div>',
@@ -166,17 +166,17 @@ $lang = [
 	'username' => '管理員賬號',
 	'email' => '管理員 Email',
 	'password' => '管理員密碼',
-	'password_comment' => '管理員密碼不能為空',
+	'password_comment' => '管理員密碼不能爲空',
 	'password2' => '重複密碼',
 
 	'admininfo_invalid' => '管理員資訊不完整，請檢查管理員賬號，密碼，郵箱',
-	'dbname_invalid' => '數據庫名為空，請填寫數據庫名稱',
-	'tablepre_invalid' => '數據表前綴為空，或者格式錯誤，請檢查',
+	'dbname_invalid' => '數據庫名爲空，請填寫數據庫名稱',
+	'tablepre_invalid' => '數據表前綴爲空，或者格式錯誤，請檢查',
 	'admin_username_invalid' => '非法用戶名，用戶名長度不應當超過 15 個英文字符，且不能包含特殊字符，一般是中文，字母或者數字',
 	'admin_password_invalid' => '密碼和上面不一致，請重新輸入',
-	'admin_email_invalid' => 'Email 地址錯誤，此郵件地址已經被使用或者格式無效，請更換為其他地址',
+	'admin_email_invalid' => 'Email 地址錯誤，此郵件地址已經被使用或者格式無效，請更換爲其他地址',
 	'admin_invalid' => '您的資訊管理員資訊沒有填寫完整，請仔細填寫每個項目',
-	'admin_exist_password_error' => '該用戶已經存在，如果您要設定此用戶為論壇的管理員，請正確輸入該用戶的密碼，或者請更換論壇管理員的名字',
+	'admin_exist_password_error' => '該用戶已經存在，如果您要設定此用戶爲論壇的管理員，請正確輸入該用戶的密碼，或者請更換論壇管理員的名字',
 
 	'tagtemplates_subject' => '標題',
 	'tagtemplates_uid' => '用戶 ID',
@@ -185,7 +185,7 @@ $lang = [
 	'tagtemplates_url' => '主題地址',
 
 	'uc_version_incorrect' => '您的 UCenter 服務端版本過低，請升級 UCenter 服務端到最新版本，並且升級，下載地址：https://www.discuz.vip/ 。',
-	'config_unwriteable' => '安裝嚮導無法寫入配置文件, 請設定 config.inc.php 程序屬性為可寫狀態(777)',
+	'config_unwriteable' => '安裝嚮導無法寫入配置檔案, 請設定 config.inc.php 程式屬性爲可寫狀態(777)',
 
 	'install_in_processed' => '正在安裝...',
 	'install_succeed' => '安裝成功，點擊進入',
@@ -244,7 +244,7 @@ $lang = [
 	'init_bbcode_6' => '嵌入 Windows media 音頻',
 	'init_bbcode_7' => '嵌入 Windows media 音頻或影片',
 
-	'init_qihoo_searchboxtxt' =>'輸入關鍵詞,快速搜索本論壇',
+	'init_qihoo_searchboxtxt' =>'輸入關鍵詞,快速搜尋本論壇',
 	'init_threadsticky' =>'全局置頂,分類置頂,本版置頂',
 
 	'init_default_style' => '預設風格',
@@ -268,19 +268,19 @@ $lang = [
 <div class="license"><h1>中文版授權協議 適用於中文用戶</h1>
 <p>版權所有 (c) 2001-'.date('Y').'，合肥貳道網絡科技有限公司、騰訊科技（北京）有限公司 保留所有權利。</p>
 
-<p>感謝您選擇 Discuz! 產品。希望我們的努力能為您提供一個高效快速、強大的站點解決方案，和強大的社區論壇解決方案。</p>
+<p>感謝您選擇 Discuz! 產品。希望我們的努力能爲您提供一個高效快速、強大的站點解決方案，和強大的社區論壇解決方案。</p>
 
 <p>產品官方網站網址：https://www.discuz.vip/。</p>
 <p>產品官方討論社區網址：https://www.dismall.com/。</p>
 <p>產品官方應用中心網址：https://addon.dismall.com/。</p>
-<p>產品開源代碼網址為：https://code.dismall.com/。</p>
+<p>產品開源代碼網址爲：https://code.dismall.com/。</p>
 
 <p>合肥貳道網絡科技有限公司下文中將簡稱“貳道網絡公司”，騰訊科技（北京）有限公司將簡稱“騰訊公司”，Discuz! 產品將簡稱“本產品”。</p>
 
 <p>Discuz! X 項目內所包含的官方應用中心由貳道網絡公司承接運營，Discuz! X 開源項目由貳道網絡公司承接維護，Discuz! X 及其衍生產品由貳道網絡公司負責研發。Discuz! X 開源版代碼由項目開源管理委員會及社區開發者共同維護。</p>
 
-<p>用戶須知：本協議是您與貳道網絡公司及騰訊公司之間關於您使用此軟件產品及服務的法律協議。無論您是個人或組織、盈利與否、用途如何（包括以學習和研究為目的），均需仔細閲讀本協議，包括免除或者限制貳道網絡公司責任的免責條款及對您的權利限制。請您審閲並接受或不接受本服務條款。如您不同意本服務條款及/或貳道網絡公司隨時對其的修改，您應不使用或主動取消貳道網絡公司提供的產品。否則，您的任何對本產品中的相關服務的註冊、登入、下載、查看等使用行為將被視為您對本服務條款全部的完全接受，包括接受貳道網絡公司對服務條款隨時所做的任何修改。</p>
-<p>本服務條款一旦發生變更，貳道網絡公司將在網頁上公佈修改內容。修改後的服務條款一旦在網站管理後台上公佈即有效代替原來的服務條款。您可隨時登入開源代碼網址查閲最新版服務條款。如果您選擇接受本條款，即表示您同意接受協議各項條件的約束。如果您不同意本服務條款，則不能獲得使用本服務的權利。您若有違反本條款規定，貳道網絡公司有權隨時中止或終止您對貳道網絡公司產品的使用資格並保留追究相關法律責任的權利。</p>
+<p>用戶須知：本協議是您與貳道網絡公司及騰訊公司之間關於您使用此軟件產品及服務的法律協議。無論您是個人或組織、盈利與否、用途如何（包括以學習和研究爲目的），均需仔細閱讀本協議，包括免除或者限制貳道網絡公司責任的免責條款及對您的權利限制。請您審閱並接受或不接受本服務條款。如您不同意本服務條款及/或貳道網絡公司隨時對其的修改，您應不使用或主動取消貳道網絡公司提供的產品。否則，您的任何對本產品中的相關服務的註冊、登入、下載、查看等使用行爲將被視爲您對本服務條款全部的完全接受，包括接受貳道網絡公司對服務條款隨時所做的任何修改。</p>
+<p>本服務條款一旦發生變更，貳道網絡公司將在網頁上公佈修改內容。修改後的服務條款一旦在網站管理後臺上公佈即有效代替原來的服務條款。您可隨時登入開源代碼網址查閱最新版服務條款。如果您選擇接受本條款，即表示您同意接受協議各項條件的約束。如果您不同意本服務條款，則不能獲得使用本服務的權利。您若有違反本條款規定，貳道網絡公司有權隨時中止或終止您對貳道網絡公司產品的使用資格並保留追究相關法律責任的權利。</p>
 <p>在理解、同意、並遵守本協議的全部條款後，方可開始使用本產品。您可能與貳道網絡公司直接簽訂另一書面協議，以補充或者取代本協議的全部或者任何部分。</p>
 
 <p>貳道網絡公司及騰訊公司擁有本產品的全部知識產權。本產品只供許可協議，並非出售。貳道網絡公司只允許您在遵守本協議各項條款的情況下複製、下載、安裝、使用或者以其他方式受益於本產品的功能或者知識產權。</p>
@@ -289,37 +289,37 @@ $lang = [
 <ol>
    <li>您可以在完全遵守本許可協議的基礎上，將本產品應用於非商業用途或商業用途使用（侷限於本協議所適配許可的情況下），而不必支付軟件版權許可費用。</li>
    <li>您可以在協議規定的約束和限制範圍內修改本產品源代碼（如果被提供的話）或界面風格以適應您的網站要求。</li>
-   <li>您擁有使用本產品構建的網站中全部會員資料、文章及相關資訊的所有權，並獨立承擔與使用本產品構建的網站內容的審核、注意義務，確保其不侵犯任何人的合法權益，獨立承擔因使用本產品和服務帶來的全部責任，若造成貳道網絡公司、騰訊公司及用戶損失的，您應予以全部賠償。</li>
+   <li>您擁有使用本產品構建的網站中全部會員資料、文章及相關資訊的所有權，並獨立承擔與使用本產品構建的網站內容的審覈、注意義務，確保其不侵犯任何人的合法權益，獨立承擔因使用本產品和服務帶來的全部責任，若造成貳道網絡公司、騰訊公司及用戶損失的，您應予以全部賠償。</li>
    <li>若您需將本產品或服務用於商業用途，必須遵守中國人民共和國相關法律。若需提供技術支持方式或技術支持內容，請向官方網站獲取技術支持服務。</li>
-   <li>您可以從貳道網絡公司提供的應用中心服務中下載適合您網站的應用程序，但應嚮應用程序開發者（所有者）支付相應的費用。貳道網絡公司只有在經過應用程序開發者（所有者）授權後，才將應用程序下載到您的服務器上。未經許可的應用程序，您必須立刻刪除，貳道網絡公司、騰訊公司不承擔任何責任。</li>
+   <li>您可以從貳道網絡公司提供的應用中心服務中下載適合您網站的應用程式，但應嚮應用程式開發者（所有者）支付相應的費用。貳道網絡公司只有在經過應用程式開發者（所有者）授權後，纔將應用程式下載到您的伺服器上。未經許可的應用程式，您必須立刻刪除，貳道網絡公司、騰訊公司不承擔任何責任。</li>
 </ol>
 
 <h3>II. 協議規定的約束和限制</h3>
 <ol>
-   <li>不得對本產品、應用程序或與之關聯的商業授權進行出租、出售、抵押或發放子許可證。</li>
+   <li>不得對本產品、應用程式或與之關聯的商業授權進行出租、出售、抵押或發放子許可證。</li>
    <li>無論如何，即無論用途如何、是否經過修改或美化、修改程度如何，只要使用本產品的整體或任何部分，未經書面許可，本產品中的下列內容都必須保留，不能清除或修改、替換：<br />
 	a. 頁面頁腳處 “Powered by Discuz!” 的文字及鏈接；<br />
 	b. 管理中心首頁頁腳處 “應用中心” 的文字及鏈接；<br />
 	c. 管理中心首頁頁腳處 “Based on MitFrame”、“Cloud services by WitFrame” 的文字及鏈接；
    </li>
    <li>禁止在本產品的整體或任何部分基礎上以發展任何派生版本、修改版本或第三方版本用於重新分發。</li>
-   <li>您從官方應用中心下載的應用程序，未經應用程序開發者（所有者）的書面許可，不得對其進行反向工程、反向彙編、反向編譯等，不得擅自複製、修改、鏈接、轉載、彙編、發表、出版、發展與之有關的衍生產品、作品等。</li>
+   <li>您從官方應用中心下載的應用程式，未經應用程式開發者（所有者）的書面許可，不得對其進行反向工程、反向彙編、反向編譯等，不得擅自複製、修改、鏈接、轉載、彙編、發表、出版、發展與之有關的衍生產品、作品等。</li>
    <li>如果您未能遵守本協議的條款，您的授權將被終止，所許可的權利將被收回，同時您應承擔相應法律責任。</li>
 </ol>
 
 <h3>III. 有限擔保和免責聲明</h3>
 <ol>
-   <li>本產品及所附帶的文件是作為不提供任何明確的或隱含的賠償或擔保的形式提供的。</li>
+   <li>本產品及所附帶的檔案是作爲不提供任何明確的或隱含的賠償或擔保的形式提供的。</li>
    <li>用戶出於自願而使用本產品，您必須瞭解使用本產品的風險，我們不承諾提供任何形式的技術支持、使用擔保，也不承擔任何因使用本產品而產生問題的相關責任。</li>
    <li>貳道網絡公司不對使用本產品構建的網站中或者論壇中的文章或資訊承擔責任，全部責任由您自行承擔。</li>
-   <li>官方應用中心無法全面監控由第三方上傳至應用中心的應用程序，因此不保證應用程序的合法性、安全性、完整性、真實性或品質等；您從官方應用中心下載應用程序時，同意自行判斷並承擔所有風險，而不依賴於貳道網絡公司及官方應用中心。但在任何情況下，官方應用中心有權依法停止應用中心服務並採取相應行動，包括但不限於對於相關應用程序進行卸載，暫停服務的全部或部分，保存有關記錄，並向有關機關報告。由此對您及第三人可能造成的損失，貳道網絡公司、騰訊公司及官方應用中心不承擔任何直接、間接或者連帶的責任。</li>
+   <li>官方應用中心無法全面監控由第三方上傳至應用中心的應用程式，因此不保證應用程式的合法性、安全性、完整性、真實性或品質等；您從官方應用中心下載應用程式時，同意自行判斷並承擔所有風險，而不依賴於貳道網絡公司及官方應用中心。但在任何情況下，官方應用中心有權依法停止應用中心服務並採取相應行動，包括但不限於對於相關應用程式進行卸載，暫停服務的全部或部分，保存有關記錄，並向有關機關報告。由此對您及第三人可能造成的損失，貳道網絡公司、騰訊公司及官方應用中心不承擔任何直接、間接或者連帶的責任。</li>
    <li>貳道網絡公司對本產品和服務之及時性、安全性、準確性不作擔保，由於不可抗力因素、貳道網絡公司無法控制的因素（包括黑客攻擊、停斷電等）等造成軟件使用和服務中止或終止，而給您造成損失的，您同意放棄追究貳道網絡公司、騰訊公司責任的全部權利。</li>
-   <li>貳道網絡公司特別提請您注意，貳道網絡公司為了保障公司業務發展和調整的自主權，貳道網絡公司擁有隨時經或未經事先通知而修改服務內容、中止或終止部分或全部軟件使用和服務的權利，修改會公佈於貳道網絡公司網站相關頁面上，一經公佈視為通知。貳道網絡公司行使修改或中止、終止部分或全部軟件使用和服務的權利而造成損失的，貳道網絡公司、騰訊公司不需對您或任何第三方負責。</li>
+   <li>貳道網絡公司特別提請您注意，貳道網絡公司爲了保障公司業務發展和調整的自主權，貳道網絡公司擁有隨時經或未經事先通知而修改服務內容、中止或終止部分或全部軟件使用和服務的權利，修改會公佈於貳道網絡公司網站相關頁面上，一經公佈視爲通知。貳道網絡公司行使修改或中止、終止部分或全部軟件使用和服務的權利而造成損失的，貳道網絡公司、騰訊公司不需對您或任何第三方負責。</li>
 </ol>
 
 <p>有關本產品最終用戶授權協議、商業授權與技術服務的詳細內容，均由貳道網絡公司提供。貳道網絡公司擁有在不事先通知的情況下，修改授權協議和服務價目表的權利，修改後的協議或價目表對自改變之日起的新授權用戶生效。</p>
 
-<p>一旦您開始安裝本產品，即被視為完全理解並接受本協議的各項條款，在享有上述條款授予的權利的同時，受到相關的約束和限制。協議許可範圍以外的行為，將直接違反本授權協議並構成侵權，我們有權隨時終止授權，責令停止損害，並保留追究相關責任的權力。</p>
+<p>一旦您開始安裝本產品，即被視爲完全理解並接受本協議的各項條款，在享有上述條款授予的權利的同時，受到相關的約束和限制。協議許可範圍以外的行爲，將直接違反本授權協議並構成侵權，我們有權隨時終止授權，責令停止損害，並保留追究相關責任的權力。</p>
 
 <p>本許可協議條款的解釋，效力及糾紛的解決，適用於中華人民共和國大陸法律。</p>
 
@@ -327,33 +327,33 @@ $lang = [
 
 </div>',
 
-	'version_title' => '產品説明',
+	'version_title' => '產品說明',
 	'version_notice' => '
-<p>- 基於 MitFrame<sup>&reg;</sup> 核心的全新框架體系重構，既是社羣又是框架，全面開拓更廣闊的開放視角</p>
-<p>- 從前台到後台，開放更為徹底</p>
+<p>- 基於 MitFrame<sup>&reg;</sup> 內核的全新框架體系重構，既是社區又是框架，全面開拓更廣泛的開放視角</p>
+<p>- 從前臺到後臺，開放更加徹底</p>
 <p>- 輕重兼顧的多功能一體化社區</p>
 <p>- 全新 JSON 編輯器</p>
-<p>- 板塊、用戶組、積分全面強化</p>
-<p>- 全面擁抱 OAuth2.0 的 RESTful API 介面，開發者可隨意自訂專屬介面</p>
-<p><a href="https://www.dismall.com/thread-27135-1-1.html" target="_blank">點擊了解更多...</a></p>
+<p>- 版塊、用戶組、積分全面加強</p>
+<p>- 全面擁抱 OAuth2.0 的 RESTful API 接口，開發者可隨意自定義自己的接口</p>
+<p><a href="https://www.dismall.com/thread-27135-1-1.html" target="_blank">點擊瞭解更多...</a></p>
 ',
 
 	'php_version_too_low' => 'PHP 版本不符合 Discuz! 的安裝要求，必須滿足 PHP %s',
 	'php8_tips' => '您好，當前產品暫不支持 PHP 9.0 安裝，請降級到至少 PHP 8.0 後再試！',
-	'no_utf8_tips' => '您好，您使用的版本為 GBK / BIG-5 等本地化編碼版本，此版本已經不作為主推版本，如果您計劃建設新站點【強烈】建議您使用最新正式 UTF-8 版本安裝。',
+	'no_utf8_tips' => '您好，您使用的版本爲 GBK / BIG-5 等本地化編碼版本，此版本已經不作爲主推版本，如果您計劃建設新站點【強烈】建議您使用最新正式 UTF-8 版本安裝。',
 	'no_latest_tips' => '您好，您使用的版本較老，可能存在 Bug 以及安全隱患，如無特殊情況建議您改用最新正式 UTF-8 版本安裝。',
-	'unstable_tips' => '您好，您使用的版本為非正式版本，可能存在未知的 Bug 或缺陷，如果您計劃正式建站或購買插件建議您使用最新正式 UTF-8 版本安裝。',
+	'unstable_tips' => '您好，您使用的版本爲非正式版本，可能存在未知的 Bug 或缺陷，如果您計劃正式建站或購買插件建議您使用最新正式 UTF-8 版本安裝。',
 	'next_tips' => '\r\n點擊【確定】跳轉到最新正式 UTF-8 版本下載頁面，點擊【取消】繼續安裝（不推薦）',
 
-	'uc_installed' => '您已經安裝過 UCenter，如果需要重新安裝，請刪除 data/install.lock 文件',
-	'i_agree' => '我已仔細閲讀，並同意上述條款中的所有內容',
+	'uc_installed' => '您已經安裝過 UCenter，如果需要重新安裝，請刪除 data/install.lock 檔案',
+	'i_agree' => '我已仔細閱讀，並同意上述條款中的所有內容',
 	'supportted' => '支持',
 	'unsupportted' => '不支持',
 	'max_size' => '支持/最大尺寸',
 	'project' => '項目',
 	'ucenter_required' => 'Discuz! 所需配置',
 	'ucenter_best' => 'Discuz! 推薦',
-	'curr_server' => '當前服務器',
+	'curr_server' => '當前伺服器',
 	'env_check' => '環境檢查',
 	'os' => '操作系統',
 	'php' => 'PHP 版本',
@@ -367,10 +367,10 @@ $lang = [
 	'unix' => '類Unix',
 	'diskspace' => '磁盤空間',
 	'opcache' => 'OPCache 庫',
-	'redis' => 'Redis 緩存/庫',
+	'redis' => 'Redis 快取/庫',
 	'imagick' => 'ImageMagick 庫',
 	'curl' => 'cURL 庫',
-	'priv_check' => '目錄、文件權限檢查',
+	'priv_check' => '目錄、檔案權限檢查',
 	'func_depend' => '函數依賴性檢查',
 	'func_name' => '函數名稱',
 	'check_result' => '檢查結果',
@@ -382,7 +382,7 @@ $lang = [
 	'undefine_func' => '不存在的函數',
 	'mysqli_unsupport' => '請檢查 mysqli 模組是否正確加載',
 
-	'dbhost' => '數據庫服務器地址',
+	'dbhost' => '數據庫伺服器地址',
 	'dbuser' => '數據庫用戶名',
 	'dbpw' => '數據庫密碼',
 	'dbname' => '數據庫名',
@@ -409,19 +409,19 @@ $lang = [
 	'topic' => '專題',
 	'install_finish' => '站點安裝完成，感謝您的支持！',
 	'install_finish_next' => '接下來您可以：',
-	'finish_btn_admin' => '進入管理後台',
+	'finish_btn_admin' => '進入管理後臺',
 	'finish_btn_cloudaddon' => '安裝插件模板',
 	'finish_btn_direct' => '直接訪問站點',
 
 	'upgrade_confirm' => '
 	<ul style="font-size: 14px;line-height: 30px;list-style-type: decimal;padding-left: 20px;">
-	<li>確保您的舊版本 Discuz! 必須為 X3.5 版本，如不滿足版本要求請先升級到此版本；</li>
+	<li>確保您的舊版本 Discuz! 必須爲 X3.5 版本，如不滿足版本要求請先升級到此版本；</li>
 	<li>確保 UCenter 和 Discuz! 部署在一個數據庫中；</li>
-	<li>確保您已備份了數據庫和程序文件，將舊版本程序文件移動到其他目錄下；</li>
-	<li>將舊版本的配置文件 config/config_global.php、config/config_ucenter.php 複製到當前新版本的 config/ 目錄中；</li>
+	<li>確保您已備份了數據庫和程式檔案，將舊版本程式檔案移動到其他目錄下；</li>
+	<li>將舊版本的配置檔案 config/config_global.php、config/config_ucenter.php 複製到當前新版本的 config/ 目錄中；</li>
 	<li>點擊“下一步”開始升級；</li>
-	<li>升級完成後可以將舊版本中 source/plugin/ 目錄下的插件文件挑選後複製到新版本的對應目錄下、將 template/ 目錄下的模板文件挑選後複製到新版本的對應目錄下（不要複製 template/default/ 目錄）；</li>
-	<li>升級完成後 data/attachment/ 目錄以及 data/ 目錄下其他目錄請酌情複製；如舊版本應用涉及其他目錄中的文件，請自行諮詢相關開發者複製；</li>
+	<li>升級完成後可以將舊版本中 source/plugin/ 目錄下的插件檔案挑選後複製到新版本的對應目錄下、將 template/ 目錄下的模板檔案挑選後複製到新版本的對應目錄下（不要複製 template/default/ 目錄）；</li>
+	<li>升級完成後 data/attachment/ 目錄以及 data/ 目錄下其他目錄請酌情複製；如舊版本應用涉及其他目錄中的檔案，請自行諮詢相關開發者複製；</li>
 	</ul>
 	',
 	'upgrade_version_error' => '無法升級，舊版本的 Discuz! 必須是 '.UPGRADE_FROM_VERSION.' 版本',
@@ -430,16 +430,16 @@ $lang = [
 	'tool_wizard' => '工具箱',
 	'tool_start' => '開始',
 
-	'install_locked_exists' => '無法進入工具箱，請修改本安裝腳本的文件名為 index.php 執行安裝模式',
-	'install_locked_format_error' => '無法進入工具箱，修改的文件名不能包含 "index"',
+	'install_locked_exists' => '無法進入工具箱，請修改本安裝腳本的檔案名爲 index.php 執行安裝模式',
+	'install_locked_format_error' => '無法進入工具箱，修改的檔案名不能包含 "index"',
 
-	'tool_tips' => '為了安全起見，如果您已完成全部操作請點擊“完成”，我們將幫助您刪除當前腳本',
+	'tool_tips' => '爲了安全起見，如果您已完成全部操作請點擊“完成”，我們將幫助您刪除當前腳本',
 	'tool_select_resetpw' => '<div class="selradio"><input type="radio" name="method" id="select_resetpw" value="resetpw" /><label for="select_resetpw">重置創始人密碼</label></div>',
-	'tool_select_dircheck' => '<div class="selradio"><input type="radio" name="method" id="select_dircheck" value="dircheck" /><label for="select_dircheck">文件目錄檢測</label></div>',
-	'tool_select_updatecache' => '<div class="selradio"><input type="radio" name="method" id="select_updatecache" value="updatecache" /><label for="select_updatecache">更新緩存</label></div>',
-	'tool_select_restore' => '<div class="selradio"><input type="radio" name="method" id="select_restore" value="restore" /><label for="select_restore">復原資料庫</label></div>',
+	'tool_select_dircheck' => '<div class="selradio"><input type="radio" name="method" id="select_dircheck" value="dircheck" /><label for="select_dircheck">檔案目錄檢測</label></div>',
+	'tool_select_updatecache' => '<div class="selradio"><input type="radio" name="method" id="select_updatecache" value="updatecache" /><label for="select_updatecache">更新快取</label></div>',
+	'tool_select_restore' => '<div class="selradio"><input type="radio" name="method" id="select_restore" value="restore" /><label for="select_restore">恢復數據庫</label></div>',
 
-	'tool_resetpw_uid1' => '本工具只恢復 UID 為 1 的創始人密碼，請恢復該用戶為創始人後再進行此操作',
+	'tool_resetpw_uid1' => '本工具只恢復 UID 爲 1 的創始人密碼，請恢復該用戶爲創始人後再進行此操作',
 	'tool_resetpw_founder' => '填寫創始人資訊',
 	'tool_resetpw_loginname' => '賬號登入名',
 	'tool_resetpw_password' => '賬號新密碼',
@@ -448,47 +448,47 @@ $lang = [
 	'tool_resetpw_success' => '密碼已重置，請使用新密碼登入',
 
 	'tool_dircheck_unwritable' => '目錄不可寫入，請檢查目錄權限',
-	'tool_dircheck_checkfile_notexists' => '校驗文件不存在，無法進行文件校驗',
-	'tool_dircheck_result_download' => '檢測出異常文件，請<a href="?method=dircheck&getExport=%s">下載報告</a>詳細查看',
-	'tool_dircheck_result_noerror' => '文件目錄一切正常',
+	'tool_dircheck_checkfile_notexists' => '校驗檔案不存在，無法進行檔案校驗',
+	'tool_dircheck_result_download' => '檢測出異常檔案，請<a href="?method=dircheck&getExport=%s">下載報告</a>詳細查看',
+	'tool_dircheck_result_noerror' => '檔案目錄一切正常',
 
-	'tool_updateceche_doing' => '緩存更新中 ...',
-	'tool_updatecache_done' => '緩存更新完成',
+	'tool_updateceche_doing' => '快取更新中 ...',
+	'tool_updatecache_done' => '快取更新完成',
 
 	'done' => '完成',
-	'all_done_exists' => '當前腳本刪除失敗，為了安全起見請人工刪除',
+	'all_done_exists' => '當前腳本刪除失敗，爲了安全起見請人工刪除',
 	'all_done_noexists' => '當前腳本刪除完成',
 
-	'filename' => '文件名稱',
+	'filename' => '檔案名稱',
 	'time' => '備份時間',
 	'type' => '類型',
-	'size' => '大小',
+	'size' => '尺寸',
 	'db_volume' => '卷數',
-	'import' => '匯入',
-	'different_dbcharset_tablepre' => '偵測到匯入的備份資料與設定檔的{diff} 不同，您是否仍要繼續執行此程序？',
+	'import' => '導入',
+	'different_dbcharset_tablepre' => '檢測到導入的備份數據與配置檔案的{diff} 不同，您還要繼續運行此程式嗎？',
 	'db_import_tips' => '<ul style="margin:0px 20px 20px 20px;font-size: 14px">
-		<li>請確定在執行此操作前網站已關閉，復原完成後可將網站重新開放</li>
-		<li>本工具不支援壓縮卷備份資料的匯入，請先自行解壓縮</li>
+		<li>請確定在進行此操作前站點已關閉，恢復完成後可以將站點重新開放</li>
+		<li>本工具不支持壓縮卷備份數據的導入，請先自行解壓縮</li>
 	</ul>',
-	'db_export_discuz' => 'Discuz! 資料(不含UCenter)',
-	'db_export_discuz_uc' => 'Discuz! 和 UCenter 資料',
-	'db_export_custom' => '自訂備份',
+	'db_export_discuz' => 'Discuz! 數據(不含UCenter)',
+	'db_export_discuz_uc' => 'Discuz! 和 UCenter 數據',
+	'db_export_custom' => '自定義備份',
 	'unknown' => '未知',
-	'backup_file_unexist' => '備份文件不存在',
-	'dbcharsetdiff' => ' 數據庫字元集('.$_config['db']['1']['dbcharset'].')',
-	'tableprediff' => ' 表格前綴('.$_config['db']['1']['tablepre'].')',
-	'database_import_file_illegal' => '資料文件不存在：可能服務器不允許上傳文件或文件大小超過限制',
-	'database_import_file_write_error' => '資料文件解壓縮寫入失敗，請檢查服務器是否有可寫入權限',
-	'database_import_multivol_prompt' => '分卷資料第一卷成功匯入數據庫，您需要自動匯入本次備份的其他分卷嗎？',
-	'database_import_succeed' => '資料已成功匯入網站數據庫<br />請在後台更新快取<br /><span class="red">基於安全考量，我們強烈建議您刪除備份文件</span>',
-	'database_import_format_illegal' => '資料文件非 Discuz! 格式，無法匯入',
-	'database_import_confirm' => '匯入與目前 Discuz! 版本不一致的資料，極有可能產生無法解決的故障，您確定要繼續嗎？',
-	'database_import_confirm_sql' => '您確定要匯入此備份嗎？',
-	'database_import_confirm_zip' => '您確定要解壓縮此備份嗎？',
-	'database_import_multivol_confirm' => '所有分卷文件解壓縮完畢，您需要自動匯入備份嗎？匯入後解壓縮的文件將會被刪除',
-	'database_import_multivol_start' => '正在匯入備份文件，程序將自動繼續執行',
-	'database_import_multivol_redirect' => '資料文件 #{volume} 成功匯入，程序將自動繼續執行',
-	'database_waiting_link' => '瀏覽器會自動跳轉頁面，無需手動操作。除非您的瀏覽器長時間未自動跳轉，請點擊此處',
+	'backup_file_unexist' => '備份檔案不存在',
+	'dbcharsetdiff' => ' 數據庫字符集('.$_config['db']['1']['dbcharset'].')',
+	'tableprediff' => ' 表前綴('.$_config['db']['1']['tablepre'].')',
+	'database_import_file_illegal' => '數據檔案不存在：可能伺服器不允許上傳檔案或檔案大小超過限制',
+	'database_import_file_write_error' => '數據檔案解壓寫入失敗，請檢查伺服器是否有可寫入權限',
+	'database_import_multivol_prompt' => '分卷數據第一捲成功導入數據庫，您需要自動導入本次備份的其他分卷嗎？',
+	'database_import_succeed' => '數據已成功導入站點數據庫<br />請在後臺更新快取<br /><span class="red">出於安全考慮，我們強烈建議您刪除備份檔案</span>',
+	'database_import_format_illegal' => '數據檔案非 Discuz! 格式，無法導入',
+	'database_import_confirm' => '導入和當前 Discuz! 版本不一致的數據極有可能產生無法解決的故障，您確定繼續嗎？',
+	'database_import_confirm_sql' => '您確定導入該備份嗎？',
+	'database_import_confirm_zip' => '您確定解壓該備份嗎？',
+	'database_import_multivol_confirm' => '所有分卷檔案解壓縮完畢，您需要自動導入備份嗎？導入後解壓縮的檔案將會被刪除',
+	'database_import_multivol_start' => '正在導入備份檔案，程式將自動繼續',
+	'database_import_multivol_redirect' => '數據檔案 #{volume} 成功導入，程式將自動繼續',
+	'database_waiting_link' => '瀏覽器會自動跳轉頁面，無需人工干預。除非當您的瀏覽器長時間沒有自動跳轉時，請點擊這裡',
 	'database_confirm' => '確定',
 	'database_cancel' => '取消',
 
@@ -497,7 +497,7 @@ $lang = [
 ];
 
 $msglang = array(
-	'config_nonexistence' => '您的 config.inc.php 不存在, 無法繼續安裝, 請用 FTP 將該文件上傳後再試。',
+	'config_nonexistence' => '您的 config.inc.php 不存在, 無法繼續安裝, 請用 FTP 將該檔案上傳後再試。',
 );
 
 ?>

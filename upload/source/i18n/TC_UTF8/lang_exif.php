@@ -14,7 +14,7 @@ $lang = [
 
 	'unknown' => '未知',
 	'resolutionunit' => ['', '', '英寸', '釐米'],
-	'exposureprogram' => ['未定義', '手動', '標準程序', '光圈先決', '快門先決', '景深先決', '運動模式', '肖像模式', '風景模式'],
+	'exposureprogram' => ['未定義', '手動', '標準程式', '光圈先決', '快門先決', '景深先決', '運動模式', '肖像模式', '風景模式'],
 	'meteringmode' => [
 		'0' => '未知',
 		'1' => '平均',
@@ -39,14 +39,14 @@ $lang = [
 		'22' => 'D75',
 		'255' => '其他'
 	],
-	'img_info' => ['文件資訊' => '沒有圖片EXIF資訊'],
+	'img_info' => ['檔案資訊' => '沒有圖片EXIF資訊'],
 
-	'FileName' => '文件名',
-	'FileType' => '文件類型',
-	'MimeType' => '文件格式',
-	'FileSize' => '文件大小',
+	'FileName' => '檔案名',
+	'FileType' => '檔案類型',
+	'MimeType' => '檔案格式',
+	'FileSize' => '檔案大小',
 	'FileDateTime' => '時間戳',
-	'ImageDescription' => '圖片説明',
+	'ImageDescription' => '圖片說明',
 	'auto' => '自動',
 	'Make' => '製造商',
 	'Model' => '型號',
@@ -78,7 +78,7 @@ $lang = [
 	'ExposureMode' => '曝光模式',
 	'manual' => '手動',
 	'WhiteBalance' => '白平衡',
-	'ExposureProgram' => '曝光程序',
+	'ExposureProgram' => '曝光程式',
 	'ExposureBiasValue' => '曝光補償',
 	'ISOSpeedRatings' => 'ISO感光度',
 	'ComponentsConfiguration' => '分量配置',
@@ -91,9 +91,9 @@ $lang = [
 	'ColorSpace' => '色彩空間',
 	'ExifImageLength' => 'Exif圖像寬度',
 	'ExifImageWidth' => 'Exif圖像高度',
-	'FileSource' => '文件來源',
+	'FileSource' => '檔案來源',
 	'SceneType' => '場景類型',
-	'ThumbFileType' => '縮略圖文件格式',
+	'ThumbFileType' => '縮略圖檔案格式',
 	'ThumbMimeType' => '縮略圖Mime格式'
 ];
 

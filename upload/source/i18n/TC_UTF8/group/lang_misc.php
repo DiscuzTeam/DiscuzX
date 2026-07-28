@@ -12,7 +12,7 @@ if(!defined('IN_DISCUZ')) {
 
 $lang =
 	[
-	'group_normal_member' => '設為普通成員',
+	'group_normal_member' => '設爲普通成員',
 	'group_goaway' => '踢出圈子',
 	'group_demise_message_title' => '把圈子{forum}成功轉讓給您了。',
 	'group_demise_message_body' => '我的圈子{forum}成功轉讓給您了，[url={siteurl}forum.php?mod=group&fid={fid}]點這裡查看圈子[/url]',

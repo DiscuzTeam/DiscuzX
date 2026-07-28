@@ -935,7 +935,7 @@ O
     'available' => '1',
     'invisible' => '1',
     'needverify' => '0',
-    'title' => '阿里旺旺',
+    'title' => '阿裡旺旺',
     'description' => '',
     'displayorder' => '0',
     'required' => '0',

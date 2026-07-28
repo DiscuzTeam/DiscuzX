@@ -37,5 +37,5 @@ $lang =
 	'misctag_orderby_related_count' => '按關聯數據量倒序排序',
 	'misctag_orderby_rand' => '按隨機順序排序',
 	'misctag_startrow' => '起始數據行數',
-	'misctag_startrow_comment' => '如需設定起始的數據行數，請輸入具體數值，0 為從第一行開始，以此類推',
+	'misctag_startrow_comment' => '如需設定起始的數據行數，請輸入具體數值，0 爲從第一行開始，以此類推',
 	];

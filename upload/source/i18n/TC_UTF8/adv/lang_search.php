@@ -12,7 +12,7 @@ if(!defined('IN_DISCUZ')) {
 
 $lang =
 	[
-	'search_name' => '搜索 右側廣告',
-	'search_desc' => '展現方式: 搜索右側廣告展現於搜索結果頁右側。',
+	'search_name' => '搜尋 右側廣告',
+	'search_desc' => '展現方式: 搜尋右側廣告展現於搜索結果頁右側。',
 	];
 

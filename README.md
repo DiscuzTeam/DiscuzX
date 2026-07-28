@@ -18,7 +18,7 @@ Discuz! X5 官方中文版 Git 仓库 https://gitee.com/Discuz/DiscuzX
 - 从 X5.0 起安装程序默认内置工具箱程序，请修改 install/index.php 文件名后启用
 - 从 X5.0 起将不再兼容 PHP 7 环境，安装、升级前请自行准备 PHP 8 环境
 - X5 兼容 X3.5 应用的运行，但是，是否兼容 PHP 8 环境下运行请咨询应用的开发者
-- 欢迎 D 粉们积极 PR，Discuz! 25 年，开源产品少不了大家的支持
+- 欢迎 D 粉们积极 PR，Discuz! 从 2001 年至今，开源产品少不了大家的支持
 
 ### 额外目录说明
 
@@ -36,7 +36,7 @@ Git 版以下目录默认为空，如需要请自行单独下载覆盖
 - 全新 JSON 编辑器
 - 版块、用户组、积分全面加强
 - 全面拥抱 OAuth2.0 的 RESTful API 接口，开发者可随意自定义自己的接口
-- [点击了解更多...](https://www.discuz.vip/version)
+- [点击了解版本功能说明](https://www.discuz.vip/version)
 
 ### X5 特性应用列表
 - [插件](https://addon.dismall.com/plugins/list-2-210-0-0-1.html)
@@ -46,7 +46,7 @@ Git 版以下目录默认为空，如需要请自行单独下载覆盖
 - X5.1 是目前 X5 系列产品的商业版本，不提供开源版，[如您想了解报价请点击这里](https://www.discuz.vip/buy)
 - 原生多端生态、原生队列、原生 AI、原生流程、万象智能
 - 内置多种对象存储、内置多种企业登录平台、内置 ES 全文搜索
-- [点击了解更多...](https://www.discuz.vip/version)
+- [点击了解版本功能说明](https://www.discuz.vip/version)
 
 ### 协助安装
 

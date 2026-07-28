@@ -5,31 +5,32 @@
  * This is NOT a freeware, use is subject to license terms
  * https://license.discuz.vip
  */
+
 $data = [[
     'styleid' => '1',
     'blockclass' => 'html_html',
     'name' => '[內置]空模板',
-    'template' => 
+    'template' =>
     [
       'raw' => '',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
-      'loop' => 
+      'loop' =>
       [
       ],
     ],
@@ -38,7 +39,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '0',
-    'fields' => 
+    'fields' =>
     [
     ],
     'moreurl' => '0',
@@ -46,7 +47,7 @@ $data = [[
     'styleid' => '2',
     'blockclass' => 'forum_forum',
     'name' => '[內置]版塊名稱列表',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -57,19 +58,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -79,7 +80,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -89,7 +90,7 @@ $data = [[
     'styleid' => '3',
     'blockclass' => 'forum_forum',
     'name' => '[內置]版塊名稱＋總帖數',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -100,19 +101,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{posts}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -122,7 +123,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'posts',
       1 => 'url',
@@ -133,7 +134,7 @@ $data = [[
     'styleid' => '4',
     'blockclass' => 'forum_forum',
     'name' => '[內置]版塊名稱+總帖數（有序）',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ol>
@@ -144,19 +145,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{posts}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -166,7 +167,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'posts',
       1 => 'url',
@@ -177,7 +178,7 @@ $data = [[
     'styleid' => '5',
     'blockclass' => 'forum_forum',
     'name' => '[內置]版塊名稱+今日發貼數',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -188,19 +189,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{todayposts}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -210,7 +211,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'todayposts',
       1 => 'url',
@@ -221,7 +222,7 @@ $data = [[
     'styleid' => '6',
     'blockclass' => 'forum_forum',
     'name' => '[內置]版塊名稱+今日發貼數（有序）',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ol>
@@ -232,19 +233,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{todayposts}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -254,7 +255,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'todayposts',
       1 => 'url',
@@ -265,7 +266,7 @@ $data = [[
     'styleid' => '7',
     'blockclass' => 'forum_forum',
     'name' => '[內置]版塊名稱（兩列）',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl2">
 <ul>
@@ -276,19 +277,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -298,7 +299,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -308,7 +309,7 @@ $data = [[
     'styleid' => '8',
     'blockclass' => 'forum_forum',
     'name' => '[內置]版塊名稱＋介紹',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -320,19 +321,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -345,7 +346,7 @@ $data = [[
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -356,7 +357,7 @@ $data = [[
     'styleid' => '9',
     'blockclass' => 'forum_thread',
     'name' => '[內置]帖子標題',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -367,19 +368,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -389,7 +390,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -399,7 +400,7 @@ $data = [[
     'styleid' => '10',
     'blockclass' => 'forum_thread',
     'name' => '[內置]帖子標題+回覆數',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -410,19 +411,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{replies}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -432,7 +433,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'replies',
       1 => 'url',
@@ -443,7 +444,7 @@ $data = [[
     'styleid' => '11',
     'blockclass' => 'forum_thread',
     'name' => '[內置]帖子標題+查看數',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -454,19 +455,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{views}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -476,7 +477,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'views',
       1 => 'url',
@@ -487,7 +488,7 @@ $data = [[
     'styleid' => '12',
     'blockclass' => 'forum_thread',
     'name' => '[內置]帖子標題+熱度',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -498,19 +499,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{heats}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -520,7 +521,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'heats',
       1 => 'url',
@@ -531,7 +532,7 @@ $data = [[
     'styleid' => '13',
     'blockclass' => 'forum_thread',
     'name' => '[內置]帖子標題+發帖時間',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -542,19 +543,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{dateline}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -564,7 +565,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'dateline',
       1 => 'url',
@@ -575,7 +576,7 @@ $data = [[
     'styleid' => '14',
     'blockclass' => 'forum_thread',
     'name' => '[內置]帖子標題+最後回覆時間',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -586,19 +587,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{lastpost}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -608,7 +609,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'lastpost',
       1 => 'url',
@@ -619,7 +620,7 @@ $data = [[
     'styleid' => '15',
     'blockclass' => 'forum_thread',
     'name' => '[內置]帖子標題+作者',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -630,19 +631,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em><a href="home.php?mod=space&uid={authorid}"{target}>{author}</a></em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -652,7 +653,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'authorid',
       1 => 'author',
@@ -664,7 +665,7 @@ $data = [[
     'styleid' => '16',
     'blockclass' => 'forum_thread',
     'name' => '[內置]帖子標題+作者+摘要',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -676,19 +677,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -701,7 +702,7 @@ $data = [[
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'authorid',
       1 => 'author',
@@ -714,7 +715,7 @@ $data = [[
     'styleid' => '17',
     'blockclass' => 'forum_thread',
     'name' => '[內置]帖子標題+摘要',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -726,19 +727,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -751,7 +752,7 @@ $data = [[
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -762,7 +763,7 @@ $data = [[
     'styleid' => '18',
     'blockclass' => 'forum_thread',
     'name' => '[內置]焦點模式',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld fcs">
 [loop]
@@ -774,19 +775,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -799,7 +800,7 @@ $data = [[
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -810,7 +811,7 @@ $data = [[
     'styleid' => '19',
     'blockclass' => 'forum_thread',
     'name' => '[內置]帖子標題（第一條帶摘要）',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl">
 <ul>
@@ -830,16 +831,16 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
         1 => '<li>
 	<dl class="cl xld">
@@ -849,7 +850,7 @@ $data = [[
 	<hr class="da" />
 </li>',
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -859,7 +860,7 @@ $data = [[
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -870,7 +871,7 @@ $data = [[
     'styleid' => '24',
     'blockclass' => 'group_thread',
     'name' => '[內置]帖子標題',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -881,19 +882,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -903,7 +904,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -913,7 +914,7 @@ $data = [[
     'styleid' => '25',
     'blockclass' => 'group_thread',
     'name' => '[內置]帖子標題+回覆數',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -924,19 +925,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{replies}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -946,7 +947,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'replies',
       1 => 'url',
@@ -957,7 +958,7 @@ $data = [[
     'styleid' => '26',
     'blockclass' => 'group_thread',
     'name' => '[內置]帖子標題+查看數',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -968,19 +969,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{views}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -990,7 +991,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'views',
       1 => 'url',
@@ -1001,7 +1002,7 @@ $data = [[
     'styleid' => '27',
     'blockclass' => 'group_thread',
     'name' => '[內置]帖子標題+熱度',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -1012,19 +1013,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{heats}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -1034,7 +1035,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'heats',
       1 => 'url',
@@ -1045,7 +1046,7 @@ $data = [[
     'styleid' => '28',
     'blockclass' => 'group_thread',
     'name' => '[內置]帖子標題+發帖時間',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -1056,19 +1057,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{dateline}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -1078,7 +1079,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'dateline',
       1 => 'url',
@@ -1089,7 +1090,7 @@ $data = [[
     'styleid' => '29',
     'blockclass' => 'group_thread',
     'name' => '[內置]帖子標題+最後回覆時間',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -1100,19 +1101,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{lastpost}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -1122,7 +1123,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'lastpost',
       1 => 'url',
@@ -1133,7 +1134,7 @@ $data = [[
     'styleid' => '30',
     'blockclass' => 'group_thread',
     'name' => '[內置]帖子標題+作者',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -1144,19 +1145,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em><a href="home.php?mod=space&uid={authorid}"{target}>{author}</a></em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -1166,7 +1167,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'authorid',
       1 => 'author',
@@ -1178,7 +1179,7 @@ $data = [[
     'styleid' => '31',
     'blockclass' => 'group_thread',
     'name' => '[內置]帖子標題+作者+摘要',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -1190,19 +1191,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -1215,7 +1216,7 @@ $data = [[
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'authorid',
       1 => 'author',
@@ -1228,7 +1229,7 @@ $data = [[
     'styleid' => '32',
     'blockclass' => 'group_thread',
     'name' => '[內置]帖子標題+摘要',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -1240,19 +1241,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -1265,7 +1266,7 @@ $data = [[
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -1276,7 +1277,7 @@ $data = [[
     'styleid' => '33',
     'blockclass' => 'group_thread',
     'name' => '[內置]焦點模式',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld fcs">
 [loop]
@@ -1288,19 +1289,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -1313,7 +1314,7 @@ $data = [[
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -1324,7 +1325,7 @@ $data = [[
     'styleid' => '34',
     'blockclass' => 'group_thread',
     'name' => '[內置]帖子標題（第一條帶摘要）',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl">
 <ul>
@@ -1344,16 +1345,16 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
         1 => '<li>
 	<dl class="cl xld">
@@ -1363,7 +1364,7 @@ $data = [[
 	<hr class="da" />
 </li>',
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -1373,7 +1374,7 @@ $data = [[
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -1384,7 +1385,7 @@ $data = [[
     'styleid' => '39',
     'blockclass' => 'group_group',
     'name' => '[內置]圈子名稱',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -1395,19 +1396,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -1417,7 +1418,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -1427,7 +1428,7 @@ $data = [[
     'styleid' => '40',
     'blockclass' => 'group_group',
     'name' => '[內置]圈子名稱+成員數',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -1438,19 +1439,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{membernum}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -1460,7 +1461,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'membernum',
       1 => 'url',
@@ -1471,7 +1472,7 @@ $data = [[
     'styleid' => '41',
     'blockclass' => 'group_group',
     'name' => '[內置]圈子名稱+成員數（有序）',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ol>
@@ -1482,19 +1483,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{membernum}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -1504,7 +1505,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'membernum',
       1 => 'url',
@@ -1515,7 +1516,7 @@ $data = [[
     'styleid' => '42',
     'blockclass' => 'group_group',
     'name' => '[內置]圈子名稱+總帖數',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -1526,19 +1527,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{posts}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -1548,7 +1549,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'posts',
       1 => 'url',
@@ -1559,7 +1560,7 @@ $data = [[
     'styleid' => '43',
     'blockclass' => 'group_group',
     'name' => '[內置]圈子名稱+今日發貼數',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -1570,19 +1571,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{todayposts}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -1592,7 +1593,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'todayposts',
       1 => 'url',
@@ -1603,7 +1604,7 @@ $data = [[
     'styleid' => '44',
     'blockclass' => 'group_group',
     'name' => '[內置]圈子圖標+名稱+介紹',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -1616,19 +1617,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -1642,7 +1643,7 @@ $data = [[
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'icon',
@@ -1654,7 +1655,7 @@ $data = [[
     'styleid' => '45',
     'blockclass' => 'group_group',
     'name' => '[內置]圈子圖標列表',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl ml mls">
 <ul>
@@ -1665,19 +1666,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}"{target}><img src="{icon}" width="48" height="48" /></a><p><a href="{url}" title="{title}"{target}>{title}</a></p></li>',
@@ -1687,7 +1688,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'icon',
@@ -1698,7 +1699,7 @@ $data = [[
     'styleid' => '46',
     'blockclass' => 'group_group',
     'name' => '[內置]圈子名稱（兩列）',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl2">
 <ul>
@@ -1709,19 +1710,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -1731,7 +1732,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -1741,7 +1742,7 @@ $data = [[
     'styleid' => '47',
     'blockclass' => 'portal_article',
     'name' => '[內置]文章標題',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -1752,19 +1753,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -1774,7 +1775,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -1784,7 +1785,7 @@ $data = [[
     'styleid' => '48',
     'blockclass' => 'portal_article',
     'name' => '[內置]文章標題+時間',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -1795,19 +1796,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{dateline}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -1817,7 +1818,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'dateline',
       1 => 'url',
@@ -1828,7 +1829,7 @@ $data = [[
     'styleid' => '49',
     'blockclass' => 'portal_article',
     'name' => '[內置]文章標題+時間（帶欄目）',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -1839,19 +1840,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{dateline}</em><label>[<a href="{caturl}"{target}>{catname}</a>]</label><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -1861,7 +1862,7 @@ $data = [[
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'dateline',
       1 => 'caturl',
@@ -1874,7 +1875,7 @@ $data = [[
     'styleid' => '50',
     'blockclass' => 'portal_article',
     'name' => '[內置]文章標題+摘要+縮略圖',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -1887,19 +1888,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -1913,7 +1914,7 @@ $data = [[
     'getsummary' => '1',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -1925,7 +1926,7 @@ $data = [[
     'styleid' => '51',
     'blockclass' => 'portal_article',
     'name' => '[內置]文章標題+摘要',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -1937,19 +1938,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -1962,7 +1963,7 @@ $data = [[
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -1973,7 +1974,7 @@ $data = [[
     'styleid' => '52',
     'blockclass' => 'portal_article',
     'name' => '[內置]焦點模式',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld fcs">
 [loop]
@@ -1985,19 +1986,19 @@ $data = [[
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -2010,7 +2011,7 @@ $data = [[
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -2021,7 +2022,7 @@ $data = [[
     'styleid' => '53',
     'blockclass' => 'portal_article',
     'name' => '[內置]文章圖片幻燈',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl slidebox">
 <ul class="slideshow">
@@ -2035,19 +2036,19 @@ runslideshow();
 </script>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li style="width: {picwidth}px; height: {picheight}px;"><a href="{url}"{target}><img src="{pic}" width="{picwidth}" height="{picheight}" /></a><span class="title">{title}</span></li>',
@@ -2057,7 +2058,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -2068,7 +2069,7 @@ runslideshow();
     'styleid' => '54',
     'blockclass' => 'portal_article',
     'name' => '[內置]文章圖文幻燈',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld slideshow">
 [loop]
@@ -2084,19 +2085,19 @@ runslideshow();
 </script>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -2110,7 +2111,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -2122,7 +2123,7 @@ runslideshow();
     'styleid' => '55',
     'blockclass' => 'portal_category',
     'name' => '[內置]欄目名稱',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -2133,19 +2134,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -2155,7 +2156,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -2165,7 +2166,7 @@ runslideshow();
     'styleid' => '56',
     'blockclass' => 'portal_category',
     'name' => '[內置]欄目名稱（兩列）',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl2">
 <ul>
@@ -2176,19 +2177,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -2198,7 +2199,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -2208,7 +2209,7 @@ runslideshow();
     'styleid' => '57',
     'blockclass' => 'portal_topic',
     'name' => '[內置]專題名稱',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -2219,19 +2220,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -2241,7 +2242,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -2251,7 +2252,7 @@ runslideshow();
     'styleid' => '58',
     'blockclass' => 'portal_topic',
     'name' => '[內置]專題名稱（兩列）',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl2">
 <ul>
@@ -2262,19 +2263,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -2284,7 +2285,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -2294,7 +2295,7 @@ runslideshow();
     'styleid' => '59',
     'blockclass' => 'portal_topic',
     'name' => '[內置]專題名稱+介紹+縮略圖',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -2307,19 +2308,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -2333,7 +2334,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -2345,7 +2346,7 @@ runslideshow();
     'styleid' => '60',
     'blockclass' => 'portal_topic',
     'name' => '[內置]專題名稱+介紹',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -2357,19 +2358,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -2382,7 +2383,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -2393,7 +2394,7 @@ runslideshow();
     'styleid' => '61',
     'blockclass' => 'portal_topic',
     'name' => '[內置]焦點模式',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld fcs">
 [loop]
@@ -2405,19 +2406,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -2430,7 +2431,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -2441,7 +2442,7 @@ runslideshow();
     'styleid' => '62',
     'blockclass' => 'space_doing',
     'name' => '[內置]作者+內容',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -2452,19 +2453,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="home.php?mod=space&uid={uid}" title="{username}" c="1"{target}>{username}</a>: <a href="{url}"{target}>{title}</a></li>',
@@ -2474,7 +2475,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'uid',
       1 => 'username',
@@ -2486,7 +2487,7 @@ runslideshow();
     'styleid' => '63',
     'blockclass' => 'space_doing',
     'name' => '[內置]頭像+作者+內容',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -2499,19 +2500,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -2525,7 +2526,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'uid',
       1 => 'avatar',
@@ -2539,7 +2540,7 @@ runslideshow();
     'styleid' => '64',
     'blockclass' => 'space_doing',
     'name' => '[內置]作者+內容（多行）+時間',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl">
 <ul>
@@ -2550,19 +2551,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="home.php?mod=space&uid={uid}" title="{username}" c="1"{target}>{username}</a>: <a href="{url}"{target}>{title}</a> <span class="xg1">({dateline})</span></li>',
@@ -2572,7 +2573,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'uid',
       1 => 'username',
@@ -2585,7 +2586,7 @@ runslideshow();
     'styleid' => '65',
     'blockclass' => 'space_blog',
     'name' => '[內置]日誌標題',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -2596,19 +2597,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -2618,7 +2619,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -2628,7 +2629,7 @@ runslideshow();
     'styleid' => '66',
     'blockclass' => 'space_blog',
     'name' => '[內置]日誌標題+作者',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -2639,19 +2640,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em><a href="home.php?mod=space&uid={uid}"{target}>{username}</a></em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -2661,7 +2662,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'uid',
       1 => 'username',
@@ -2673,7 +2674,7 @@ runslideshow();
     'styleid' => '67',
     'blockclass' => 'space_blog',
     'name' => '[內置]日誌標題+發佈時間',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -2684,19 +2685,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{dateline}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -2706,7 +2707,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'dateline',
       1 => 'url',
@@ -2717,7 +2718,7 @@ runslideshow();
     'styleid' => '68',
     'blockclass' => 'space_blog',
     'name' => '[內置]日誌標題+評論數',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -2728,19 +2729,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{replynum}</em><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -2750,7 +2751,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'replynum',
       1 => 'url',
@@ -2761,7 +2762,7 @@ runslideshow();
     'styleid' => '69',
     'blockclass' => 'space_blog',
     'name' => '[內置]日誌標題+作者+簡介',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -2773,19 +2774,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -2798,7 +2799,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'uid',
       1 => 'username',
@@ -2811,7 +2812,7 @@ runslideshow();
     'styleid' => '70',
     'blockclass' => 'space_blog',
     'name' => '[內置]日誌縮略圖+標題+簡介',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -2824,19 +2825,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -2850,7 +2851,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -2864,7 +2865,7 @@ runslideshow();
     'styleid' => '71',
     'blockclass' => 'space_blog',
     'name' => '[內置]日誌圖片幻燈',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl slidebox">
 <ul class="slideshow">
@@ -2878,19 +2879,19 @@ runslideshow();
 </script>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li style="width: {picwidth}px; height: {picheight}px;"><a href="{url}"{target}><img src="{pic}" width="{picwidth}" height="{picheight}" /></a><span class="title">{title}</span></li>',
@@ -2900,7 +2901,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -2911,7 +2912,7 @@ runslideshow();
     'styleid' => '72',
     'blockclass' => 'space_blog',
     'name' => '[內置]焦點模式',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld fcs">
 [loop]
@@ -2923,19 +2924,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -2948,7 +2949,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -2958,8 +2959,8 @@ runslideshow();
   ],[
     'styleid' => '73',
     'blockclass' => 'space_album',
-    'name' => '[內置]相冊列表',
-    'template' => 
+    'name' => '[內置]相簿列表',
+    'template' =>
     [
       'raw' => '<div class="module cl ml">
 <ul>
@@ -2973,19 +2974,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li>
@@ -2998,7 +2999,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -3009,8 +3010,8 @@ runslideshow();
   ],[
     'styleid' => '74',
     'blockclass' => 'space_album',
-    'name' => '[內置]相冊列表+名稱+用戶',
-    'template' => 
+    'name' => '[內置]相簿列表+名稱+用戶',
+    'template' =>
     [
       'raw' => '<div class="module cl ml">
 <ul>
@@ -3025,19 +3026,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li>
@@ -3051,7 +3052,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -3065,7 +3066,7 @@ runslideshow();
     'styleid' => '75',
     'blockclass' => 'space_pic',
     'name' => '[內置]圖片列表',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl ml">
 <ul>
@@ -3079,19 +3080,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li style="width: {picwidth}px;">
@@ -3104,7 +3105,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -3115,7 +3116,7 @@ runslideshow();
     'styleid' => '76',
     'blockclass' => 'space_pic',
     'name' => '[內置]圖片幻燈',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl slidebox">
 <ul class="slideshow">
@@ -3129,19 +3130,19 @@ runslideshow();
 </script>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li style="width: {picwidth}px; height: {picheight}px;"><a href="{url}"{target}><img src="{pic}" width="{picwidth}" height="{picheight}" /></a><span class="title">{title}</span></li>',
@@ -3151,7 +3152,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -3162,7 +3163,7 @@ runslideshow();
     'styleid' => '77',
     'blockclass' => 'member_member',
     'name' => '[內置]會員頭像列表',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl ml mls">
 <ul>
@@ -3176,19 +3177,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li>
@@ -3201,7 +3202,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'avatar',
@@ -3212,7 +3213,7 @@ runslideshow();
     'styleid' => '78',
     'blockclass' => 'member_member',
     'name' => '[內置]用戶名列表',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -3223,19 +3224,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" title="{title}" c="1"{target}>{title}</a></li>',
@@ -3245,7 +3246,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -3255,7 +3256,7 @@ runslideshow();
     'styleid' => '79',
     'blockclass' => 'member_member',
     'name' => '[內置]頭像+用戶名+發貼數（有序）',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ol>
@@ -3266,19 +3267,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{posts}</em><img class="vm" src="{avatar}" width="16" height="16" alt="{title}" /> <a href="{url}" title="{title}" c="1"{target}>{title}</a></li>',
@@ -3288,7 +3289,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'posts',
       1 => 'avatar',
@@ -3300,7 +3301,7 @@ runslideshow();
     'styleid' => '80',
     'blockclass' => 'member_member',
     'name' => '[內置]頭像+用戶名+積分數（有序）',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ol>
@@ -3311,19 +3312,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><em>{credits}</em><img class="vm" src="{avatar}" width="16" height="16" alt="{title}" /> <a href="{url}" title="{title}" c="1"{target}>{title}</a></li>',
@@ -3333,7 +3334,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'credits',
       1 => 'avatar',
@@ -3345,7 +3346,7 @@ runslideshow();
     'styleid' => '81',
     'blockclass' => 'forum_trade',
     'name' => '[內置]商品列表',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl ml">
 <ul>
@@ -3360,19 +3361,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li style="padding: 0 12px 10px; width: {picwidth}px;">
@@ -3386,7 +3387,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -3398,7 +3399,7 @@ runslideshow();
     'styleid' => '82',
     'blockclass' => 'forum_activity',
     'name' => '[內置]活動列表',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -3412,19 +3413,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -3439,7 +3440,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -3453,7 +3454,7 @@ runslideshow();
     'styleid' => '83',
     'blockclass' => 'group_trade',
     'name' => '[內置]商品列表',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl ml">
 <ul>
@@ -3468,19 +3469,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li style="width: {picwidth}px;">
@@ -3494,7 +3495,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -3506,7 +3507,7 @@ runslideshow();
     'styleid' => '84',
     'blockclass' => 'group_activity',
     'name' => '[內置]活動列表',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -3520,19 +3521,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -3547,7 +3548,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -3561,7 +3562,7 @@ runslideshow();
     'styleid' => '85',
     'blockclass' => 'forum_thread',
     'name' => '[內置]帖子作者＋標題+摘要（帶頭像）',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld xlda">
 [loop]
@@ -3575,19 +3576,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -3602,7 +3603,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'authorid',
       1 => 'avatar',
@@ -3616,7 +3617,7 @@ runslideshow();
     'styleid' => '86',
     'blockclass' => 'portal_article',
     'name' => '[內置]頻道欄目+標題',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -3627,19 +3628,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><label>[<a href="{caturl}" title="{catname}"{target}>{catname}</a>]</label><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -3649,7 +3650,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'caturl',
       1 => 'catname',
@@ -3661,7 +3662,7 @@ runslideshow();
     'styleid' => '87',
     'blockclass' => 'forum_thread',
     'name' => '[內置]懸賞主題專用樣式',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -3672,19 +3673,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" title="{title}"{target}>{title}</a>{summary}</li>',
@@ -3694,7 +3695,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -3705,7 +3706,7 @@ runslideshow();
     'styleid' => '88',
     'blockclass' => 'forum_thread',
     'name' => '[內置]首頁熱議-帖子',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -3718,19 +3719,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl>
@@ -3744,7 +3745,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'author',
       1 => 'url',
@@ -3756,7 +3757,7 @@ runslideshow();
     'styleid' => '89',
     'blockclass' => 'group_thread',
     'name' => '[內置]首頁熱議-圈子帖子',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -3769,19 +3770,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl>
@@ -3795,7 +3796,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'author',
       1 => 'url',
@@ -3807,7 +3808,7 @@ runslideshow();
     'styleid' => '90',
     'blockclass' => 'space_blog',
     'name' => '[內置]首頁熱議-日誌',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -3820,19 +3821,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl>
@@ -3846,7 +3847,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'username',
       1 => 'url',
@@ -3858,7 +3859,7 @@ runslideshow();
     'styleid' => '91',
     'blockclass' => 'forum_thread',
     'name' => '[內置]投票主題專用樣式',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld b_poll">
 [loop]
@@ -3870,19 +3871,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl>
@@ -3895,7 +3896,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -3906,7 +3907,7 @@ runslideshow();
     'styleid' => '92',
     'blockclass' => 'forum_thread',
     'name' => '[內置]辯論主題專用樣式',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld b_debate">
 [loop]
@@ -3918,19 +3919,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl>
@@ -3943,7 +3944,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -3954,7 +3955,7 @@ runslideshow();
     'styleid' => '93',
     'blockclass' => 'group_activity',
     'name' => '[內置]圈子活動:大圖＋摘要',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -3972,19 +3973,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl>
@@ -4003,7 +4004,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -4019,7 +4020,7 @@ runslideshow();
     'styleid' => '94',
     'blockclass' => 'group_activity',
     'name' => '[內置]圈子活動:小圖＋標題',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -4033,19 +4034,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -4060,7 +4061,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -4073,8 +4074,8 @@ runslideshow();
   ],[
     'styleid' => '95',
     'blockclass' => 'space_album',
-    'name' => '[內置]相冊列表（豎線分隔）',
-    'template' => 
+    'name' => '[內置]相簿列表（豎線分隔）',
+    'template' =>
     [
       'raw' => '<div class="module cl ml">
 <ul>
@@ -4094,23 +4095,23 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
         'odd' => '<li style="margin-right: 18px; padding-right: 24px; border-right: 1px solid #CCC; width: {picwidth}px;">
 	<a href="{url}"><img src="{pic}" width="{picwidth}" height="{picheight}" alt="{title}" /></a>
 	<p><a href="{url}" title="{title}"{target}>{title}</a> ({picnum})</p>
 </li>',
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li style="width: {picwidth}px;">
@@ -4123,7 +4124,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -4135,7 +4136,7 @@ runslideshow();
     'styleid' => '96',
     'blockclass' => 'space_pic',
     'name' => '[內置]圖片列表（豎線分隔）',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl ml">
 <ul>
@@ -4155,23 +4156,23 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
         'odd' => '<li style="margin-right: 18px; padding-right: 24px; border-right: 1px solid #EEE; width: {picwidth}px;">
 	<a href="{url}"><img src="{pic}" width="{picwidth}" height="{picheight}" alt="{title}" /></a>
 	<p><a href="{url}" title="{title}"{target}>{title}</a></p>
 </li>',
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li style="width: {picwidth}px;">
@@ -4184,7 +4185,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -4195,7 +4196,7 @@ runslideshow();
     'styleid' => '97',
     'blockclass' => 'portal_article',
     'name' => '[內置]碎片式文章標題列表',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -4209,20 +4210,20 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
         'even' => '<a href="{url}" title="{title}"{target} class="lit" style="margin-left: 5px; font-size: 12px">{title}</a></li>',
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" title="{title}"{target}>{title}</a>',
@@ -4232,7 +4233,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -4242,7 +4243,7 @@ runslideshow();
     'styleid' => '98',
     'blockclass' => 'portal_article',
     'name' => '[內置]文章封面列表（豎線分隔）',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl ml">
 <ul>
@@ -4262,23 +4263,23 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
         'odd' => '<li style="margin-right: 18px; padding-right: 24px; border-right: 1px solid #EEE; width: {picwidth}px;">
 	<a href="{url}"><img src="{pic}" width="{picwidth}" height="{picheight}" alt="{title}" /></a>
 	<p><a href="{url}" title="{title}"{target}>{title}</a></p>
 </li>',
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li style="width: {picwidth}px;">
@@ -4291,7 +4292,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -4302,7 +4303,7 @@ runslideshow();
     'styleid' => '99',
     'blockclass' => 'html_announcement',
     'name' => '[內置]站點公告',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl">
 <ul>
@@ -4313,19 +4314,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><img alt="公告" src="static/image/common/ann_icon.gif"><a href="{url}" title="{title}"{target}>{title}（{starttime}）</a></li>',
@@ -4335,7 +4336,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -4346,7 +4347,7 @@ runslideshow();
     'styleid' => '100',
     'blockclass' => 'forum_thread',
     'name' => '[內置]帖子圖文展示',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -4359,19 +4360,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -4385,7 +4386,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -4399,7 +4400,7 @@ runslideshow();
     'styleid' => '101',
     'blockclass' => 'group_thread',
     'name' => '[內置]帖子圖文列表',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
@@ -4412,19 +4413,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<dl class="cl">
@@ -4438,7 +4439,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -4452,7 +4453,7 @@ runslideshow();
     'styleid' => '102',
     'blockclass' => 'group_thread',
     'name' => '[內置][圈子名]+圈子帖子標題',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
 <ul>
@@ -4463,19 +4464,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li>[<a href="{groupurl}"{target}>{groupname}</a>] <a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -4485,7 +4486,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'groupurl',
       1 => 'groupname',
@@ -4497,7 +4498,7 @@ runslideshow();
     'styleid' => '103',
     'blockclass' => 'other_otherfriendlink',
     'name' => '[內置]友情鏈接圖文',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="bn lk">
 <ul class="m cl">
@@ -4511,19 +4512,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li class="cl">
@@ -4536,7 +4537,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -4548,7 +4549,7 @@ runslideshow();
     'styleid' => '104',
     'blockclass' => 'other_otherfriendlink',
     'name' => '[內置]友情鏈接僅圖片',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="bn lk">
 <div class="cl mbm">
@@ -4559,19 +4560,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<a href="{url}" {target}><img border="0" alt="{title}" src="{pic}"></a>',
@@ -4581,7 +4582,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -4592,7 +4593,7 @@ runslideshow();
     'styleid' => '105',
     'blockclass' => 'other_otherfriendlink',
     'name' => '[內置]友情鏈接僅文字',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="x cl">
 <ul class="cl mbm">
@@ -4603,19 +4604,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" {target}>{title}</a></li>',
@@ -4625,7 +4626,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -4635,7 +4636,7 @@ runslideshow();
     'styleid' => '106',
     'blockclass' => 'other_otherstat',
     'name' => '[內置]全部統計資訊',
-    'template' => 
+    'template' =>
     [
       'raw' => '[loop]<div class="tns">
 <ul>
@@ -4657,19 +4658,19 @@ runslideshow();
 [/loop]',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<div class="tns">
@@ -4695,7 +4696,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '0',
-    'fields' => 
+    'fields' =>
     [
       0 => 'posts_title',
       1 => 'posts',
@@ -4729,7 +4730,7 @@ runslideshow();
     'styleid' => '107',
     'blockclass' => 'forum_thread',
     'name' => '[內置]一簡介+兩列標題',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="bm bw0">
 [index=1]
@@ -4745,10 +4746,10 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
         1 => '<dl class="cl xld">
 <dt><a href="{url}" title="{title}"{target}>{title}</a></dt>
@@ -4756,13 +4757,13 @@ runslideshow();
 </dl>
 <hr class="da" />',
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li><a href="{url}" title="{title}"{target}>{title}</a></li>',
@@ -4772,7 +4773,7 @@ runslideshow();
     'getsummary' => '1',
     'makethumb' => '0',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',
@@ -4783,7 +4784,7 @@ runslideshow();
     'styleid' => '108',
     'blockclass' => 'forum_thread',
     'name' => '[內置]帖子圖片幻燈片',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl slidebox">
 <ul class="slideshow">
@@ -4797,19 +4798,19 @@ runslideshow();
 </script>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li style="width: {picwidth}px; height: {picheight}px;"><a href="{url}"{target}><img src="{pic}" width="{picwidth}" height="{picheight}" /></a><span class="title">{title}</span></li>',
@@ -4819,7 +4820,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -4830,7 +4831,7 @@ runslideshow();
     'styleid' => '109',
     'blockclass' => 'forum_thread',
     'name' => '[內置]帖子圖片列表',
-    'template' => 
+    'template' =>
     [
       'raw' => '<div class="module cl ml">
 <ul>
@@ -4844,19 +4845,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<li style="width: {picwidth}px;">
@@ -4869,7 +4870,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '1',
     'settarget' => '1',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'pic',
@@ -4880,7 +4881,7 @@ runslideshow();
     'styleid' => '110',
     'blockclass' => 'html_misctag',
     'name' => '[內置]標籤模版',
-    'template' => 
+    'template' =>
     [
       'raw' => '<!-- 熱門標籤模組 -->
 <div class="tag-cloud-module">
@@ -4898,19 +4899,19 @@ runslideshow();
 </div>',
       'footer' => '',
       'header' => '',
-      'indexplus' => 
+      'indexplus' =>
       [
       ],
-      'index' => 
+      'index' =>
       [
       ],
-      'orderplus' => 
+      'orderplus' =>
       [
       ],
-      'order' => 
+      'order' =>
       [
       ],
-      'loopplus' => 
+      'loopplus' =>
       [
       ],
       'loop' => '<a href="{url}"
@@ -4926,7 +4927,7 @@ runslideshow();
     'getsummary' => '0',
     'makethumb' => '0',
     'settarget' => '0',
-    'fields' => 
+    'fields' =>
     [
       0 => 'url',
       1 => 'title',

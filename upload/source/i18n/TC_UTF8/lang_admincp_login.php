@@ -35,7 +35,7 @@ $lang =
 	'security_question_7' => '駕駛執照最後四位數字',
 	'other_loginname' => '其他用戶登入',
 
-	'login_tips' => 'Discuz! 是一款以社區為基礎的專業建站平台，幫助網站實現一站式服務。',
+	'login_tips' => 'Discuz! 是一款以社區爲基礎的專業建站平臺，幫助網站實現一站式服務。',
 	'login_nosecques' => '您還沒有使用安全登入，請在個人中心設定您的安全提問後，再訪問管理中心。您可以 <a href="forum.php?mod=memcp&action=profile&typeid=1" target="_blank">點擊這裡</a> 進入安全提問的設定。',
 	'copyright' => '&copy; 2001-'.date('Y').' <a href="https://code.dismall.com/" target="_blank">Discuz! Team</a>.',
 
@@ -44,7 +44,7 @@ $lang =
 	'login_user_lock' => '由於您的登入密碼錯誤次數過多，本次登入請求已經被拒絕。請 15 分鐘後重新嘗試。',
 	'login_cp_noaccess' => '<b>管理中心(或此項操作)未對當前賬號開放</b><br><br>請更換有權限的賬號重新登入',
 	'login_ip_noaccess' => '<a href="https://www.dismall.com/thread-17514-1-1.html" target="_blank">IP變動可能導致登入失敗，查看解決辦法</a>',
-	'noaccess' => '後台管理權限(或此項操作)尚未對您開放，請聯繫站點管理員',
+	'noaccess' => '後臺管理權限(或此項操作)尚未對您開放，請聯繫站點管理員',
 
 	'qrcode_login' => '掃碼登入',
 	'pwd_login' => '賬號登入',

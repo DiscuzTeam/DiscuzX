@@ -12,16 +12,16 @@ if(!defined('IN_DISCUZ')) {
 
 $lang =
 	[
-	'albumlist_aids' => '指定相冊',
-	'albumlist_aids_comment' => '填入指定相冊的ID(aid)，多個相冊之間用逗號(,)分隔',
-	'albumlist_uids' => '用户UID',
+	'albumlist_aids' => '指定相簿',
+	'albumlist_aids_comment' => '填入指定相簿的ID(aid)，多個相簿之間用逗號(,)分隔',
+	'albumlist_uids' => '用戶UID',
 	'albumlist_uids_comment' => '填入指定用戶的ID(uid)，多個用戶之間用逗號(,)分隔',
 	'albumlist_catid' => '指定分類',
-	'albumlist_catid_comment' => '選擇相冊所屬的系統相冊分類，可多選',
+	'albumlist_catid_comment' => '選擇相簿所屬的系統相簿分類，可多選',
 	'albumlist_startrow' => '起始數據行數',
-	'albumlist_startrow_comment' => '如需設定起始的數據行數，請輸入具體數值，0 為從第一行開始，以此類推',
+	'albumlist_startrow_comment' => '如需設定起始的數據行數，請輸入具體數值，0 爲從第一行開始，以此類推',
 	'albumlist_titlelength' => '標題長度',
-	'albumlist_titlelength_comment' => '指定相冊名稱最大長度',
+	'albumlist_titlelength_comment' => '指定相簿名稱最大長度',
 	'albumlist_orderby' => '圖片排序方式',
 	'albumlist_orderby_comment' => '設定以哪一字段或方式對圖片進行排序',
 	'albumlist_orderby_dateline' => '按發佈時間倒序',

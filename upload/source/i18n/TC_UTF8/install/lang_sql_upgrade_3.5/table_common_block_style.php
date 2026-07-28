@@ -10,7 +10,7 @@ $data = [
   [
     'blockclass' => 'html_misctag',
     'name' => '[內置]標籤模版',
-    'template' => 
+    'template' =>
     [
       'raw' => '<!-- 熱門標籤模組 -->
 <div class="tag-cloud-module">

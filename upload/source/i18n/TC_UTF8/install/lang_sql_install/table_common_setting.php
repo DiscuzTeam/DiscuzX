@@ -35,7 +35,7 @@ $data = [[
 出外郊遊
 自駕出行
 公益活動
-线上活動',
+線上活動',
 ], [
 	'skey' => 'adminemail',
 	'svalue' => '',
@@ -1157,7 +1157,7 @@ $data = [[
 	'skey' => 'modreasons',
 	'svalue' => '廣告/SPAM
 惡意灌水
-违规內容
+違規內容
 文不對題
 重複發帖
 
@@ -1901,7 +1901,7 @@ discuz',
 	'svalue' => '1000',
 ], [
 	'skey' => 'threadsticky',
-	'svalue' => '全局置頂,分类置頂,本版置頂',
+	'svalue' => '全局置頂,分類置頂,本版置頂',
 ], [
 	'skey' => 'thumbheight',
 	'svalue' => '300',
@@ -1960,7 +1960,7 @@ j/n/Y',
 	'skey' => 'userreasons',
 	'svalue' => '很給力!
 神馬都是浮雲
-讚一個!
+贊一個!
 山寨
 淡定',
 ], [
@@ -2168,11 +2168,11 @@ j/n/Y',
 	'svalue' => '1',
 ], [
 	'skey' => 'welcomemsgtitle',
-	'svalue' => '{username}，您好，感谢您的註冊，请閱讀以下內容。',
+	'svalue' => '{username}，您好，感謝您的註冊，請閱讀以下內容。',
 ], [
 	'skey' => 'welcomemsgtxt',
-	'svalue' => '尊敬的{username}，您已经註冊成为{sitename}的會員，请您在發表言论时，遵守当地法律法规。
-如果您有什么疑问可以联系管理員，Email: {adminemail}。
+	'svalue' => '尊敬的{username}，您已經註冊成爲{sitename}的會員，請您在發表言論時，遵守當地法律法規。
+如果您有什麼疑問可以聯繫管理員，Email: {adminemail}。
 
 
 {bbname}
@@ -2336,7 +2336,7 @@ j/n/Y',
 		[
 			6 =>
 				[
-					'title' => '实名認證',
+					'title' => '實名認證',
 					'available' => '0',
 					'showicon' => '0',
 					'viewrealname' => '0',
@@ -2372,7 +2372,7 @@ j/n/Y',
 	'skey' => 'focus',
 	'svalue' =>
 		[
-			'title' => '站长推薦',
+			'title' => '站長推薦',
 			'data' => [],
 			'cookie' => '1',
 		],
@@ -2448,7 +2448,7 @@ j/n/Y',
 				],
 			'info' =>
 				[
-					'title' => '个人資訊',
+					'title' => '個人資訊',
 					'available' => '1',
 					'displayorder' => '4',
 					'field' =>

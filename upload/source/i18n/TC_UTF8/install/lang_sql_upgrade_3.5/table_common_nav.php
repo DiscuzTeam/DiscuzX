@@ -46,7 +46,7 @@ $data = [[
     'logo' => '',
 ], [
     'parentid' => '0',
-    'name' => '發布',
+    'name' => '發佈',
     'title' => '',
     'url' => 'forum.php?mod=misc&action=nav',
     'identifier' => 'post',

@@ -5,6 +5,7 @@
  * This is NOT a freeware, use is subject to license terms
  * https://license.discuz.vip
  */
+
 $data = [[
     'rid' => '1',
     'rulename' => '發表主題',
@@ -109,7 +110,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '7',
-    'rulename' => '搜索',
+    'rulename' => '搜尋',
     'action' => 'search',
     'cycletype' => '4',
     'cycletime' => '0',
@@ -466,7 +467,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '31',
-    'rulename' => '淘專輯被訂閲',
+    'rulename' => '淘專輯被訂閱',
     'action' => 'followedcollection',
     'cycletype' => '1',
     'cycletime' => '0',

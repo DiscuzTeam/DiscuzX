@@ -13,9 +13,9 @@ if(!defined('IN_DISCUZ')) {
 $lang = [
 	'no_tag' => '還沒有任何標籤',
 	'tag' => '標籤',
-	'blog_read' => '次閲讀',
+	'blog_read' => '次閱讀',
 	'blog_replay' => '個評論',
-	'empty_tags' => '沒有此標籤，您可以繼續搜索或者<a href="misc.php?mod=tag" title="返回標籤首頁">返回標籤首頁</a>',
+	'empty_tags' => '沒有此標籤，您可以繼續搜尋或者<a href="misc.php?mod=tag" title="返回標籤首頁">返回標籤首頁</a>',
 	'forum' => '版塊',
 	'hot' => '熱度',
 	'lastpost' => '最後發表',

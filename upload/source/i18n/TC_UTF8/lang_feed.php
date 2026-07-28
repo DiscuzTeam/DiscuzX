@@ -16,7 +16,7 @@ $lang =
 	'feed_blog_password' => '{actor} 發表了新加密日誌 {subject}',
 	'feed_blog_title' => '{actor} 發表了新日誌',
 	'feed_blog_body' => '<b>{subject}</b><br />{summary}',
-	'feed_album_title' => '{actor} 更新了相冊',
+	'feed_album_title' => '{actor} 更新了相簿',
 	'feed_album_body' => '<b>{album}</b><br />共 {picnum} 張圖片',
 	'feed_pic_title' => '{actor} 上傳了新圖片',
 	'feed_pic_body' => '{title}',
@@ -34,7 +34,7 @@ $lang =
 	'feed_showcredit' => '{actor} 贈送給 {fusername} 競價積分 {credit} 個，幫助好友提升在<a href="misc.php?mod=ranklist&type=member" target="_blank">競價排行榜</a>中的名次',
 	'feed_showcredit_self' => '{actor} 增加競價積分 {credit} 個，提升自己在<a href="misc.php?mod=ranklist&type=member" target="_blank">競價排行榜</a>中的名次',
 	'feed_doing_title' => '{actor}：{message}',
-	'feed_friend_title' => '{actor} 和 {touser} 成為了好友',
+	'feed_friend_title' => '{actor} 和 {touser} 成爲了好友',
 
 
 	'feed_click_blog' => '{actor} 送了一個“{click}”給 {touser} 的日誌 {subject}',
@@ -54,9 +54,9 @@ $lang =
 	'feed_profile_update_bbs' => '{actor} 更新了自己的論壇資訊',
 	'feed_profile_update_verify' => '{actor} 更新了自己的認證資訊',
 
-	'feed_add_attachsize' => '{actor} 用 {credit} 個積分兑換了 {size} 附件空間，可以上傳更多的圖片啦(<a href="home.php?mod=spacecp&ac=credit&op=addsize">我也來兑換</a>)',
+	'feed_add_attachsize' => '{actor} 用 {credit} 個積分兌換了 {size} 附件空間，可以上傳更多的圖片啦(<a href="home.php?mod=spacecp&ac=credit&op=addsize">我也來兌換</a>)',
 
-	'feed_invite' => '{actor} 發起邀請，和 {username} 成為了好友',
+	'feed_invite' => '{actor} 發起邀請，和 {username} 成爲了好友',
 
 	'magicuse_thunder_announce_title' => '<strong>{username} 發出了“雷鳴之聲”</strong>',
 	'magicuse_thunder_announce_body' => '大家好，我上線啦<br /><a href="home.php?mod=space&uid={uid}" target="_blank">歡迎來我家串個門</a>',

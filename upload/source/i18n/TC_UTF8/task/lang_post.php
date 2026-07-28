@@ -27,7 +27,7 @@ $lang =
 	'post_complete_var_num' => '執行動作次數下限',
 	'post_complete_var_num_comment' => '會員需要執行相應動作的最少次數',
 	'post_complete_var_time' => '時間限制(小時)',
-	'post_complete_var_time_comment' => '設定會員從申請任務到完成任務的時間限制，會員在此時間內未能完成任務則不能領取獎勵並標記任務失敗，0 或留空為不限制',
+	'post_complete_var_time_comment' => '設定會員從申請任務到完成任務的時間限制，會員在此時間內未能完成任務則不能領取獎勵並標記任務失敗，0 或留空爲不限制',
 
 	'task_complete_forumid' => '在版塊 {value} ',
 	'task_complete_act_newthread' => '發新主題 {num} 次',

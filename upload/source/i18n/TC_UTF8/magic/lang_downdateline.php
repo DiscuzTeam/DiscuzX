@@ -13,7 +13,7 @@ if(!defined('IN_DISCUZ')) {
 $lang =
 	[
 	'downdateline_name' => '時光機',
-	'downdateline_desc' => '把自己日誌的發佈時間修改為過去',
-	'downdateline_info' => '把自己日誌的發佈時間修改為過去',
+	'downdateline_desc' => '把自己日誌的發佈時間修改爲過去',
+	'downdateline_info' => '把自己日誌的發佈時間修改爲過去',
 	];
 

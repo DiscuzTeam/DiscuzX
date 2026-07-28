@@ -33,13 +33,13 @@ $lang =
 	'showcredit' => '{actor} 贈送給您 {credit} 個競價積分，幫助提升您在 <a href="misc.php?mod=ranklist&type=member" target="_blank">競價排行榜</a> 中的名次',
 	'share_space' => '{actor} 分享了您的空間',
 	'share_blog' => '{actor} 分享了您的日誌 <a href="{url}" target="_blank">{subject}</a>',
-	'share_album' => '{actor} 分享了您的相冊 <a href="{url}" target="_blank">{albumname}</a>',
-	'share_pic' => '{actor} 分享了您的相冊 {albumname} 中的 <a href="{url}" target="_blank"> 圖片</a>',
+	'share_album' => '{actor} 分享了您的相簿 <a href="{url}" target="_blank">{albumname}</a>',
+	'share_pic' => '{actor} 分享了您的相簿 {albumname} 中的 <a href="{url}" target="_blank"> 圖片</a>',
 	'share_thread' => '{actor} 分享了您的帖子 <a href="{url}" target="_blank">{subject}</a>',
 	'share_article' => '{actor} 分享了您的文章 <a href="{url}" target="_blank">{subject}</a>',
 	'magic_present_note' => '送給您一個道具 <a href="{url}" target="_blank">{name}</a>',
-	'friend_add' => '{actor} 和您成為了好友',
-	'friend_request' => '{actor} 請求加您為好友{note}&nbsp;&nbsp;<a onclick="showWindow(this.id, this.href, \'get\', 0);" class="xw1" id="afr_{uid}" href="{url}">批准申請</a>',
+	'friend_add' => '{actor} 和您成爲了好友',
+	'friend_request' => '{actor} 請求加您爲好友{note}&nbsp;&nbsp;<a onclick="showWindow(this.id, this.href, \'get\', 0);" class="xw1" id="afr_{uid}" href="{url}">批準申請</a>',
 	'doing_reply' => '{actor} 回覆了您的記錄 <a href="{url}" target="_blank">{summery}</a> &nbsp; <a href="{url}" target="_blank" class="lit">查看</a>',
 	'wall_reply' => '{actor} 回覆了您的 <a href="{url}" target="_blank">留言</a>',
 	'pic_comment_reply' => '{actor} 回覆了您的 <a href="{url}" target="_blank">圖片評論</a>',
@@ -55,11 +55,11 @@ $lang =
 	'show_out' => '{actor} 訪問了您的主頁後，您在競價排名榜中的最後一個積分也被消費掉了',
 	'puse_article' => '恭喜您，您的<a href="{url}" target="_blank">{subject}</a>已被添加到文章列表， <a href="{newurl}" target="_blank">點擊查看</a>',
 
-	'group_member_join' => '{actor} 加入您的 <a href="forum.php?mod=group&fid={fid}" target="_blank">{groupname}</a> 圈子需要審核，請到圈子<a href="{url}" target="_blank">管理中心</a> 進行審核',
+	'group_member_join' => '{actor} 加入您的 <a href="forum.php?mod=group&fid={fid}" target="_blank">{groupname}</a> 圈子需要審覈，請到圈子<a href="{url}" target="_blank">管理中心</a> 進行審覈',
 	'group_member_invite' => '{actor} 邀請您加入 <a href="forum.php?mod=group&fid={fid}" target="_blank">{groupname}</a> 圈子，<a href="{url}" target="_blank">點此馬上加入</a>',
-	'group_member_check' => '您已通過了 <a href="{url}" target="_blank">{groupname}</a> 圈子的審核，請 <a href="{url}" target="_blank">點擊這裡訪問</a>',
-	'group_member_check_failed' => '您沒有通過 <a href="{url}" target="_blank">{groupname}</a> 圈子的審核。',
-	'group_mod_check' => '您的創建的圈子 <a href="{url}" target="_blank">{groupname}</a> 審核通過了，請 <a href="{url}" target="_blank">點擊這裡訪問</a>',
+	'group_member_check' => '您已通過了 <a href="{url}" target="_blank">{groupname}</a> 圈子的審覈，請 <a href="{url}" target="_blank">點擊這裡訪問</a>',
+	'group_member_check_failed' => '您沒有通過 <a href="{url}" target="_blank">{groupname}</a> 圈子的審覈。',
+	'group_mod_check' => '您的創建的圈子 <a href="{url}" target="_blank">{groupname}</a> 審覈通過了，請 <a href="{url}" target="_blank">點擊這裡訪問</a>',
 
 	'reason_moderate' => '您的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被 {actor} {modaction} <div class="quote"><blockquote>{reason}</blockquote></div>',
 
@@ -77,7 +77,7 @@ $lang =
 
 	'reason_move' => '您的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被 {actor} 移動到 <a href="forum.php?mod=forumdisplay&fid={tofid}" target="_blank">{toname}</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_copy' => '您的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被 {actor} 複製為 <a href="forum.php?mod=viewthread&tid={threadid}" target="_blank">{subject}</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_copy' => '您的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被 {actor} 複製爲 <a href="forum.php?mod=viewthread&tid={threadid}" target="_blank">{subject}</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
 
 	'reason_remove_reward' => '您的懸賞主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被 {actor} 撤銷 <div class="quote"><blockquote>{reason}</blockquote></div>',
 
@@ -95,31 +95,31 @@ $lang =
 
 	'reason_quickclear' => '您的{cleartype} 被 {actor} 清除 <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'reason_live_update' => '您的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被 {actor} 設定為直播貼 <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'reason_live_update' => '您的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被 {actor} 設定爲直播貼 <div class="quote"><blockquote>{reason}</blockquote></div>',
 	'reason_live_cancle' => '您的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被 {actor} 取消直播 <div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'modthreads_delete' => '您發表的主題 {threadsubject} 已由管理團隊 {modusername} 審核拒絕，現已被刪除！',
+	'modthreads_delete' => '您發表的主題 {threadsubject} 已由管理團隊 {modusername} 審覈拒絕，現已被刪除！',
 
-	'modthreads_delete_reason' => '您發表的主題 {threadsubject} 已由管理團隊 {modusername} 審核拒絕，現已被刪除！<div class="quote"><blockquote>{reason}</blockquote></div>',
+	'modthreads_delete_reason' => '您發表的主題 {threadsubject} 已由管理團隊 {modusername} 審覈拒絕，現已被刪除！<div class="quote"><blockquote>{reason}</blockquote></div>',
 	'modthreads_dismiss' => '您發表的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{threadsubject}</a> 已由管理團隊 {modusername} 駁回，現已存入草稿箱，請修改後重新提交！',
 
 	'modthreads_dismiss_reason' => '您發表的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{threadsubject}</a> 已由管理團隊 {modusername} 駁回，現已存入草稿箱，請修改後重新提交！<div class="quote"><blockquote>{reason}</blockquote></div>',
-	'modthreads_validate' => '您發表的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{threadsubject}</a> 已由管理團隊 {modusername} 審核通過！ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
+	'modthreads_validate' => '您發表的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{threadsubject}</a> 已由管理團隊 {modusername} 審覈通過！ &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
 
-	'modreplies_delete' => '您發表的回覆已由管理團隊 {modusername} 審核拒絕，現已被刪除！ <p class="summary">回覆內容：<span>{post}</span></p>',
+	'modreplies_delete' => '您發表的回覆已由管理團隊 {modusername} 審覈拒絕，現已被刪除！ <p class="summary">回覆內容：<span>{post}</span></p>',
 
-	'modreplies_delete_reason' => '您發表的回覆已由管理團隊 {modusername} 審核拒絕，現已被刪除！ <p class="summary">回覆內容：<span>{post}</span></p><div class="quote"><blockquote>{reason}</blockquote></div>',
+	'modreplies_delete_reason' => '您發表的回覆已由管理團隊 {modusername} 審覈拒絕，現已被刪除！ <p class="summary">回覆內容：<span>{post}</span></p><div class="quote"><blockquote>{reason}</blockquote></div>',
 
 	'modreplies_dismiss' => '您發表的回覆已由管理團隊 {modusername} 駁回！ &nbsp; <a href="forum.php?mod=post&action=edit&fid={fid}&pid={pid}&tid={tid}" target="_blank" class="lit">重新編輯 &rsaquo;</a> <p class="summary">回覆內容：<span>{post}</span></p>',
 
 	'modreplies_dismiss_reason' => '您發表的回覆已由管理團隊 {modusername} 駁回！ &nbsp; <a href="forum.php?mod=post&action=edit&fid={fid}&pid={pid}&tid={tid}" target="_blank" class="lit">重新編輯 &rsaquo;</a> <p class="summary">回覆內容：<span>{post}</span></p><div class="quote"><blockquote>{reason}</blockquote></div>',
 
-	'modreplies_validate' => '您發表的回覆已由管理團隊 {modusername} 審核通過！ &nbsp; <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank" class="lit">查看 &rsaquo;</a> <p class="summary">回覆內容：<span>{post}</span></p>',
+	'modreplies_validate' => '您發表的回覆已由管理團隊 {modusername} 審覈通過！ &nbsp; <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank" class="lit">查看 &rsaquo;</a> <p class="summary">回覆內容：<span>{post}</span></p>',
 
 	'transfer' => '您收到一筆來自 {actor} 的積分轉賬 {credit} &nbsp; <a href="home.php?mod=spacecp&ac=credit&op=log&suboperation=creditslog" target="_blank" class="lit">查看 &rsaquo;</a>
-<p class="summary">{actor} 説：<span>{transfermessage}</span></p>',
+<p class="summary">{actor} 說：<span>{transfermessage}</span></p>',
 
-	'addfunds' => '您提交的積分充值請求已完成，相應數額的積分已存入您的積分賬户 &nbsp; <a href="home.php?mod=spacecp&ac=credit&op=base" target="_blank" class="lit">查看 &rsaquo;</a>
+	'addfunds' => '您提交的積分充值請求已完成，相應數額的積分已存入您的積分賬戶 &nbsp; <a href="home.php?mod=spacecp&ac=credit&op=base" target="_blank" class="lit">查看 &rsaquo;</a>
 <p class="summary">訂單號：<span>{orderid}</span></p><p class="summary">支出：<span>人民幣 {price} 元</span></p><p class="summary">收入：<span>{value}</span></p>',
 
 	'rate_reason' => '您在主題 <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank">{subject}</a> 的帖子被 {actor} 評分 {ratescore} <div class="quote"><blockquote>{reason}</blockquote></div>',
@@ -142,9 +142,9 @@ $lang =
 
 	'eccredit' => '與您交易的 {actor} 已對您作了評價 &nbsp; <a href="forum.php?mod=trade&orderid={orderid}" target="_blank" class="lit">回評 &rsaquo;</a>',
 
-	'activity_notice' => '{actor} 申請加入您舉辦的活動 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a>，請審核 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
+	'activity_notice' => '{actor} 申請加入您舉辦的活動 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a>，請審覈 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
 
-	'activity_apply' => '活動 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 的發起人 {actor} 已批准您參加此活動 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'activity_apply' => '活動 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 的發起人 {actor} 已批準您參加此活動 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
 
 	'activity_replenish' => '活動 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 的發起人 {actor} 通知您需要完善活動報名資訊 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
 
@@ -156,9 +156,9 @@ $lang =
 
 	'reward_question' => '您的懸賞主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被 {actor} 設定了最佳答案 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
 
-	'reward_bestanswer' => '您的回覆被懸賞主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 的作者 {actor} 選為最佳答案 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
+	'reward_bestanswer' => '您的回覆被懸賞主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 的作者 {actor} 選爲最佳答案 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
 
-	'reward_bestanswer_moderator' => '您在懸賞主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 的回覆被選為最佳答案 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
+	'reward_bestanswer_moderator' => '您在懸賞主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 的回覆被選爲最佳答案 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
 
 	'comment_add' => '{actor} 點評了您曾經在主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 發表的帖子 &nbsp; <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
 
@@ -176,72 +176,72 @@ $lang =
 
 	'task_reward_group' => '恭喜您完成任務：<a href="home.php?mod=task&do=view&id={taskid}" target="_blank">{name}</a>，獲得用戶組 {rewardtext} 有效期 {bonus} 天 &nbsp; <a href="home.php?mod=spacecp&ac=usergroup" target="_blank" class="lit">看看我能做什麼 &rsaquo;</a>',
 
-	'user_usergroup' => '您的用戶組升級為 {usergroup} &nbsp; <a href="home.php?mod=spacecp&ac=usergroup" target="_blank" class="lit">看看我能做什麼 &rsaquo;</a>',
+	'user_usergroup' => '您的用戶組升級爲 {usergroup} &nbsp; <a href="home.php?mod=spacecp&ac=usergroup" target="_blank" class="lit">看看我能做什麼 &rsaquo;</a>',
 
 	'grouplevel_update' => '恭喜您，您的圈子 {groupname} 已升級到 {newlevel}。',
 
 	'thread_invite' => '{actor} 邀請您{invitename} <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
 	'blog_invite' => '{actor} 邀請您查看日誌 <a href="home.php?mod=space&uid={uid}&do=blog&id={blogid}" target="_blank">{subject}</a> &nbsp; <a href="home.php?mod=space&uid={uid}&do=blog&id={blogid}" target="_blank" class="lit">查看 &rsaquo;</a>',
 	'article_invite' => '{actor} 邀請您查看文章 <a href="{url}" target="_blank">{subject}</a> &nbsp; <a href="{url}" target="_blank" class="lit">查看 &rsaquo;</a>',
-	'invite_friend' => '恭喜您成功邀請到 {actor} 併成為您的好友',
+	'invite_friend' => '恭喜您成功邀請到 {actor} 併成爲您的好友',
 
 	'poke_request' => '<a href="{fromurl}" class="xi2">{fromusername}</a>: <span class="xw0">{pokemsg}&nbsp;</span><a href="home.php?mod=spacecp&ac=poke&op=reply&uid={fromuid}&from=notice" id="a_p_r_{fromuid}" class="xw1" onclick="showWindow(this.id, this.href, \'get\', 0);">回打招呼</a><span class="pipe">|</span><a href="home.php?mod=spacecp&ac=poke&op=ignore&uid={fromuid}&from=notice" id="a_p_i_{fromuid}" onclick="showWindow(\'pokeignore\', this.href, \'get\', 0);">忽略</a>',
 
-	'profile_verify_error' => '{verify}資料審核被拒絕,以下字段需要重新填寫:<br/>{profile}<br/>拒絕理由:{reason}',
-	'profile_verify_pass' => '恭喜您，您填寫的{verify}資料審核已通過',
-	'profile_verify_pass_refusal' => '很遺憾，您填寫的{verify}資料審核已被拒絕',
+	'profile_verify_error' => '{verify}資料審覈被拒絕,以下字段需要重新填寫:<br/>{profile}<br/>拒絕理由:{reason}',
+	'profile_verify_pass' => '恭喜您，您填寫的{verify}資料審覈已通過',
+	'profile_verify_pass_refusal' => '很遺憾，您填寫的{verify}資料審覈已被拒絕',
 	'member_ban_speak' => '您已被 {user} 禁止發言，期限：{day}天(0：代表永久禁言)，禁言理由：{reason}',
 	'member_ban_visit' => '您已被 {user} 禁止訪問，期限：{day}天(0：代表永久禁止訪問)，禁止訪問理由：{reason}',
 	'member_ban_status' => '您已被 {user} 鎖定，鎖定理由：{reason}',
-	'member_change_usergroup' => '您已被 {user} 修改為 {groupname} 用戶組，期限：{day} (0：代表永久生效)，擴展組資訊為 {extgroupinfo}，並應操作者要求告知您相關變動，操作理由：{reason}',
-	'member_change_credits' => '您已被 {user} 調整積分，積分類型與調整值為 {extcredits} ，並應操作者要求告知您相關變動，操作理由：{reason}',
+	'member_change_usergroup' => '您已被 {user} 修改爲 {groupname} 用戶組，期限：{day} (0：代表永久生效)，擴展組資訊爲 {extgroupinfo}，並應操作者要求告知您相關變動，操作理由：{reason}',
+	'member_change_credits' => '您已被 {user} 調整積分，積分類型與調整值爲 {extcredits} ，並應操作者要求告知您相關變動，操作理由：{reason}',
 
 	'member_follow' => '您關注的人已有{count}條新動態。<a href="home.php?mod=follow">點擊查看</a>',
-	'member_follow_add' => '{actor} 收聽了您。<a href="home.php?mod=follow&do=follower">點擊查看</a>',
+	'member_follow_add' => '{actor} 關注了您。<a href="home.php?mod=follow&do=follower">點擊查看</a>',
 
-	'member_moderate_invalidate' => '您的賬號未能通過管理員的審核，請<a href="home.php?mod=spacecp&ac=profile">重新提交註冊資訊</a>。<br />管理員留言: <b>{remark}</b>',
-	'member_moderate_validate' => '您的賬號已通過審核。<br />管理員留言: <b>{remark}</b>',
-	'member_moderate_invalidate_no_remark' => '您的賬號未能通過管理員的審核，請<a href="home.php?mod=spacecp&ac=profile">重新提交註冊資訊</a>。',
-	'member_moderate_validate_no_remark' => '您的賬號已通過審核。',
-	'manage_verifythread' => '有新的待審核主題。<a href="admin.php?action=moderate&operation=threads&dateline=all">現在進行審核</a>',
-	'manage_verifypost' => '有新的待審核回帖。<a href="admin.php?action=moderate&operation=replies&dateline=all">現在進行審核</a>',
-	'manage_verifyuser' => '有新的待審核會員。<a href="admin.php?action=moderate&operation=members">現在進行審核</a>',
-	'manage_verifyblog' => '有新的待審核日誌。<a href="admin.php?action=moderate&operation=blogs">現在進行審核</a>',
-	'manage_verifydoing' => '有新的待審核記錄。<a href="admin.php?action=moderate&operation=doings">現在進行審核</a>',
-	'manage_verifypic' => '有新的待審核圖片。<a href="admin.php?action=moderate&operation=pictures">現在進行審核</a>',
-	'manage_verifyshare' => '有新的待審核分享。<a href="admin.php?action=moderate&operation=shares">現在進行審核</a>',
-	'manage_verifycommontes' => '有新的待審核留言/評論。<a href="admin.php?action=moderate&operation=comments">現在進行審核</a>',
+	'member_moderate_invalidate' => '您的賬號未能通過管理員的審覈，請<a href="home.php?mod=spacecp&ac=profile">重新提交註冊資訊</a>。<br />管理員留言: <b>{remark}</b>',
+	'member_moderate_validate' => '您的賬號已通過審覈。<br />管理員留言: <b>{remark}</b>',
+	'member_moderate_invalidate_no_remark' => '您的賬號未能通過管理員的審覈，請<a href="home.php?mod=spacecp&ac=profile">重新提交註冊資訊</a>。',
+	'member_moderate_validate_no_remark' => '您的賬號已通過審覈。',
+	'manage_verifythread' => '有新的待審覈主題。<a href="admin.php?action=moderate&operation=threads&dateline=all">現在進行審覈</a>',
+	'manage_verifypost' => '有新的待審覈回帖。<a href="admin.php?action=moderate&operation=replies&dateline=all">現在進行審覈</a>',
+	'manage_verifyuser' => '有新的待審覈會員。<a href="admin.php?action=moderate&operation=members">現在進行審覈</a>',
+	'manage_verifyblog' => '有新的待審覈日誌。<a href="admin.php?action=moderate&operation=blogs">現在進行審覈</a>',
+	'manage_verifydoing' => '有新的待審覈記錄。<a href="admin.php?action=moderate&operation=doings">現在進行審覈</a>',
+	'manage_verifypic' => '有新的待審覈圖片。<a href="admin.php?action=moderate&operation=pictures">現在進行審覈</a>',
+	'manage_verifyshare' => '有新的待審覈分享。<a href="admin.php?action=moderate&operation=shares">現在進行審覈</a>',
+	'manage_verifycommontes' => '有新的待審覈留言/評論。<a href="admin.php?action=moderate&operation=comments">現在進行審覈</a>',
 	'manage_verifyrecycle' => '回收站有新的待處理主題。<a href="admin.php?action=recyclebin">現在處理</a>',
 	'manage_verifyrecyclepost' => '回帖回收站有新的待處理回帖。<a href="admin.php?action=recyclebinpost">現在處理</a>',
-	'manage_verifyarticle' => '有新的待審核文章。<a href="admin.php?action=moderate&operation=articles">現在進行審核</a>',
-	'manage_verifymedal' => '有新的待審核勳章申請。<a href="admin.php?action=medals&operation=mod">現在進行審核</a>',
-	'manage_verifyacommont' => '有新的待審核文章評論。<a href="admin.php?action=moderate&operation=articlecomments">現在進行審核</a>',
-	'manage_verifytopiccommont' => '有新的待審核專題評論。<a href="admin.php?action=moderate&operation=topiccomments">現在進行審核</a>',
+	'manage_verifyarticle' => '有新的待審覈文章。<a href="admin.php?action=moderate&operation=articles">現在進行審覈</a>',
+	'manage_verifymedal' => '有新的待審覈勳章申請。<a href="admin.php?action=medals&operation=mod">現在進行審覈</a>',
+	'manage_verifyacommont' => '有新的待審覈文章評論。<a href="admin.php?action=moderate&operation=articlecomments">現在進行審覈</a>',
+	'manage_verifytopiccommont' => '有新的待審覈專題評論。<a href="admin.php?action=moderate&operation=topiccomments">現在進行審覈</a>',
 	'manage_verify_field' => '有新的待處理{verifyname}。<a href="admin.php?action=verify&operation=verify&do={doid}">現在處理</a>',
 	'system_notice' => '{subject}<p class="summary">{message}</p>',
-	'system_adv_expiration' => '您站點的以下廣告將於 {day} 天后到期，請及時處理：<br />{advs}',
+	'system_adv_expiration' => '您站點的以下廣告將於 {day} 天後到期，請及時處理：<br />{advs}',
 	'report_change_credits' => '{actor} 處理了您的舉報 {creditchange} {msg}',
 	'at_message' => '<a href="home.php?mod=space&uid={buyerid}" target="_blank">{buyer}</a> 在主題 <a href="forum.php?mod=redirect&goto=findpost&ptid={tid}&pid={pid}" target="_blank">{subject}</a> 中提到了您<div class="quote"><blockquote>{message}</blockquote></div><a href="forum.php?mod=redirect&goto=findpost&ptid={tid}&pid={pid}" target="_blank">現在去看看</a>。',
 	'at_doing' => '<a href="home.php?mod=space&uid={buyerid}" target="_blank">{buyer}</a> 在記錄中提到了您<a href="home.php?mod=space&do=doing&doid={doid}" target="_blank">現在去看看</a>。',
 	'new_report' => '有新的來自 {username} 的舉報等待處理，<a href="admin.php?action=report" target="_blank">點此進入管理中心處理</a>。',
 	'new_post_report' => '有新的來自 {username} 的舉報等待處理，<a href="forum.php?mod=modcp&action=report&fid={fid}" target="_blank">點此進入管理面板</a>。',
 	'magics_receive' => '您收到 {actor} 送給您的道具 {magicname}
-<p class="summary">{actor} 説：<span>{msg}</span></p>
+<p class="summary">{actor} 說：<span>{msg}</span></p>
 <p class="mbn"><a href="home.php?mod=magic" target="_blank">回贈道具</a><span class="pipe">|</span><a href="home.php?mod=magic&action=mybox" target="_blank">查看我的道具箱</a></p>',
 	'invite_collection' => '{actor} 邀請您參與維護淘專輯  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a>。<br /> <a href="forum.php?mod=collection&action=edit&op=acceptinvite&ctid={ctid}&dateline={dateline}">接受邀請</a>',
 	'collection_removed' => '您參與維護的淘專輯  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a> 已被 {actor} 關閉。',
 	'exit_collection' => '您已經登出維護淘專輯  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a>。',
 	'collection_becommented' => '您的淘專輯  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a> 收到了新評論。',
-	'collection_befollowed' => '您的淘專輯  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a> 有新用戶訂閲了！',
+	'collection_befollowed' => '您的淘專輯  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a> 有新用戶訂閱了！',
 	'collection_becollected' => '恭喜您的主題 <a href="forum.php?mod=viewthread&tid={tid}">{threadname}</a> 被淘專輯  <a href="forum.php?mod=collection&action=view&ctid={ctid}">{collectionname}</a> 收錄了！',
 
 	'pmreportcontent' => '{pmreportcontent}',
 
-	'thread_hidden' => '您的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被多個用戶認定為垃圾帖，現已被隱藏 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
+	'thread_hidden' => '您的主題 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 被多個用戶認定爲垃圾帖，現已被隱藏 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
 
-	'forum_member_new' => '{actor} 申請加入 <a href="forum.php?mod=forumdisplay&fid={fid}" target="_blank">{forumname}</a> 需要審核，請到<a href="{url}" target="_blank">管理面板</a> 進行審核',
-	'forum_member_check' => '您已通過了 <a href="{url}" target="_blank">{forumname}</a> 的審核，請 <a href="{url}" target="_blank">點擊這裡訪問</a>',
-	'forum_member_check_failed' => '您沒有通過 <a href="{url}" target="_blank">{forumname}</a> 的審核。',
+	'forum_member_new' => '{actor} 申請加入 <a href="forum.php?mod=forumdisplay&fid={fid}" target="_blank">{forumname}</a> 需要審覈，請到<a href="{url}" target="_blank">管理面板</a> 進行審覈',
+	'forum_member_check' => '您已通過了 <a href="{url}" target="_blank">{forumname}</a> 的審覈，請 <a href="{url}" target="_blank">點擊這裡訪問</a>',
+	'forum_member_check_failed' => '您沒有通過 <a href="{url}" target="_blank">{forumname}</a> 的審覈。',
 
 	];
 

@@ -23,7 +23,7 @@ $lang =
 	'stat_option_maxmembers' => '歷史最高在線會員數',
 	'stat_option_doings' => '動態數',
 	'stat_option_blogs' => '日誌數',
-	'stat_option_albums' => '相冊數',
+	'stat_option_albums' => '相簿數',
 	'stat_option_pics' => '圖片數',
 	'stat_option_shares' => '分享數',
 
@@ -40,7 +40,7 @@ $lang =
 	'stat_maxmembers' => '歷史最高在線',
 	'stat_doings' => '動態',
 	'stat_blogs' => '日誌',
-	'stat_albums' => '相冊',
+	'stat_albums' => '相簿',
 	'stat_pics' => '圖片',
 	'stat_shares' => '分享',
 	];

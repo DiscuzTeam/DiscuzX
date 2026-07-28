@@ -12,10 +12,10 @@ if(!defined('IN_DISCUZ')) {
 
 $lang =
 	[
-	'articlelist_name' => '門户 文章列表廣告',
-	'articlelist_desc' => '展現方式: 文章廣告顯示於頻道文章分類的文章列表頁面，分為頂部、底部 2 個投放位置。',
+	'articlelist_name' => '門戶 文章列表廣告',
+	'articlelist_desc' => '展現方式: 文章廣告顯示於頻道文章分類的文章列表頁面，分爲頂部、底部 2 個投放位置。',
 	'articlelist_position' => '投放位置',
-	'articlelist_position_comment' => '分為 4 個位置，上下各有 2 個緊鄰的顯示位置',
+	'articlelist_position_comment' => '分爲 4 個位置，上下各有 2 個緊鄰的顯示位置',
 	'articlelist_position_up1' => '頂部(上)',
 	'articlelist_position_up2' => '頂部(下)',
 	'articlelist_position_down1' => '底部(上)',

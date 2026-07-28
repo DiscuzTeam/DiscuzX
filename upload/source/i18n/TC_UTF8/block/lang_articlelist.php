@@ -17,7 +17,7 @@ $lang =
 	'articlelist_uids' => '作者UID',
 	'articlelist_uids_comment' => '填入指定用戶的ID(uid)，多個用戶之間用逗號(,)分隔',
 	'articlelist_startrow' => '起始數據行數',
-	'articlelist_startrow_comment' => '如需設定起始的數據行數，請輸入具體數值，0 為從第一行開始，以此類推',
+	'articlelist_startrow_comment' => '如需設定起始的數據行數，請輸入具體數值，0 爲從第一行開始，以此類推',
 	'articlelist_tag' => '聚合標籤',
 	'articlelist_tag_comment' => '指定要聚合的標籤',
 	'articlelist_titlelength' => '標題長度',
@@ -45,6 +45,6 @@ $lang =
 	'articlelist_publishdateline_week' => '7天內',
 	'articlelist_publishdateline_month' => '1個月內',
 	'articlelist_keyword' => '標題關鍵字',
-	'articlelist_keyword_comment' => '設定標題包含的關鍵字。注意: 留空為不進行任何過濾； 關鍵字中可使用通配符 *； 匹配多個關鍵字全部，可用空格或 AND 連接。如 win32 AND unix； 匹配多個關鍵字其中部分，可用 | 或 OR 連接。如 win32 OR unix',
+	'articlelist_keyword_comment' => '設定標題包含的關鍵字。注意: 留空爲不進行任何過濾； 關鍵字中可使用通配符 *； 匹配多個關鍵字全部，可用空格或 AND 連接。如 win32 AND unix； 匹配多個關鍵字其中部分，可用 | 或 OR 連接。如 win32 OR unix',
 	];
 

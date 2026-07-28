@@ -15,6 +15,6 @@ $lang =
 	'forumtree_name' => '版塊樹形列表',
 	'forumtree_desc' => '樹形顯示版塊列表',
 	'forumtree_fids' => '顯示的版塊',
-	'forumtree_fids_comment' => '設定允許顯示的版塊，留空為顯示所有版塊',
+	'forumtree_fids_comment' => '設定允許顯示的版塊，留空爲顯示所有版塊',
 	];
 

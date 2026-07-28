@@ -17,7 +17,7 @@ $lang =
 	'open_forum' => '允許使用本道具的版塊',
 	'open_info' => '開放指定的主題，請輸入主題的 ID',
 	'open_info_nonexistence' => '請指定要開放的主題',
-	'open_succeed' => '您操作的主題已開放回復',
+	'open_succeed' => '您操作的主題已開放回覆',
 	'open_info_noperm' => '對不起，主題所在版塊不允許使用本道具',
 	'open_info_user_noperm' => '對不起，您不能對此人使用本道具',
 

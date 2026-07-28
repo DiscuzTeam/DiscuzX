@@ -38,7 +38,7 @@ $lang =
 
 	'feed_user_profile_title' => '{actor} 更新了自己的個人資料',
 
-	'feed_user_usergroup_title' => '{actor} 的用戶組升級為 {usergroup}',
+	'feed_user_usergroup_title' => '{actor} 的用戶組升級爲 {usergroup}',
 
 	'feed_user_credit_title' => '{actor} 的總積分達到 {count}',
 

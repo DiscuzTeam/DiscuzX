@@ -19,7 +19,7 @@ $lang =
 	'bloglist_catid' => '指定分類',
 	'bloglist_catid_comment' => '選擇日誌所屬的系統日誌分類，可多選',
 	'bloglist_startrow' => '起始數據行數',
-	'bloglist_startrow_comment' => '如需設定起始的數據行數，請輸入具體數值，0 為從第一行開始，以此類推',
+	'bloglist_startrow_comment' => '如需設定起始的數據行數，請輸入具體數值，0 爲從第一行開始，以此類推',
 	'bloglist_titlelength' => '標題長度',
 	'bloglist_summarylength' => '簡介長度',
 	'bloglist_picrequired' => '過濾無封面日誌',
@@ -35,7 +35,7 @@ $lang =
 	'bloglist_orderby_comment' => '設定以哪一字段或方式對日誌進行排序',
 	'bloglist_orderby_dateline' => '按發佈時間倒序',
 	'bloglist_orderby_viewnum' => '按查看數倒序',
-	'bloglist_orderby_replynum' => '按回複數倒序',
+	'bloglist_orderby_replynum' => '按回覆數倒序',
 	'bloglist_orderby_hot' => '按熱度倒序'
 	];
 
