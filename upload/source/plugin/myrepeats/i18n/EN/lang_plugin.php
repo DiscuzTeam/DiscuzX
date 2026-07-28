@@ -1,0 +1,62 @@
+<?php
+if(!defined('IN_DISCUZ')) {
+	exit('Access Denied');
+}
+
+$scriptlang['myrepeats'] = array (
+  'login_strike' => 'Too many incorrect password attempts. Please reset the alternate account information and try again in 15 minutes.',
+  'login_succeed' => 'You have switched to {user} {comment} account. Now redirecting to the previous page.',
+  'login_succeed_rsnonexistence' => 'You have switched to {user} {comment} account, but {olduser} has not been set as an alternate account yet.<br /><a href="home.php?mod=spacecp&ac=plugin&id=myrepeats:memcp&username={olduserenc}" target="_blank">[ Set {olduser} as an alternate account ]</a><br /><a href="{referer}">[ Go to previous page ]</a>',
+  'login_activation' => '{user} account is not activated in this forum. Redirecting to the activation page.',
+  'login_invalid' => 'Account switch failed. Please reset the account information. You have {loginperm} attempts remaining.',
+  'login_password_invalid' => 'Account switch failed. Please reset the account information.',
+  'login_question_empty' => 'Please reset the security question and provide the correct answer.',
+  'login_question_invalid' => 'Incorrect security question selection. Please reset.',
+  'user_nonexistence' => 'Invalid alternate account information. Please reset.',
+  'user_locked' => 'This alternate account has been locked by the administrator. You cannot switch to {user}. Please contact the administrator.',
+  'switch' => 'Alternate Account',
+  'memcp' => 'Set Alternate Account',
+  'usergroup_disabled' => 'Your user group is not allowed to use this feature',
+  'normal' => 'Normal',
+  'lock' => 'Locked',
+  'username' => 'Username',
+  'repeat' => 'Alternate Account',
+  'lastswitch' => 'Last Switch Time',
+  'status' => 'Status',
+  'search' => 'Search',
+  'repeats' => 'Used as alternate account by',
+  'repeatusers' => '\'s alternate account',
+  'statuss' => 'status record',
+  'viewall' => 'View All',
+  'deleted' => '- Deleted -',
+  'adduser_succeed' => 'Alternate account {usernamenew} has been added successfully.',
+  'updateuser_succeed' => 'Alternate account information has been updated successfully.',
+);
+
+$templatelang['myrepeats'] = array (
+  'myrepeats' => 'My Alternate Accounts',
+  'adduser' => 'Add Alternate Account',
+  'add' => 'Add',
+  'lastswitch' => 'Last Switch Time',
+  'nouse' => 'Never Used',
+  'locked' => 'Locked by Administrator',
+  'comment' => 'Note',
+  'commentrow' => 'Note',
+  'username' => 'Username',
+  'password' => 'Password',
+  'security_question' => 'Security Question',
+  'security_question_1' => 'Mother\'s Name',
+  'security_question_2' => 'Grandfather\'s Name',
+  'security_question_3' => 'Father\'s Birth City',
+  'security_question_4' => 'Name of One of Your Teachers',
+  'security_question_5' => 'Your Personal Computer Model',
+  'security_question_6' => 'Name of Your Favorite Restaurant',
+  'security_question_7' => 'Last Four Digits of Your Driver\'s License',
+  'security_answer' => 'Answer',
+  'delete_check' => 'Del?',
+  'switch_title' => 'Enter Password',
+  'switch_tips' => 'You are switching to this account for the first time. Please enter the password.',
+  'confirm' => 'Confirm',
+  'select_rrepeats' => 'Select Alternate Account',
+);
+

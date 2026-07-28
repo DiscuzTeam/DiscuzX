@@ -19,7 +19,7 @@ if(!defined('IN_DISCUZ')) {
 
 class class_upgrade {
 
-	const ApiUrl = 'https://addon.dismall.com/api/discuzupgrade/?ver=X5';
+	const ApiUrl = 'https://addon.dismall.com/api/discuzupgrade/?ver=X5_EN';
 
 	const RemoteBasePath = 'upload/';
 

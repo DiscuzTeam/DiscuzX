@@ -26,7 +26,7 @@ if(!submitcheck('editorblocksubmit')) {
 	showtips('editorblock_admin_list_tips');
 	showformheader("editorblock&operation=$operation");
 	showtableheader('', 'fixpadding');
-	showsubtitle(['del', 'order', 'available', 'columns', 'name', 'identifier', 'type', 'description', 'author', 'version', 'jsfilename', '']);
+	showsubtitle(['del', 'order', 'name', 'available', 'columns', 'type', 'jsfilename', '']);
 
 	$flag = false;
 
@@ -119,23 +119,27 @@ if(!submitcheck('editorblocksubmit')) {
 			$editorblock['type'] = 0;
 		}
 		$key_class = 'editorblock_'.$editorblock['class'].'.php';
-		showtablerow('', ['class="td25"', 'class="td25"', 'class="td25"', 'class="td25"', 'class="td31"', 'class="td25"', 'class="td25"', 'class="td31"', 'class="td25"', 'class="td25"', 'class="td25"', 'class="td31"'], [
+		showtablerow('', ['class="td25"', 'class="td25"', 'class="td31"', 'class="td25"', 'class="td31"', 'class="td25"', 'class="td31"', ''], [
 			"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"{$editorblock['blockid']}\">",
 			"<input type=\"text\" class=\"txt\" size=\"2\" name=\"sortnew[{$editorblock['blockid']}]\" value=\"{$editorblock['sort']}\">",
+			(empty($editorblock['plugin']) ? '<em class="lightnum">['.$lang['inbuilt'].']</em> '.dhtmlspecialchars($editorblock['name']) : ' <em class="diffcolor3">['.$lang['plugin'].']</em> '.dhtmlspecialchars($editorblock['name'])).
+			' '.(dhtmlspecialchars($editorblock['version']).($alleditorblock[$key_class]['version'] > $editorblock['version'] ? ' <strong style="color: red;"> -> <a href=\''.ADMINSCRIPT.'?action=editorblock&operation=update&blockid='.$editorblock['blockid'].'&lpp='.$lpp.'&page='.$page.'\' style="color: red;">'.$alleditorblock[$key_class]['version'].'</a></strong>' : '')),
 			"<input class=\"checkbox\" type=\"checkbox\" name=\"availablenew[{$editorblock['blockid']}]\" value=\"1\" ".($editorblock['available'] ? 'checked' : '').'>',
 			"<input class=\"checkbox\" type=\"checkbox\" name=\"columnsnew[{$editorblock['blockid']}]\" value=\"1\" ".($editorblock['columns'] ? 'checked' : '').'>',
-			empty($editorblock['plugin']) ? '<em class="lightnum">['.$lang['inbuilt'].']</em> '.dhtmlspecialchars($editorblock['name']) : dhtmlspecialchars($editorblock['name']).'<br/>'.'<em class="diffcolor3">['.$lang['plugin'].']</em> '.$editorblock['plugin'],
-			dhtmlspecialchars($editorblock['identifier']),
+			//
+			//dhtmlspecialchars($editorblock['identifier']),
 			cplang('editorblock_type_message_'.$editorblock['type']),
-			dhtmlspecialchars($editorblock['description']),
-			$editorblock['copyright'],
-			dhtmlspecialchars($editorblock['version']).($alleditorblock[$key_class]['version'] > $editorblock['version'] ? ' <strong style="color: red;"> -> <a href=\''.ADMINSCRIPT.'?action=editorblock&operation=update&blockid='.$editorblock['blockid'].'&lpp='.$lpp.'&page='.$page.'\' style="color: red;">'.$alleditorblock[$key_class]['version'].'</a></strong>' : ''),
+			//dhtmlspecialchars($editorblock['description']),
+			//$editorblock['copyright'],
 			dhtmlspecialchars($editorblock['filename']),
 			"<div style=\"display: flex; flex-wrap: wrap; gap: 10px;\">
 			<a href=\"".ADMINSCRIPT."?action=editorblock&operation=parser&blockid={$editorblock['blockid']}\" class=\"act\">{$lang['parser']}</a>
 			<a href=\"".ADMINSCRIPT."?action=editorblock&operation=parser&blockid={$editorblock['blockid']}&type=1\" class=\"act\">{$lang['css']}</a>
 			<a href=\"".ADMINSCRIPT."?action=editorblock&operation=parser&blockid={$editorblock['blockid']}&type=2\" class=\"act\">Config</a>
 			</div>"
+		]);
+		showtablerow('', ['class="td25"', 'colspan="7" class="xg1"'], ['',
+			dhtmlspecialchars($editorblock['description'])
 		]);
 	}
 

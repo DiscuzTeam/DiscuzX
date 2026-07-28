@@ -13,12 +13,12 @@ if(!defined('IN_DISCUZ')) {
 class editorblock_inlinecode {
 
 	var $version = '1.0.1';
-	var $name = '行内代码';
+	var $name = 'name';
 	var $available = 1; // 默认启用状态 0:不启用 1:启用
 	var $columns = 1; //  默认是否支持多列 0:不支持 1:支持
 	var $global_css = 1; //  是否追加到全局CSS 0:否 1:是
 	var $identifier = 'inlinecode';
-	var $description = '行内代码';
+	var $description = 'description';
 	var $filename = 'inline-code';
 	var $copyright = '<a href="https://addon.dismall.com/developer-32563.html" target="_blank">云诺</a>';
 	var $type = '0'; // 0:数据类型 1:图片类型 2:附件类型 3:视频类型 4:音频类型 5:文件类型

@@ -2010,3 +2010,4 @@ h3.flb { font-weight: bold; }
 .ss-score-label { font-size: 9px; }
 .team span { min-width: 100%; }
 .itemtitle ul li.current>a span, .itemtitle ul li.hasdropmenu>a span { font-size: 14px; }
+.itemtitle ul li>a span, .itemtitle ul li.hasdropmenu>a span { font-size: 14px; }
