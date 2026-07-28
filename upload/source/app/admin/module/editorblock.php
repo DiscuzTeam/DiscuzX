@@ -56,7 +56,7 @@ function geteditorblocks() {
 						'filename' => $editorblock->filename,
 						'config' => $editorblock->getConfig(),
 						'identifier' => $editorblock->identifier,
-						'description' => $editorblock->description,
+						'description' => lang('editorblock/'.$script, $editorblock->description),
 						'filemtime' => @filemtime($dir.'/'.$entry),
 						'plugin' => $key,
 					];

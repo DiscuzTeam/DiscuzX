@@ -33,10 +33,10 @@ https://www.discuz.vip
 .tm_c { background: {COMMONBG}; }
 .tm_c .o { background: #EEE; }
 .tpclg { padding: 8px 0 4px; }
-	.tpclg h4 { font-weight: 400; width: 222px; }
+	.tpclg h4 { font-weight: 400; width: stretch; }
 	.tpclg h4 span { float: left; }
 	.tpclg h4 .dpbtn { border-width: 1px; }
-	.tpclg .pt { margin: 5px 0; width: 212px; overflow: hidden; }
+	.tpclg .pt { margin: 5px 0; width: stretch; overflow: hidden; }
 		.tpcl { margin: 10px 0; border-top: 1px solid #DDD; }
 			.tpcl li { height: 28px; line-height: 18px; border-top: 1px solid {WRAPBG}; border-bottom: 1px solid #DDD; }
 			.tpcl .copt { height: auto; }
@@ -47,8 +47,8 @@ https://www.discuz.vip
 
 			.tpcl table { width: 100%; }
 				.tpcl td { vertical-align: top; padding: 5px; }
-			.tpcl .labeltxt { display: block; cursor: pointer; width: 100%; background: url({IMGDIR}/arrwd.gif) no-repeat 100% 8px; }
-				.copt .labeltxt { float: left; cursor: default; width: 45px; background: none; color: #09C; }
+			.tpcl .labeltxt { display: block; cursor: pointer; margin-right: 5px; background: url({IMGDIR}/arrwd.gif) no-repeat 100% 8px; }
+				.copt .labeltxt { float: left; cursor: default; margin-right: 5px; background: none; color: #09C; }
 			.tpcl .pc { margin: 3px; }
 			.tpcl img { vertical-align: middle; }
 	.tahfx { overflow: hidden; white-space: nowrap; width: 217px; }

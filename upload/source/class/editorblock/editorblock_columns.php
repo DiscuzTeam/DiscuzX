@@ -13,11 +13,11 @@ if(!defined('IN_DISCUZ')) {
 class editorblock_columns {
 
 	var $version = '1.0.5';
-	var $name = '多列';
+	var $name = 'name';
 	var $available = 1; // 默认启用状态 0:不启用 1:启用
 	var $columns = 0; //  默认是否支持多列 0:不支持 1:支持
 	var $identifier = 'columns';
-	var $description = '多列区块，原生支持，不支持配置，并且本身不支持多列嵌套';
+	var $description = 'description';
 	var $filename = 'editorjs-columns';
 	var $copyright = '<a href="https://addon.dismall.com/developer-32563.html" target="_blank">云诺</a>';
 	var $type = '0'; // 0:数据类型 1:图片类型 2:附件类型 3:视频类型 4:音频类型 5:文件类型
