@@ -24,10 +24,10 @@
 .llst .copt {height:auto}
 .tm_c .o {background:var(--dz-bgb)}
 .tpclg {padding:8px 0 4px}
-.tpclg h4 {font-weight:400}
+.tpclg h4 {font-weight:400; width: stretch;}
 .tpclg h4 span {float:left}
 .tpclg h4 .dpbtn {border-width:1px;border-radius:4px }
-.tpclg .pt {margin:5px 0;width:225px;overflow:hidden}
+.tpclg .pt {margin:5px 0;width:stretch;overflow:hidden}
 .tpcl {margin:10px 0;border-top:1px solid var(--dz-borderb)}
 .tpcl li {*overflow:hidden;*margin-bottom:-2px;height:46px;line-height:34px;border-bottom:1px solid var(--dz-borderb);zoom:1}
 .tpcl .copt {height:auto}
@@ -37,8 +37,8 @@
 .dopt span .crl {width:21px;height:21px;border-style:solid;border-color:var(--dz-borderb);border-width:1px 0 1px 1px}
 .tpcl table {width:100%}
 .tpcl td {vertical-align:top;padding:8px 0}
-.tpcl .labeltxt {display:block;cursor:pointer;width:100%;background:url({IMGDIR}/arrwd.gif) no-repeat 100% 13px}
-.copt .labeltxt {float:left;cursor:default;width:45px;background:none;color:var(--dz-color)}
+.tpcl .labeltxt {display:block;cursor:pointer;margin-right: 5px; background:url({IMGDIR}/arrwd.gif) no-repeat 100% 13px}
+.copt .labeltxt {float:left;cursor:default;margin-right: 5px;background:none;color:var(--dz-color)}
 .tpcl .pc {margin:8px 8px 3px}
 .ie7 .tpcl .pc {margin-top:-2px}
 .tpcl img {vertical-align:middle}

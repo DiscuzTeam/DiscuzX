@@ -2011,3 +2011,4 @@ h3.flb { font-weight: bold; }
 .team span { min-width: 100%; }
 .itemtitle ul li.current>a span, .itemtitle ul li.hasdropmenu>a span { font-size: 14px; }
 .itemtitle ul li>a span, .itemtitle ul li.hasdropmenu>a span { font-size: 14px; }
+.stat_box .statitem em { font-size: 9px; }
