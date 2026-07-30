@@ -1,1 +1,0 @@
-### Thank you for your attention and support to this project, and you are welcome to participate in project improvement through Issue or Pull Request.
