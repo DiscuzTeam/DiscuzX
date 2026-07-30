@@ -371,7 +371,7 @@ function _zoom(obj, zimg, nocover, pn, showexif) {
 		$(zoomid).style.left = '0';
 		$(zoomid).style.margin = '0';
 		$(zoomid).style.display = 'block';
-		
+
 		if($(menuid + '_imglink')) {
 			$(menuid + '_imglink').href = zimg;
 		}
@@ -488,7 +488,7 @@ function _zoom(obj, zimg, nocover, pn, showexif) {
 		var offsetY = (containerHeight - ele.height) / 2;
 		ele.style.left = offsetX + 'px';
 		ele.style.top = offsetY + 'px';
-		
+
 		adjustpn(containerHeight);
 		doane(e);
 	};
@@ -966,7 +966,7 @@ function slideshow(el) {
 			percentEle.innerHTML = (parseInt(this.imgLoaded / this.imgs.length * 100)) + '%';
 			setTimeout(function () {obj.checkLoad();}, 100);
 		} else {
-			if (percentEle) percentEle.parentNode.removeChild(percentEle);
+			if(percentEle.parentNode) percentEle.parentNode.removeChild(percentEle);
 			if(this.slidebar) this.slidebar.style.display = '';
 			this.index = this.length - 1 < 0 ? 0 : this.length - 1;
 			if(this.slideshows.length > 0) {
