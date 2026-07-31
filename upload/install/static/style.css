@@ -175,3 +175,6 @@ transform: rotate(45deg) scale(1); } }
     80% { opacity: 0.3; transform: translateY(18px); }
     100% { opacity: 0; transform: translateY(24px); }
 }
+
+/** Global */
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif }

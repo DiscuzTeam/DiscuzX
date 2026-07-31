@@ -140,7 +140,7 @@ $data = [[
     'stylevarid' => '27',
     'styleid' => '1',
     'variable' => 'threadtitlefont',
-    'substitute' => 'Tahoma,Helvetica,\'Microsoft Yahei\',sans-serif',
+    'substitute' => '-apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen-Sans, Ubuntu, Cantarell, \'Helvetica Neue\', sans-serif',
   ],[
     'stylevarid' => '28',
     'styleid' => '1',
@@ -165,7 +165,7 @@ $data = [[
     'stylevarid' => '32',
     'styleid' => '1',
     'variable' => 'font',
-    'substitute' => 'Tahoma,Helvetica,\'Microsoft Yahei\',sans-serif',
+    'substitute' => '-apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen-Sans, Ubuntu, Cantarell, \'Helvetica Neue\', sans-serif',
   ],[
     'stylevarid' => '33',
     'styleid' => '1',
@@ -380,7 +380,7 @@ $data = [[
     'stylevarid' => '75',
     'styleid' => '2',
     'variable' => 'threadtitlefont',
-    'substitute' => 'Tahoma,Helvetica,\'Microsoft Yahei\',sans-serif',
+    'substitute' => '-apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen-Sans, Ubuntu, Cantarell, \'Helvetica Neue\', sans-serif',
   ],[
     'stylevarid' => '76',
     'styleid' => '2',
@@ -405,7 +405,7 @@ $data = [[
     'stylevarid' => '80',
     'styleid' => '2',
     'variable' => 'font',
-    'substitute' => 'Tahoma,Helvetica,\'Microsoft Yahei\',sans-serif',
+    'substitute' => '-apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen-Sans, Ubuntu, Cantarell, \'Helvetica Neue\', sans-serif',
   ],[
     'stylevarid' => '81',
     'styleid' => '2',
