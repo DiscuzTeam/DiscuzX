@@ -6401,6 +6401,7 @@ URL轉換絕對網址：<pre>
 	'ec_paymentorders_status_1' => '已支付',
 	'ec_paymentorders_status_2' => '已過期',
 	'ec_paymentorders_status_3' => '已退款',
+	'ec_paymentorders_status_4' => '退款中',
 	'ec_paymentorders_callback_tips' => '回調失敗,點擊重試',
 	'ec_paymentorders_no_data' => '目前沒有支付記錄',
 	'ec_paymentorders_refund_amount' => '已退款',

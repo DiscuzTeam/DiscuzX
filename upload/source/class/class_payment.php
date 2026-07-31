@@ -259,6 +259,11 @@ class payment {
 				'status' => 2,
 				'refund_time' => $result['data']['refund_time']
 			]);
+		} elseif($result['code'] == 201) {
+			table_common_payment_refund::t()->update_refund_by_no($refund_no, [
+				'status' => -1,
+				'error' => $result['message']
+			]);
 		} else {
 			table_common_payment_refund::t()->update_refund_by_no($refund_no, [
 				'status' => 2,
@@ -287,6 +292,7 @@ class payment {
 		if($result['code'] == 200) {
 			table_common_payment_refund::t()->update_refund_by_no($refund_no, [
 				'status' => 2,
+				'error' => '',
 				'refund_time' => $result['data']['refund_time']
 			]);
 		} else {
