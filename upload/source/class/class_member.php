@@ -367,7 +367,7 @@ class register_ctl {
 	function on_register() {
 		global $_G;
 
-		$_G['setting']['forgeemail'] = true;
+		$_G['setting']['forgeemail'] = $_G['setting']['regverify'] != 1;
 
 		if(!empty($_G['setting']['account']['registerRedirect']) || !empty($_G['setting']['account']['registerRedirectDefault'])) {
 			if((empty($_GET['fromAccount']) || $_GET['fromAccount'] != formhash()) && empty($_G['cookie']['accountUDAuth'])) {
@@ -643,6 +643,9 @@ class register_ctl {
 					}
 				}
 				$email = strtolower(trim($email));
+				if($this->setting['regverify'] == 1 && !$email) {
+					showmessage('profile_email_illegal');
+				}
 				if(empty($this->setting['ignorepassword'])) {
 					if($_GET['password'] !== $_GET['password2']) {
 						showmessage('profile_passwd_notmatch');
