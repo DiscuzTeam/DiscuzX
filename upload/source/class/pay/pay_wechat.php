@@ -433,7 +433,7 @@ class pay_wechat extends pay_base {
 		$res = json_decode($res, true);
 		if($res['status'] == 'SUCCESS') {
 			return ['code' => 200, 'data' => ['refund_time' => strtotime($res['success_time'])]];
-		} elseif($res['status']) {
+		} elseif($res['status'] == 'PROCESSING') {
 			return ['code' => 201, 'message' => $res['status']];
 		} elseif($res['status']) {
 			return ['code' => 500, 'message' => $res['status']];
