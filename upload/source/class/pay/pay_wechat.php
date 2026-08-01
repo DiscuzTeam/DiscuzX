@@ -73,7 +73,7 @@ class pay_wechat extends pay_base {
 		if($this->settings['ec_wechat_version']) {
 			return $this->v3_wechat_refund($refund_no, $trade_no, $total_amount, $refund_amount, $refund_desc);
 		} else {
-			return $this->wechat_refund($refund_no, $trade_no, $total_amount, $refund_amount, $refund_desc);
+			return ['code' => 500, 'message' => 'API v2 not support refund.'];
 		}
 	}
 
@@ -84,7 +84,7 @@ class pay_wechat extends pay_base {
 		if($this->settings['ec_wechat_version']) {
 			return $this->v3_wechat_refund_query($refund_no);
 		} else {
-			return $this->wechat_refund_status($refund_no);
+			return ['code' => 500, 'message' => 'API v2 not support refund.'];
 		}
 	}
 
@@ -414,7 +414,7 @@ class pay_wechat extends pay_base {
 		$res = json_decode($res, true);
 		if($res['status'] == 'SUCCESS') {
 			return ['code' => 200, 'data' => ['refund_time' => strtotime($res['success_time'])]];
-		} elseif($res['status']) {
+		} elseif($res['status'] == 'PROCESSING') {
 			return ['code' => 201, 'message' => $res['status']];
 		} elseif($res['status']) {
 			return ['code' => 500, 'message' => $res['status']];
@@ -433,7 +433,7 @@ class pay_wechat extends pay_base {
 		$res = json_decode($res, true);
 		if($res['status'] == 'SUCCESS') {
 			return ['code' => 200, 'data' => ['refund_time' => strtotime($res['success_time'])]];
-		} elseif($res['status']) {
+		} elseif($res['status'] == 'PROCESSING') {
 			return ['code' => 201, 'message' => $res['status']];
 		} elseif($res['status']) {
 			return ['code' => 500, 'message' => $res['status']];
