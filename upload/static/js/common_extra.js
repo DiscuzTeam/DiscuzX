@@ -966,7 +966,7 @@ function slideshow(el) {
 			percentEle.innerHTML = (parseInt(this.imgLoaded / this.imgs.length * 100)) + '%';
 			setTimeout(function () {obj.checkLoad();}, 100);
 		} else {
-			if(percentEle.parentNode) percentEle.parentNode.removeChild(percentEle);
+			if(percentEle && percentEle.parentNode) percentEle.parentNode.removeChild(percentEle);
 			if(this.slidebar) this.slidebar.style.display = '';
 			this.index = this.length - 1 < 0 ? 0 : this.length - 1;
 			if(this.slideshows.length > 0) {
