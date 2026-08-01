@@ -348,7 +348,7 @@ class pay_wechat extends pay_base {
 			$order['subject'] = diconv($order['subject'], $_G['charset'], 'UTF-8');
 			$order['description'] = diconv($order['description'], $_G['charset'], 'UTF-8');
 		}
-		$data = ['appid' => $this->settings['appid'], 'mchid' => $this->settings['mch_id'], 'description' => $order['subject'].': '.$order['description'], 'out_trade_no' => $order['out_biz_no'], 'notify_url' => $this->notify_url, 'amount' => ['total' => intval($order['amount']), 'currency' => 'CNY'], 'scene_info' => ['payer_client_ip' => $_G['clientip'], 'h5_info' => ['type' => checkmobile()]]];
+		$data = ['appid' => $this->settings['appid'], 'mchid' => $this->settings['mch_id'], 'description' => $order['subject'].': '.$order['description'], 'out_trade_no' => $order['out_biz_no'], 'notify_url' => $this->notify_url, 'amount' => ['total' => intval($order['amount']), 'currency' => 'CNY'], 'scene_info' => ['payer_client_ip' => $_G['clientip'], 'h5_info' => ['type' => 'Wap']]];
 
 		$api = SDK_WEIXIN_PAY_V3_TRANSACTIONS_H5;
 		$res = $this->v3_wechat_request_json($api, json_encode($data));
@@ -371,7 +371,7 @@ class pay_wechat extends pay_base {
 		}
 		$data = ['appid' => $this->settings['appid'], 'mchid' => $this->settings['mch_id'], 'description' => $order['subject'].': '.$order['description'], 'out_trade_no' => $order['out_biz_no'], 'notify_url' => $this->notify_url, 'amount' => ['total' => intval($order['amount']), 'currency' => 'CNY'], 'payer' => ['openid' => $openid]];
 
-		$api = SDK_WEIXIN_PAY_V3_TRANSACTIONS_H5;
+		$api = SDK_WEIXIN_PAY_V3_TRANSACTIONS_JSAPI;
 		$res = $this->v3_wechat_request_json($api, json_encode($data));
 		$res = json_decode($res, true);
 		if($res['prepay_id']) {
@@ -487,7 +487,8 @@ class pay_wechat extends pay_base {
 	}
 
 	private function v3_wechat_jsapi_authorization($data) {
-		$message = $data['appId']."\n".$data['timeStamp']."\n".$data['nonceStr']."\n".$data['package'];
+		// APIv3 JSAPI 调起支付签名串：每行（含最后一样）都必须以 \n 结尾
+		$message = $data['appId']."\n".$data['timeStamp']."\n".$data['nonceStr']."\n".$data['package']."\n";
 		openssl_sign($message, $sign, $this->settings['v3_private_key'], 'sha256WithRSAEncryption');
 		$sign = base64_encode($sign);
 		return $sign;
@@ -563,6 +564,9 @@ class pay_wechat extends pay_base {
 			'method' => $method,
 			'rawdata' => $json,
 			'encodetype' => 'JSON',
+			// APIv3 returns error info as a JSON body with HTTP 4xx/5xx status.
+			// Must NOT fail-on-error, otherwise the error body is dropped and the caller gets an empty response.
+			'failonerror' => false,
 			'header' => [
 				'Accept' => 'application/json',
 				'Authorization' => 'WECHATPAY2-SHA256-RSA2048 '.$this->v3_wechat_authorization($api, $method, $json)
