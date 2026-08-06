@@ -39,7 +39,7 @@ $lang =
 	'share_article' => '{actor} 分享了您的文章 <a href="{url}" target="_blank">{subject}</a>',
 	'magic_present_note' => '送給您一個道具 <a href="{url}" target="_blank">{name}</a>',
 	'friend_add' => '{actor} 和您成爲了好友',
-	'friend_request' => '{actor} 請求加您爲好友{note}&nbsp;&nbsp;<a onclick="showWindow(this.id, this.href, \'get\', 0);" class="xw1" id="afr_{uid}" href="{url}">批準申請</a>',
+	'friend_request' => '{actor} 請求加您爲好友{note}&nbsp;&nbsp;<a onclick="showWindow(this.id, this.href, \'get\', 0);" class="xw1" id="afr_{uid}" href="{url}">批准申請</a>',
 	'doing_reply' => '{actor} 回覆了您的記錄 <a href="{url}" target="_blank">{summery}</a> &nbsp; <a href="{url}" target="_blank" class="lit">查看</a>',
 	'wall_reply' => '{actor} 回覆了您的 <a href="{url}" target="_blank">留言</a>',
 	'pic_comment_reply' => '{actor} 回覆了您的 <a href="{url}" target="_blank">圖片評論</a>',
@@ -144,7 +144,7 @@ $lang =
 
 	'activity_notice' => '{actor} 申請加入您舉辦的活動 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a>，請審覈 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a>',
 
-	'activity_apply' => '活動 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 的發起人 {actor} 已批準您參加此活動 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
+	'activity_apply' => '活動 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 的發起人 {actor} 已批准您參加此活動 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
 
 	'activity_replenish' => '活動 <a href="forum.php?mod=viewthread&tid={tid}" target="_blank">{subject}</a> 的發起人 {actor} 通知您需要完善活動報名資訊 &nbsp; <a href="forum.php?mod=viewthread&tid={tid}" target="_blank" class="lit">查看 &rsaquo;</a> <div class="quote"><blockquote>{reason}</blockquote></div>',
 

@@ -75,7 +75,7 @@ $lang = [
 
 	'space_update' => '{actor} 被SHOW了一下',
 
-	'active_email_subject' => '您的郵箱激活郵件',
+	'active_email_subject' => '您的郵箱激活電郵',
 	'active_email_msg' => '請複製下面的激活鏈接到瀏覽器進行訪問，以便激活您的郵箱。<br>郵箱激活鏈接:<br><a href="{url}" target="_blank">{url}</a>',
 	'share_space' => '分享了一個用戶',
 	'share_blog' => '分享了一篇日誌',
@@ -107,7 +107,7 @@ $lang = [
 	'not_allow_upload' => '您現在沒有權限上傳圖片',
 	'not_allow_upload_extend' => '不允許上傳{extend}類型的圖片',
 	'files_can_not_exceed_size' => '{extend}類檔案不能超過{size}',
-	'get_passwd_subject' => '取回密碼郵件',
+	'get_passwd_subject' => '取回密碼電郵',
 	'get_passwd_message' => '您只需在提交請求後的三天之內，通過點擊下面的鏈接重置您的密碼：<br />\\1<br />(如果上面不是鏈接形式，請將地址手工粘帖到瀏覽器地址欄再訪問)<br />上面的頁面打開後，輸入新的密碼後提交，之後您即可使用新的密碼登入了。',
 	'file_is_too_big' => '檔案過大',
 
@@ -154,8 +154,8 @@ $lang = [
 	'do_stat_trade' => '發商品',
 	'do_stat_group' => '創建圈子',
 	'do_stat_tgroup' => '圈子',
-	'do_stat_home' => ($_G['setting']['navs'][4]['navname'] ?? ''),
-	'do_stat_forum' => ($_G['setting']['navs'][2]['navname'] ?? '').'發帖量',
+	'do_stat_home' => ($_G['setting']['navs'][4]['navname']??''),
+	'do_stat_forum' => ($_G['setting']['navs'][2]['navname']??'').'發帖量',
 	'do_stat_groupthread' => '髮圈內主題',
 	'do_stat_post' => '主題回覆',
 	'do_stat_grouppost' => '髮圈內回覆',
@@ -310,8 +310,8 @@ $lang = [
 	'spacecp_message_prompt' => '(支持 {msg} 代碼,最大 1000 字)',
 	'card_update_doing' => ' <a class="xi2" href="###">[更新記錄]</a>',
 	'email_acitve_message' => '<i class="fico-email vm fc-i" title="未驗證"></i><span class="xi1 vm">新郵箱({newemail})等待驗證中...</span><br />
-								系統已經向該郵箱發送了一封驗證激活郵件，請查收郵件，進行驗證激活。<br>
-								如果沒有收到驗證郵件，您可以更換一個郵箱，或者<a href="home.php?mod=spacecp&ac=profile&op=password&resend=1&formhash={formhash}" class="xi2">重新接收驗證郵件</a>',
+								系統已經向該郵箱發送了一封驗證激活電郵，請查收電郵，進行驗證激活。<br>
+								如果沒有收到驗證電郵，您可以更換一個郵箱，或者<a href="home.php?mod=spacecp&ac=profile&op=password&resend=1&formhash={formhash}" class="xi2">重新接收驗證電郵</a>',
 	'qq_set_status' => '設定我的QQ在線狀態',
 	'qq_dialog' => '發起QQ聊天',
 

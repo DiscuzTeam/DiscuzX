@@ -154,7 +154,7 @@ $lang = [
 	'uploadstatusmsg5' => '檔案類型限制無法上傳那麼大的附件',
 	'uploadstatusmsg6' => '今日您已無法上傳更多的附件',
 	'uploadstatusmsg7' => '請選擇圖片檔案',
-	'uploadstatusmsg8' => '附件檔案無法保存',
+	'uploadstatusmsg8' => '附件檔案無法儲存',
 	'uploadstatusmsg9' => '沒有合法的檔案被上傳',
 	'uploadstatusmsg10' => '非法操作',
 	'uploadstatusmsg11' => '今日您已無法上傳那麼大的附件',
@@ -213,7 +213,7 @@ $lang = [
 
 	'mob_required_lost' => '必填項目沒有填寫',
 	'mob_sort_selnext' => '請選擇下一級',
-	'mob_sort_emailerr' => '郵件地址不正確',
+	'mob_sort_emailerr' => '電郵地址不正確',
 	'mob_sort_toolong' => '填寫項目長度過長',
 	'mob_sort_numerr' => '數字填寫不正確',
 	'mob_sort_max' => '大於設定最大值',

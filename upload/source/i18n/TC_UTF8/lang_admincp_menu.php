@@ -53,7 +53,7 @@ $lang =
 	'menu_setting_domain' => '域名設定',
 	'menu_setting_user' => '用戶權限',
 	'menu_setting_credits' => '積分設定',
-	'menu_setting_mail' => '郵件設定',
+	'menu_setting_mail' => '電郵設定',
 	'menu_setting_sec' => '防灌水設定',
 	'menu_setting_datetime' => '時間設定',
 	'menu_setting_attachments' => '上傳設定',
@@ -62,6 +62,9 @@ $lang =
 	'menu_setting_uchome' => 'UCHome 設定',
 	'menu_setting_follow' => '廣播設定',
 	'menu_setting_home' => '空間設定',
+	'menu_setting_tpfunctions' => '第三方功能',
+	'menu_setting_weixinshare' => '微信分享',
+	'menu_setting_pwa' => 'PWA 設定',
 	'menu_setting_search' => '搜尋設定',
 	'menu_setting_district' => '地區設定',
 	'menu_setting_ranklist' => '排行榜設定',
@@ -225,7 +228,7 @@ $lang =
 
 	'admincp_title' => $_G['setting']['bbname'].' 管理中心',
 
-	// 企飛版
+	// 企飞版
 	'header_corp' => '企業',
 	'menu_setting_login' => '第三方登入',
 	'menu_setting_wechat' => '微信(服務號)',
@@ -234,7 +237,7 @@ $lang =
 	'menu_setting_ucenter' => 'UCenter',
 	'menu_founder_restful' => 'RESTful 接口',
 
-	// 企業平臺參數資訊
+	// 企业平台参数信息
 	'menu_setting_enterprise' => '企業平臺參數',
 
 	'menu_lang' => '語言包',

@@ -54,10 +54,10 @@ $lang = [
 	'forums_formulaperm_error' => '權限表達式無效',
 	'forums_permformula_error' => '權限斷言表達式無效',
 	'medals_succeed' => '編輯勳章成功 ',
-	'members_no_find_user' => '抱歉，沒有搜尋到用戶',
-	'members_no_find_deluser' => '抱歉，沒有搜尋到需要刪除的用戶',
+	'members_no_find_user' => '抱歉，沒有搜索到用戶',
+	'members_no_find_deluser' => '抱歉，沒有搜索到需要刪除的用戶',
 	'members_delete_succeed' => '符合條件的 {numdeleted} 個用戶被成功刪除',
-	'members_no_find_unarchiveuser' => '抱歉，沒有搜尋到需要移出存檔表的用戶',
+	'members_no_find_unarchiveuser' => '抱歉，沒有搜索到需要移出存檔表的用戶',
 	'members_unarchive_succeed' => '符合條件的 {numunarchived} 個用戶被成功移出存檔表',
 	'members_nonexistence' => '請先輸入您要進行操作的用戶名',
 	'members_edit_nonexistence' => '指定用戶不存在',
@@ -254,8 +254,8 @@ $lang = [
 	'database_export_dos8p3_failed' => '伺服器開啓了 DOS 8.3 檔案名支持，爲避免可能發生的數據庫爆破風險，不允許在線備份數據庫',
 	'database_export_filename_invalid' => '您沒有輸入備份檔案名或檔案名中使用了敏感的擴展名',
 	'database_export_custom_invalid' => '您至少需要選擇一個數據表進行備份',
-	'database_export_file_invalid' => '數據檔案無法保存到伺服器，請檢查目錄屬性',
-	'database_export_zip_invalid' => '壓縮包檔案無法保存到伺服器，請檢查目錄屬性',
+	'database_export_file_invalid' => '數據檔案無法儲存到伺服器，請檢查目錄屬性',
+	'database_export_zip_invalid' => '壓縮包檔案無法儲存到伺服器，請檢查目錄屬性',
 	'database_export_multivol_redirect' => '分卷備份：數據檔案 #{volume} 創建成功，程式將自動繼續',
 	'database_export_succeed' => '數據成功備份至伺服器 <a href="{filename}">{filename}</a> 中<br /><br /><font color="red">出於安全考慮，我們強烈建議您下載數據庫備份檔案後刪除檔案或設定檔案不可通過 URL 訪問。</font>{deletetips}',
 	'database_shell_fail' => 'Shell 權限被禁止或伺服器不支持，無法使用 MySQL Dump 方式備份或恢復數據',
@@ -530,7 +530,7 @@ $lang = [
 	'watermarkpreview_fontpath_error' => '文本水印 TrueType 字體檔案不存在',
 
 	'smilies_delete_invalid' => '您不能直接刪除非空的表情分類，請先返回刪除本分類下的所有表情',
-	'smilies_update_succeed' => '更新成功，在 {smurl} 目錄中共搜尋到 {num} 個尚未啓用的表情，已自動添加到表情分類“{typename}”',
+	'smilies_update_succeed' => '更新成功，在 {smurl} 目錄中共搜索到 {num} 個尚未啓用的表情，已自動添加到表情分類“{typename}”',
 	'smilies_update_error' => '目錄 {smurl} 中沒有找到尚未使用的表情圖片<br />添加表情請通過 FTP 上傳表情圖片到 {smurl} 目錄，然後刷新本頁',
 	'smilies_import_succeed_renamed' => '表情導入成功。導入的表情分類名稱與現有重複，已被自動重命名',
 	'smilies_import_succeed' => '表情導入成功 ',
@@ -768,5 +768,8 @@ $lang = [
 	'qrcodelogin_bind_succeed' => '賬號綁定成功',
 	'qrcodelogin_update_succeed' => '更新成功',
 	'qrcodelogin_closed' => '站長尚未啓用此功能',
+
+	'setting_pwa_logo_error' => 'PWA 圖標上傳失敗，請檢查檔案必須是指定尺寸的正方形 PNG 格式圖片',
+	'setting_pwa_upload_error' => 'PWA 圖標上傳失敗',
 ];
 

@@ -124,8 +124,8 @@ $lang = [
 	'operating_too_fast' => '抱歉，兩次發佈操作太快，請等待 {waittime} 秒再試',
 	'topic_not_exist' => '抱歉，指定的專題不存在',
 	'post_sm_isnull' => '抱歉，您尚未輸入標題或內容',
-	'post_not_allow_save' => '抱歉，您無權保存草稿貼',
-	'post_max_save' => '抱歉，您保存草稿貼的數量超限',
+	'post_not_allow_save' => '抱歉，您無權儲存草稿貼',
+	'post_max_save' => '抱歉，您儲存草稿貼的數量超限',
 	'post_not_allow_reply_save' => '抱歉，您無權回覆草稿貼',
 	'activity_fromtime_error' => '抱歉，活動開始時間格式不正確',
 	'post_edit_delete_succeed' => '主題刪除成功 ',
@@ -196,8 +196,8 @@ $lang = [
 	'theme_does_not_exist' => '抱歉，指定的風格不存在',
 	'trade_credit_invalid' => '抱歉，管理員已關閉積分交易功能',
 	'mail_credit_inadequate' => '抱歉，您沒有足夠的積分來完成此次邀請',
-	'send_result_succeed' => '郵件已送出，您的好友可能需要幾分鐘後才能收到郵件',
-	'send_result_resend_error' => '抱歉，尚未找到相應的邀請記錄, 郵件重發失敗',
+	'send_result_succeed' => '電郵已送出，您的好友可能需要幾分鐘後才能收到電郵',
+	'send_result_resend_error' => '抱歉，尚未找到相應的邀請記錄, 電郵重發失敗',
 	'there_is_no_record_of_invitation_specified' => '您指定的邀請記錄不存在',
 	'no_color_yet' => '抱歉，您尚未對此資訊使用彩色燈',
 	'message_can_not_send_onlyfriend' => '抱歉，該用戶只接收好友發送的短訊',
@@ -491,7 +491,7 @@ $lang = [
 
 	'register_verify_invalid' => '站點設定了人工驗證註冊用戶，請等待驗證通過',
 	'email_verify_invalid' => '抱歉，您在 24 小時內只能提交一次驗證 Email 請求',
-	'email_verify_succeed' => '確認 Email 已發送，請用郵件中提供的方法激活您的賬號',
+	'email_verify_succeed' => '確認 Email 已發送，請用電郵中提供的方法激活您的賬號',
 
 	'getpasswd_illegal' => '抱歉，您所用的 ID 不存在或已過期，無法取回密碼',
 	'getpasswd_succeed' => '您的密碼已重新設定，請使用新密碼登入',
@@ -500,13 +500,13 @@ $lang = [
 	'lostpasswd_many_users_use_email' => '抱歉，存在多個使用此 Email 的用戶，請填寫您需要找回密碼的用戶名',
 	'getpasswd_account_invalid' => '抱歉，創始人、受保護用戶、擁有站點設定權限的用戶不能使用取回密碼功能',
 	'getpasswd_send_succeed' => '取回密碼的方法已通過 Email 發送到您的信箱中，<br />請在 3 天之內修改您的密碼',
-	'getpasswd_has_send' => '您已經發送過取回密碼郵件了，如果您沒有收到，請稍等 {interval} 秒後重試發送取回密碼郵件',
+	'getpasswd_has_send' => '您已經發送過取回密碼電郵了，如果您沒有收到，請稍等 {interval} 秒後重試發送取回密碼電郵',
 	'getpasswd_mobile_verify_succeed' => '安全手機號驗證通過，請修改您的密碼',
 
 	'submit_verify_succeed' => '審覈請求提交成功，現在將返回個人中心',
 
 	'buyinvitecode_no_count' => '未填寫購買邀請碼數量，請返回',
-	'buyinvitecode_email_error' => '郵件地址未填或格式錯誤',
+	'buyinvitecode_email_error' => '電郵地址未填或格式錯誤',
 	'buyinvitecode_no_id' => '沒有找到相應的邀請碼，如有問題請聯繫管理員',
 
 	'faq_content_empty' => '抱歉，指定的幫助項目不存在',
@@ -718,7 +718,7 @@ $lang = [
 	'photos_do_not_support_the_default_settings' => '抱歉，預設相簿不支持本設定',
 	'no_privilege_album_edit' => '抱歉，您沒有權限編輯此相簿',
 	'album_name_errors' => '抱歉，您尚未正確設定相簿名',
-	'spacecp_edit_ok' => '設定保存成功 ',
+	'spacecp_edit_ok' => '設定儲存成功 ',
 	'no_privilege_upload_avatar' => '抱歉，您目前沒有權限上傳頭像',
 	'no_privilege_album_del' => '抱歉，您沒有權限刪除此相簿',
 	'no_privilege_album_delother' => '抱歉，您沒有權限刪除其他人的相簿',
@@ -774,7 +774,7 @@ $lang = [
 	'docomment_error' => '抱歉，請正確指定要評論的記錄',
 
 	'no_privilege_spacedomain' => '抱歉，您沒有權限設定空間域名',
-	'domain_succeed' => '空間域名保存成功 ',
+	'domain_succeed' => '空間域名儲存成功 ',
 
 	'eccredit_order_notfound' => '抱歉，您指定的訂單不存在或已被刪除',
 	'eccredit_rate_repeat' => '抱歉，您不能重複評價',
@@ -824,8 +824,8 @@ $lang = [
 	'space_data_format_invalid' => '數據格式錯誤',
 
 	'close_invite' => '抱歉，您目前還沒有權限邀請好友',
-	'mail_invite_not_allow' => '抱歉，您沒有權限使用郵件邀請',
-	'mail_can_not_be_empty' => '抱歉，郵件列表不能爲空',
+	'mail_invite_not_allow' => '抱歉，您沒有權限使用電郵邀請',
+	'mail_can_not_be_empty' => '抱歉，電郵列表不能爲空',
 	'max_invitenum_error' => '抱歉，24小時內您只能獲得 {maxnum} 個邀請碼',
 
 	'no_flicker_yet' => '抱歉，您尚未對此資訊使用彩虹炫',
@@ -875,12 +875,12 @@ $lang = [
 
 	'profile_passwd_empty' => '請設定新密碼',
 	'profile_passwd_wrong' => '原密碼不正確，您不能修改密碼或 Email 或安全提問',
-	'profile_email_verify' => '確認 Email 已發送，請用郵件中提供的方法激活您的賬號。如果您尚未收到我們發送的系統郵件，請點擊密碼安全中的“重新接收驗證郵件”，或嘗試更換另外一個地址',
-	'profile_succeed' => '個人資料保存成功 ',
-	'send_activate_mail_succeed' => '郵件已發送，可能需要幾分鐘後才能收到郵件',
-	'send_activate_mail_error' => '抱歉，郵件發送失敗，請稍等 {interval} 秒後重試發送驗證激活郵件',
+	'profile_email_verify' => '確認 Email 已發送，請用電郵中提供的方法激活您的賬號。如果您尚未收到我們發送的系統電郵，請點擊密碼安全中的“重新接收驗證電郵”，或嘗試更換另外一個地址',
+	'profile_succeed' => '個人資料儲存成功 ',
+	'send_activate_mail_succeed' => '電郵已發送，可能需要幾分鐘後才能收到電郵',
+	'send_activate_mail_error' => '抱歉，電郵發送失敗，請稍等 {interval} 秒後重試發送驗證激活電郵',
 
-	'no_privilege_sendmailday' => '抱歉，本站尚未開啓郵件提醒功能',
+	'no_privilege_sendmailday' => '抱歉，本站尚未開啓電郵提醒功能',
 	'email_input' => '抱歉，您尚未設定郵箱，請在<a href="home.php?mod=spacecp&ac=profile&op=password">聯繫方式</a>中準確填寫您的郵箱',
 
 	'no_privilege_edithot_share' => '抱歉，您沒有權限調整此分享的熱度',
@@ -1071,7 +1071,7 @@ $lang = [
 	'register_disable' => '抱歉，目前站點禁止新用戶註冊',
 	'register_disable_activation' => '抱歉，目前站點禁止激活',
 	'phone_register_disable' => '您的手機號還未註冊，請註冊賬號再登入',
-	'register_email_send_succeed' => '感謝您註冊 {bbname}，<br />系統給您發送了一封帶有註冊地址的郵件，快去登入郵箱獲取註冊鏈接進行下一步註冊吧',
+	'register_email_send_succeed' => '感謝您註冊 {bbname}，<br />系統給您發送了一封帶有註冊地址的電郵，快去登入郵箱獲取註冊鏈接進行下一步註冊吧',
 	'not_open_registration_invite' => '抱歉，本站目前暫時不允許用戶直接註冊，需要有效的邀請碼才能註冊',
 	'register_rules_agree' => '您必須同意服務條款後才能註冊',
 	'register_activation_message' => '抱歉，您輸入的用戶名 "{username}" 已存在，請登入站點激活此賬號',
@@ -1080,8 +1080,8 @@ $lang = [
 	'register_ctrl' => '抱歉，您的 IP 地址在 {regctrl} 小時內無法註冊',
 	'register_flood_ctrl' => '抱歉，IP 地址在 24 小時內只能註冊 {regfloodctrl} 次',
 	'profile_uid_duplicate' => '抱歉，用戶 ID {uid} 已被佔用',
-	'register_email_verify' => '感謝您註冊 {bbname}，<br />系統給您發送了一封激活郵件，快去登入郵箱激活賬號吧',
-	'register_email_verify_location' => '<a href="home.php?mod=spacecp&ac=profile&op=password">重新接收驗證郵件</a> <a href="home.php?mod=space&do=home">先去逛逛</a>',
+	'register_email_verify' => '感謝您註冊 {bbname}，<br />系統給您發送了一封激活電郵，快去登入郵箱激活賬號吧',
+	'register_email_verify_location' => '<a href="home.php?mod=spacecp&ac=profile&op=password">重新接收驗證電郵</a> <a href="home.php?mod=space&do=home">先去逛逛</a>',
 	'register_manual_verify' => '感謝您的註冊，站點開啓了人工驗證註冊用戶，請等待審覈',
 	'register_manual_verify_location' => '<a href="home.php?mod=space&do=home">先去逛逛</a>',
 	'register_succeed' => '感謝您註冊 {bbname}，現在將以 {usergroup} 身份登入站點',
@@ -1150,13 +1150,13 @@ $lang = [
 	'secmobseccode_send_err_9' => '短信網關異常，請稍候再試。',
 
 
-	'secemailseccode_send_success' => '驗證碼發送成功，請在頁面上輸入郵件驗證碼。',
+	'secemailseccode_send_success' => '驗證碼發送成功，請在頁面上輸入電郵驗證碼。',
 	'secemailseccode_send_failure' => '未知異常，請稍候再試。',
 	'secemailseccode_send_err_1' => '發送驗證碼間隔過短，請稍候再試。',
 	'secemailseccode_send_err_2' => '您一段時間內發送的驗證碼過多，請稍候再試。',
 	'secemailseccode_send_err_4' => '本站點一段時間內發送的驗證碼過多，請稍候再試。',
-	'secemailseccode_send_err_8' => '郵件驗證碼功能已被關閉，請稍候再試。',
-	'secemailseccode_send_err_9' => '郵件服務異常，請稍候再試。',
+	'secemailseccode_send_err_8' => '電郵驗證碼功能已被關閉，請稍候再試。',
+	'secemailseccode_send_err_9' => '電郵服務異常，請稍候再試。',
 
 
 	'profile_secmobile_null' => '請填寫手機號',

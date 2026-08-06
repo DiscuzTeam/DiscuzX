@@ -85,7 +85,7 @@ $lang = [
 
 	'ext_info_succ' => '安裝成功。',
 	'install_submit' => '提交',
-	'install_locked' => '安裝鎖定，已經安裝過了，如果您確定要重新安裝，請到伺服器上刪除<br /> '.str_replace(ROOT_PATH, '', $lockfile).'<br /><br />如果您要進入工具箱，請修改本安裝檔案的檔案名(./install/index.php)，然後用修改後的檔案名訪問',
+	'install_locked' => '安裝鎖定，已經安裝過了，如果您確定要重新安裝，請到伺服器上刪除<br /> '.str_replace(ROOT_PATH,'',$lockfile).'<br /><br />如果您要進入工具箱，請修改本安裝檔案的檔案名(./install/index.php)，然後用修改後的檔案名訪問',
 	'error_stuck_msg' => '安裝進程已經很久沒有進展了，可能相關請求已經因網絡超時或伺服器嚴重錯誤而異常登出',
 	'error_quit_msg' => '您必須解決以上問題，纔可以繼續進行',
 	'error_reinstall_msg' => '您的數據庫可能InnoDB性能不佳，請調高PHP超時時間，刷新頁面嘗試重新安裝',
@@ -158,10 +158,10 @@ $lang = [
 	'admininfo_password_invalid' => '管理員密碼爲空，請填寫',
 	'admininfo_password2_invalid' => '兩次密碼不一致，請檢查',
 
-	'install_dzstandalone' => '<div class="selradio"><input type="radio" id="install_ucenter_standalone"'.(getgpc('install_ucenter') != 'no' ? ' checked="checked"' : '').' name="install_ucenter" value="standalone" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /><label for="install_ucenter_standalone">全新安裝 Discuz! X</label></div>',
-	'install_dzfull' => '<div class="selradio"><input type="radio" id="install_ucenter_yes"'.(getgpc('install_ucenter') != 'no' ? ' checked="checked"' : '').' name="install_ucenter" value="yes" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /><label for="install_ucenter_yes">全新安裝 Discuz! X 與 UCenter Server</label></div>',
-	'install_dzonly' => '<div class="selradio"><input type="radio" id="install_ucenter_no"'.(getgpc('install_ucenter') == 'no' ? ' checked="checked"' : '').' name="install_ucenter" value="no" onclick="if(this.checked)$(\'form_items_2\').style.display=\'\';" /><label for="install_ucenter_no">連接到已經安裝的 UCenter Server</label></div>',
-	'upgrade_upgrade' => '<div class="selradio"><input type="radio" id="upgrade_ucenter_standalone"'.(getgpc('install_ucenter') == 'upgrade' ? ' checked="checked"' : '').' name="install_ucenter" value="upgrade" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /><label for="upgrade_ucenter_standalone">從 Discuz! X3.5 升級</label></div>',
+	'install_dzstandalone' => '<div class="selradio"><input type="radio" id="install_ucenter_standalone"'.(getgpc('install_ucenter')!='no'?' checked="checked"':'').' name="install_ucenter" value="standalone" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /><label for="install_ucenter_standalone">全新安裝 Discuz! X</label></div>',
+	'install_dzfull' => '<div class="selradio"><input type="radio" id="install_ucenter_yes"'.(getgpc('install_ucenter')!='no'?' checked="checked"':'').' name="install_ucenter" value="yes" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /><label for="install_ucenter_yes">全新安裝 Discuz! X 與 UCenter Server</label></div>',
+	'install_dzonly' => '<div class="selradio"><input type="radio" id="install_ucenter_no"'.(getgpc('install_ucenter')=='no'?' checked="checked"':'').' name="install_ucenter" value="no" onclick="if(this.checked)$(\'form_items_2\').style.display=\'\';" /><label for="install_ucenter_no">連接到已經安裝的 UCenter Server</label></div>',
+	'upgrade_upgrade' => '<div class="selradio"><input type="radio" id="upgrade_ucenter_standalone"'.(getgpc('install_ucenter')=='upgrade'?' checked="checked"':'').' name="install_ucenter" value="upgrade" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /><label for="upgrade_ucenter_standalone">從 Discuz! X3.5 升級</label></div>',
 
 	'username' => '管理員賬號',
 	'email' => '管理員 Email',
@@ -174,7 +174,7 @@ $lang = [
 	'tablepre_invalid' => '數據表前綴爲空，或者格式錯誤，請檢查',
 	'admin_username_invalid' => '非法用戶名，用戶名長度不應當超過 15 個英文字符，且不能包含特殊字符，一般是中文，字母或者數字',
 	'admin_password_invalid' => '密碼和上面不一致，請重新輸入',
-	'admin_email_invalid' => 'Email 地址錯誤，此郵件地址已經被使用或者格式無效，請更換爲其他地址',
+	'admin_email_invalid' => 'Email 地址錯誤，此電郵地址已經被使用或者格式無效，請更換爲其他地址',
 	'admin_invalid' => '您的資訊管理員資訊沒有填寫完整，請仔細填寫每個項目',
 	'admin_exist_password_error' => '該用戶已經存在，如果您要設定此用戶爲論壇的管理員，請正確輸入該用戶的密碼，或者請更換論壇管理員的名字',
 
@@ -227,7 +227,7 @@ $lang = [
 	'init_cron_1' => '清空今日發帖數',
 	'init_cron_2' => '清空本月在線時間',
 	'init_cron_3' => '每日數據清理',
-	'init_cron_4' => '生日統計與郵件祝福',
+	'init_cron_4' => '生日統計與電郵祝福',
 	'init_cron_5' => '主題回覆通知',
 	'init_cron_6' => '每日公告清理',
 	'init_cron_7' => '限時操作清理',
@@ -312,7 +312,7 @@ $lang = [
    <li>本產品及所附帶的檔案是作爲不提供任何明確的或隱含的賠償或擔保的形式提供的。</li>
    <li>用戶出於自願而使用本產品，您必須瞭解使用本產品的風險，我們不承諾提供任何形式的技術支持、使用擔保，也不承擔任何因使用本產品而產生問題的相關責任。</li>
    <li>貳道網絡公司不對使用本產品構建的網站中或者論壇中的文章或資訊承擔責任，全部責任由您自行承擔。</li>
-   <li>官方應用中心無法全面監控由第三方上傳至應用中心的應用程式，因此不保證應用程式的合法性、安全性、完整性、真實性或品質等；您從官方應用中心下載應用程式時，同意自行判斷並承擔所有風險，而不依賴於貳道網絡公司及官方應用中心。但在任何情況下，官方應用中心有權依法停止應用中心服務並採取相應行動，包括但不限於對於相關應用程式進行卸載，暫停服務的全部或部分，保存有關記錄，並向有關機關報告。由此對您及第三人可能造成的損失，貳道網絡公司、騰訊公司及官方應用中心不承擔任何直接、間接或者連帶的責任。</li>
+   <li>官方應用中心無法全面監控由第三方上傳至應用中心的應用程式，因此不保證應用程式的合法性、安全性、完整性、真實性或品質等；您從官方應用中心下載應用程式時，同意自行判斷並承擔所有風險，而不依賴於貳道網絡公司及官方應用中心。但在任何情況下，官方應用中心有權依法停止應用中心服務並採取相應行動，包括但不限於對於相關應用程式進行卸載，暫停服務的全部或部分，儲存有關記錄，並向有關機關報告。由此對您及第三人可能造成的損失，貳道網絡公司、騰訊公司及官方應用中心不承擔任何直接、間接或者連帶的責任。</li>
    <li>貳道網絡公司對本產品和服務之及時性、安全性、準確性不作擔保，由於不可抗力因素、貳道網絡公司無法控制的因素（包括黑客攻擊、停斷電等）等造成軟件使用和服務中止或終止，而給您造成損失的，您同意放棄追究貳道網絡公司、騰訊公司責任的全部權利。</li>
    <li>貳道網絡公司特別提請您注意，貳道網絡公司爲了保障公司業務發展和調整的自主權，貳道網絡公司擁有隨時經或未經事先通知而修改服務內容、中止或終止部分或全部軟件使用和服務的權利，修改會公佈於貳道網絡公司網站相關頁面上，一經公佈視爲通知。貳道網絡公司行使修改或中止、終止部分或全部軟件使用和服務的權利而造成損失的，貳道網絡公司、騰訊公司不需對您或任何第三方負責。</li>
 </ol>
@@ -479,7 +479,7 @@ $lang = [
 	'tableprediff' => ' 表前綴('.$_config['db']['1']['tablepre'].')',
 	'database_import_file_illegal' => '數據檔案不存在：可能伺服器不允許上傳檔案或檔案大小超過限制',
 	'database_import_file_write_error' => '數據檔案解壓寫入失敗，請檢查伺服器是否有可寫入權限',
-	'database_import_multivol_prompt' => '分卷數據第一捲成功導入數據庫，您需要自動導入本次備份的其他分卷嗎？',
+	'database_import_multivol_prompt' => '分卷數據第一卷成功導入數據庫，您需要自動導入本次備份的其他分卷嗎？',
 	'database_import_succeed' => '數據已成功導入站點數據庫<br />請在後臺更新快取<br /><span class="red">出於安全考慮，我們強烈建議您刪除備份檔案</span>',
 	'database_import_format_illegal' => '數據檔案非 Discuz! 格式，無法導入',
 	'database_import_confirm' => '導入和當前 Discuz! 版本不一致的數據極有可能產生無法解決的故障，您確定繼續嗎？',

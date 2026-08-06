@@ -11,7 +11,7 @@ if(!defined('IN_DISCUZ')) {
 }
 
 $lang = [
-	'block_diy_nopreview' => '<p>此模組內容包含js代碼，不能立即預覽，請點擊保存後查看</p>',
+	'block_diy_nopreview' => '<p>此模組內容包含js代碼，不能立即預覽，請點擊儲存後查看</p>',
 	'block_diy_summary_html_tag' => '自定義內容錯誤，HTML標籤：',
 	'block_diy_summary_not_closed' => ' 不匹配',
 	'block_all_category' => '全部分類',

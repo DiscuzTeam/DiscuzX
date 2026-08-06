@@ -32,7 +32,7 @@ $lang =
 	'system_init_ok' => '網站系統初始化完成，請<a href="index.php">點擊這裡</a>進入',
 	'backtrace' => '運行資訊',
 	'error_end_message_user' => '本站已經將此出錯資訊詳細記錄，由此給您帶來的訪問不便我們深感歉意<br /><a href="http://{host}">{host}</a>',
-	'error_end_message_admin' => '本站已經將此出錯資訊詳細記錄，並可在管理中心“操作日誌>系統錯誤”中搜尋 BackTraceID 快速定位<br /><a href="http://{host}">{host}</a>',
+	'error_end_message_admin' => '本站已經將此出錯資訊詳細記錄，並可在管理中心“操作日誌>系統錯誤”中搜索 BackTraceID 快速定位<br /><a href="http://{host}">{host}</a>',
 	'suggestion' => '建議您嘗試刷新頁面、關閉所有瀏覽器窗口重新進行操作',
 	'suggestion_user' => '如果無法解決，請您攜帶 BackTraceID 向站點管理員回饋此問題，以便快速定位問題',
 	'suggestion_plugin' => '建議您嘗試在管理中心關閉 <span class="guess">{guess}</span> 插件。如關閉插件後問題解決，請您憑完整截圖聯繫插件供應方獲得幫助',

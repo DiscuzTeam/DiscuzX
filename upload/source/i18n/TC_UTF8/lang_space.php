@@ -103,7 +103,7 @@ $lang = [
 	'blockdata' => ['personalinfo' => '個人資料', 'profile' => '頭像', 'doing' => '記錄', 'feed' => '動態',
 		'blog' => '日誌', 'stickblog' => '置頂日誌', 'album' => '相簿', 'friend' => '好友',
 		'visitor' => '最近訪客', 'wall' => '留言板', 'share' => '分享',
-		'thread' => '主題', 'group' => ($_G['setting']['navs'][3]['navname'] ?? ''), 'music' => '音樂盒',
+		'thread' => '主題', 'group' => ($_G['setting']['navs'][3]['navname']??''), 'music' => '音樂盒',
 		'statistic' => '統計資訊',
 		'block1' => '自由模組1', 'block2' => '自由模組2', 'block3' => '自由模組3',
 		'block4' => '自由模組4', 'block5' => '自由模組5'],
@@ -118,22 +118,21 @@ $lang = [
 	'visitor_list' => '<a href="home.php?mod=space&uid={uid}" target="_blank" class="avt"><em class="{class}"></em><em class="{self}" onclick="javascript:removeVisitor(event, {cuid});" title="刪除訪問足跡"></em>{avatar}</a><p><a href="home.php?mod=space&uid={uid}" title="{username}">{username}</a></p>',
 	'wall_form' => '<div class="space_wall_post">
 						<form action="home.php?mod=spacecp&ac=comment" id="quickcommentform_{uid}" name="quickcommentform_{uid}" method="post" autocomplete="off" onsubmit="ajaxpost(\'quickcommentform_{uid}\', \'return_commentwall_{uid}\');doane(event);">
-							'.($_G['uid'] ? '<span id="message_face" onclick="showFace(this.id, \'comment_message\');return false;" class="cur1"><img src="'.STATICURL.'image/common/facelist.gif" alt="facelist" class="mbn vm" /></span>
+							'.($_G['uid']?'<span id="message_face" onclick="showFace(this.id, \'comment_message\');return false;" class="cur1"><img src="'.STATICURL.'image/common/facelist.gif" alt="facelist" class="mbn vm" /></span>
 							<br /><textarea name="message" id="comment_message" class="pt" rows="3" cols="60" onkeydown="ctrlEnter(event, \'commentsubmit_btn\');" style="width: 90%;"></textarea>
 							<input type="hidden" name="refer" value="home.php?mod=space&uid={uid}" />
 							<input type="hidden" name="id" value="{uid}" />
 							<input type="hidden" name="idtype" value="uid" />
-							<input type="hidden" name="commentsubmit" value="true" />' : ($_G['connectguest'] ? '<div class="pt hm">您需要 <a href="member.php?mod=connect" class="xi2">完善賬號資訊</a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2">綁定已有賬號</a> 後纔可以回帖</div>' : '<div class="pt hm">你需要登入後纔可以留言 <a href="member.php?mod=logging&action=login" onclick="showWindow(\'login\', this.href)" class="xi2">登入</a> | <a href="member.php?mod='.$_G['setting']['regname'].'" class="xi2">'.$_G['setting']['reglinkname'].'</a></div>')).'
-							<p class="ptn"><button '.($_G['uid'] ? 'type="submit"' : 'type="button" onclick="showWindow(\'login\', \'member.php?mod=logging&action=login&guestmessage=yes\')"').' name="commentsubmit_btn" value="true" id="commentsubmit_btn" class="pn"><strong>留言</strong></button></p>
+							<input type="hidden" name="commentsubmit" value="true" />':($_G['connectguest']?'<div class="pt hm">您需要 <a href="member.php?mod=connect" class="xi2">完善賬號資訊</a> 或 <a href="member.php?mod=connect&ac=bind" class="xi2">綁定已有賬號</a> 後纔可以回帖</div>':'<div class="pt hm">你需要登入後纔可以留言 <a href="member.php?mod=logging&action=login" onclick="showWindow(\'login\', this.href)" class="xi2">登入</a> | <a href="member.php?mod='.$_G['setting']['regname'].'" class="xi2">'.$_G['setting']['reglinkname'].'</a></div>')).'
+							<p class="ptn"><button '.($_G['uid']?'type="submit"':'type="button" onclick="showWindow(\'login\', \'member.php?mod=logging&action=login&guestmessage=yes\')"').' name="commentsubmit_btn" value="true" id="commentsubmit_btn" class="pn"><strong>留言</strong></button></p>
 							<input type="hidden" name="handlekey" value="commentwall_{uid}" />
 							<span id="return_commentwall_{uid}"></span>
 							<input type="hidden" name="formhash" value="{FORMHASH}" />
-						</form>'.
-		($_G['uid'] ? '<script type="text/javascript">
+						</form>'.($_G['uid']?'<script type="text/javascript">
 							function succeedhandle_commentwall_{uid}(url, msg, values) {
 								wall_add(values[\'cid\']);
 							}
-						</script>' : '').'
+						</script>':'').'
 					</div>',
 	'wall_li' => '<dl class="bbda cl" id="comment_{cid}_li">
 				<dd class="m avt">
