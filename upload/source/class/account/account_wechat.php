@@ -42,10 +42,9 @@ class account_wechat extends account_base {
 		$referer = $referer ?? account::referer();
 
 		if($this->inEnv()) {
-			list($authcode, $code) = $this->getAuthCode();
 			$query_data = [
 				'appid' => $this->conf['appId'],
-				'redirect_uri' => $this->conf['callbackUrl'].(str_contains($this->conf['callbackUrl'], '?') ? '&' : '?').'authcode='.rawurlencode(substr($authcode.'&referer_url='.rawurlencode($referer), 0)),
+				'redirect_uri' => $this->conf['callbackUrl'].(str_contains($this->conf['callbackUrl'], '?') ? '&' : '?').'referer_url='.rawurlencode($referer),
 			];
 			$url = (new wechat_user(''))->getAuthUrl($query_data);
 		} else {
