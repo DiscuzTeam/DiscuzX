@@ -897,7 +897,6 @@ $lang = [
 	'url_incorrect_format' => 'Sorry, the shared URL format is incorrect',
 	'no_privilege_commentadd' => 'Sorry, you do not have permission to post comments',
 	'do_success_thread_share_mod' => 'Your share was successful, the reply requires administrator approval before being displayed',
-
 	'spacecp_share_repeat' => 'Sorry, you have already shared, please do not share again',
 
 	'showcredit_fuid_error' => 'Sorry, the specified user is not your friend, please confirm',
@@ -1231,3 +1230,4 @@ $lang = [
 
 	'illegal_operation' => 'Illegal operation, please refresh the page and try again',
 ];
+

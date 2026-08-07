@@ -15,3 +15,4 @@ $lang =
 	'gift_name' => 'Red Packet Task',
 	'gift_desc' => 'Apply for this task to receive a red packet',
 	];
+

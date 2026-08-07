@@ -20,3 +20,4 @@ $lang =
 		<li>2. Upload a photo of yourself as your avatar</li>
 		</ul>',
 	];
+

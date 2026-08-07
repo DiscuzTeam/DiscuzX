@@ -51,3 +51,4 @@ $lang =
 	'qrcode_wechat_scan' => 'Please use WeChat to scan the QR code to login',
 
 	];
+

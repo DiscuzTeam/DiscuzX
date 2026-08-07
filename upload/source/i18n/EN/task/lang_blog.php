@@ -20,3 +20,4 @@ $lang =
 		<li>2. On the newly opened page, write your first blog and publish it</li>
 		</ul>',
 	];
+

@@ -12,12 +12,12 @@ $data = [
     'name' => '[Built-in] Tag Template',
     'template' =>
     [
-      'raw' => '<!-- Hot Tags Module -->
+      'raw' => '<!-- PopularTagModule -->
 <div class="tag-cloud-module">
 	<div class="tag-cloud-container">
 		[loop]
 		<a href="{url}"
-		   title="{title} ({related_count} pieces of content)"
+		   title="{title} ({related_count}posts)"
 		   class="tag-cloud-item tag-size-{size_level} tag-color-{color_level}"
 		   data-count="{related_count}"
 		   data-hot="{hot_score}">
@@ -44,7 +44,7 @@ $data = [
       [
       ],
       'loop' => '<a href="{url}"
-		   title="{title} ({related_count} pieces of content)"
+		   title="{title} ({related_count}posts)"
 		   class="tag-cloud-item tag-size-{size_level} tag-color-{color_level}"
 		   data-count="{related_count}"
 		   data-hot="{hot_score}">

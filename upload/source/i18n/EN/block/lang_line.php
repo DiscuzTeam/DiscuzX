@@ -7,13 +7,12 @@
  */
 
 if(!defined('IN_DISCUZ')) {
-        exit('Access Denied');
+	exit('Access Denied');
 }
 
 $lang =
-        [
-        'line_style' => 'Divider Style',
-        'line_style_line' => 'Solid Line',
-        'line_style_dash' => 'Dashed Line',
-        ];
-
+	[
+	'line_style' => 'Divider Style',
+	'line_style_line' => 'Solid Line',
+	'line_style_dash' => 'Dashed Line',
+	];

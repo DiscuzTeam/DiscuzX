@@ -7,13 +7,12 @@
  */
 
 if(!defined('IN_DISCUZ')) {
-        exit('Access Denied');
+	exit('Access Denied');
 }
 
 $lang =
-        [
-        'vedio_url' => 'Video URL',
-        'vedio_width' => 'Video Width',
-        'vedio_height' => 'Video Height',
-        ];
-
+	[
+	'vedio_url' => 'Video URL',
+	'vedio_width' => 'Video Width',
+	'vedio_height' => 'Video Height',
+	];

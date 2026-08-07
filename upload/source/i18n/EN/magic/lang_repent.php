@@ -22,3 +22,4 @@ $lang =
 	'repent_info_user_noperm' => 'Sorry, you can only delete your own posts',
 	'repent_do_not_rushreply' => 'Cannot use this magic item in floor grabbing threads',
 	];
+

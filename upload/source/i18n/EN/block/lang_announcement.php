@@ -7,16 +7,15 @@
  */
 
 if(!defined('IN_DISCUZ')) {
-        exit('Access Denied');
+	exit('Access Denied');
 }
 
 $lang =
-        [
-        'announcement_type' => 'Announcement Type',
-        'announcement_type_text' => 'Text Announcement',
-        'announcement_type_link' => 'Website Link',
-        'announcement_titlelength' => 'Title Length',
-        'announcement_summarylength' => 'Content Length',
-        'announcement_startrow' => 'Start Position',
-        ];
-
+	[
+	'announcement_type' => 'Announcement Type',
+	'announcement_type_text' => 'Text Announcement',
+	'announcement_type_link' => 'Website Link',
+	'announcement_titlelength' => 'Title Length',
+	'announcement_summarylength' => 'Content Length',
+	'announcement_startrow' => 'Start Position',
+	];

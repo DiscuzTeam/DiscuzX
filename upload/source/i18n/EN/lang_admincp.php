@@ -1445,6 +1445,53 @@ $lang =
 	'setting_home_hotuser_defaultpoke' => 'Default Greeting Content',
 	'setting_home_hotuser_defaultpoke_comment' => '(Do not exceed 25 Chinese characters) Set the content that automatic friends greet new users with',
 
+	'setting_weixinshare' => 'WeChat Share' ,
+	'setting_weixinshare_tips' => '<li>After enabled, when users visit the site within WeChat, tapping "···" in the top-right menu and choosing Send to Friend / Share to Moments will use the title, description and thumbnail configured here.</li>
+<li>AppID / AppSecret can be left empty; when empty, the official account credentials already configured under "Third-party Login -> WeChat (Service Account)" will be reused automatically.</li>
+<li>You must add this site\'s domain to "JS Interface Secure Domain" at WeChat Official Platform "Settings -> Official Account Settings -> Feature Settings".</li>
+<li>The share interface requires a verified official account (subscription accounts need WeChat verification).</li>' ,
+	'setting_weixinshare_basic' => 'Basic Settings' ,
+	'setting_weixinshare_enable' => 'Enable WeChat Share' ,
+	'setting_weixinshare_enable_comment' => 'Once enabled, visiting the site in the WeChat browser will automatically inject the WeChat JS-SDK share script' ,
+	'setting_weixinshare_appid' => 'WeChat AppID' ,
+	'setting_weixinshare_appid_comment' => 'If left empty, the AppID configured under "Account -> WeChat" will be reused' ,
+	'setting_weixinshare_appsecret' => 'WeChat AppSecret' ,
+	'setting_weixinshare_appsecret_comment' => 'If left empty, the AppSecret configured under "Account -> WeChat" will be reused' ,
+	'setting_weixinshare_title' => 'Default Share Title' ,
+	'setting_weixinshare_title_comment' => 'Uses the site name when left empty' ,
+	'setting_weixinshare_desc' => 'Default Share Description' ,
+	'setting_weixinshare_img' => 'Default Share Thumbnail' ,
+	'setting_weixinshare_img_comment' => 'Image URL (recommended 300x300 or larger; no thumbnail if left empty)' ,
+	'setting_weixinshare_link' => 'Default Share Link' ,
+	'setting_weixinshare_link_comment' => 'Uses the current page URL when left empty' ,
+	'setting_weixinshare_debug' => 'JS-SDK Debug Mode' ,
+	'setting_weixinshare_debug_comment' => 'When enabled, WeChat will output config validation info; for troubleshooting only' ,
+
+	'setting_pwa_tips' => '<li>PWA (Progressive Web App) lets users "install" the forum to their phone or computer desktop, open it in full screen like a native app, and supports offline caching of visited content.</li>
+<li>Compatibility: best experience on Android Chrome/Edge; installable on desktop Chrome/Edge/Firefox/Safari; iOS/iPadOS requires 16.4 or above and a manual "Add to Home Screen"; older Safari is not supported.</li>
+<li>After enabling, a pwa.js file is generated in the site root directory. If not found, please check directory permissions or copy it from the data/cache/ directory to the site root.</li>' ,
+	'setting_pwa_basic' => 'Basic Configuration' ,
+	'setting_pwa_enable' => 'Enable PWA' ,
+	'setting_pwa_enable_comment' => 'When enabled, the site will inject the manifest and Service Worker; when disabled, no PWA-related tags or scripts are output by the front end' ,
+	'setting_pwa_name' => 'App Name' ,
+	'setting_pwa_name_comment' => 'The full name displayed after installation to the desktop or app list; recommended to match the site name' ,
+	'setting_pwa_short_name' => 'App Short Name' ,
+	'setting_pwa_short_name_comment' => 'Short name shown under the icon or when space is limited; recommended 2-4 Chinese characters' ,
+	'setting_pwa_description' => 'App Description' ,
+	'setting_pwa_description_comment' => 'A one-line description that may be shown in the install prompt or app management, briefly explaining the site\'s purpose' ,
+	'setting_pwa_background_color' => 'Splash Background Color' ,
+	'setting_pwa_background_color_comment' => 'The background color shown at app launch (before first paint), used to avoid white flash; recommended to match the page\'s main background color' ,
+	'setting_pwa_theme_color' => 'Theme Color' ,
+	'setting_pwa_theme_color_comment' => 'The tint color for system UI such as the browser toolbar and task-switching cards; recommended to harmonize with the site\'s navigation bar primary color' ,
+	'setting_pwa_logo_512' => '512×512 Icon' ,
+	'setting_pwa_logo_512_comment' => 'The primary icon used in the install prompt, splash screen and high-resolution devices. Recommended to upload a transparent or padded PNG, keeping a consistent style with other icon sizes' ,
+	'setting_pwa_logo_192' => '192×192 Icon' ,
+	'setting_pwa_logo_192_comment' => 'Used for Android/Chrome desktop shortcuts and low-resolution devices. Uploading separately avoids blur caused by automatic system scaling' ,
+	'setting_pwa_logo_180' => '180×180 Apple Touch Icon' ,
+	'setting_pwa_logo_180_comment' => 'The icon used when iOS/iPadOS "Add to Home Screen" is triggered. iOS automatically crops the icon with rounded corners; recommended to center the subject with padding around it' ,
+	'setting_pwa_logo_32' => '32×32 Browser Icon' ,
+	'setting_pwa_logo_32_comment' => 'Small icon for browser tabs, bookmarks and the address bar. Can be designed separately to fit small-size display' ,
+
 	'setting_domain' => 'Domain Settings',
 	'setting_domain_base' => 'Basic Settings',
 	'setting_domain_base_tips' => "<li>After setting a reserved subdomain, no one can apply for or use that domain</li><li>After enabling subdomains for personal space and groups, you need to set the root domains for <strong>{$_G['setting']['navs'][3]['navname']}</strong> and <strong>{$_G['setting']['navs'][4]['navname']}</strong> in <strong>Root Domain Settings</strong></li>",
@@ -3636,7 +3683,7 @@ China
 	'styles' => 'Template',
 	'styles_admin' => 'Template Management',
 	'styles_list' => 'Template List',
-	'styles_edit' => 'Design Template',
+	'styles_edit' => 'Design template',
 	'styles_vars' => 'Template Variable Configuration',
 	'styles_setting_basic' => 'Basic Settings',
 	'styles_admin_tips' => '<li>If the exported style file is placed in the template directory, the style can be installed directly through style management</li>',
@@ -5883,6 +5930,10 @@ China
 	'plugins_list_available' => 'Enabled Plugins',
 	'plugins_list_unavailable' => 'Disabled Plugins',
 	'plugins_list_new' => 'Uninstalled Plugins',
+	'plugins_hooklist' => 'Hook List' ,
+	'plugins_hooklist_tips' => '<li>This feature lets you browse all currently enabled hooks. You can adjust the display order in the corresponding input boxes; a smaller number means a higher position.</li>' ,
+	'plugins_hooktype_hookscript' => 'PC',
+	'plugins_hooktype_hookscriptmobile' => 'Mobile',
 
 	'medals' => 'Medal',
 	'medals_tips' => '<li>This function is used to set medal information that can be awarded to users. Please fill in the image file name in the medal image, and upload the corresponding image file to the static/image/common/ directory or directly fill in the image URL address.</li>',
@@ -7903,8 +7954,6 @@ url.rewrite-once = (
 	'setting_attach_remote_oss_avatar' => 'User Avatars Uploaded to OSS',
 	'setting_attach_remote_oss_avatar_comment' => 'When enabled, user avatars will be uploaded to OSS instead of UCenter',
 
-	'setting_ftp_remote_-200' => 'OSS parameter error, connection failed',
-
 	'account' => 'Third Party Login',
 	'account_base' => 'Basic Settings',
 	'account_test' => 'Connection Test',
@@ -7974,10 +8023,7 @@ url.rewrite-once = (
 	'wechat_loginUsernameRule_username' => 'Account, may have duplicate names, will automatically jump to "User Custom" after duplicate name',
 	'wechat_loginUsernameRule_userDefine' => 'User Custom',
 	'wechat_base' => 'Parameter Settings',
-	'wechat_tips' => '<li>Before using WeChat login, please enable <a href="'.ADMINSCRIPT.'?action=setting&operation=memory" target="_blank">Global > Performance Optimization > Memory Optimization</a>, and configure to enable Redis.</li>'.
-		'<li>Need to use a verified WeChat Official Account! How to get WeChat Official Account parameters:</li>'.
-		'<li>1. In Settings and Development > Basic Settings, get Developer ID (AppID) and Developer Password (AppSecret);</li>'.
-		'<li>2. In Settings and Development > Official Account Settings > Function Settings, add "Web Page Authorization Domain".</li>',
+	'wechat_tips' => '<li>Before using WeChat login, please enable <a href="'.ADMINSCRIPT.'?action=setting&operation=memory" target="_blank">Global > Performance Optimization > Memory Optimization</a>, and configure to enable Redis.</li>'.'<li>Need to use a verified WeChat Official Account! How to get WeChat Official Account parameters:</li>'.'<li>1. In Settings and Development > Basic Settings, get Developer ID (AppID) and Developer Password (AppSecret);</li>'.'<li>2. In Settings and Development > Official Account Settings > Function Settings, add "Web Page Authorization Domain".</li>',
 	'discuz' => 'Discuz!',
 	'discuz_baseSetting' => 'Basic Parameters',
 	'discuz_allow' => 'Enable',
@@ -8063,8 +8109,8 @@ url.rewrite-once = (
 	'forumportal_sticky_all' => 'Cross-forum Sticky',
 	'forumportal_special_thread' => 'Special Thread',
 	'forumportal_heats' => 'Thread Heat Threshold',
-	'forumportal_recommends' => 'Recommendation Index Threshold',
-	'forumportal_dateline' => 'Thread Publish Time',
+	'forumportal_recommends' => 'Recommendation threshold',
+	'forumportal_dateline' => 'Thread publish time',
 	'forumportal_time_nolimit' => 'Unlimited',
 	'forumportal_time_hour' => 'Within One Hour',
 	'forumportal_time_24hours' => 'Within 24 Hours',
@@ -8091,9 +8137,7 @@ url.rewrite-once = (
 	'setting_credits_add_sub' => 'Add Cycle',
 	'setting_credits_sub_add_tips' => '<li>When you add multiple cycle strategies, credits are only increased or decreased when all strategies are satisfied simultaneously.</li>',
 
-	'restful_api_tips' => '<li>Before using the RESTful API, please enable <a href="'.ADMINSCRIPT.'?action=setting&operation=memory" target="_blank">Global > Performance Optimization > Memory Optimization</a>, and configure to enable Redis.</li>'.
-		'<li>If you encounter errors like "api is invalid", click <a href="'.ADMINSCRIPT.'?action=tools&operation=updatecache" target="_blank"><strong>Update Cache</strong></a> can solve this problem.</li>'.
-		'<li>API development manual, refer to <a href="https://gitee.com/Discuz/discuz-restful-api" target="_blank">Discuz! RESTful API</a></li>',
+	'restful_api_tips' => '<li>Before using the RESTful API, please enable <a href="'.ADMINSCRIPT.'?action=setting&operation=memory" target="_blank">Global > Performance Optimization > Memory Optimization</a>, and configure to enable Redis.</li>'.'<li>If you encounter errors like "api is invalid", click <a href="'.ADMINSCRIPT.'?action=tools&operation=updatecache" target="_blank"><strong>Update Cache</strong></a> can solve this problem.</li>'.'<li>API development manual, refer to <a href="https://gitee.com/Discuz/discuz-restful-api" target="_blank">Discuz! RESTful API</a></li>',
 	'restful_api_list' => 'API List',
 	'restful_api_add' => 'Import API',
 	'restful_app_list' => 'App List',
@@ -8125,12 +8169,7 @@ url.rewrite-once = (
 	'restful_graph_request' => '{api}@{appid} Request Count',
 	'restful_graph_all' => 'All',
 	'restful_global' => 'Global Parameters',
-	'restful_global_detail' => '<p class="mbm"><font class="highlight">appid</font>: The appid of the app in the "App List"</p>'.
-		'<p class="mbm"><font class="highlight">nonce</font>: random string</p>'.
-		'<p class="mbm"><font class="highlight">t</font>: timestamp</p>'.
-		'<p class="mbm"><font class="highlight">token</font>: token obtained from the /token interface</p>'.
-		'<p class="mbm"><font class="highlight">sign</font>: signature, see algorithm below:</p>'.
-		'<p class="mbm">PHP：
+	'restful_global_detail' => '<p class="mbm"><font class="highlight">appid</font>: The appid of the app in the "App List"</p>'.'<p class="mbm"><font class="highlight">nonce</font>: random string</p>'.'<p class="mbm"><font class="highlight">t</font>: timestamp</p>'.'<p class="mbm"><font class="highlight">token</font>: token obtained from the /token interface</p>'.'<p class="mbm"><font class="highlight">sign</font>: signature, see algorithm below:</p>'.'<p class="mbm">PHP：
 					<pre class="colorbox" style="width: 500px">$sign = base64_encode(hash(\'sha256\', $nonce.$t.$secret));</pre></p>
 					<p class="mtm">Javascript：
 					<pre class="colorbox" style="width: 500px">
@@ -8209,7 +8248,7 @@ function getSign(nonce, t, secret) {
 	'qrcodelogin_tips' => '<li>This function is a cloud service provided by WitFrame Cloud Platform. Users can log in to the Admin CP by scanning a QR code with WeChat without entering account password</li><li>First-time use requires setting a binding password. If multiple administrators log in to the backend, you can tell this password to other administrators</li><li>Users with founder status will receive login reminders after following the Discuz! Official Official Account</li><li>Bound users need to re-bind after changing their password</li><li>If you do not want to use this function, you can disable it on the settings page and clear the data</li>',
 	'qrcodelogin_tips2' => '<li>This function is a cloud service provided by WitFrame Cloud Platform. Users can log in to the Admin CP by scanning a QR code with WeChat without entering account password</li><li>Bound users need to re-bind after changing their password</li>',
 	'qrcodelogin_create' => 'Create Binding Password',
-	'qrcodelogin_pwd' => 'Enter Binding Password',
+	'qrcodelogin_pwd' => 'Please enter the binding password',
 	'qrcodelogin_pwd_comment' => 'Password required when binding a new account (please do not use login password)',
 	'qrcodelogin_pwd2' => 'Re-enter the above password',
 	'qrcodelogin_bindaccount' => 'Bind Account',

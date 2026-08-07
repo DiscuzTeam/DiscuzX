@@ -215,3 +215,4 @@ $lang = [
 	'no_permission_to_post' => 'You do not have permission to post.',
 	'click_to_show_reason' => 'Click to view reason',
 ];
+

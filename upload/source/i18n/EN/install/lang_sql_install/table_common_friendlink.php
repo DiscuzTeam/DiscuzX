@@ -11,7 +11,7 @@ $data = [[
     'displayorder' => '0',
     'name' => 'Discuz! Official Forum',
     'url' => 'https://www.discuz.vip/',
-    'description' => 'Provides the latest Discuz! product news, software downloads, and technical discussions',
+    'description' => 'Provides the latest Discuz! product news, software downloads and technical exchange',
     'logo' => 'static/image/common/logo_88_31.gif',
     'type' => '2',
   ],[

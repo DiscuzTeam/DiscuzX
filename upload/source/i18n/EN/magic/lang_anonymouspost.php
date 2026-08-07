@@ -24,3 +24,4 @@ $lang =
 	'anonymouspost_info_user_noperm' => 'Sorry, you cannot use this magic item on this person',
 	'anonymouspost_once_limit' => 'Already in anonymous state, cannot use this magic item repeatedly.',
 	];
+

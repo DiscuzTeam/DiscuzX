@@ -25,3 +25,4 @@ $lang =
 
 	'gift_receive_gift' => 'Receive red packet {percredit} {credittype}',
 	];
+

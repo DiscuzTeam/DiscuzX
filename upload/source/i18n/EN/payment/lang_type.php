@@ -14,3 +14,4 @@ $lang = [
 	'payment_credit' => 'Credit Recharge',
 	'payment_invite' => 'Purchase Invitation Code',
 ];
+

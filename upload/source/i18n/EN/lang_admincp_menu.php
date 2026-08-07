@@ -62,6 +62,9 @@ $lang =
 	'menu_setting_uchome' => 'UCHome Settings',
 	'menu_setting_follow' => 'Broadcast Settings',
 	'menu_setting_home' => 'Space Settings',
+	'menu_setting_tpfunctions' => 'Third-party Features' ,
+	'menu_setting_weixinshare' => 'WeChat Share' ,
+	'menu_setting_pwa' => 'PWA Settings' ,
 	'menu_setting_search' => 'Search Settings',
 	'menu_setting_district' => 'Region Settings',
 	'menu_setting_ranklist' => 'Ranking Settings',
@@ -239,3 +242,4 @@ $lang =
 
 	'menu_lang' => 'Language Pack',
 	];
+

@@ -154,10 +154,10 @@ $lang = [
 	'do_stat_trade' => 'Post Goods',
 	'do_stat_group' => 'Create Group',
 	'do_stat_tgroup' => 'Group',
-	'do_stat_home' => ($_G['setting']['navs'][4]['navname'] ?? ''),
-	'do_stat_forum' => ($_G['setting']['navs'][2]['navname'] ?? '').' Post Volume',
+	'do_stat_home' => ($_G['setting']['navs'][4]['navname']??''),
+	'do_stat_forum' => ($_G['setting']['navs'][2]['navname']??'').' Post Volume',
 	'do_stat_groupthread' => 'Post Group Thread',
-	'do_stat_post' => 'Thread Reply',
+	'do_stat_post' => 'Topic replies',
 	'do_stat_grouppost' => 'Post Group Reply',
 	'do_stat_pic' => 'Post Picture',
 	'do_stat_poll' => 'Post Poll',
@@ -338,3 +338,4 @@ $lang = [
 	'credits_formula_sharings' => 'Shares',
 
 ];
+

@@ -23,7 +23,7 @@ $data = [[
   ],[
     'typeid' => '3',
     'available' => '1',
-    'name' => 'Dull Boy',
+    'name' => 'Silly Boy',
     'type' => 'smiley',
     'displayorder' => '3',
     'directory' => 'grapeman',

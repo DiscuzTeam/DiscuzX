@@ -43,3 +43,4 @@ $lang =
 	'file_upload_error_-103' => 'Upload failed! Cannot write to file or write failed, please go back.',
 	'file_upload_error_-104' => 'Upload failed! Unrecognized image file format, please go back.',
 	];
+

@@ -8,18 +8,18 @@
 
 $data = [[
     'cpgroupid' => '1',
-    'cpgroupname' => 'Portal Administrator',
+    'cpgroupname' => 'PortalAdministrator',
   ],[
     'cpgroupid' => '2',
-    'cpgroupname' => 'Forum Administrator',
+    'cpgroupname' => 'ForumAdministrator',
   ],[
     'cpgroupid' => '3',
-    'cpgroupname' => 'Group Administrator',
+    'cpgroupname' => 'GroupAdministrator',
   ],[
     'cpgroupid' => '4',
-    'cpgroupname' => 'Space Administrator',
+    'cpgroupname' => 'SpaceAdministrator',
   ],[
     'cpgroupid' => '5',
-    'cpgroupname' => 'User Administrator',
+    'cpgroupname' => 'UserAdministrator',
   ],
 ];

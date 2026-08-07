@@ -7,12 +7,12 @@
  */
 
 if(!defined('IN_DISCUZ')) {
-        exit('Access Denied');
+	exit('Access Denied');
 }
 
 $lang =
-        [
-        'blog_name' => 'Space Blog Ad',
-        'blog_desc' => 'Display Mode: Blog ads are displayed on the right side of blogs.',
-        ];
+	[
+	'blog_name' => 'Space Blog Ad',
+	'blog_desc' => 'Display Mode: Blog ads are displayed on the right side of blogs.',
+	];
 

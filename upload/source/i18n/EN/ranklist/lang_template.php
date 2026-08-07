@@ -134,3 +134,4 @@ $lang = [
 	'ranklist_thread_reply' => 'Replies',
 	'thread' => 'Topic',
 ];
+

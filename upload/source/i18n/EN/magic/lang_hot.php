@@ -16,3 +16,4 @@ $lang =
 	'hot_desc' => 'Increase your blog\'s popularity by the site-recommended hot value',
 	'hot_info' => 'Increase your blog\'s popularity by {num} hot values',
 	];
+

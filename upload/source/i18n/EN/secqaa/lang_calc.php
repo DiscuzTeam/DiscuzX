@@ -15,3 +15,4 @@ $lang =
 	'calc_name' => 'Addition and Subtraction within 100',
 	'calc_desc' => 'Randomly display verification Q&A of addition and subtraction within 100',
 	];
+

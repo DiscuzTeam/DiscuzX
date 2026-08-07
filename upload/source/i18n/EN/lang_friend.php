@@ -21,3 +21,4 @@ $lang = [
 	'friend_group_7' => 'Stranger',
 	'friend_group_more' => 'Custom {num}'
 ];
+

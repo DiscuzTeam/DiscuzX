@@ -559,3 +559,4 @@ $lang = [
 	'darkroom_no_search_result' => 'No results found',
 	'post_sm_isnull' => 'Sorry, you have not entered a title or content',
 ];
+

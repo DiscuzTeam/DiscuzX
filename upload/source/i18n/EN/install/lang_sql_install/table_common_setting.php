@@ -31,10 +31,10 @@ $data = [[
 	'svalue' => '8',
 ], [
 	'skey' => 'activitytype',
-	'svalue' => 'Friends Gathering
-Outdoor Trip
-Self-driving Tour
-Charity Activity
+	'svalue' => 'Friend Gathering
+Outing
+Self-driving Trip
+Public Welfare Activity
 Online Activity',
 ], [
 	'skey' => 'adminemail',
@@ -337,7 +337,7 @@ Online Activity',
 	'svalue' => 'posts+digestposts*5+extcredits1*2+extcredits2+extcredits3',
 ], [
 	'skey' => 'creditsformulaexp',
-	'svalue' => '<u>{credits_CREDITS}</u>=<u>{credits_POSTS}</u>+<u>{credits_DIGESTPOSTS}</u>*5+<u>Prestige</u>*2+<u>Money</u>+<u>Contribution</u>',
+	'svalue' => '<u>{credits_CREDITS}</u>=<u>{credits_POSTS}</u>+<u>{credits_DIGESTPOSTS}</u>*5+<u>Prestige</u>*2+<u>Credit</u>+<u>Contribution</u>',
 ], [
 	'skey' => 'creditsnotify',
 	'svalue' => '',
@@ -1157,12 +1157,12 @@ Online Activity',
 	'skey' => 'modreasons',
 	'svalue' => 'Advertisement/SPAM
 Malicious Flooding
-Violation Content
-Irrelevant Content
-Duplicate Post
+Violating Content
+Off-topic Title
+Duplicate Posting
 
-Agreed
-Excellent Article
+I Strongly Agree
+Featured Article
 Original Content',
 ], [
 	'skey' => 'modreasons_public',
@@ -1828,7 +1828,7 @@ Original Content',
 ], [
 	'skey' => 'srchhotkeywords',
 	'svalue' => 'Activity
-Socializing
+Dating
 discuz',
 ], [
 	'skey' => 'stamplistlevel',
@@ -1901,7 +1901,7 @@ discuz',
 	'svalue' => '1000',
 ], [
 	'skey' => 'threadsticky',
-	'svalue' => 'Global Sticky, Category Sticky, Forum Sticky',
+	'svalue' => 'Global Pinned,Category Pinned,This Forum Pinned',
 ], [
 	'skey' => 'thumbheight',
 	'svalue' => '300',
@@ -1954,14 +1954,14 @@ discuz',
 	'skey' => 'userdateformat',
 	'svalue' => 'Y-n-j
 Y/n/j
-n-j-Y
-n/j/Y',
+j-n-Y
+j/n/Y',
 ], [
 	'skey' => 'userreasons',
 	'svalue' => 'Awesome!
-Nonsense
-Great!
-Copycat
+Everything is fleeting
+Thumbs up!
+Knockoff
 Calm',
 ], [
 	'skey' => 'userstatusby',
@@ -2168,11 +2168,11 @@ Calm',
 	'svalue' => '1',
 ], [
 	'skey' => 'welcomemsgtitle',
-	'svalue' => 'Hello {username}, thank you for registering. Please read the following content.',
+	'svalue' => '{username}, hello, thank you for registering, please read the following content.',
 ], [
 	'skey' => 'welcomemsgtxt',
-	'svalue' => 'Dear {username}, you have successfully registered as a member of {sitename}. Please comply with local laws and regulations when posting.
-If you have any questions, please contact the administrator at Email: {adminemail}.
+	'svalue' => 'Dear {username}, you have registered as a member of {sitename}. Please abide by local laws and regulations when posting.
+If you have any questions, please contact the administrator, Email: {adminemail}.
 
 
 {bbname}
@@ -2204,7 +2204,7 @@ If you have any questions, please contact the administrator at Email: {adminemai
 			2 =>
 				[
 					'img' => '',
-					'title' => 'Money',
+					'title' => 'Credit',
 					'unit' => '',
 					'ratio' => 0,
 					'available' => '1',
@@ -2283,7 +2283,7 @@ If you have any questions, please contact the administrator at Email: {adminemai
 	'skey' => 'postnocustom',
 	'svalue' =>
 		[
-			0 => 'Poster',
+			0 => 'Thread Starter',
 			1 => 'Sofa',
 			2 => 'Bench',
 			3 => 'Floor',
@@ -2314,7 +2314,7 @@ If you have any questions, please contact the administrator at Email: {adminemai
 	'svalue' =>
 		[
 			'realname' => 'Real Name',
-			'mobile' => 'Mobile Phone',
+			'mobile' => 'Mobile',
 			'qq' => 'QQ Number',
 		],
 ], [
@@ -2323,12 +2323,12 @@ If you have any questions, please contact the administrator at Email: {adminemai
 		[
 			1 => 'Original',
 			2 => 'Hot',
-			3 => 'Gallery',
-			4 => 'Breaking',
-			5 => 'Headlines',
+			3 => 'Photo Gallery',
+			4 => 'Exclusive',
+			5 => 'Headline',
 			6 => 'Slideshow',
 			7 => 'Scrolling',
-			8 => 'Recommended',
+			8 => 'Recommend',
 		],
 ], [
 	'skey' => 'verify',
@@ -2426,7 +2426,7 @@ If you have any questions, please contact the administrator at Email: {adminemai
 				[
 					'available' => 1,
 					'displayorder' => 2,
-					'title' => 'Education',
+					'title' => 'Education Info',
 					'field' =>
 						[
 							'graduateschool' => 'graduateschool',
@@ -2437,7 +2437,7 @@ If you have any questions, please contact the administrator at Email: {adminemai
 				[
 					'available' => 1,
 					'displayorder' => 3,
-					'title' => 'Work Info',
+					'title' => 'Employment Info',
 					'field' =>
 						[
 							'occupation' => 'occupation',
@@ -2448,7 +2448,7 @@ If you have any questions, please contact the administrator at Email: {adminemai
 				],
 			'info' =>
 				[
-					'title' => 'Personal Info',
+					'title' => 'Personal Information',
 					'available' => '1',
 					'displayorder' => '4',
 					'field' =>

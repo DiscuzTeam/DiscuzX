@@ -7,11 +7,10 @@
  */
 
 if(!defined('IN_DISCUZ')) {
-        exit('Access Denied');
+	exit('Access Denied');
 }
 
 $lang =
-        [
-        'api_url' => 'API URL',
-        ];
-
+	[
+	'api_url' => 'API URL',
+	];

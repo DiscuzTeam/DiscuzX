@@ -321,3 +321,4 @@ $lang = [
 	'display_order' => 'Display Position',
 	'filename' => 'Filename',
 ];
+

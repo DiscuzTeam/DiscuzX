@@ -17,3 +17,4 @@ $lang =
 	'attachsize_info' => 'Add {num} M extra attachment capacity limit',
 	'attachsize_addsize' => 'Increase capacity',
 	];
+

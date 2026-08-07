@@ -144,3 +144,4 @@ or filled in incorrect birthday information. This email will not be sent repeate
 	'email_seccode_code' => 'Your verification code is:',
 	'email_seccode_verify_msg' => 'This is an email verification code sent by {$var[\'bbname\']} ({$var[\'siteurl\']}), this verification code is valid within {$var[\'emailinterval\']} minutes!',
 	];
+

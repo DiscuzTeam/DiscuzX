@@ -1265,7 +1265,7 @@ $lang = [
 	'replystick_icon' => 'Stick',
 	'search_forum' => 'Search Forum',
 	'latest_images' => 'Latest Images',
-	'hot_thread' => 'Hot Thread',
+	'hot_thread' => 'Hot threads',
 	'my_order_collection' => 'My Subscribed Collections',
 	'recommend_collection' => 'Recommended Collections',
 	'rank' => 'Rank',
@@ -1360,3 +1360,4 @@ $lang = [
 
 	'album_click_select' => 'Please click on the selected image',
 ];
+

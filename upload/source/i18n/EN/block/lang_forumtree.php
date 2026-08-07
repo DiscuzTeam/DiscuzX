@@ -7,14 +7,14 @@
  */
 
 if(!defined('IN_DISCUZ')) {
-        exit('Access Denied');
+	exit('Access Denied');
 }
 
 $lang =
-        [
-        'forumtree_name' => 'Forum Tree List',
-        'forumtree_desc' => 'Display forum list in tree form',
-        'forumtree_fids' => 'Displayed Forums',
-        'forumtree_fids_comment' => 'Set forums allowed to display, leave blank to display all forums',
-        ];
+	[
+	'forumtree_name' => 'Forum Tree List',
+	'forumtree_desc' => 'Display forum list in tree form',
+	'forumtree_fids' => 'Displayed Forums',
+	'forumtree_fids_comment' => 'Set forums allowed to display, leave blank to display all forums',
+	];
 

@@ -16,3 +16,4 @@ $lang =
 	'doodle_desc' => 'Use doodle board in blogs and posts',
 	'doodle_info' => 'Use doodle board in blogs and posts',
 	];
+

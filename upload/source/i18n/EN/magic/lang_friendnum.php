@@ -17,3 +17,4 @@ $lang =
 	'friendnum_info' => 'Add {num} extra friend limit',
 	'friendnum_addnum' => 'Increase number of friends',
 	];
+

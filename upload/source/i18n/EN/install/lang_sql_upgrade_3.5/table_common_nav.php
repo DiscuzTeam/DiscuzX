@@ -46,7 +46,7 @@ $data = [[
     'logo' => '',
 ], [
     'parentid' => '0',
-    'name' => 'Post',
+    'name' => 'Publish',
     'title' => '',
     'url' => 'forum.php?mod=misc&action=nav',
     'identifier' => 'post',

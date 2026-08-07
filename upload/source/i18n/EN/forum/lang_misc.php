@@ -292,9 +292,9 @@ $lang =
 	'crime_postreason' => '{reason} &nbsp; <a href="forum.php?mod=redirect&goto=findpost&pid={pid}&ptid={tid}" target="_blank" class="xi2">View Details</a>',
 	'crime_reason' => '{reason}',
 
-	'connectguest_message_search' => ['Not logged in yet', 'Login first'],
-	'connectguest_message_replace' => ['Not yet <a href="member.php?mod=connect" class="xi2">completed account info</a> or <a href="member.php?mod=connect&ac=bind" class="xi2">bound existing account</a> ', 'First <a href="member.php?mod=connect" class="xi2">complete account info</a> or <a href="member.php?mod=connect&ac=bind" class="xi2">bind existing account</a> '],
-	'connectguest_message_mobile_search' => ['Not logged in yet', 'Login first'],
+	'connectguest_message_search' => ['Not logged in', 'Log in first'],
+	'connectguest_message_replace' => ['Not yet <a href="member.php?mod=connect" class="xi2">completed your account info</a> or <a href="member.php?mod=connect&ac=bind" class="xi2">bound an existing account</a> ', 'First <a href="member.php?mod=connect" class="xi2">complete your account info</a> or <a href="member.php?mod=connect&ac=bind" class="xi2">bind an existing account</a> '],
+	'connectguest_message_mobile_search' => ['Not logged in', 'Log in first'],
 	'connectguest_message_mobile_replace' => 'Complete profile or bind existing account on desktop version, ',
 
 	'avatar' => 'Avatar',

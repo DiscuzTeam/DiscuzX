@@ -35,3 +35,4 @@ $lang =
 	'task_complete_act_newreply_thread' => 'Reply to threads in "{value}" {num} times',
 	'task_complete_act_newreply_author' => 'Reply to threads by author "{value}" {num} times',
 	];
+

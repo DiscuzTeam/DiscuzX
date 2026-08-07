@@ -22,3 +22,4 @@ $lang =
 	'post_time' => 'Posted on',
 
 	];
+

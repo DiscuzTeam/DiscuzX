@@ -16,3 +16,4 @@ $lang =
 	'call_desc' => 'Send notifications to your friends to let them view your blog',
 	'call_info' => 'Send notifications to your friends to let them view your blog',
 	];
+

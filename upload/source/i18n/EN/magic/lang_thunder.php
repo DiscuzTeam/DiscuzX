@@ -16,3 +16,4 @@ $lang =
 	'thunder_desc' => 'Post a site-wide feed to notify everyone that you are online',
 	'thunder_info' => 'Post a site-wide feed to notify everyone that you are online',
 	];
+

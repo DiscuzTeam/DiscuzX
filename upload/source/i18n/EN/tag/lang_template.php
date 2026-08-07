@@ -33,4 +33,5 @@ $lang = [
 	'thread_digest' => 'Digest',
 	'none_tag' => 'No Related Tags',
 	'tag_search' => 'Search results show up to 50 items, click the result link to insert the tag directly',
-];
+	];
+

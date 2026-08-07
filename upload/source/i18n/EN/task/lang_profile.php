@@ -23,3 +23,4 @@ $lang =
 		<li>On the newly opened settings page, complete the above profile information</li>
 		</ul>',
 	];
+

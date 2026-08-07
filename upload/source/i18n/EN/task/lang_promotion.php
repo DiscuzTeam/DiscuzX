@@ -17,3 +17,4 @@ $lang =
 	'promotion_complete_var_iplimit' => 'Minimum promotion IP count',
 	'promotion_complete_var_iplimit_comment' => 'The task can only be completed when the daily promotion IP count is greater than or equal to this setting',
 	];
+

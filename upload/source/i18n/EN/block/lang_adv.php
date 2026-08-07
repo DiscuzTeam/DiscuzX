@@ -7,12 +7,11 @@
  */
 
 if(!defined('IN_DISCUZ')) {
-        exit('Access Denied');
+	exit('Access Denied');
 }
 
 $lang =
-        [
-        'adv_title' => 'Or enter name',
-        'adv_adv' => 'Select Ad',
-        ];
-
+	[
+	'adv_title' => 'Or enter name',
+	'adv_adv' => 'Select Ad',
+	];

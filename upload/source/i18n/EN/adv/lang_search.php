@@ -7,12 +7,12 @@
  */
 
 if(!defined('IN_DISCUZ')) {
-        exit('Access Denied');
+	exit('Access Denied');
 }
 
 $lang =
-        [
-        'search_name' => 'Search Right Side Ad',
-        'search_desc' => 'Display Mode: Search right side ads are displayed on the right side of the search results page.',
-        ];
+	[
+	'search_name' => 'Search Right Side Ad',
+	'search_desc' => 'Display Mode: Search right side ads are displayed on the right side of the search results page.',
+	];
 

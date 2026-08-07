@@ -30,3 +30,4 @@ $lang =
 	'highlight_notification' => 'Your thread {subject} was used {magicname} by {actor}, <a href="forum.php?mod=viewthread&tid={tid}">go check it out!</a>',
 	'highlight_notification_blogid' => 'Your blog {subject} was used {magicname} by {actor}, <a href="home.php?mod=space&do=blog&id={blogid}">go check it out!</a>',
 	];
+

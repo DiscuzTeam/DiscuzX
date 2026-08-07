@@ -89,7 +89,7 @@ $data = [[
   ],[
     'styleid' => '3',
     'blockclass' => 'forum_forum',
-    'name' => '[Built-in] Forum Name + Total Posts',
+    'name' => '[Built-in] Forum Name+Total Posts',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -133,7 +133,7 @@ $data = [[
   ],[
     'styleid' => '4',
     'blockclass' => 'forum_forum',
-    'name' => '[Built-in] Forum Name + Total Posts (Ordered)',
+    'name' => '[Built-in] Forum Name+Total Posts(Ordered)',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -177,7 +177,7 @@ $data = [[
   ],[
     'styleid' => '5',
     'blockclass' => 'forum_forum',
-    'name' => '[Built-in] Forum Name + Today\'s Posts',
+    'name' => '[Built-in] Forum Name+Today\'s Posts',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -221,7 +221,7 @@ $data = [[
   ],[
     'styleid' => '6',
     'blockclass' => 'forum_forum',
-    'name' => '[Built-in] Forum Name + Today\'s Posts (Ordered)',
+    'name' => '[Built-in] Forum Name+Today\'s Posts(Ordered)',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -265,7 +265,7 @@ $data = [[
   ],[
     'styleid' => '7',
     'blockclass' => 'forum_forum',
-    'name' => '[Built-in] Forum Name (Two Columns)',
+    'name' => '[Built-in] Forum Name(Two-column)',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl2">
@@ -308,7 +308,7 @@ $data = [[
   ],[
     'styleid' => '8',
     'blockclass' => 'forum_forum',
-    'name' => '[Built-in] Forum Name + Description',
+    'name' => '[Built-in] Forum Name+Intro',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -399,7 +399,7 @@ $data = [[
   ],[
     'styleid' => '10',
     'blockclass' => 'forum_thread',
-    'name' => '[Built-in] Post Title + Reply Count',
+    'name' => '[Built-in] Post Title+Reply Count',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -443,7 +443,7 @@ $data = [[
   ],[
     'styleid' => '11',
     'blockclass' => 'forum_thread',
-    'name' => '[Built-in] Post Title + View Count',
+    'name' => '[Built-in] Post Title+View Count',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -487,7 +487,7 @@ $data = [[
   ],[
     'styleid' => '12',
     'blockclass' => 'forum_thread',
-    'name' => '[Built-in] Post Title + Popularity',
+    'name' => '[Built-in] Post Title+Heat',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -531,7 +531,7 @@ $data = [[
   ],[
     'styleid' => '13',
     'blockclass' => 'forum_thread',
-    'name' => '[Built-in] Post Title + Post Time',
+    'name' => '[Built-in] Post Title+Post Time',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -575,7 +575,7 @@ $data = [[
   ],[
     'styleid' => '14',
     'blockclass' => 'forum_thread',
-    'name' => '[Built-in] Post Title + Last Reply Time',
+    'name' => '[Built-in] Post Title+Last Reply Time',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -619,7 +619,7 @@ $data = [[
   ],[
     'styleid' => '15',
     'blockclass' => 'forum_thread',
-    'name' => '[Built-in] Post Title + Author',
+    'name' => '[Built-in] Post Title+Author',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -664,7 +664,7 @@ $data = [[
   ],[
     'styleid' => '16',
     'blockclass' => 'forum_thread',
-    'name' => '[Built-in] Post Title + Author + Summary',
+    'name' => '[Built-in] Post Title+Author+Summary',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -714,7 +714,7 @@ $data = [[
   ],[
     'styleid' => '17',
     'blockclass' => 'forum_thread',
-    'name' => '[Built-in] Post Title + Summary',
+    'name' => '[Built-in] Post Title+Summary',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -810,7 +810,7 @@ $data = [[
   ],[
     'styleid' => '19',
     'blockclass' => 'forum_thread',
-    'name' => '[Built-in] Post Title (First with Summary)',
+    'name' => '[Built-in] Post Title(First with Summary)',
     'template' =>
     [
       'raw' => '<div class="module cl xl">
@@ -913,7 +913,7 @@ $data = [[
   ],[
     'styleid' => '25',
     'blockclass' => 'group_thread',
-    'name' => '[Built-in] Post Title + Reply Count',
+    'name' => '[Built-in] Post Title+Reply Count',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -957,7 +957,7 @@ $data = [[
   ],[
     'styleid' => '26',
     'blockclass' => 'group_thread',
-    'name' => '[Built-in] Post Title + View Count',
+    'name' => '[Built-in] Post Title+View Count',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -1001,7 +1001,7 @@ $data = [[
   ],[
     'styleid' => '27',
     'blockclass' => 'group_thread',
-    'name' => '[Built-in] Post Title + Popularity',
+    'name' => '[Built-in] Post Title+Heat',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -1045,7 +1045,7 @@ $data = [[
   ],[
     'styleid' => '28',
     'blockclass' => 'group_thread',
-    'name' => '[Built-in] Post Title + Post Time',
+    'name' => '[Built-in] Post Title+Post Time',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -1089,7 +1089,7 @@ $data = [[
   ],[
     'styleid' => '29',
     'blockclass' => 'group_thread',
-    'name' => '[Built-in] Post Title + Last Reply Time',
+    'name' => '[Built-in] Post Title+Last Reply Time',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -1133,7 +1133,7 @@ $data = [[
   ],[
     'styleid' => '30',
     'blockclass' => 'group_thread',
-    'name' => '[Built-in] Post Title + Author',
+    'name' => '[Built-in] Post Title+Author',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -1178,7 +1178,7 @@ $data = [[
   ],[
     'styleid' => '31',
     'blockclass' => 'group_thread',
-    'name' => '[Built-in] Post Title + Author + Summary',
+    'name' => '[Built-in] Post Title+Author+Summary',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -1228,7 +1228,7 @@ $data = [[
   ],[
     'styleid' => '32',
     'blockclass' => 'group_thread',
-    'name' => '[Built-in] Post Title + Summary',
+    'name' => '[Built-in] Post Title+Summary',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -1324,7 +1324,7 @@ $data = [[
   ],[
     'styleid' => '34',
     'blockclass' => 'group_thread',
-    'name' => '[Built-in] Post Title (First with Summary)',
+    'name' => '[Built-in] Post Title(First with Summary)',
     'template' =>
     [
       'raw' => '<div class="module cl xl">
@@ -1427,7 +1427,7 @@ $data = [[
   ],[
     'styleid' => '40',
     'blockclass' => 'group_group',
-    'name' => '[Built-in] Group Name + Member Count',
+    'name' => '[Built-in] Group Name+Member Count',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -1471,7 +1471,7 @@ $data = [[
   ],[
     'styleid' => '41',
     'blockclass' => 'group_group',
-    'name' => '[Built-in] Group Name + Member Count (Ordered)',
+    'name' => '[Built-in] Group Name+Member Count(Ordered)',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -1515,7 +1515,7 @@ $data = [[
   ],[
     'styleid' => '42',
     'blockclass' => 'group_group',
-    'name' => '[Built-in] Group Name + Total Posts',
+    'name' => '[Built-in] Group Name+Total Posts',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -1559,7 +1559,7 @@ $data = [[
   ],[
     'styleid' => '43',
     'blockclass' => 'group_group',
-    'name' => '[Built-in] Group Name + Today\'s Posts',
+    'name' => '[Built-in] Group Name+Today\'s Posts',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -1603,7 +1603,7 @@ $data = [[
   ],[
     'styleid' => '44',
     'blockclass' => 'group_group',
-    'name' => '[Built-in] Group Icon + Name + Description',
+    'name' => '[Built-in] Group Icon+Name+Intro',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -1654,7 +1654,7 @@ $data = [[
   ],[
     'styleid' => '45',
     'blockclass' => 'group_group',
-    'name' => '[Built-in] Group Icon List',
+    'name' => '[Built-in] Group IconList',
     'template' =>
     [
       'raw' => '<div class="module cl ml mls">
@@ -1698,7 +1698,7 @@ $data = [[
   ],[
     'styleid' => '46',
     'blockclass' => 'group_group',
-    'name' => '[Built-in] Group Name (Two Columns)',
+    'name' => '[Built-in] Group Name(Two-column)',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl2">
@@ -1784,7 +1784,7 @@ $data = [[
   ],[
     'styleid' => '48',
     'blockclass' => 'portal_article',
-    'name' => '[Built-in] Article Title + Date',
+    'name' => '[Built-in] Article Title+Time',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -1828,7 +1828,7 @@ $data = [[
   ],[
     'styleid' => '49',
     'blockclass' => 'portal_article',
-    'name' => '[Built-in] Article Title + Date (with Category)',
+    'name' => '[Built-in] Article Title+Time(With Column)',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -1874,7 +1874,7 @@ $data = [[
   ],[
     'styleid' => '50',
     'blockclass' => 'portal_article',
-    'name' => '[Built-in] Article Title + Summary + Thumbnail',
+    'name' => '[Built-in] Article Title+Summary+Thumbnail',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -1925,7 +1925,7 @@ $data = [[
   ],[
     'styleid' => '51',
     'blockclass' => 'portal_article',
-    'name' => '[Built-in] Article Title + Summary',
+    'name' => '[Built-in] Article Title+Summary',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -2021,7 +2021,7 @@ $data = [[
   ],[
     'styleid' => '53',
     'blockclass' => 'portal_article',
-    'name' => '[Built-in] Article Image Slideshow',
+    'name' => '[Built-in] ArticleImage Slideshow',
     'template' =>
     [
       'raw' => '<div class="module cl slidebox">
@@ -2068,7 +2068,7 @@ runslideshow();
   ],[
     'styleid' => '54',
     'blockclass' => 'portal_article',
-    'name' => '[Built-in] Article Image-Text Slideshow',
+    'name' => '[Built-in] ArticleImage TextSlideshow',
     'template' =>
     [
       'raw' => '<div class="module cl xld slideshow">
@@ -2122,7 +2122,7 @@ runslideshow();
   ],[
     'styleid' => '55',
     'blockclass' => 'portal_category',
-    'name' => '[Built-in] Category Name',
+    'name' => '[Built-in] ColumnName',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -2165,7 +2165,7 @@ runslideshow();
   ],[
     'styleid' => '56',
     'blockclass' => 'portal_category',
-    'name' => '[Built-in] Category Name (Two Columns)',
+    'name' => '[Built-in] ColumnName(Two-column)',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl2">
@@ -2251,7 +2251,7 @@ runslideshow();
   ],[
     'styleid' => '58',
     'blockclass' => 'portal_topic',
-    'name' => '[Built-in] Topic Name (Two Columns)',
+    'name' => '[Built-in] Topic Name(Two-column)',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl2">
@@ -2294,7 +2294,7 @@ runslideshow();
   ],[
     'styleid' => '59',
     'blockclass' => 'portal_topic',
-    'name' => '[Built-in] Topic Name + Description + Thumbnail',
+    'name' => '[Built-in] Topic Name+Intro+Thumbnail',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -2345,7 +2345,7 @@ runslideshow();
   ],[
     'styleid' => '60',
     'blockclass' => 'portal_topic',
-    'name' => '[Built-in] Topic Name + Description',
+    'name' => '[Built-in] Topic Name+Intro',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -2486,7 +2486,7 @@ runslideshow();
   ],[
     'styleid' => '63',
     'blockclass' => 'space_doing',
-    'name' => '[Built-in] Avatar + Author + Content',
+    'name' => '[Built-in] Avatar+Author + Content',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -2539,7 +2539,7 @@ runslideshow();
   ],[
     'styleid' => '64',
     'blockclass' => 'space_doing',
-    'name' => '[Built-in] Author + Content (Multi-line) + Time',
+    'name' => '[Built-in] Author + Content(Multi-line)+Time',
     'template' =>
     [
       'raw' => '<div class="module cl xl">
@@ -2585,7 +2585,7 @@ runslideshow();
   ],[
     'styleid' => '65',
     'blockclass' => 'space_blog',
-    'name' => '[Built-in] Blog Title',
+    'name' => '[Built-in] BlogTitle',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -2628,7 +2628,7 @@ runslideshow();
   ],[
     'styleid' => '66',
     'blockclass' => 'space_blog',
-    'name' => '[Built-in] Blog Title + Author',
+    'name' => '[Built-in] BlogTitle+Author',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -2673,7 +2673,7 @@ runslideshow();
   ],[
     'styleid' => '67',
     'blockclass' => 'space_blog',
-    'name' => '[Built-in] Blog Title + Publish Time',
+    'name' => '[Built-in] BlogTitle+PublishTime',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -2717,7 +2717,7 @@ runslideshow();
   ],[
     'styleid' => '68',
     'blockclass' => 'space_blog',
-    'name' => '[Built-in] Blog Title + Comment Count',
+    'name' => '[Built-in] BlogTitle+Comment Count',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -2761,7 +2761,7 @@ runslideshow();
   ],[
     'styleid' => '69',
     'blockclass' => 'space_blog',
-    'name' => '[Built-in] Blog Title + Author + Intro',
+    'name' => '[Built-in] BlogTitle+Author+Intro',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -2811,7 +2811,7 @@ runslideshow();
   ],[
     'styleid' => '70',
     'blockclass' => 'space_blog',
-    'name' => '[Built-in] Blog Thumbnail + Title + Intro',
+    'name' => '[Built-in] BlogThumbnail+Title+Intro',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -2864,7 +2864,7 @@ runslideshow();
   ],[
     'styleid' => '71',
     'blockclass' => 'space_blog',
-    'name' => '[Built-in] Blog Image Slideshow',
+    'name' => '[Built-in] BlogImage Slideshow',
     'template' =>
     [
       'raw' => '<div class="module cl slidebox">
@@ -2959,7 +2959,7 @@ runslideshow();
   ],[
     'styleid' => '73',
     'blockclass' => 'space_album',
-    'name' => '[Built-in] Album List',
+    'name' => '[Built-in] AlbumList',
     'template' =>
     [
       'raw' => '<div class="module cl ml">
@@ -3010,7 +3010,7 @@ runslideshow();
   ],[
     'styleid' => '74',
     'blockclass' => 'space_album',
-    'name' => '[Built-in] Album List + Name + User',
+    'name' => '[Built-in] AlbumList+Name+User',
     'template' =>
     [
       'raw' => '<div class="module cl ml">
@@ -3065,7 +3065,7 @@ runslideshow();
   ],[
     'styleid' => '75',
     'blockclass' => 'space_pic',
-    'name' => '[Built-in] Image List',
+    'name' => '[Built-in] ImageList',
     'template' =>
     [
       'raw' => '<div class="module cl ml">
@@ -3212,7 +3212,7 @@ runslideshow();
   ],[
     'styleid' => '78',
     'blockclass' => 'member_member',
-    'name' => '[Built-in] Username List',
+    'name' => '[Built-in] User NameList',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -3255,7 +3255,7 @@ runslideshow();
   ],[
     'styleid' => '79',
     'blockclass' => 'member_member',
-    'name' => '[Built-in] Avatar + Username + Post Count (Ordered)',
+    'name' => '[Built-in] Avatar+User Name+Post Count(Ordered)',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -3300,7 +3300,7 @@ runslideshow();
   ],[
     'styleid' => '80',
     'blockclass' => 'member_member',
-    'name' => '[Built-in] Avatar + Username + Credits (Ordered)',
+    'name' => '[Built-in] Avatar+User Name+Credit Count(Ordered)',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -3345,7 +3345,7 @@ runslideshow();
   ],[
     'styleid' => '81',
     'blockclass' => 'forum_trade',
-    'name' => '[Built-in] Goods List',
+    'name' => '[Built-in] ProductList',
     'template' =>
     [
       'raw' => '<div class="module cl ml">
@@ -3398,7 +3398,7 @@ runslideshow();
   ],[
     'styleid' => '82',
     'blockclass' => 'forum_activity',
-    'name' => '[Built-in] Activity List',
+    'name' => '[Built-in] ActivityList',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -3407,7 +3407,7 @@ runslideshow();
 	<dd class="m"><a href="{url}"{target}><img src="{pic}" width="{picwidth}" height="{picheight}" alt="{title}" /></a></dd>
 	<dt><a href="{url}" title="{title}"{target}>{title}</a></dt>
 	<dd>{time} {place}</dd>
-	<dd> {applynumber} people have registered</dd>
+	<dd> Already {applynumber} people registered</dd>
 </dl>
 [/loop]
 </div>',
@@ -3432,7 +3432,7 @@ runslideshow();
 	<dd class="m"><a href="{url}"{target}><img src="{pic}" width="{picwidth}" height="{picheight}" alt="{title}" /></a></dd>
 	<dt><a href="{url}" title="{title}"{target}>{title}</a></dt>
 	<dd>{time} {place}</dd>
-	<dd> {applynumber} people have registered</dd>
+	<dd> Already {applynumber} people registered</dd>
 </dl>',
     ],
     'hash' => '3d04a558',
@@ -3453,7 +3453,7 @@ runslideshow();
   ],[
     'styleid' => '83',
     'blockclass' => 'group_trade',
-    'name' => '[Built-in] Goods List',
+    'name' => '[Built-in] ProductList',
     'template' =>
     [
       'raw' => '<div class="module cl ml">
@@ -3506,7 +3506,7 @@ runslideshow();
   ],[
     'styleid' => '84',
     'blockclass' => 'group_activity',
-    'name' => '[Built-in] Activity List',
+    'name' => '[Built-in] ActivityList',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -3515,7 +3515,7 @@ runslideshow();
 	<dd class="m"><a href="{url}"{target}><img src="{pic}" width="{picwidth}" height="{picheight}" alt="{title}" /></a></dd>
 	<dt><a href="{url}" title="{title}"{target}>{title}</a></dt>
 	<dd>{time} {place}</dd>
-	<dd> {applynumber} people have registered</dd>
+	<dd> Already {applynumber} people registered</dd>
 </dl>
 [/loop]
 </div>',
@@ -3540,7 +3540,7 @@ runslideshow();
 	<dd class="m"><a href="{url}"{target}><img src="{pic}" width="{picwidth}" height="{picheight}" alt="{title}" /></a></dd>
 	<dt><a href="{url}" title="{title}"{target}>{title}</a></dt>
 	<dd>{time} {place}</dd>
-	<dd> {applynumber} people have registered</dd>
+	<dd> Already {applynumber} people registered</dd>
 </dl>',
     ],
     'hash' => '502cc3f6',
@@ -3561,7 +3561,7 @@ runslideshow();
   ],[
     'styleid' => '85',
     'blockclass' => 'forum_thread',
-    'name' => '[Built-in] Post Author + Title + Summary (with Avatar)',
+    'name' => '[Built-in] PostAuthor+Title+Summary(With Avatar)',
     'template' =>
     [
       'raw' => '<div class="module cl xld xlda">
@@ -3616,7 +3616,7 @@ runslideshow();
   ],[
     'styleid' => '86',
     'blockclass' => 'portal_article',
-    'name' => '[Built-in] Channel Category + Title',
+    'name' => '[Built-in] Channel Column+Title',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -3661,7 +3661,7 @@ runslideshow();
   ],[
     'styleid' => '87',
     'blockclass' => 'forum_thread',
-    'name' => '[Built-in] Reward Thread Special Style',
+    'name' => '[Built-in] Reward Topic Style',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -3705,7 +3705,7 @@ runslideshow();
   ],[
     'styleid' => '88',
     'blockclass' => 'forum_thread',
-    'name' => '[Built-in] Hot Discussions - Posts',
+    'name' => '[Built-in] Homepage Hot-Post',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -3756,7 +3756,7 @@ runslideshow();
   ],[
     'styleid' => '89',
     'blockclass' => 'group_thread',
-    'name' => '[Built-in] Hot Discussions - Group Posts',
+    'name' => '[Built-in] Homepage Hot-GroupPost',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -3807,7 +3807,7 @@ runslideshow();
   ],[
     'styleid' => '90',
     'blockclass' => 'space_blog',
-    'name' => '[Built-in] Hot Discussions - Blogs',
+    'name' => '[Built-in] Homepage Hot-Blog',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -3858,7 +3858,7 @@ runslideshow();
   ],[
     'styleid' => '91',
     'blockclass' => 'forum_thread',
-    'name' => '[Built-in] Poll Thread Special Style',
+    'name' => '[Built-in] Poll Topic Style',
     'template' =>
     [
       'raw' => '<div class="module cl xld b_poll">
@@ -3906,7 +3906,7 @@ runslideshow();
   ],[
     'styleid' => '92',
     'blockclass' => 'forum_thread',
-    'name' => '[Built-in] Debate Thread Special Style',
+    'name' => '[Built-in] Debate Topic Style',
     'template' =>
     [
       'raw' => '<div class="module cl xld b_debate">
@@ -3954,7 +3954,7 @@ runslideshow();
   ],[
     'styleid' => '93',
     'blockclass' => 'group_activity',
-    'name' => '[Built-in] Group Activity: Large Image + Summary',
+    'name' => '[Built-in] GroupActivity:Large Image+Summary',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -4019,13 +4019,13 @@ runslideshow();
   ],[
     'styleid' => '94',
     'blockclass' => 'group_activity',
-    'name' => '[Built-in] Group Activity: Small Image + Title',
+    'name' => '[Built-in] GroupActivity:Small Image+Title',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
 [loop]
 <dl class="cl">
-<dd class="m"><a href="{url}"{target}><img src="{pic}" width="48" height="48“ alt="{title}" /></a></dd>
+<dd class="m"><a href="{url}"{target}><img src="{pic}" width="48" height="48" alt="{title}" /></a></dd>
 <dt style="padding-bottom: 0;"><a href="{url}" title="{title}"{target}>{title}</a></dt>
 <dd style="margin: 0;"> {time} {place}</dd>
 <dd class="xg1" style="margin: 0;">{applynumber} people following</dd>
@@ -4050,7 +4050,7 @@ runslideshow();
       [
       ],
       'loop' => '<dl class="cl">
-<dd class="m"><a href="{url}"{target}><img src="{pic}" width="48" height="48“ alt="{title}" /></a></dd>
+<dd class="m"><a href="{url}"{target}><img src="{pic}" width="48" height="48" alt="{title}" /></a></dd>
 <dt style="padding-bottom: 0;"><a href="{url}" title="{title}"{target}>{title}</a></dt>
 <dd style="margin: 0;"> {time} {place}</dd>
 <dd class="xg1" style="margin: 0;">{applynumber} people following</dd>
@@ -4074,7 +4074,7 @@ runslideshow();
   ],[
     'styleid' => '95',
     'blockclass' => 'space_album',
-    'name' => '[Built-in] Album List (Vertical Divider)',
+    'name' => '[Built-in] AlbumList(Vertical Bar Separated)',
     'template' =>
     [
       'raw' => '<div class="module cl ml">
@@ -4135,7 +4135,7 @@ runslideshow();
   ],[
     'styleid' => '96',
     'blockclass' => 'space_pic',
-    'name' => '[Built-in] Image List (Vertical Divider)',
+    'name' => '[Built-in] ImageList(Vertical Bar Separated)',
     'template' =>
     [
       'raw' => '<div class="module cl ml">
@@ -4195,7 +4195,7 @@ runslideshow();
   ],[
     'styleid' => '97',
     'blockclass' => 'portal_article',
-    'name' => '[Built-in] Mosaic Article Title List',
+    'name' => '[Built-in] FragmentedArticle TitleList',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -4242,7 +4242,7 @@ runslideshow();
   ],[
     'styleid' => '98',
     'blockclass' => 'portal_article',
-    'name' => '[Built-in] Article Cover List (Vertical Divider)',
+    'name' => '[Built-in] ArticleCoverList(Vertical Bar Separated)',
     'template' =>
     [
       'raw' => '<div class="module cl ml">
@@ -4308,7 +4308,7 @@ runslideshow();
       'raw' => '<div class="module cl">
 <ul>
 [loop]
-<li><img alt="Announcement" src="static/image/common/ann_icon.gif"><a href="{url}" title="{title}"{target}>{title} ({starttime})</a></li>
+<li><img alt="Announcement" src="static/image/common/ann_icon.gif"><a href="{url}" title="{title}"{target}>{title}（{starttime}）</a></li>
 [/loop]
 </ul>
 </div>',
@@ -4329,7 +4329,7 @@ runslideshow();
       'loopplus' =>
       [
       ],
-      'loop' => '<li><img alt="Announcement" src="static/image/common/ann_icon.gif"><a href="{url}" title="{title}"{target}>{title} ({starttime})</a></li>',
+      'loop' => '<li><img alt="Announcement" src="static/image/common/ann_icon.gif"><a href="{url}" title="{title}"{target}>{title}（{starttime}）</a></li>',
     ],
     'hash' => '1f88cc82',
     'getpic' => '0',
@@ -4346,7 +4346,7 @@ runslideshow();
   ],[
     'styleid' => '100',
     'blockclass' => 'forum_thread',
-    'name' => '[Built-in] Post Image-Text Display',
+    'name' => '[Built-in] PostImage TextDisplay',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -4399,7 +4399,7 @@ runslideshow();
   ],[
     'styleid' => '101',
     'blockclass' => 'group_thread',
-    'name' => '[Built-in] Post Image-Text List',
+    'name' => '[Built-in] PostImage TextList',
     'template' =>
     [
       'raw' => '<div class="module cl xld">
@@ -4452,7 +4452,7 @@ runslideshow();
   ],[
     'styleid' => '102',
     'blockclass' => 'group_thread',
-    'name' => '[Built-in] [Group Name] + Group Post Title',
+    'name' => '[Built-in] [Group Name]+Group Post Title',
     'template' =>
     [
       'raw' => '<div class="module cl xl xl1">
@@ -4497,7 +4497,7 @@ runslideshow();
   ],[
     'styleid' => '103',
     'blockclass' => 'other_otherfriendlink',
-    'name' => '[Built-in] Friend Link Image-Text',
+    'name' => '[Built-in] Friend LinkImage Text',
     'template' =>
     [
       'raw' => '<div class="bn lk">
@@ -4548,7 +4548,7 @@ runslideshow();
   ],[
     'styleid' => '104',
     'blockclass' => 'other_otherfriendlink',
-    'name' => '[Built-in] Friend Link Image Only',
+    'name' => '[Built-in] Friend LinkImage Only',
     'template' =>
     [
       'raw' => '<div class="bn lk">
@@ -4592,7 +4592,7 @@ runslideshow();
   ],[
     'styleid' => '105',
     'blockclass' => 'other_otherfriendlink',
-    'name' => '[Built-in] Friend Link Text Only',
+    'name' => '[Built-in] Friend LinkText Only',
     'template' =>
     [
       'raw' => '<div class="x cl">
@@ -4635,7 +4635,7 @@ runslideshow();
   ],[
     'styleid' => '106',
     'blockclass' => 'other_otherstat',
-    'name' => '[Built-in] Full Statistics',
+    'name' => '[Built-in] All Statistics',
     'template' =>
     [
       'raw' => '[loop]<div class="tns">
@@ -4729,7 +4729,7 @@ runslideshow();
   ],[
     'styleid' => '107',
     'blockclass' => 'forum_thread',
-    'name' => '[Built-in] One Intro + Two Column Titles',
+    'name' => '[Built-in] One Intro+Two-column Title',
     'template' =>
     [
       'raw' => '<div class="bm bw0">
@@ -4883,12 +4883,12 @@ runslideshow();
     'name' => '[Built-in] Tag Template',
     'template' =>
     [
-      'raw' => '<!-- Hot Tags Module -->
+      'raw' => '<!-- PopularTagModule -->
 <div class="tag-cloud-module">
 	<div class="tag-cloud-container">
 		[loop]
 		<a href="{url}"
-		   title="{title} ({related_count} contents)"
+		   title="{title} ({related_count}posts)"
 		   class="tag-cloud-item tag-size-{size_level} tag-color-{color_level}"
 		   data-count="{related_count}"
 		   data-hot="{hot_score}">
@@ -4915,7 +4915,7 @@ runslideshow();
       [
       ],
       'loop' => '<a href="{url}"
-		   title="{title} ({related_count} contents)"
+		   title="{title} ({related_count}posts)"
 		   class="tag-cloud-item tag-size-{size_level} tag-color-{color_level}"
 		   data-count="{related_count}"
 		   data-hot="{hot_score}">

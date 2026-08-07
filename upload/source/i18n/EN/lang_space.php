@@ -103,7 +103,7 @@ $lang = [
 	'blockdata' => ['personalinfo' => 'Personal Info', 'profile' => 'Avatar', 'doing' => 'Doings', 'feed' => 'Feeds',
 		'blog' => 'Blogs', 'stickblog' => 'Sticky Blogs', 'album' => 'Albums', 'friend' => 'Friends',
 		'visitor' => 'Recent Visitors', 'wall' => 'Wall', 'share' => 'Shares',
-		'thread' => 'Threads', 'group' => ($_G['setting']['navs'][3]['navname'] ?? ''), 'music' => 'Music Box',
+		'thread' => 'Threads', 'group' => ($_G['setting']['navs'][3]['navname']??''), 'music' => 'Music Box',
 		'statistic' => 'Statistics',
 		'block1' => 'Free Block 1', 'block2' => 'Free Block 2', 'block3' => 'Free Block 3',
 		'block4' => 'Free Block 4', 'block5' => 'Free Block 5'],
@@ -118,22 +118,21 @@ $lang = [
 	'visitor_list' => '<a href="home.php?mod=space&uid={uid}" target="_blank" class="avt"><em class="{class}"></em><em class="{self}" onclick="javascript:removeVisitor(event, {cuid});" title="Remove visit footprint"></em>{avatar}</a><p><a href="home.php?mod=space&uid={uid}" title="{username}">{username}</a></p>',
 	'wall_form' => '<div class="space_wall_post">
 						<form action="home.php?mod=spacecp&ac=comment" id="quickcommentform_{uid}" name="quickcommentform_{uid}" method="post" autocomplete="off" onsubmit="ajaxpost(\'quickcommentform_{uid}\', \'return_commentwall_{uid}\');doane(event);">
-							'.($_G['uid'] ? '<span id="message_face" onclick="showFace(this.id, \'comment_message\');return false;" class="cur1"><img src="'.STATICURL.'image/common/facelist.gif" alt="facelist" class="mbn vm" /></span>
+							'.($_G['uid']?'<span id="message_face" onclick="showFace(this.id, \'comment_message\');return false;" class="cur1"><img src="'.STATICURL.'image/common/facelist.gif" alt="facelist" class="mbn vm" /></span>
 							<br /><textarea name="message" id="comment_message" class="pt" rows="3" cols="60" onkeydown="ctrlEnter(event, \'commentsubmit_btn\');" style="width: 90%;"></textarea>
 							<input type="hidden" name="refer" value="home.php?mod=space&uid={uid}" />
 							<input type="hidden" name="id" value="{uid}" />
 							<input type="hidden" name="idtype" value="uid" />
-							<input type="hidden" name="commentsubmit" value="true" />' : ($_G['connectguest'] ? '<div class="pt hm">You need to <a href="member.php?mod=connect" class="xi2">complete account info</a> or <a href="member.php?mod=connect&ac=bind" class="xi2">bind existing account</a> before you can reply</div>' : '<div class="pt hm">You need to log in to leave a message <a href="member.php?mod=logging&action=login" onclick="showWindow(\'login\', this.href)" class="xi2">Login</a> | <a href="member.php?mod='.$_G['setting']['regname'].'" class="xi2">'.$_G['setting']['reglinkname'].'</a></div>')).'
-							<p class="ptn"><button '.($_G['uid'] ? 'type="submit"' : 'type="button" onclick="showWindow(\'login\', \'member.php?mod=logging&action=login&guestmessage=yes\')"').' name="commentsubmit_btn" value="true" id="commentsubmit_btn" class="pn"><strong>Message</strong></button></p>
+							<input type="hidden" name="commentsubmit" value="true" />':($_G['connectguest']?'<div class="pt hm">You need to <a href="member.php?mod=connect" class="xi2">complete account info</a> or <a href="member.php?mod=connect&ac=bind" class="xi2">bind existing account</a> before you can reply</div>':'<div class="pt hm">You need to log in to leave a message <a href="member.php?mod=logging&action=login" onclick="showWindow(\'login\', this.href)" class="xi2">Login</a> | <a href="member.php?mod='.$_G['setting']['regname'].'" class="xi2">'.$_G['setting']['reglinkname'].'</a></div>')).'
+							<p class="ptn"><button '.($_G['uid']?'type="submit"':'type="button" onclick="showWindow(\'login\', \'member.php?mod=logging&action=login&guestmessage=yes\')"').' name="commentsubmit_btn" value="true" id="commentsubmit_btn" class="pn"><strong>Message</strong></button></p>
 							<input type="hidden" name="handlekey" value="commentwall_{uid}" />
 							<span id="return_commentwall_{uid}"></span>
 							<input type="hidden" name="formhash" value="{FORMHASH}" />
-						</form>'.
-		($_G['uid'] ? '<script type="text/javascript">
+						</form>'.($_G['uid']?'<script type="text/javascript">
 							function succeedhandle_commentwall_{uid}(url, msg, values) {
 								wall_add(values[\'cid\']);
 							}
-						</script>' : '').'
+						</script>':'').'
 					</div>',
 	'wall_li' => '<dl class="bbda cl" id="comment_{cid}_li">
 				<dd class="m avt">
@@ -267,3 +266,4 @@ $lang = [
 
 
 ];
+

@@ -49,7 +49,7 @@ $data = [[
 ], [
     'id' => '3',
     'parentid' => '0',
-    'name' => 'Groups',
+    'name' => 'Group',
     'title' => 'Group',
     'url' => 'group.php',
     'identifier' => '3',
@@ -89,7 +89,7 @@ $data = [[
 ], [
     'id' => '5',
     'parentid' => '0',
-    'name' => 'Plugins',
+    'name' => 'Plugin',
     'title' => 'Plugin',
     'url' => '#',
     'identifier' => '6',
@@ -189,7 +189,7 @@ $data = [[
 ], [
     'id' => '10',
     'parentid' => '0',
-    'name' => 'Thread Collection',
+    'name' => 'Collected Posts',
     'title' => 'Collection',
     'url' => 'forum.php?mod=collection',
     'identifier' => '11',
@@ -209,7 +209,7 @@ $data = [[
 ], [
     'id' => '11',
     'parentid' => '0',
-    'name' => 'Blogs',
+    'name' => 'Blog',
     'title' => 'Blog',
     'url' => 'home.php?mod=space&do=blog',
     'identifier' => '12',
@@ -229,7 +229,7 @@ $data = [[
 ], [
     'id' => '12',
     'parentid' => '0',
-    'name' => 'Albums',
+    'name' => 'Album',
     'title' => 'Album',
     'url' => 'home.php?mod=space&do=album',
     'identifier' => '13',
@@ -269,7 +269,7 @@ $data = [[
 ], [
     'id' => '14',
     'parentid' => '0',
-    'name' => 'Records',
+    'name' => 'Record',
     'title' => 'Doing',
     'url' => 'home.php?mod=space&do=doing',
     'identifier' => '15',
@@ -389,7 +389,7 @@ $data = [[
 ], [
     'id' => '20',
     'parentid' => '0',
-    'name' => 'Ban List',
+    'name' => 'Black Room',
     'title' => '',
     'url' => 'misc.php?mod=darkroom',
     'identifier' => 'darkroom',
@@ -409,7 +409,7 @@ $data = [[
 ], [
     'id' => '21',
     'parentid' => '0',
-    'name' => 'Friends',
+    'name' => 'Friend',
     'title' => '',
     'url' => 'home.php?mod=space&do=friend',
     'identifier' => 'friend',
@@ -429,7 +429,7 @@ $data = [[
 ], [
     'id' => '22',
     'parentid' => '0',
-    'name' => 'Posts',
+    'name' => 'Post',
     'title' => '',
     'url' => 'home.php?mod=space&do=thread&view=me',
     'identifier' => 'thread',
@@ -449,7 +449,7 @@ $data = [[
 ], [
     'id' => '23',
     'parentid' => '0',
-    'name' => 'Favorites',
+    'name' => 'Favorite',
     'title' => '',
     'url' => 'home.php?mod=space&do=favorite&view=me',
     'identifier' => 'favorite',
@@ -469,7 +469,7 @@ $data = [[
 ], [
     'id' => '24',
     'parentid' => '0',
-    'name' => 'Items',
+    'name' => 'Item',
     'title' => '',
     'url' => 'home.php?mod=magic',
     'identifier' => 'magic',
@@ -489,7 +489,7 @@ $data = [[
 ], [
     'id' => '25',
     'parentid' => '0',
-    'name' => 'Medals',
+    'name' => 'Medal',
     'title' => '',
     'url' => 'home.php?mod=medal',
     'identifier' => 'medal',
@@ -509,7 +509,7 @@ $data = [[
 ], [
     'id' => '26',
     'parentid' => '0',
-    'name' => 'Tasks',
+    'name' => 'Task',
     'title' => '',
     'url' => 'home.php?mod=task',
     'identifier' => 'task',
@@ -529,7 +529,7 @@ $data = [[
 ], [
     'id' => '27',
     'parentid' => '0',
-    'name' => 'Thread Collection',
+    'name' => 'Collected Posts',
     'title' => '',
     'url' => 'forum.php?mod=collection&op=my',
     'identifier' => 'collection',
@@ -569,7 +569,7 @@ $data = [[
 ], [
     'id' => '29',
     'parentid' => '0',
-    'name' => 'Blogs',
+    'name' => 'Blog',
     'title' => '',
     'url' => 'home.php?mod=space&do=blog',
     'identifier' => 'blog',
@@ -589,7 +589,7 @@ $data = [[
 ], [
     'id' => '30',
     'parentid' => '0',
-    'name' => 'Albums',
+    'name' => 'Album',
     'title' => '',
     'url' => 'home.php?mod=space&do=album',
     'identifier' => 'album',
@@ -629,7 +629,7 @@ $data = [[
 ], [
     'id' => '32',
     'parentid' => '0',
-    'name' => 'Records',
+    'name' => 'Record',
     'title' => '',
     'url' => 'home.php?mod=space&do=doing',
     'identifier' => 'doing',
@@ -649,7 +649,7 @@ $data = [[
 ], [
     'id' => '33',
     'parentid' => '0',
-    'name' => 'Message Board',
+    'name' => 'Guestbook',
     'title' => '',
     'url' => 'home.php?mod=space&do=wall',
     'identifier' => 'wall',
@@ -689,7 +689,7 @@ $data = [[
 ], [
     'id' => '35',
     'parentid' => '0',
-    'name' => 'Groups',
+    'name' => 'Group',
     'title' => '',
     'url' => 'group.php',
     'identifier' => 'group',
@@ -849,7 +849,7 @@ $data = [[
 ], [
     'id' => '45',
     'parentid' => '0',
-    'name' => 'Blogs',
+    'name' => 'Blog',
     'title' => '',
     'url' => 'home.php?mod=space&do=blog',
     'identifier' => 'blog',

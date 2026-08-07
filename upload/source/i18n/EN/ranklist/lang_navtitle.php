@@ -69,3 +69,4 @@ $lang = [
 	'ranklist_title_app_today' => 'Today\'s App Activity Ranking',
 	'ranklist_title_app_all' => 'Most Popular Apps',
 ];
+

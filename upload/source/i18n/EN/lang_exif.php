@@ -13,8 +13,8 @@ if(!defined('IN_DISCUZ')) {
 $lang = [
 
 	'unknown' => 'Unknown',
-	'resolutionunit' => ['', '', 'Inch', 'Centimeter'],
-	'exposureprogram' => ['Undefined', 'Manual', 'Standard Program', 'Aperture Priority', 'Shutter Priority', 'Depth Priority', 'Sport Mode', 'Portrait Mode', 'Landscape Mode'],
+	'resolutionunit' => ['', '', 'inches', 'cm'],
+	'exposureprogram' => ['Undefined', 'Manual', 'Standard program', 'Aperture priority', 'Shutter priority', 'Depth of field priority', 'Sports mode', 'Portrait mode', 'Landscape mode'],
 	'meteringmode' => [
 		'0' => 'Unknown',
 		'1' => 'Average',
@@ -39,7 +39,7 @@ $lang = [
 		'22' => 'D75',
 		'255' => 'Other'
 	],
-	'img_info' => ['File Info' => 'No image EXIF info'],
+	'img_info' => ['File Info' => 'No image EXIF information' ],
 
 	'FileName' => 'File Name',
 	'FileType' => 'File Type',
@@ -96,3 +96,4 @@ $lang = [
 	'ThumbFileType' => 'Thumbnail File Format',
 	'ThumbMimeType' => 'Thumbnail MIME Format'
 ];
+

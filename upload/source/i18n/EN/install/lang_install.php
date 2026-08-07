@@ -85,7 +85,7 @@ $lang = [
 
 	'ext_info_succ' => 'Installation successful.',
 	'install_submit' => 'Submit',
-	'install_locked' => 'Installation locked. Already installed. If you are sure you want to reinstall, please delete on the server<br /> '.str_replace(ROOT_PATH, '', $lockfile).'<br /><br />If you want to access the Toolbox, please rename this installation file (./install/index.php), then access using the modified filename',
+	'install_locked' => 'Installation locked. Already installed. If you are sure you want to reinstall, please delete on the server<br /> '.str_replace(ROOT_PATH,'',$lockfile).'<br /><br />If you want to access the Toolbox, please rename this installation file (./install/index.php), then access using the modified filename',
 	'error_stuck_msg' => 'The installation process has not progressed for a long time. The request may have exited abnormally due to network timeout or severe server error',
 	'error_quit_msg' => 'You must resolve the above issues before continuing',
 	'error_reinstall_msg' => 'Your database may have poor InnoDB performance. Please increase the PHP timeout, refresh the page and try reinstalling',
@@ -158,10 +158,10 @@ $lang = [
 	'admininfo_password_invalid' => 'Administrator password is empty, please fill in',
 	'admininfo_password2_invalid' => 'The two passwords do not match, please check',
 
-	'install_dzstandalone' => '<div class="selradio"><input type="radio" id="install_ucenter_standalone"'.(getgpc('install_ucenter') != 'no' ? ' checked="checked"' : '').' name="install_ucenter" value="standalone" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /><label for="install_ucenter_standalone">Fresh Install Discuz! X</label></div>',
-	'install_dzfull' => '<div class="selradio"><input type="radio" id="install_ucenter_yes"'.(getgpc('install_ucenter') != 'no' ? ' checked="checked"' : '').' name="install_ucenter" value="yes" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /><label for="install_ucenter_yes">Fresh Install Discuz! X with UCenter Server</label></div>',
-	'install_dzonly' => '<div class="selradio"><input type="radio" id="install_ucenter_no"'.(getgpc('install_ucenter') == 'no' ? ' checked="checked"' : '').' name="install_ucenter" value="no" onclick="if(this.checked)$(\'form_items_2\').style.display=\'\';" /><label for="install_ucenter_no">Connect to Existing UCenter Server</label></div>',
-	'upgrade_upgrade' => '<div class="selradio"><input type="radio" id="upgrade_ucenter_standalone"'.(getgpc('install_ucenter') == 'upgrade' ? ' checked="checked"' : '').' name="install_ucenter" value="upgrade" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /><label for="upgrade_ucenter_standalone">Upgrade from Discuz! X3.5</label></div>',
+	'install_dzstandalone' => '<div class="selradio"><input type="radio" id="install_ucenter_standalone"'.(getgpc('install_ucenter')!='no'?' checked="checked"':'').' name="install_ucenter" value="standalone" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /><label for="install_ucenter_standalone">Fresh Install Discuz! X</label></div>',
+	'install_dzfull' => '<div class="selradio"><input type="radio" id="install_ucenter_yes"'.(getgpc('install_ucenter')!='no'?' checked="checked"':'').' name="install_ucenter" value="yes" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /><label for="install_ucenter_yes">Fresh Install Discuz! X with UCenter Server</label></div>',
+	'install_dzonly' => '<div class="selradio"><input type="radio" id="install_ucenter_no"'.(getgpc('install_ucenter')=='no'?' checked="checked"':'').' name="install_ucenter" value="no" onclick="if(this.checked)$(\'form_items_2\').style.display=\'\';" /><label for="install_ucenter_no">Connect to Existing UCenter Server</label></div>',
+	'upgrade_upgrade' => '<div class="selradio"><input type="radio" id="upgrade_ucenter_standalone"'.(getgpc('install_ucenter')=='upgrade'?' checked="checked"':'').' name="install_ucenter" value="upgrade" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /><label for="upgrade_ucenter_standalone">Upgrade from Discuz! X3.5</label></div>',
 
 	'username' => 'Administrator Account',
 	'email' => 'Administrator Email',
@@ -497,7 +497,7 @@ $lang = [
 ];
 
 $msglang = array(
-	'config_nonexistence' => 'Configuration file does not exist',
+	'config_nonexistence' => 'Your config.inc.php does not exist. Installation cannot continue. Please upload the file via FTP and try again.',
 );
 
 ?>

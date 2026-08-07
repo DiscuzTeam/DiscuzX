@@ -13,6 +13,6 @@ $data = [[
     'adminid' => '0',
     'dateline' => '0',
     'expiration' => '0',
-    'message' => 'Thank you for installing Discuz! X. This is the Discuz! Admin Panel, where you can adjust various settings of your site.',
+    'message' => 'Thank you for installing Discuz! X. This is the Discuz! admin center where you can adjust all settings of your site.',
   ],
 ];

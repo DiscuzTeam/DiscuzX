@@ -7,12 +7,12 @@
  */
 
 if(!defined('IN_DISCUZ')) {
-        exit('Access Denied');
+	exit('Access Denied');
 }
 
 $lang =
-        [
-        'feed_name' => 'Space Feed Ad',
-        'feed_desc' => 'Display Mode: Feed ads are displayed above the feed.',
-        ];
+	[
+	'feed_name' => 'Space Feed Ad',
+	'feed_desc' => 'Display Mode: Feed ads are displayed above the feed.',
+	];
 

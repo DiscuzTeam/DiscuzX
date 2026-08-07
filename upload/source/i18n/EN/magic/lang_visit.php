@@ -17,3 +17,4 @@ $lang =
 	'visit_num' => 'Number of friends to visit',
 	'visit_info' => 'Randomly visit (up to {num}) friends\' spaces / greet friends / leave messages for friends',
 	];
+

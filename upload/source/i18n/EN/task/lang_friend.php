@@ -21,3 +21,4 @@ $lang =
 		<li>3. Next, you also need to wait for the other party to approve your friend request</li>
 		</ul>',
 	];
+

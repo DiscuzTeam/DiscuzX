@@ -23,3 +23,4 @@ $lang =
 	'chgusername_change_success' => 'Username modification submitted successfully, please log in again after a few minutes. If you have any problems, please contact the administrator',
 
 	];
+

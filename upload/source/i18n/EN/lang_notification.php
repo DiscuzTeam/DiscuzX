@@ -244,3 +244,4 @@ So far, you have received {authorwarnings} warnings, please pay attention!<div c
 	'forum_member_check_failed' => 'You did not pass the moderation for <a href="{url}" target="_blank">{forumname}</a>.',
 
 	];
+

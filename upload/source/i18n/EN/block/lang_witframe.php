@@ -7,11 +7,11 @@
  */
 
 if(!defined('IN_DISCUZ')) {
-        exit('Access Denied');
+	exit('Access Denied');
 }
 
 $lang =
-        [
-        'witframe_plugin_name' => 'Plugin Name',
-        ];
+	[
+	'witframe_plugin_name' => 'Plugin Name',
+	];
 

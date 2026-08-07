@@ -18,3 +18,4 @@ $lang =
 	'group_demise_message_body' => 'My group {forum} has been successfully transferred to you. [url={siteurl}forum.php?mod=group&fid={fid}]Click here to view the group[/url]',
 	'group_join' => 'Join {groupname} Group',
 	];
+

@@ -61,3 +61,4 @@ $lang = [
 	'third_login_method' => 'Other Login Methods',
 	'quickregister_bindaccount' => 'Register an account and bind',
 ];
+

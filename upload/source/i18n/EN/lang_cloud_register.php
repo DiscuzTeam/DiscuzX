@@ -16,3 +16,4 @@ $lang =
 	'bindqq_link' => '<a href="javascript:;" class="lightlink" onclick="BindQQ()"><b>Start Binding QQ</b></a>',
 	'back' => 'Click here to return to the previous page',
 	];
+

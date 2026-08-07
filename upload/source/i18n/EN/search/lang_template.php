@@ -92,3 +92,4 @@ $lang = [
 	'goto_memcp' => 'Go to Control Panel',
 	'thread_list_message1' => 'Content is hidden, please click to view',
 ];
+

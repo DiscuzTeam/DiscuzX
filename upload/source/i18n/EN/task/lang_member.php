@@ -28,3 +28,4 @@ $lang =
 	'task_complete_act_favorite' => 'Favorite {value} threads',
 	'task_complete_act_magic' => 'Use magic items {value} times.<br />You can use magic items on post pages, blog pages, picture pages, etc.',
 	];
+

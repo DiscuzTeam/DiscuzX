@@ -82,7 +82,7 @@ $lang = [
 	'censor_keywords_tooshort' => 'Keyword length too short (less than 3 bytes)',
 	'attachtypes_duplicate' => 'New extension duplicates with existing one',
 	'crons_succeed' => 'Cron task updated successfully ',
-	'smsgw_succeed' => 'SMS service updated successfully ',
+	'smsgw_succeed' => 'SMS service updated successfully',
 	'nav_add_succeed' => 'Navigation bar updated successfully ',
 	'nav_not_found' => 'Navigation not found or type mismatch',
 	'patch_successful' => 'Operation successful',
@@ -113,7 +113,7 @@ $lang = [
 	'specialuser_defaultuser_add_invaild' => 'Both username and reason for adding are required',
 	'specialuser_defaultuser_added_invalid' => 'This user has already been added',
 	'specialuser_defaultuser_nouser_invalid' => 'This user does not exist or is frozen',
-	'styles_edit_succeed' => 'Interface scheme updated successfully ',
+	'styles_edit_succeed' => 'Interface scheme updated successfully',
 	'styles_upgrade_succeed' => 'Template updated successfully ',
 	'parameters_error' => 'Parameter error',
 	'tasks_succeed' => 'Task added or updated successfully ',
@@ -768,4 +768,8 @@ $lang = [
 	'qrcodelogin_bind_succeed' => 'Account bound successfully',
 	'qrcodelogin_update_succeed' => 'Update successful',
 	'qrcodelogin_closed' => 'Webmaster has not enabled this feature',
+
+	'setting_pwa_logo_error' => 'PWA icon upload failed. Please ensure the file is a square PNG image of the specified size' ,
+	'setting_pwa_upload_error' => 'PWA icon upload failed' ,
 ];
+

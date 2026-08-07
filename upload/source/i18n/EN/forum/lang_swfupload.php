@@ -29,3 +29,4 @@ $lang = '
 <bigFile>File too large</bigFile>
 <uploaderror>Upload Failed</uploaderror>
 ';
+

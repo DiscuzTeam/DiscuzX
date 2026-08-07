@@ -17,3 +17,4 @@ $lang =
 	'detector_num' => 'Maximum detection count',
 	'detector_info' => 'Detect (up to {num}) member spaces where red packets are buried',
 	];
+

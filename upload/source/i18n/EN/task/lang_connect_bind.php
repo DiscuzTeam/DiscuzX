@@ -20,3 +20,4 @@ $lang =
 		<li>2. On the newly opened page, click the "Bind QQ Account" button, fill in your QQ account and password to complete the binding</li>
 		</ul>',
 	];
+

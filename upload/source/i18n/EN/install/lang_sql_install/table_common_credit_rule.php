@@ -42,7 +42,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '3',
-    'rulename' => 'Add Essence',
+    'rulename' => 'Add Digest',
     'action' => 'digest',
     'cycletype' => '4',
     'cycletime' => '0',
@@ -93,7 +93,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '6',
-    'rulename' => 'Send Private Message',
+    'rulename' => 'Send Short Message',
     'action' => 'sendpm',
     'cycletype' => '4',
     'cycletime' => '0',
@@ -161,7 +161,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '10',
-    'rulename' => 'Successful Transaction',
+    'rulename' => 'Successful Trade',
     'action' => 'tradefinished',
     'cycletype' => '4',
     'cycletime' => '0',
@@ -195,7 +195,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '12',
-    'rulename' => 'Set Avatar',
+    'rulename' => 'SettingsAvatar',
     'action' => 'setavatar',
     'cycletype' => '0',
     'cycletime' => '0',
@@ -263,7 +263,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '17',
-    'rulename' => 'Say Hello',
+    'rulename' => 'Greet',
     'action' => 'poke',
     'cycletype' => '1',
     'cycletime' => '0',
@@ -280,7 +280,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '18',
-    'rulename' => 'Leave Message',
+    'rulename' => 'Leave a Message',
     'action' => 'guestbook',
     'cycletype' => '1',
     'cycletime' => '0',
@@ -297,7 +297,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '19',
-    'rulename' => 'Receive Message',
+    'rulename' => 'Message Received',
     'action' => 'getguestbook',
     'cycletype' => '1',
     'cycletime' => '0',
@@ -314,7 +314,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '20',
-    'rulename' => 'Post Record',
+    'rulename' => 'Publish Record',
     'action' => 'doing',
     'cycletype' => '1',
     'cycletime' => '0',
@@ -331,7 +331,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '21',
-    'rulename' => 'Post Blog',
+    'rulename' => 'Publish Blog',
     'action' => 'publishblog',
     'cycletype' => '1',
     'cycletime' => '0',
@@ -399,7 +399,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '25',
-    'rulename' => 'Receive Comment',
+    'rulename' => 'Commented',
     'action' => 'getcomment',
     'cycletype' => '1',
     'cycletime' => '0',
@@ -416,7 +416,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '28',
-    'rulename' => 'Info Reaction',
+    'rulename' => 'React to Message',
     'action' => 'click',
     'cycletype' => '1',
     'cycletime' => '0',
@@ -450,7 +450,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '30',
-    'rulename' => 'Article Comment',
+    'rulename' => 'ArticleComment',
     'action' => 'portalcomment',
     'cycletype' => '1',
     'cycletime' => '0',
@@ -467,7 +467,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '31',
-    'rulename' => 'Tao Album Subscribed',
+    'rulename' => 'Taobao Album Subscribed',
     'action' => 'followedcollection',
     'cycletype' => '1',
     'cycletime' => '0',

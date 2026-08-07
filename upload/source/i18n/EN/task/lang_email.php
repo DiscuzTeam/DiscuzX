@@ -21,3 +21,4 @@ $lang =
 		<li>After a few minutes, the system will send you an email. After receiving the email, please follow the instructions in the email and visit the verification link in the email</li>
 		</ul>',
 	];
+

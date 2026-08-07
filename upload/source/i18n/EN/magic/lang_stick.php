@@ -24,3 +24,4 @@ $lang =
 
 	'stick_notification' => 'Your thread {subject} was used {magicname} by {actor}, <a href="forum.php?mod=viewthread&tid={tid}">go check it out!</a>',
 	];
+

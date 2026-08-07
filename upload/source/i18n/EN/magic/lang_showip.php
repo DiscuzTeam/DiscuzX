@@ -21,3 +21,4 @@ $lang =
 
 	'showip_notification' => 'You have been used {magicname} by someone',
 	];
+

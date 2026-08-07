@@ -222,3 +222,4 @@ $lang =
 	'restful_auth_success' => 'Authorization login successful',
 	'restful_auth_error' => 'Authorization login failed',
 	];
+

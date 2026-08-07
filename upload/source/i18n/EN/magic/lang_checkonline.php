@@ -23,3 +23,4 @@ $lang =
 
 	'checkonline_notification' => 'Someone used {magicname} to check if you are online',
 	];
+

@@ -23,3 +23,4 @@ $lang =
 	'namepost_info_user_noperm' => 'Sorry, you cannot use this magic item on this person',
 	'magic_namepost_succeed' => 'The anonymous user is',
 	];
+

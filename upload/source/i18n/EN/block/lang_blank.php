@@ -7,11 +7,10 @@
  */
 
 if(!defined('IN_DISCUZ')) {
-        exit('Access Denied');
+	exit('Access Denied');
 }
 
 $lang =
-        [
-        'blank_content' => 'HTML Code',
-        ];
-
+	[
+	'blank_content' => 'HTML Code',
+	];
