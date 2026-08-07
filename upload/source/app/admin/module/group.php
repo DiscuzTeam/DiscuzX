@@ -158,7 +158,6 @@ function countgroups() {
 		foreach($srchfounder as $fu) {
 			$srchfnameary[] = " ff.foundername LIKE '".str_replace(['%', '*', '_'], ['\%', '%', '\_'], $fu)."'";
 		}
-		$srchfnameary = is_array($srchnameary) ? $srchfnameary : [$srchfnameary];
 		$conditions .= ' AND ('.implode(' OR ', $srchfnameary).')';
 	}
 
