@@ -53,6 +53,9 @@ class base {
 			$this->init_var();
 			$this->init_db();
 			$this->init_cache();
+			if(UC_ALONE) {
+				return;
+			}
 			$this->init_note();
 			$this->init_mail();
 		}
@@ -204,6 +207,8 @@ class base {
 
 		$timeoffset = intval($this->settings['timeoffset'] / 3600);
 		@date_default_timezone_set('Etc/GMT'.($timeoffset > 0 ? '-' : '+').(abs($timeoffset)));
+
+		define('UC_ALONE', defined('UC_STANDALONE') || count($this->cache['apps']) < 2);
 	}
 
 	function cutstr($string, $length, $dot = ' ...') {

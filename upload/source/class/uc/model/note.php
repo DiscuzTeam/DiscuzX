@@ -58,6 +58,9 @@ class notemodel {
 	}
 
 	function add($operation, $getdata = '', $postdata = '', $appids = [], $pri = 0) {
+		if(UC_ALONE) {
+			return NULL;
+		}
 		$extra = $varextra = '';
 		$appadd = $varadd = [];
 		foreach((array)$this->apps as $appid => $app) {
