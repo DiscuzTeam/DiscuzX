@@ -37,6 +37,7 @@ class discuz_table_archive extends discuz_table {
 	public function fetch_all($ids, $force_from_db = false, $fetch_archive = 1) {
 		$data = [];
 		if(!empty($ids)) {
+			$ids = (array)$ids;
 			$data = parent::fetch_all($ids, $force_from_db);
 			if(isset($this->membersplit) && $fetch_archive && count($data) != count($ids)) {
 				$data = $data + C::t($this->_table.'_archive')->fetch_all(array_diff($ids, array_keys($data)));
