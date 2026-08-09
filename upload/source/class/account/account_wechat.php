@@ -224,7 +224,7 @@ class account_wechat extends account_base {
 					showmessage('register_disable');
 				}
 				dsetcookie('accountUDAuth', authcode(serialize($paramBase), 'ENCODE'), 3600);
-				dheader('Location: '.$_G['siteurl'].'member.php?mod=register&fromAccount='.formhash());
+				dheader('Location: '.$_G['siteurl'].'member.php?mod='.$_G['setting']['regname'].'&fromAccount='.formhash());
 			}
 
 			$username = $userInfo['nickname'];
@@ -241,7 +241,7 @@ class account_wechat extends account_base {
 				if(in_array($msg, ['profile_username_illegal', 'profile_username_protect', 'profile_username_duplicate', 'profile_email_illegal', 'profile_email_domain_illegal', 'profile_email_duplicate'])) {
 					dsetcookie('accountUDAuth', authcode(serialize($paramBase), 'ENCODE'), 3600);
 					dsetcookie('accountHeadImg', $userInfo['headimgurl'], 3600);
-					dheader('Location: '.$_G['siteurl'].'member.php?mod=register&fromAccount='.formhash());
+					dheader('Location: '.$_G['siteurl'].'member.php?mod='.$_G['setting']['regname'].'&fromAccount='.formhash());
 				}
 				showmessage($msg);
 			}
