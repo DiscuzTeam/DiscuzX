@@ -54,10 +54,10 @@ if(!submitcheck('linksubmit')) {
 			'<input type="text" class="txt" name="url['.$forumlink['id'].']" value="'.$forumlink['url'].'" size="20" />',
 			'<input type="text" class="txt" name="description['.$forumlink['id'].']" value="'.$forumlink['description'].'" size="30" />',
 			'<input type="text" class="txt" name="logo['.$forumlink['id'].']" value="'.$forumlink['logo'].'" size="20" />',
-			'<input class="checkbox" type="checkbox" value="1" name="portal['.$forumlink['id'].']}" '.($type[0] ? 'checked' : '').'>',
-			'<input class="checkbox" type="checkbox" value="1" name="forum['.$forumlink['id'].']}" '.($type[1] ? 'checked' : '').'>',
-			'<input class="checkbox" type="checkbox" value="1" name="group['.$forumlink['id'].']}" '.($type[2] ? 'checked' : '').'>',
-			'<input class="checkbox" type="checkbox" value="1" name="home['.$forumlink['id'].']}" '.($type[3] ? 'checked' : '').'>',
+			'<input class="checkbox" type="checkbox" value="1" name="portal['.$forumlink['id'].']" '.($type[0] ? 'checked' : '').'>',
+			'<input class="checkbox" type="checkbox" value="1" name="forum['.$forumlink['id'].']" '.($type[1] ? 'checked' : '').'>',
+			'<input class="checkbox" type="checkbox" value="1" name="group['.$forumlink['id'].']" '.($type[2] ? 'checked' : '').'>',
+			'<input class="checkbox" type="checkbox" value="1" name="home['.$forumlink['id'].']" '.($type[3] ? 'checked' : '').'>',
 		]);
 	}
 
