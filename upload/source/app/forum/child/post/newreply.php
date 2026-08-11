@@ -415,8 +415,6 @@ if(!submitcheck('replysubmit', 0, $seccodecheck, $secqaacheck)) {
 	// 结束处理json编辑器内容中的图片、视频等附件
 
 
-	$attentionon = empty($_GET['attention_add']) ? 0 : 1;
-	$attentionoff = empty($attention_remove) ? 0 : 1;
 	$bfmethods[] = ['class' => 'forum\extend_thread_rushreply', 'method' => 'before_newreply'];
 	if($_G['group']['allowat']) {
 		$bfmethods[] = ['class' => 'forum\extend_thread_allowat', 'method' => 'before_newreply'];
