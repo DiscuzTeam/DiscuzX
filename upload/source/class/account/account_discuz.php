@@ -100,7 +100,7 @@ class account_discuz extends account_base {
 					showmessage('register_disable');
 				}
 				dsetcookie('accountUDAuth', authcode(serialize($paramBase), 'ENCODE'), 3600);
-				dheader('Location: '.$_G['siteurl'].'member.php?mod=register&fromAccount='.formhash());
+				dheader('Location: '.$_G['siteurl'].'member.php?mod='.$_G['setting']['regname'].'&fromAccount='.formhash());
 			}
 
 			$username = $ret['data']['user']['username'];
@@ -115,7 +115,7 @@ class account_discuz extends account_base {
 				if($msg == 'profile_username_duplicate' || $msg == 'profile_email_duplicate') {
 					dsetcookie('accountUDAuth', authcode(serialize($paramBase), 'ENCODE'), 3600);
 					dsetcookie('accountHeadImg', $userInfo['figureurl_2'], 3600);
-					dheader('Location: '.$_G['siteurl'].'member.php?mod=register');
+					dheader('Location: '.$_G['siteurl'].'member.php?mod='.$_G['setting']['regname']);
 				}
 				showmessage($msg);
 			}

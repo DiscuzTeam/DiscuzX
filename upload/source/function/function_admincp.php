@@ -358,10 +358,10 @@ function cpmsg($message, $url = '', $type = 'error', $values = [], $extra = '', 
 				'</script>').
 			'</p></form><br />';
 	} elseif($type == 'loadingform') {
-		$message = "<form method=\"post\" action=\"$url\" id=\"loadingform\"><input type=\"hidden\" name=\"formhash\" value=\"".FORMHASH."\"><br />$message$extra<img src=\"".STATICURL."image/admincp/ajax_loader.gif\" class=\"marginbot\" /><br />".
+		$message = "<form method=\"post\" action=\"$url\" id=\"loadingform\"><input type=\"hidden\" name=\"formhash\" value=\"".FORMHASH."\"><br />$message$extra<div class=\"loading-wrap\" style=\"width: 100%\"><div class=\"loading-inner\"></div></div><br />".
 			'<p class="marginbot"><a href="###" onclick="$(\'loadingform\').submit();" class="lightlink">'.cplang('message_redirect').'</a></p></form><br /><script type="text/JavaScript">setTimeout("$(\'loadingform\').submit();", 2000);</script>';
 	} else {
-		$message .= $extra.($type == 'loading' ? '<div class="loading-wrap"><div class="loading-inner"></div></div>' : '');
+		$message .= $extra.($type == 'loading' ? '<div class="loading-wrap"><div class="loading-inner"></div></div><br />' : '');
 		if($url) {
 			if($type == 'button') {
 				$message = "<br />$message<br /><p class=\"margintop\"><input type=\"submit\" class=\"btn\" name=\"submit\" value=\"".cplang('start')."\" onclick=\"location.href='$url'\" />";
@@ -430,7 +430,7 @@ function cpheader() {
 }
 
 function showsubmenu($title, $menus = [], $right = '', $replace = []) {
-	$s = '<div class="itemtitle"><div class="titlerow"><h3>'.cplang($title, $replace).'</h3>'.$right.'</div>';
+	$s = (!empty($title) || !empty($right)) ? '<div class="itemtitle"><div class="titlerow"><h3>'.cplang($title, $replace).'</h3>'.$right.'</div>' : '<div class="itemtitle">';
 	if(empty($menus)) {
 		$s .= '</div>';
 	} elseif(is_array($menus)) {
