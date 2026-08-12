@@ -1220,9 +1220,9 @@ function zerofill(s) {
 
 	function getSelectDefaultText(sel) {
 		const idx = sel.selectedIndex;
-		if (idx < 0) return '请选择';
+		if (idx < 0) return $L('select');
 		const text = sel.options[idx].text;
-		return text.trim() || '请选择';
+		return text.trim() || $L('select');
 	}
 
 	function openWxSelect(sel) {
@@ -1238,7 +1238,7 @@ function zerofill(s) {
 			popup = document.querySelector('.discuz-select-popup');
 		}
 
-		const title = sel.getAttribute('data-title') || '请选择';
+		const title = sel.getAttribute('data-title') || $L('select');
 		popup.querySelector('.discuz-select-header .title').textContent = title;
 
 		renderOptions(sel);
@@ -1277,9 +1277,9 @@ function zerofill(s) {
 		popup.className = 'discuz-select-popup';
 		popup.innerHTML = `
             <div class="discuz-select-header">
-                <button class="btn-cancel">取消</button>
-                <div class="title">请选择</div>
-                <button class="btn-confirm">确定</button>
+                <button class="btn-cancel">${$L('cancel')}</button>
+                <div class="title">${$L('select')}</div>
+                <button class="btn-confirm">${$L('confirm')}</button>
             </div>
             <div class="discuz-select-options-wrap">
                 <div class="discuz-select-indicator"></div>
@@ -1290,7 +1290,6 @@ function zerofill(s) {
 		document.body.appendChild(popup);
 
 		mask.addEventListener('click', function(e) {
-			// 防止弹窗刚打开时点击 mask 关闭
 			if (popup.classList.contains('show')) {
 				closePopup();
 			}
@@ -1332,10 +1331,9 @@ function zerofill(s) {
 		});
 		if (closestItem) {
 			config.selectedVal = closestItem.dataset.value;
-			config.selectedText = closestItem.textContent.trim() || '请选择';
+			config.selectedText = closestItem.textContent.trim() || $L('select');
 			const itemRect = closestItem.getBoundingClientRect();
 			let scrollTop = optBox.scrollTop + (itemRect.top - wrapRect.top) - (wrapRect.height / 2) + (itemRect.height / 2);
-			// 限制在合法滚动范围内
 			const maxScroll = optBox.scrollHeight - optBox.clientHeight;
 			scrollTop = Math.max(0, Math.min(scrollTop, maxScroll));
 			optBox.scrollTo({ top: scrollTop, behavior: 'smooth' });
@@ -1347,7 +1345,6 @@ function zerofill(s) {
 		const optBox = document.querySelector('.discuz-select-options');
 		optBox.innerHTML = '';
 
-		// 顶部占位，让第一项能滚动到中间
 		const topSpacer = document.createElement('div');
 		topSpacer.className = 'discuz-select-spacer';
 		optBox.appendChild(topSpacer);
@@ -1366,12 +1363,11 @@ function zerofill(s) {
 			}
 			item.addEventListener('click', function () {
 				config.selectedVal = this.dataset.value;
-				config.selectedText = this.textContent.trim() || '请选择';
+				config.selectedText = this.textContent.trim() || $L('select');
 				const wrap = optBox.parentElement;
 				const wrapRect = wrap.getBoundingClientRect();
 				const itemRect = this.getBoundingClientRect();
 				let scrollTop = optBox.scrollTop + (itemRect.top - wrapRect.top) - (wrapRect.height / 2) + (itemRect.height / 2);
-				// 限制在合法滚动范围内
 				const maxScroll = optBox.scrollHeight - optBox.clientHeight;
 				scrollTop = Math.max(0, Math.min(scrollTop, maxScroll));
 				optBox.scrollTo({ top: scrollTop, behavior: 'smooth' });
@@ -1380,7 +1376,6 @@ function zerofill(s) {
 			optBox.appendChild(item);
 		});
 
-		// 底部占位，让最后一项能滚动到中间
 		const bottomSpacer = document.createElement('div');
 		bottomSpacer.className = 'discuz-select-spacer';
 		optBox.appendChild(bottomSpacer);
@@ -1432,9 +1427,8 @@ function zerofill(s) {
 		const wrap = sel.closest('.sort-sel-wrap');
 		if (wrap) {
 			const showInput = wrap.querySelector('.sort-sel-show');
-			if (showInput) showInput.textContent = config.selectedText || '请选择';
+			if (showInput) showInput.textContent = config.selectedText || $L('select');
 		}
-		// 创建可冒泡的 change 事件，确保能触发内联 onchange 属性
 		const changeEvent = document.createEvent('HTMLEvents');
 		changeEvent.initEvent('change', true, false);
 		sel.dispatchEvent(changeEvent);
@@ -1442,7 +1436,6 @@ function zerofill(s) {
 	}
 
 	function closePopup() {
-		// 防止弹窗打开后 500ms 内被关闭（避免 touchstart 触发 click 导致误关闭）
 		if (Date.now() - config.popupOpenTime < 500) {
 			return;
 		}
