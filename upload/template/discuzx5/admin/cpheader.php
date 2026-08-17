@@ -13,6 +13,8 @@
 	<!--{if $_G['style']['admin_color']}-->
 	<style>
 	:root {
+  		--root-base-value: {echo $_G['adminColor']['--root-base-value'] ?? '21,91,213'};
+  		--root-base: rgb(var(--root-base-value));
 		--admincp-color: $_G['style']['admin_color'];
 		--admincp-ahover: var(--admincp-color);
 		--admincp-ahot: $_G['style']['admin_color'];
