@@ -12,7 +12,7 @@ if(!defined('IN_DISCUZ')) {
 
 class editorblock_attaches {
 
-	var $version = '1.3.3';
+	var $version = '1.3.8';
 	var $name = 'name';
 	var $available = 1; // 默认启用状态 0:不启用 1:启用
 	var $columns = 1; //  默认是否支持多列 0:不支持 1:支持
@@ -131,56 +131,60 @@ EOF;
   --color-text-secondary: #707684;
 }
 
+.cdx-attaches a {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.cdx-attaches a:link,
+.cdx-attaches a:visited,
+.cdx-attaches a:hover,
+.cdx-attaches a:active {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
   .cdx-attaches--with-file {
     display: flex;
     align-items: center;
-    padding: 10px 12px;
+    gap: 14px;
+    padding: 14px 16px;
     border: 1px solid #EFF0F1;
-    border-radius: 7px;
-    background: #fff;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
 
+  .cdx-attaches--with-file:hover {
+      border-color: #c4c8d0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
   .cdx-attaches--with-file .cdx-attaches__file-info {
-      display: grid;
-      grid-gap: 4px;
-      max-width: calc(100% - 80px);
-      margin: auto 0;
-      flex-grow: 2;
-    }
-
-  .cdx-attaches--with-file .cdx-attaches__download-button {
       display: flex;
-      align-items: center;
-      background: #F8F8F8;
-      padding: 6px;
-      border-radius: 6px;
-      margin: auto 0 auto auto;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+      flex: 1;
     }
-
-  .cdx-attaches--with-file .cdx-attaches__download-button:hover {
-        background: #f2f2f2;
-      }
-
-  .cdx-attaches--with-file .cdx-attaches__download-button svg {
-        width: 20px;
-        height: 20px;
-        fill: none;
-      }
 
   .cdx-attaches--with-file .cdx-attaches__file-icon {
       position: relative;
+      flex-shrink: 0;
     }
 
   .cdx-attaches--with-file .cdx-attaches__file-icon-background {
         background-color: #333;
-
-        width: 27px;
-        height: 30px;
-        margin-right: 12px;
-        border-radius: 8px;
+        width: 44px;
+        height: 48px;
+        border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
       }
 
   @supports(-webkit-mask-box-image: url('')){
@@ -193,24 +197,24 @@ EOF;
 
   .cdx-attaches--with-file .cdx-attaches__file-icon-label {
         position: absolute;
-        left: 3px;
-        top: 11px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
         background: inherit;
         text-transform: uppercase;
         line-height: 1em;
         color: #fff;
-        padding: 1px 2px;
-        border-radius: 3px;
-        font-size: 10px;
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-size: 11px;
         font-weight: bold;
-        /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.22); */
         font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
-        letter-spacing: 0.02em;
+        letter-spacing: 0.03em;
       }
 
   .cdx-attaches--with-file .cdx-attaches__file-icon svg {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
       }
 
   .cdx-attaches--with-file .cdx-attaches__file-icon path {
@@ -218,9 +222,9 @@ EOF;
       }
 
   .cdx-attaches--with-file .cdx-attaches__size {
-      color: #707684;
+      color: #F8F8F8;
       font-size: 12px;
-      line-height: 1em;
+      line-height: 1.2;
     }
 
   .cdx-attaches--with-file .cdx-attaches__size::after {
@@ -233,21 +237,27 @@ EOF;
       text-overflow: ellipsis;
       overflow: hidden;
       outline: none;
-      max-width: 90%;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
-      line-height: 1em;
+      line-height: 1.3;
+      color: #1b1b1b;
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: background 0.15s ease;
     }
+
+  .cdx-attaches--with-file .cdx-attaches__title:focus {
+        background: rgba(35, 131, 226, 0.08);
+      }
 
   .cdx-attaches--with-file .cdx-attaches__title:empty::before {
       content: attr(data-placeholder);
-      color: #7b7e89;
+      color: #a8aeb8;
     }
 
   .cdx-attaches--loading .cdx-attaches__title,
     .cdx-attaches--loading .cdx-attaches__file-icon,
     .cdx-attaches--loading .cdx-attaches__size,
-    .cdx-attaches--loading .cdx-attaches__download-button,
     .cdx-attaches--loading .cdx-attaches__button {
       opacity: 0;
       font-size: 0;
@@ -264,6 +274,10 @@ EOF;
 
   .cdx-attaches__button svg {
       margin-top: 0;
+    }
+    
+    .cdx-attaches__download-button svg, .cdx-attaches__download-button .cdx-attaches__download-button-text {
+        vertical-align: middle;
     }
 </style>
 EOF;
@@ -283,10 +297,13 @@ EOF;
 				</div>
 			</div>
 			<div class="cdx-attaches__file-info">
-				<div class="cdx-attaches__title" data-placeholder="{data.title}" data-empty="false">{data.title}</div>
+				<div class="cdx-attaches__title" data-placeholder="{data.title}" data-empty="false">
+					<a href="forum.php?mod=attachment&aid=[attach data.file.aid]" target="_self">{data.title}</a>
+				</div>
 			</div>
 			<a class="cdx-attaches__download-button" href="forum.php?mod=attachment&aid=[attach data.file.aid]" target="_self">
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M7 10L11.8586 14.8586C11.9367 14.9367 12.0633 14.9367 12.1414 14.8586L17 10"></path></svg>
+				<svg t="1786936813963" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2992" width="25" height="25"><path d="M505.7 661c3.2 4.1 9.4 4.1 12.6 0l112-141.7c4.1-5.2 0.4-12.9-6.3-12.9h-74.1V168c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v338.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.8z" p-id="2993"></path><path d="M878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z" p-id="2994"></path></svg>
+				<span class="cdx-attaches__download-button-text">下载附件</span>
 			</a>
 		</div>
 	</div>
