@@ -119,8 +119,8 @@ $lang =
 
 	'credit_total' => 'Total Credits',
 
-	'invite_payment' => 'Buy Invitation Code',
-	'invite_forum_payment' => 'Buy Invitation Code',
+	'invite_payment' => 'Purchase Invitation Code',
+	'invite_forum_payment' => 'Purchase Invitation Code',
 	'invite_forum_payment_unit' => 'pieces',
 	'invite_forum_royalty' => 'Transaction Fee',
 
@@ -147,7 +147,7 @@ $lang =
 	'eccredit_explain' => 'Explanation',
 
 	'modcp_logs_action_home' => 'Internal Message',
-	'modcp_logs_action_moderate' => 'Moderation',
+	'modcp_logs_action_moderate' => 'Moderate',
 	'modcp_logs_action_member' => 'User Management',
 	'modcp_logs_action_forumaccess' => 'User Permissions',
 	'modcp_logs_action_thread' => 'Thread Management',
@@ -184,7 +184,7 @@ $lang =
 	'perms_allowvisit' => 'Visit Forum',
 	'perms_readaccess' => 'Read Permission',
 	'perms_allowviewpro' => 'View User Profile',
-	'perms_allowinvisible' => 'Invisible Mode',
+	'perms_allowinvisible' => 'Invisible',
 	'perms_allowsearch' => 'Use Search',
 	'perms_allownickname' => 'Use Nickname',
 	'perms_allowcstatus' => 'Custom Title',
@@ -213,7 +213,7 @@ $lang =
 	'perms_maxsizeperday' => 'Max Total Attachment Size Per Day',
 	'perms_maxattachnum' => 'Max Attachment Count Per Day',
 	'perms_allowbioimgcode' => 'Use [img] Code in Bio',
-	'perms_attachextensions' => 'Attachment Types',
+	'perms_attachextensions' => 'Attachment Type',
 	'perms_allowstickthread' => 'Sticky Thread',
 	'perms_allowdigestthread' => 'Digest Thread',
 	'perms_allowstickthread_value' => 'Sticky',
@@ -234,7 +234,7 @@ $lang =
 	'perms_allowremovereward' => 'Remove Reward',
 	'perms_alloweditactivity' => 'Manage Activities',
 	'perms_allowedittrade' => 'Manage Goods',
-	'perms_alloweditpost' => 'Edit Posts',
+	'perms_alloweditpost' => 'Edit Post',
 	'perms_allowwarnpost' => 'Warn Posts',
 	'perms_allowbanpost' => 'Ban Posts',
 	'perms_allowdelpost' => 'Delete Posts',
@@ -276,7 +276,7 @@ $lang =
 	'perms_allowmediacode' => 'Allow Using Media Code',
 
 	'join_topic' => 'Join Topic',
-	'join_poll' => 'Join Poll',
+	'join_poll' => 'Vote in Polls',
 	'buy_trade' => 'Buy Goods',
 	'join_reward' => 'Join Reward',
 	'join_activity' => 'Join Activity',
@@ -314,7 +314,7 @@ $lang =
 	'patch_name' => 'Vulnerability Name',
 	'patch_dateline' => 'Release Date',
 	'patch_status' => 'Current Status',
-	'patch_close' => 'Close',
+	'patch_close' => 'Disable',
 
 	'plugin_title' => 'Plugin Update Reminder',
 	'plugin_memo' => 'You have <span class="xi1">{number}</span> plugins with available updates',

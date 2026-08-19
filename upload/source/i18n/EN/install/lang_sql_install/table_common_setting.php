@@ -1901,7 +1901,7 @@ discuz',
 	'svalue' => '1000',
 ], [
 	'skey' => 'threadsticky',
-	'svalue' => 'Global Pinned,Category Pinned,This Forum Pinned',
+	'svalue' => 'Global Sticky, Category Sticky, Forum Sticky',
 ], [
 	'skey' => 'thumbheight',
 	'svalue' => '300',
@@ -2193,7 +2193,7 @@ If you have any questions, please contact the administrator, Email: {adminemail}
 			1 =>
 				[
 					'img' => '',
-					'title' => 'Prestige',
+					'title' => 'Reputation',
 					'unit' => '',
 					'ratio' => 0,
 					'available' => '1',
@@ -2204,7 +2204,7 @@ If you have any questions, please contact the administrator, Email: {adminemail}
 			2 =>
 				[
 					'img' => '',
-					'title' => 'Credit',
+					'title' => 'Money',
 					'unit' => '',
 					'ratio' => 0,
 					'available' => '1',
@@ -2284,7 +2284,7 @@ If you have any questions, please contact the administrator, Email: {adminemail}
 	'svalue' =>
 		[
 			0 => 'Thread Starter',
-			1 => 'Sofa',
+			1 => 'Sofa)',
 			2 => 'Bench',
 			3 => 'Floor',
 		],
@@ -2306,7 +2306,7 @@ If you have any questions, please contact the administrator, Email: {adminemail}
 		[
 			'portal' => 'Portal',
 			'forum' => 'Forum',
-			'group' => 'Group',
+			'group' => 'Groups',
 			'home' => 'Home',
 		],
 ], [
@@ -2315,7 +2315,7 @@ If you have any questions, please contact the administrator, Email: {adminemail}
 		[
 			'realname' => 'Real Name',
 			'mobile' => 'Mobile',
-			'qq' => 'QQ Number',
+			'qq' => 'QQ',
 		],
 ], [
 	'skey' => 'article_tags',
@@ -2324,11 +2324,11 @@ If you have any questions, please contact the administrator, Email: {adminemail}
 			1 => 'Original',
 			2 => 'Hot',
 			3 => 'Photo Gallery',
-			4 => 'Exclusive',
+			4 => 'Breaking News',
 			5 => 'Headline',
 			6 => 'Slideshow',
-			7 => 'Scrolling',
-			8 => 'Recommend',
+			7 => 'Scroll',
+			8 => 'Recommended',
 		],
 ], [
 	'skey' => 'verify',
@@ -2372,7 +2372,7 @@ If you have any questions, please contact the administrator, Email: {adminemail}
 	'skey' => 'focus',
 	'svalue' =>
 		[
-			'title' => 'Webmaster Recommendation',
+			'title' => 'Webmaster Recommend',
 			'data' => [],
 			'cookie' => '1',
 		],

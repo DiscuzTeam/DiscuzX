@@ -20,7 +20,7 @@ $lang =
 	'doinglist_titlelength_comment' => 'Specify the maximum length of the record. Set to 0 to support emoji images',
 	'doinglist_orderby' => 'Feed Sorting Method',
 	'doinglist_orderby_comment' => 'Set by which field or method to sort feeds',
-	'doinglist_orderby_dateline' => 'Sort by publish time in descending order',
+	'doinglist_orderby_dateline' => 'Sort by publication time in descending order',
 	'doinglist_orderby_replynum' => 'Sort by replies in descending order'
 	];
 

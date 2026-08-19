@@ -12,9 +12,9 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = [
 	'account' => 'SMSBao Account',
-	'account_comment' => 'SMSBao account',
+	'account_comment' => 'SMSBao Account',
 	'password' => 'SMSBao Account Password',
-	'password_comment' => 'SMSBao account password',
+	'password_comment' => 'SMSBao Account Password',
 	'signname' => 'Domestic SMS Signature',
 	'signname_comment' => 'Domestic SMS signature. Fill in here after registering through the VIP registration channel in the SMSBao backend. Example: 【YunNuo】',
 	'template' => 'Domestic SMS Template Content',

@@ -14,7 +14,7 @@ $lang =
 	[
 	'footerbanner_name' => 'Global Footer Banner Ad',
 	'footerbanner_desc' => 'Display Mode: Footer banner ads are displayed at the bottom of the page, usually in the form of 1200x60 or other size images or Flash. When there are multiple footer banner ads on the current page, the system will randomly select one to display.<br />Value Analysis: Compared with the header and middle of the page, the display probability of the page footer is relatively low, and usually does not cause resentment from visitors. At the same time, it can basically cover all audiences who are interested in the ad content, so it is suitable for neutral and gentle promotion.',
-	'footerbanner_index' => 'Home Page',
+	'footerbanner_index' => 'Home',
 	'footerbanner_fids' => 'Target Forums',
 	'footerbanner_fids_comment' => 'Set the forum boards for ad placement, effective when the ad scope includes "Forum"',
 	'footerbanner_groups' => 'Target Group Categories',

@@ -11,6 +11,6 @@ $data = [[
     'typename' => 'Politics',
   ],[
     'id' => '2',
-    'typename' => 'Advertisement',
+    'typename' => 'Advertising',
   ],
 ];

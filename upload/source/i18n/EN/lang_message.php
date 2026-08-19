@@ -97,7 +97,7 @@ $lang = [
 	'activate_illegal' => 'The ID you used does not exist or you are not a member awaiting verification',
 	'getpasswd_account_notmatch' => 'Sorry, the account information you entered does not match, you cannot use the password recovery function, please contact the administrator if you have questions',
 	'credits_addfunds_order_invalid' => 'Sorry, the current order number is invalid, please resubmit',
-	'do_success' => 'Operation successful ',
+	'do_success' => 'Operation successful',
 	'group_member_maximum' => 'Sorry, this group level can have a maximum of {membermaximum} members, the limit has been reached',
 	'group_choose_friends_max' => 'Sorry, you can select up to 20 friends',
 	'group_invite_succeed' => 'Invitation sent successfully ',
@@ -132,7 +132,7 @@ $lang = [
 	'debate_end' => 'Sorry, the debate has ended',
 	'replyperm_login_nopermission' => 'Sorry, you are not logged in and do not have permission to reply in this forum',
 	'post_nonexistence' => 'Post does not exist',
-	'post_thread_closed' => 'Sorry, this thread is closed and no longer accepts new content',
+	'post_thread_closed' => 'Sorry, this thread has been closed and no longer accepts new content',
 	'reply_quotepost_error' => 'It is forbidden to quote posts other than your own and the thread starter post',
 	'post_flood_ctrl' => 'Sorry, the interval between your two posts is less than {floodctrl} seconds, please wait before posting again',
 	'post_flood_ctrl_posts_per_hour' => 'Sorry, your user group is limited to {posts_per_hour} posts/replies per hour, please wait before posting again',
@@ -247,13 +247,13 @@ $lang = [
 	'logout_succeed' => 'You have logged out of the site. You will now be redirected to the page you were on before logging out as a guest, please wait... {ucsynlogout} ',
 	'location_logout_succeed_mobile' => 'You have logged out of the site. You will now be redirected to the page you were on before logging out as a guest, please wait...',
 	'register_activation_invalid' => 'Sorry, activation failed, please log in again to verify the user that needs to be activated',
-	'profile_username_tooshort' => 'Sorry, the username you entered is less than 3 characters, please enter a longer username',
-	'profile_username_toolong' => 'Sorry, your username exceeds 15 characters, please enter a shorter username',
+	'profile_username_tooshort' => 'Sorry, the username you entered is less than 3 characters. Please enter a longer username',
+	'profile_username_toolong' => 'Sorry, your username exceeds 15 characters. Please enter a shorter username',
 	'profile_passwd_notmatch' => 'Sorry, the two passwords entered do not match',
 	'profile_email_not_change' => 'Sorry, this site does not allow self-modification of the email bound to the account through the front end',
 	'profile_secmobile_not_change' => 'Sorry, this site does not allow self-modification of the secure mobile number bound to the account through the front end',
-	'profile_secmobicc_illegal' => 'The secure mobile number international calling code format is incorrect',
-	'profile_secmobile_illegal' => 'The secure mobile number format is incorrect',
+	'profile_secmobicc_illegal' => 'Security phone number international area code format is incorrect',
+	'profile_secmobile_illegal' => 'Security phone number format is incorrect',
 	'profile_secmobile_blacklist' => 'This secure mobile number is not within the supported range',
 	'profile_secmobicc_null' => 'Please select the area code',
 	'profile_username_illegal' => 'Username contains sensitive characters',
@@ -331,9 +331,9 @@ $lang = [
 	'group_demise_receiver_cannot_do' => 'Sorry, the receiver cannot own a new group',
 	'group_demise_succeed' => 'Group transferred successfully ',
 	'group_demise_founder_only' => 'Sorry, only the group founder can transfer the group',
-	'grouprecommend_succeed' => 'Operation successful ',
+	'grouprecommend_succeed' => 'Operation successful',
 
-	'payonline_succeed' => 'Payment successful ',
+	'payonline_succeed' => 'Payment Successful',
 	'attachment_credit' => 'Your {policymsg} , now starting to download "{filename}"',
 	'attachment_yetpay' => 'You have already purchased this attachment, no need to purchase again, now starting the attachment download',
 	'attachment_buyall' => 'All attachments in this post purchased successfully ',
@@ -385,7 +385,7 @@ $lang = [
 	'reward_completion' => 'Best answer set successfully ',
 	'activity_stop' => 'Sorry, activity registration has stopped',
 	'activity_repeat_apply' => 'Sorry, you cannot apply for the activity repeatedly',
-	'activity_imgurl_error' => 'Image URL error ',
+	'activity_imgurl_error' => 'Invalid image URL',
 	'activity_exile_field' => 'Items with "*" are required, please fill in completely',
 	'activity_completion' => 'Activity application successful ',
 	'activity_cancel_success' => 'Activity registration cancelled successfully ',
@@ -515,11 +515,11 @@ $lang = [
 	'login_reward_succeed' => 'Check-in successful!',
 	'login_reward_error' => 'Sorry, you have already checked in today!',
 
-	'imagepreview_errorcode_0' => 'The image does not meet the processing conditions and cannot be processed',
+	'imagepreview_errorcode_0' => 'Image does not meet processing conditions, cannot be processed',
 	'imagepreview_errorcode_-1' => 'Invalid image, cannot be processed',
 	'imagepreview_errorcode_-2' => 'Insufficient file read/write permissions, cannot process image',
 	'imagepreview_errorcode_-3' => 'System setting error, cannot process image',
-	'imagepreview_errorcode_-4' => 'The server lacks the functions required to process images and cannot process them',
+	'imagepreview_errorcode_-4' => 'Server lacks the functionality required to process images, cannot process',
 
 	'group_invite_failed' => 'Sorry, you are not a member of this group and cannot invite',
 	'noperm_at_user' => 'You do not have permission to @users',
@@ -610,7 +610,7 @@ $lang = [
 	'start_time_end_time_is_equal_to' => 'Start date cannot be equal to end date',
 
 	'modcp_ann_nofound' => 'Sorry, this announcement has been deleted or you do not have permission to edit it',
-	'modcp_ann_empty' => 'You must enter the announcement title and content',
+	'modcp_ann_empty' => 'You must enter an announcement title and content',
 	'modcp_ann_urlerror' => 'URL link is invalid',
 
 	'recommend_expiration_invalid' => 'Time period format is invalid, the correct format is "yyyy-mm-dd hh:mm"',
@@ -657,7 +657,7 @@ $lang = [
 
 	'diy_topic_noexist' => 'The specified topic does not exist',
 	'diy_remote_upload_failed' => 'Remote upload failed',
-	'diy_sign_invalid' => 'DIY template data verification error',
+	'diy_sign_invalid' => 'DIY template data validation error',
 	'diy_backup_noexist' => 'Backup file does not exist',
 	'diy_data_format_invalid' => 'Data format error',
 	'diy_no_export_data' => 'No data available for export',
@@ -988,9 +988,9 @@ $lang = [
 
 	'domain_length_error' => 'Sorry, the set subdomain length cannot be less than {length} characters',
 	'two_domain_length_not_more_than_30_characters' => 'Sorry, the set subdomain length cannot exceed 30 characters',
-	'only_two_names_from_english_composition_and_figures' => 'Sorry, the subdomain you set can only contain English letters and numbers',
+	'only_two_names_from_english_composition_and_figures' => 'Sorry, your subdomain can only contain English letters and numbers',
 	'domain_be_retained' => 'Sorry, the domain name you set is reserved by the system, please choose another domain name',
-	'two_domain_have_been_occupied' => 'Sorry, the subdomain has already been occupied',
+	'two_domain_have_been_occupied' => 'Sorry, the subdomain is already taken',
 
 	'forum_permforum_nomedal' => 'You need to have the following medals to access this forum<br /><br />{forum_permforum_nomedal}&nbsp;<a href="home.php?mod=medal" class="xi1">Click to enter the medal page</a>',
 	'forum_permforum_disallow' => 'Only specific users can access this forum',
@@ -1028,7 +1028,7 @@ $lang = [
 	'not_enough_coupon' => 'Sorry, your coupon quantity is insufficient',
 	'credit_is_not_enough' => 'Sorry, your credits are insufficient to purchase this magic item',
 
-	'admin_reason_invalid' => 'Please enter the reason',
+	'admin_reason_invalid' => 'Please enter a reason',
 
 	'css_contains_elements_of_insecurity' => 'Sorry, the content you submitted contains insecure elements',
 	'diy_template_filename_invalid' => 'DIY template name is incorrect',
@@ -1127,7 +1127,7 @@ $lang = [
 
 	'payment_order_no_exist' => 'Order does not exist or has expired',
 	'payment_type_no_exist' => 'Please select a payment channel',
-	'payment_succeed' => 'Payment successful',
+	'payment_succeed' => 'Payment Successful',
 	'payment_transfer_succeed' => 'Transfer successful',
 	'payment_refund_id_exist' => 'Refund order number already exists, must be globally unique',
 	'payment_refund_exist' => 'The current refund order is being processed, please check the refund status through the status interface',
@@ -1208,7 +1208,7 @@ $lang = [
 	'account_security_logoff_confirm_null' => 'Please correctly enter the confirmation information',
 	'account_security_logoff_success' => 'Deletion successful',
 
-	'postdelete_succeed' => 'Deletion successful ',
+	'postdelete_succeed' => 'Deleted successfully ',
 
 	'forumportal_no_setting' => 'Aggregation homepage not set',
 	'forumportal_page_not_found' => 'Page does not exist',
@@ -1222,7 +1222,7 @@ $lang = [
 	'forum_member_exit_confirm' => 'After exiting, you need to re-apply to enter the current forum. Are you sure?<br /><br /><a href="{url}">[ Confirm exit ]</a>',
 	'forum_member_exit' => 'You have exited from the current forum',
 
-	'members_chgusername_check_failed' => 'Username legitimacy check failed',
+	'members_chgusername_check_failed' => 'Username validity check failed',
 	'members_chgusername_name_badword' => 'Username contains characters blocked by the system',
 	'members_chgusername_name_exists' => 'Username already exists',
 	'members_chgusername_change_failed' => 'Username modification operation submission failed',

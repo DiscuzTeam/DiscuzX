@@ -20,7 +20,7 @@ $lang =
 	'gift_bad_percredit_input' => 'The credits per portion entered is incorrect',
 	'gift_bad_credittype_input' => 'The specified credit type is incorrect',
 	'gift_credits_out_of_own' => 'The credits entered exceeds the credits you own',
-	'gift_gc' => 'Recycle red packet',
+	'gift_gc' => 'Return Red Envelope',
 	'gift_use' => 'Bury a red packet',
 
 	'gift_receive_gift' => 'Receive red packet {percredit} {credittype}',

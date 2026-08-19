@@ -14,6 +14,6 @@ $lang =
 	[
 	'bindqq' => 'You need to bind your QQ account to use this application',
 	'bindqq_link' => '<a href="javascript:;" class="lightlink" onclick="BindQQ()"><b>Start Binding QQ</b></a>',
-	'back' => 'Click here to return to the previous page',
+	'back' => 'Click here to return to previous page',
 	];
 

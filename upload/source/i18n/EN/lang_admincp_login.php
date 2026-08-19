@@ -32,7 +32,7 @@ $lang =
 	'security_question_4' => 'Name of One of Your Teachers',
 	'security_question_5' => 'Your Personal Computer Model',
 	'security_question_6' => 'Your Favorite Restaurant Name',
-	'security_question_7' => 'Last 4 Digits of Driver License',
+	'security_question_7' => 'Last Four Digits of Driver\'s License',
 	'other_loginname' => 'Other User Login',
 
 	'login_tips' => 'Discuz! is a professional community-based website building platform that helps websites achieve one-stop services.',

@@ -30,9 +30,9 @@ $lang =
 	'stat_edit_showtitle' => 'Display Name',
 	'stat_edit_showtitle_detail' => 'You can edit the following corresponding items to customize the display name of each statistic item',
 
-	'stat_posts' => 'Posts',
+	'stat_posts' => 'Post',
 	'stat_groups' => 'Groups',
-	'stat_members' => 'Members',
+	'stat_members' => 'Member',
 	'stat_groupnewposts' => 'Today\'s Group Posts',
 	'stat_bbsnewposts' => 'Today\'s Forum Posts',
 	'stat_bbslastposts' => 'Yesterday\'s Forum Posts',
@@ -41,6 +41,6 @@ $lang =
 	'stat_doings' => 'Doings',
 	'stat_blogs' => 'Blogs',
 	'stat_albums' => 'Albums',
-	'stat_pics' => 'Pictures',
+	'stat_pics' => 'Image',
 	'stat_shares' => 'Shares',
 	];

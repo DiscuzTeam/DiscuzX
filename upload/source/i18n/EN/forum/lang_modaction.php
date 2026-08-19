@@ -26,7 +26,7 @@ $lang =
 	'EDI' => 'Timed Digest',
 	'UED' => 'Remove Timed Digest',
 
-	'CLS' => 'Close',
+	'CLS' => 'Disable',
 	'OPN' => 'Open',
 	'ECL' => 'Timed Close',
 	'UEC' => 'Remove Timed Close',
@@ -64,10 +64,10 @@ $lang =
 	'PTS' => 'Push Thread',
 	'RFS' => 'Remove Push',
 	'RMR' => 'Remove Reward',
-	'BNP' => 'Ban Post',
+	'BNP' => 'Ban Posts',
 	'UBN' => 'Unban Post',
 
-	'REC' => 'Recommend',
+	'REC' => 'Recommended',
 	'URE' => 'Unrecommend',
 
 	'WRN' => 'Warn',

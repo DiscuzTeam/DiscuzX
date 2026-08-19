@@ -343,7 +343,7 @@ $lang = [
 	'group_changetype_confirm' => 'Confirm moving selected groups to category <font class="highlight">[{targetname}]</font>?',
 	'group_mergegroup_confirm' => 'Merge group operation cannot be undone. Confirm merging to group <font class="highlight">[{targetname}]</font>?',
 	'group_group_no_choice' => 'No groups selected for operation',
-	'group_userperm_succeed' => 'Operation successful ',
+	'group_userperm_succeed' => 'Operation successful',
 	'group_level_update_credits_invalid' => 'Missing group level with credit lower limit of negative or 0',
 	'group_level_update_credits_duplicate' => 'Group level credit lower limit settings are duplicate',
 	'group_level_succeed_except_all_levels' => 'Operation failed, not allowed to delete all group levels',
@@ -500,7 +500,7 @@ $lang = [
 	'recyclebin_clean_next' => 'Recycle bin updated, {threadsdel} threads deleted, program will continue automatically',
 
 	'report_resolve_succeed' => 'Processed successfully, now returning to list page',
-	'report_receive_succeed' => 'Operation successful ',
+	'report_receive_succeed' => 'Operation successful',
 
 	'searchindex_not_found' => 'Index file missing',
 	'search_keyword_noexists' => 'Please enter a keyword to search for',
@@ -698,7 +698,7 @@ $lang = [
 	'optimizer_httphost_optimizer' => 'Please correctly choose the technical route and solution based on your underlying situation, and disable empty HOST header support through correct underlying configuration',
 	'optimizer_filesafe_optimizer' => 'We have tried to delete the installer, data recovery program, and duplicate admin entry files for you. If the detection is still abnormal, you need to check whether related directory files exist, especially whether the old directory and utility directory have been deleted',
 	'optimizer_remote_optimizer' => 'If you did not actively enable this function, please disable the remote call function in config_global.php and modify the remote key',
-	'payment_succeed' => 'Payment successful',
+	'payment_succeed' => 'Payment Successful',
 	'payment_transfer_succeed' => 'Transfer successful',
 	'payment_error_50001' => 'Signature verification failed',
 	'payment_error_50002' => 'Order does not exist',
@@ -736,7 +736,7 @@ $lang = [
 	'tplfile_safe_notice' => 'Editing eval, javascript and other prohibited parts in the file is not allowed',
 	'tplfile_edit_succeed' => 'Template file has been updated',
 
-	'frame_cpmsg_title' => 'Prompt Information',
+	'frame_cpmsg_title' => 'Reminder',
 
 	'founder_platform_update_succeed' => 'Platform configuration updated successfully',
 

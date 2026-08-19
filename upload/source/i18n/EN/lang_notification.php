@@ -13,21 +13,21 @@ if(!defined('IN_DISCUZ')) {
 $lang =
 	[
 
-	'type_wall' => 'Wall Message',
+	'type_wall' => 'Message',
 	'type_piccomment' => 'Picture Comment',
 	'type_blogcomment' => 'Blog Comment',
-	'type_clickblog' => 'Blog Rating',
+	'type_clickblog' => 'Blog Reaction',
 	'type_clickarticle' => 'Article Rating',
-	'type_clickpic' => 'Picture Rating',
+	'type_clickpic' => 'Picture Reaction',
 	'type_sharecomment' => 'Share Comment',
-	'type_doing' => 'Doing',
+	'type_doing' => 'Records',
 	'type_friend' => 'Friend',
-	'type_credit' => 'Credits',
+	'type_credit' => 'Credit',
 	'type_bbs' => 'Forum',
 	'type_system' => 'System',
 	'type_thread' => 'Thread',
 	'type_task' => 'Task',
-	'type_group' => 'Group',
+	'type_group' => 'Groups',
 
 	'mail_to_user' => 'You have new notifications',
 	'showcredit' => '{actor} gifted you {credit} bidding credits to help improve your ranking in the <a href="misc.php?mod=ranklist&type=member" target="_blank">Bidding Ranklist</a>',

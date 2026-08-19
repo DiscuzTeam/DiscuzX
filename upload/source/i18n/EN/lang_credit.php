@@ -12,16 +12,16 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = [
 	'credits_CREDITS' => 'Total Credits',
-	'credits_DIGESTPOSTS' => 'Digest Posts',
-	'credits_POSTS' => 'Posts',
-	'credits_THREADS' => 'Threads',
+	'credits_DIGESTPOSTS' => 'Digest Post Count',
+	'credits_POSTS' => 'Post Count',
+	'credits_THREADS' => 'Thread Count',
 	'credits_REPLIES' => 'Replies',
 	'credits_OLTIME' => 'Online Time (hours)',
-	'credits_BLOGS' => 'Blogs',
+	'credits_BLOGS' => 'Blogs Count',
 	'credits_FRIENDS' => 'Friends',
-	'credits_ALBUMS' => 'Albums',
+	'credits_ALBUMS' => 'Albums Count',
 	'credits_DOINGS' => 'Doings',
-	'credits_POLLS' => 'Polls',
-	'credits_SHARINGS' => 'Shares',
+	'credits_POLLS' => 'Poll Count',
+	'credits_SHARINGS' => 'Shares Count',
 ];
 	

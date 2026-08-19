@@ -12,5 +12,5 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = [
 	'name' => 'HTML Code',
-	'description' => 'HTML code',
+	'description' => 'HTML Code',
 ];

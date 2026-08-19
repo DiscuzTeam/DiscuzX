@@ -14,7 +14,7 @@ $lang =
 	[
 	'cornerbanner_name' => 'Global Bottom Right Corner Ad',
 	'cornerbanner_desc' => 'Display Mode: Displayed at the bottom right corner of the page. When there are multiple header banner ads on the current page, the system will randomly select one to display.<br />Value Analysis: Because it can be displayed in a prominent position on the page, it has become one of the highest-priced ad types on web pages, most suitable for commercial promotion or brand promotion.',
-	'cornerbanner_index' => 'Home Page',
+	'cornerbanner_index' => 'Home',
 	'cornerbanner_fids' => 'Target Forums',
 	'cornerbanner_fids_comment' => 'Set the forum boards for ad placement, effective when the ad scope includes "Forum"',
 	'cornerbanner_groups' => 'Target Group Categories',

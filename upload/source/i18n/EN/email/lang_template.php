@@ -15,10 +15,10 @@ $lang =
 	[
 	'hello' => 'Hello',
 	'moderate_member_invalidate' => 'Rejected',
-	'moderate_member_delete' => 'Deleted',
+	'moderate_member_delete' => 'Delete',
 	'moderate_member_validate' => 'Approved',
 
-	'comma' => ', ',
+	'comma' => '，',
 	'show_sender' => 'This email is sent by {$var[\'bbname\']}.',
 	'show_reason' => 'You received this email because',
 	'have_not_visit' => 'If you have not visited {$var[\'bbname\']},',
@@ -114,7 +114,7 @@ or filled in incorrect birthday information. This email will not be sent repeate
 	'invitemail_viewpage' => 'If you already have an account on {$var[\'sitename\']}, please click the link below to view my personal homepage:',
 
 	'moderate_member_invalidate' => 'Rejected',
-	'moderate_member_delete' => 'Deleted',
+	'moderate_member_delete' => 'Delete',
 	'moderate_member_validate' => 'Approved',
 	'moderate_member_subject' => 'User Review Result Notification',
 	'moderate_member_reason' => 'This email address was used when a new user registered at {$var[\'bbname\']}, and the administrator has set that new users require manual review. This email will notify you of the review result of your submitted application.',

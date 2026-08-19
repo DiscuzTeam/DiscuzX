@@ -33,7 +33,7 @@ $lang =
 
 	'feed_showcredit' => '{actor} gifted {fusername} {credit} bid credits, helping a friend improve their ranking on the <a href="misc.php?mod=ranklist&type=member" target="_blank">Bid Ranking</a>',
 	'feed_showcredit_self' => '{actor} gained {credit} bid credits, improving their ranking on the <a href="misc.php?mod=ranklist&type=member" target="_blank">Bid Ranking</a>',
-	'feed_doing_title' => '{actor}: {message}',
+	'feed_doing_title' => '{actor}：{message}',
 	'feed_friend_title' => '{actor} and {touser} became friends',
 
 

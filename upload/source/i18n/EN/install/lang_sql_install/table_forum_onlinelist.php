@@ -9,7 +9,7 @@
 $data = [[
     'groupid' => '1',
     'displayorder' => '1',
-    'title' => 'Administrator',
+    'title' => 'Administrators',
     'url' => 'online_admin.gif',
   ],[
     'groupid' => '2',
@@ -19,7 +19,7 @@ $data = [[
   ],[
     'groupid' => '3',
     'displayorder' => '3',
-    'title' => 'Moderator',
+    'title' => 'Moderators',
     'url' => 'online_moderator.gif',
   ],[
     'groupid' => '0',
