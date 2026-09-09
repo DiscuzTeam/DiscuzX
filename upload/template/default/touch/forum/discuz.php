@@ -42,7 +42,6 @@
 		});
 		</script>
 		<!--{/if}-->
-		<!--{hook/index_top}-->	
 	<!--{/if}-->
 	<!--[diy=diy2]--><div id="diy2" class="area"></div><!--[/diy]-->
 	<!--{if $_G['setting']['mobile']['forum']['index'] > 1 && $_GET['forumlist'] != 1}-->
@@ -66,7 +65,6 @@
 			</div>
 		</div>
 		<!--{/if}-->
-		<!--{hook/index_catlist_top}-->
 		<!--{if !empty($_G['setting']['grid']['showgrid'])}-->
 		<div class="tabs flex-box mt10 cl">
 			<a href="javascript:;" class="flex mon">{lang collection_lastthread}</a>

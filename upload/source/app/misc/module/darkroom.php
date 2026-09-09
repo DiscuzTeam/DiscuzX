@@ -65,7 +65,7 @@ if($_G['setting']['darkroom']) {
 		}
 	}
 	if(getgpc('ajaxdata') === 'json') {
-		showmessage($dataexist.'|'.$cid, '', $crimelist);
+		showmessage($dataexist.'|'.$cid, '', array_values($crimelist));
 	} else {
 		include_once template('misc/darkroom');
 	}

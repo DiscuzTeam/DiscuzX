@@ -107,15 +107,15 @@ if(!empty($isdel_post)) {
 
 $summary = '';
 $curpagepids = [];
-foreach($postarr as $post) {
-	$curpagepids[] = $post['pid'];
-}
 if($page == 1 && $ordertype == 1) {
 	$firstpost = table_forum_post::t()->fetch_threadpost_by_tid_invisible($_G['tid']);
 	if($firstpost['invisible'] == 0 || $visibleallflag == 1) {
 		$postarr = array_merge([$firstpost], $postarr);
 		unset($firstpost);
 	}
+}
+foreach($postarr as $post) {
+	$curpagepids[] = $post['pid'];
 }
 $tagnames = $locationpids = $hotpostarr = $hotpids = $member_blackList = [];
 

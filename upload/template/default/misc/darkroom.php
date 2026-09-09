@@ -71,7 +71,7 @@
 				// 构建请求URL
 				const timestamp = Math.floor(Date.now() / 1000);
 				const random = Math.random() * 1000;
-				const url = 'misc.php?mod=darkroom&cid='+cid+'&t='+parseInt((+new Date()/1000)/(Math.random()*1000));
+				const url = 'misc.php?mod=darkroom&cid='+cid+'&ajaxdata=json&t='+parseInt((+new Date()/1000)/(Math.random()*1000));
 
 				const table = document.getElementById('darkroomtable');
 				let tablerows = table.rows.length;
@@ -97,7 +97,7 @@
 							obj.style.display = 'block';
 						}
 
-						const list = s.data;
+						const list = s.data ? Object.values(s.data) : [];
 						if (list && list.length) {
 							for (let i = 0; i < list.length; i++) {
 								const item = list[i];

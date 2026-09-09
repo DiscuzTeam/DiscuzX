@@ -229,7 +229,11 @@ class editorBlock {
 		$language = $this->_value($m[2], $value);
 		$n_count = $this->_value($m[3], $value) ?? 0;
 		$code = $this->_value($m[4], $value);
-		$code = str_replace('`', '\`', $code);
+		$code = str_replace(
+			['`', '${'],
+			['\`', '\${'],
+			$code
+		);
 		$code = dhtmlspecialchars($code);
 		$rand = time().random(5);
 		$script = <<<EOF
