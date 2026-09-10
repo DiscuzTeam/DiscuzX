@@ -109,6 +109,7 @@ EOT;
 } elseif($do == 'redirect') {
 	if($cmenu = table_common_admincp_cmenu::t()->fetch(intval($_GET['mid']))) {
 		$url = rawurldecode($cmenu['url']);
+		$url = str_replace('&amp;', '&', $url);
 		if(strpos($url, 'platform=system') !== false) {
 			dheader('location: '.$url);
 		} else {

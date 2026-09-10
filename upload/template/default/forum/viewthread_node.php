@@ -404,7 +404,7 @@ $postshowavatars = !($_G['setting']['bannedmessages'] & 2 && ($post['memberstatu
 					<!--{elseif $_G['uid'] && $post['authorid'] == $_G['uid'] && $_G['setting']['postappend']}-->
 						<a class="appendp" href="forum.php?mod=misc&action=postappend&tid=$post[tid]&pid=$post[pid]&extra=$_GET[extra]&page=$page" onClick="showWindow('postappend', this.href, 'get', 0)">{lang postappend}</a>
 					<!--{/if}-->
-					<!--{if $_G['uid'] == $post['authorid']}-->
+					<!--{if $_G['uid'] == $post['authorid'] && $_G['setting']['editperdel']}-->
 						<a class="removep" href="forum.php?mod=misc&action=postdelete&tid=$post[tid]&pid=$post[pid]&extra=$_GET[extra]&page=$page" onClick="showWindow('postdelete', this.href, 'get', 0)">{lang delete}</a>
 					<!--{/if}-->
 					<!--{if $post['first'] && $post['invisible'] == -3}-->
