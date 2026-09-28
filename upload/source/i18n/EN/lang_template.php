@@ -47,7 +47,7 @@ $lang = [
 	'keyword_faq' => 'FAQ for keyword "<span class="xi1">$keyword</span>"',
 	'open' => 'Expand',
 	'search' => 'Search',
-	'close' => 'Disable',
+	'close' => 'Close',
 	'focus_hottopics' => 'Webmaster Recommend',
 	'focus_show' => 'View',
 	'newpm_subject' => 'New Private Message',
