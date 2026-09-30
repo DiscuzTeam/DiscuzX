@@ -15,7 +15,7 @@ $exists = false;
 $interfaces = account_base::getInterfaces();
 if($interfaces) {
 	foreach($interfaces as $interface) {
-		$atype = account_base::Interfaces_aType[$interface];
+		$atype = account_base::Interfaces_aType()[$interface];
 		if(empty($atype) && str_starts_with($interface, 'plugin_')) {
 			$atype = account_base::getAccountType(substr($interface, 7));
 		}

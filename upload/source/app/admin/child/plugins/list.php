@@ -150,6 +150,7 @@ if(!submitcheck('submit')) {
 	shownav('plugin', 'plugins_list');
 	showsubmenu('nav_plugins', [
 		['plugins_list', 'plugins', 1],
+		['plugins_hooklist', 'plugins&operation=hooklist', 0],
 		['plugins_validator'.($updatecount ? '_new' : ''), 'plugins&operation=upgradecheck', 0],
 		['cloudaddons_plugin_link', 'cloudaddons&frame=no&operation=plugins&from=more', 0, 1],
 		['cloudaddons_witframe_link', 'cloudaddons&frame=no&operation=witframe&from=more', 0, 1],

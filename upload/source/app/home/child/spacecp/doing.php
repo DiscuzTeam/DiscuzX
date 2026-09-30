@@ -18,6 +18,48 @@ if(!$_G['setting']['doingstatus']) {
 	showmessage('doing_status_off');
 }
 
+/**
+ * 读取记录上传限制设置（含默认值）
+ * 设置项保存在 common_setting，可在 后台->设置->空间设置->记录设置 中修改
+ */
+if(!function_exists('doing_upload_limits')) {
+	function doing_upload_limits() {
+		$setting = getglobal('setting');
+		$videoexts = !empty($setting['doingvideoext']) ? strtolower($setting['doingvideoext']) : 'mp4,webm,mov';
+		$videoexts = array_unique(array_filter(array_map('trim', explode(',', $videoexts))));
+		return [
+			'imgmaxnum' => max(1, intval(isset($setting['doingimgmaxnum']) ? $setting['doingimgmaxnum'] : 9)),
+			'imgmaxsize' => max(1, intval(isset($setting['doingimgmaxsize']) ? $setting['doingimgmaxsize'] : 2048)) * 1024,
+			'imgexts' => ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp'],
+			'videoallow' => intval(isset($setting['doingvideoallow']) ? $setting['doingvideoallow'] : 1),
+			'videomaxsize' => max(1, intval(isset($setting['doingvideomaxsize']) ? $setting['doingvideomaxsize'] : 50)) * 1024 * 1024,
+			'videoexts' => $videoexts,
+		];
+	}
+}
+
+/**
+ * 校验单张记录图片是否合法，合法返回空字符串，否则返回错误语言键
+ */
+if(!function_exists('doing_check_image_file')) {
+	function doing_check_image_file($file, $limits) {
+		if(!is_array($file) || empty($file['name']) || !is_string($file['name'])) {
+			return 'doing_upload_image_invalid';
+		}
+		if(!empty($file['error']) && $file['error'] !== UPLOAD_ERR_NO_FILE) {
+			return 'doing_upload_image_invalid';
+		}
+		$ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+		if(!in_array($ext, $limits['imgexts'])) {
+			return 'doing_upload_image_ext_invalid';
+		}
+		if($file['size'] > $limits['imgmaxsize']) {
+			return 'doing_upload_image_too_large';
+		}
+		return '';
+	}
+}
+
 $doid = empty($_GET['doid']) ? 0 : intval($_GET['doid']);
 $docid = empty($_GET['docid']) ? 0 : intval($_GET['docid']);
 
@@ -66,7 +108,12 @@ if($_GET['op'] == 'delete') {
 		showmessage('docomment_error');
 	}
 
-	include template('home/spacecp_doing');
+	// 移动端单条详情页内联加载时只返回表单片段（不含整页头尾）
+	if(defined('IN_MOBILE') && !empty($_GET['fragment'])) {
+		include template('home/spacecp_doing_formfragment');
+	} else {
+		include template('home/spacecp_doing');
+	}
 	dexit();
 } elseif($_GET['op'] == 'getcomment') {
 	$key = empty($_GET['key']) ? random(8) : $_GET['key'];
@@ -376,6 +423,36 @@ if($_GET['op'] == 'delete') {
 		showmessage('no_privilege_doing', '', array(), array('login' => 1));
 	}
 
+	// 服务端强制校验：图片数量、单张尺寸、图片类型
+	$limits = doing_upload_limits();
+	$errkey = '';
+	if(empty($_FILES['Filedata']) || !is_array($_FILES['Filedata']) || is_array($_FILES['Filedata']['name'])) {
+		$errkey = 'doing_upload_image_invalid';
+	} else {
+		$errkey = doing_check_image_file($_FILES['Filedata'], $limits);
+		if(!$errkey) {
+			$tempcount = DB::result_first('SELECT COUNT(*) FROM %t WHERE uid=%d AND doid=0 AND isimage IN (1, -1)', ['home_doing_attachment', $_G['uid']]);
+			if($tempcount >= $limits['imgmaxnum']) {
+				$errkey = 'doing_upload_image_too_many';
+			}
+		}
+	}
+	if($errkey) {
+		$errvars = [
+			'num' => $limits['imgmaxnum'],
+			'size' => intval($limits['imgmaxsize'] / 1024),
+		];
+		if(defined('IN_RESTFUL')) {
+			showmessage($errkey, '', $errvars);
+		}
+		header('Content-Type: application/json');
+		echo json_encode([
+			'status' => 'error',
+			'message' => lang('message', $errkey, $errvars),
+		]);
+		exit;
+	}
+
 	if (!empty($_FILES)) {
 		$upload = new upload('doing');
 		$f = $upload->upload();
@@ -476,7 +553,7 @@ if($_GET['op'] == 'delete') {
 			if($attach && $attach['uid'] == $_G['uid']) {
 
 				table_home_doing_attachment::t()->delete($aid);
-				pic_delete($attach['attachment'], 'doing', 0, $attach['remote']);
+				pic_delete($attach['attachment'], 'doing', empty($attach['isimage']) ? 1 : 0, $attach['remote']);
 				if($_G['setting']['ftp']['on'] == 2) {
 					ftpcmd('delete', 'doing/'.$attach['attachment']);
 					ftpcmd('delete', 'doing/'.getimgthumbname($attach['attachment']));
@@ -852,16 +929,92 @@ if($_GET['op'] == 'delete') {
 		updatecreditbyaction('doing', 0, $extrasql);
 
 		table_common_member_field_home::t()->update($_G['uid'], $setarr);
+		$imageaids = [];
 		if (!empty($_POST['imageaids'])) {
 			$imageaids = explode(',', $_POST['imageaids']);
 			$imageaids = array_map('intval', $imageaids);
-			$imageaids = array_filter($imageaids); 
-			
+			$imageaids = array_filter($imageaids);
+
 			if (!empty($imageaids)) {
-				table_home_doing_attachment::t()->update_by_aid($imageaids, ['doid' => $newdoid]);
+				// 仅允许绑定当前用户自己上传的、尚未关联记录的临时图片
+				$validaids = [];
+				foreach ($imageaids as $aid) {
+					$attach = table_home_doing_attachment::t()->fetch_attachment('aid:'.$aid, $aid);
+					if ($attach && $attach['uid'] == $_G['uid'] && !$attach['doid']) {
+						$validaids[] = $aid;
+					}
+				}
+				$imageaids = $validaids;
+				if (!empty($imageaids)) {
+					table_home_doing_attachment::t()->update_by_aid($imageaids, ['doid' => $newdoid]);
+				}
 			}
 		}
 		if (!empty($_FILES)) {
+			$limits = doing_upload_limits();
+
+			// 规范化本次提交的图片文件列表（$_FILES['photos'] 为多文件结构）
+			$photofiles = [];
+			if (!empty($_FILES['photos']) && is_array($_FILES['photos']['name'])) {
+				foreach ($_FILES['photos']['name'] as $k => $v) {
+					if ($_FILES['photos']['error'][$k] === UPLOAD_ERR_NO_FILE) {
+						continue;
+					}
+					$photofiles[$k] = [
+						'name' => $v,
+						'type' => $_FILES['photos']['type'][$k],
+						'tmp_name' => $_FILES['photos']['tmp_name'][$k],
+						'error' => $_FILES['photos']['error'][$k],
+						'size' => $_FILES['photos']['size'][$k],
+					];
+				}
+			}
+
+			// 已绑定临时图片数 + 本次上传图片数 不得超过数量上限
+			if (count($photofiles) + count($imageaids) > $limits['imgmaxnum']) {
+				showmessage('doing_upload_image_too_many', '', ['num' => $limits['imgmaxnum']]);
+			}
+
+			// 单张图片类型与尺寸校验
+			foreach ($photofiles as $p) {
+				$errkey = doing_check_image_file($p, $limits);
+				if ($errkey) {
+					showmessage($errkey, '', [
+						'num' => $limits['imgmaxnum'],
+						'size' => intval($limits['imgmaxsize'] / 1024),
+					]);
+				}
+			}
+
+			// 视频校验：仅允许 1 个，且需在后台开启
+			$hasvideo = false;
+			if (!empty($_FILES['video']) && is_array($_FILES['video']) && !is_array($_FILES['video']['name'])
+				&& $_FILES['video']['name'] !== '' && $_FILES['video']['error'] !== UPLOAD_ERR_NO_FILE) {
+				if (empty($limits['videoallow'])) {
+					showmessage('doing_upload_video_disabled');
+				}
+				$vext = strtolower(pathinfo($_FILES['video']['name'], PATHINFO_EXTENSION));
+				if (!in_array($vext, $limits['videoexts'])) {
+					showmessage('doing_upload_video_ext_invalid', '', ['ext' => implode(',', $limits['videoexts'])]);
+				}
+				if ($_FILES['video']['size'] > $limits['videomaxsize']) {
+					showmessage('doing_upload_video_too_large', '', ['size' => intval($limits['videomaxsize'] / 1048576)]);
+				}
+				$hasvideo = true;
+			}
+
+			// 仅将通过校验的文件交给上传类处理
+			$files = [];
+			if (!empty($photofiles)) {
+				foreach (['name', 'type', 'tmp_name', 'error', 'size'] as $field) {
+					$files['photos'][$field] = array_column($photofiles, $field);
+				}
+			}
+			if ($hasvideo) {
+				$files['video'] = $_FILES['video'];
+			}
+			$_FILES = $files;
+
 			$upload = new upload('doing');
 			$f = $upload->upload();
 
@@ -897,6 +1050,42 @@ if($_GET['op'] == 'delete') {
 						'height' => $value['imageinfo'][1],
 						'displayorder' => $key
 					], true);
+				}
+			}
+
+			// 保存视频附件信息到数据库（isimage=0）
+			if ($hasvideo && !empty($f['video']) && is_array($f['video']) && !empty($f['video']['attachment']) && empty($f['video']['error'])) {
+				$value = $f['video'];
+				table_home_doing_attachment::t()->insert_attachment([
+					'doid' => $newdoid,
+					'uid' => $_G['uid'],
+					'dateline' => TIMESTAMP,
+					'filename' => $value['name'],
+					'filesize' => $value['size'],
+					'attachment' => $value['attachment'],
+					'remote' => $value['remote'] ?? 0,
+					'isimage' => 0,
+					'width' => 0,
+					'height' => 0,
+					'displayorder' => 0
+				], true);
+
+				// 保存客户端截取的视频封面（DPlayer 默认读取「附件名.thumb.jpg」作为封面）
+				if (!empty($_POST['videoposter']) && preg_match('/^data:image\/(?:jpeg|jpg|png);base64,([A-Za-z0-9+\/=]+)$/', trim($_POST['videoposter']), $pmatch)) {
+					$posterdata = base64_decode($pmatch[1], true);
+					if ($posterdata && strlen($posterdata) < 5 * 1024 * 1024) {
+						$thumbname = getimgthumbname($value['attachment']);
+						$thumbpath = $_G['setting']['attachdir'].'/doing/'.$thumbname;
+						if (!is_dir(dirname($thumbpath))) {
+							dmkdir(dirname($thumbpath));
+						}
+						if (@file_put_contents($thumbpath, $posterdata)) {
+							// 远程附件时同步封面到 FTP
+							if (!empty($value['remote']) && $_G['setting']['ftp']['on']) {
+								ftpcmd('upload', 'doing/'.$thumbname);
+							}
+						}
+					}
 				}
 			}
 		}

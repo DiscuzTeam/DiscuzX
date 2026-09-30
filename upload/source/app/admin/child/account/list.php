@@ -18,8 +18,7 @@ if(!submitcheck('submit')) {
 		$class = new (account_base::getClass($interface));
 		$interfaceEnvs[$interface]['loginAuto'] = $class->interface_loginAuto;
 
-		$interfaceEnvs[$interface]['avatarRegisterAuto'] = $interfaceEnvs[$interface]['avatarLoginAuto'] = $interfaceEnvs[$interface]['avatarBindAuto'] =
-			!in_array($interface, account_base::Interfaces_noAutoAvatar) && !$class->interface_noAutoAvatar;
+		$interfaceEnvs[$interface]['avatarRegisterAuto'] = $interfaceEnvs[$interface]['avatarLoginAuto'] = $interfaceEnvs[$interface]['avatarBindAuto'] = !$class->interface_noAutoAvatar;
 	}
 
 	showtips('account_basesetting_tips');

@@ -25,6 +25,8 @@ $defaultid2 = table_common_setting::t()->fetch_setting('styleid2');
 $defaultid3 = table_common_setting::t()->fetch_setting('styleid3');
 
 if(!submitcheck('stylesubmit')) {
+	require_once libfile('function/importdata');
+
 	$narray = [];
 
 	$dir = DISCUZ_TEMPLATE();
@@ -34,11 +36,9 @@ if(!submitcheck('stylesubmit')) {
 		$tpldir = realpath($dir.'/'.$entry);
 		if(!in_array($entry, ['.', '..']) && !in_array($tpldir, $tpldirs) && is_dir($tpldir)) {
 			$styleexist = 0;
-			$searchdir = dir($tpldir);
-			while($searchentry = $searchdir->read()) {
-				if(str_starts_with($searchentry, 'discuz_style_') && (fileext($searchentry) == 'xml' || fileext($searchentry) == 'json')) {
-					$styleexist++;
-				}
+			$stylearrays = import_styles(dir: $entry, returnonly: true);
+			if(!empty($stylearrays[0])) {
+				$styleexist += count($stylearrays);
 			}
 			if($styleexist) {
 				$narray[$i] = [
@@ -46,9 +46,10 @@ if(!submitcheck('stylesubmit')) {
 					'available' => '',
 					'directory' => './template/'.$entry,
 					'name' => $entry,
-					'tplname' => $entry,
+					'tplname' => $stylearrays[0]['name'] ?? $entry,
 					'filemtime' => @filemtime($dir.'/'.$entry),
-					'stylecount' => $styleexist
+					'stylecount' => $styleexist,
+					'desc' => $stylearrays[0]['desc'] ?? '',
 				];
 				$i--;
 			}

@@ -9,7 +9,13 @@
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
+
 class account_discuz extends account_base {
+
+	const aType = account::aType_discuz;
+	const iconId = 'icon-discuz';
+
+	public bool $interface_noAutoAvatar = true;
 
 	public bool $interface_loginAuto = false;
 
@@ -71,12 +77,14 @@ class account_discuz extends account_base {
 
 		$ret = $this->_request('/authtoken', array('authtoken' => $authtoken));
 		if(!$ret || $ret['ret'] > 0) {
+			account_base::error_logger('discuz login failed: /authtoken ret='.($ret['ret'] ?? 'null'));
 			showmessage('account_api_error', '', ['message' => ': '.$ret['ret'].', /authtoken']);
 		}
 
 		//获取访问用户身份
 		$ret = $this->_request('/profile', array('uid' => $ret['data']['uid']));
 		if(!$ret || $ret['ret'] > 0) {
+			account_base::error_logger('discuz login failed: /profile ret='.($ret['ret'] ?? 'null'));
 			showmessage('account_api_error', '', ['message' => ': '.$ret['ret'].', /profile']);
 		}
 

@@ -106,7 +106,7 @@ switch($ac) {
 
 		dsetcookie('wechat_referer', dreferer(), 86400);
 		$user_agent = $_SERVER['HTTP_USER_AGENT'];
-		if(!str_contains($user_agent, 'MicroMessenger')) {
+		if(!weixin::in_event()) {
 			[$authcode, $code] = $wechat->getAuthCode();
 			include template('wechat/wechat');
 		} else {

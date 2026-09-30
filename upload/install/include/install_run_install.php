@@ -363,9 +363,15 @@ if($method == 'show_license') {
 	} else {
 		show_header();
 		echo '</div><div class="main inst_success"><div class="success_icon"></div><h2>'.$lang['install_finish'].'</h2><p>'.$lang['install_finish_next'].'</p>';
-		echo '<a href="'.$default_appurl.'/admin.php" class="btn">'.$lang['finish_btn_admin'].'</a>';
-		echo '<a href="'.$default_appurl.'/admin.php?action=cloudaddons&frame=no&from=newinstall" class="btn">'.$lang['finish_btn_cloudaddon'].'</a>';
-		echo '<a href="'.$default_appurl.'" class="btn finish">'.$lang['finish_btn_direct'].'</a>';
+		echo '<div class="success_btn"><p class="btng btng_two">';
+		echo '<a href="'.$default_appurl.'/admin.php?action=styles&operation=import&dir=discuzx5&default=1" class="btn finishbtn"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5.5h16v11H9l-5 3v-14Z"/><path d="M8 9h8M8 13h5"/></svg>'.$lang['finish_btn_install_style_x5'].'</a>';
+		echo '<a href="'.$default_appurl.'" class="btn finishbtn"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 10 9-7 9 7M5.5 9v11h13V9M9 20v-7h6v7"/></svg>'.$lang['finish_btn_direct'].'</a>';
+		echo '</p>';
+
+		echo '<p class="btng btng_two">';
+		echo '<a href="'.$default_appurl.'/admin.php" class="btn finishbtn"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3 20 6v5c0 5-3.4 8.3-8 10-4.6-1.7-8-5-8-10V6l8-3Z"/><path d="m8.5 12 2.2 2.2 4.8-4.8"/></svg>'.$lang['finish_btn_admin'].'</a>';
+		echo '<a href="'.$default_appurl.'/admin.php?action=cloudaddons&frame=no&from=newinstall" class="btn finishbtn"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4z"/><path d="M16.5 13v7M13 16.5h7"/></svg>'.$lang['finish_btn_cloudaddon'].'</a>';
+		echo '</p></div>';
 		show_footer();
 	}
 
@@ -490,15 +496,6 @@ if($method == 'show_license') {
 	$ctype = 1;
 	$data = addslashes(serialize($userstats));
 	$db->query("REPLACE INTO {$tablepre}common_syscache (cname, ctype, dateline, data) VALUES ('userstats', '$ctype', '".time()."', '$data')");
-
-	//自动登录前台
-	$saltkey = random(8);
-	$authkey = md5($_config['security']['authkey'].$saltkey);
-	$cookiepre = $_config['cookie']['cookiepre'].substr(md5($_config['cookie']['cookiepath'].'|'.$_config['cookie']['cookiedomain']), 0, 4).'_';
-	setcookie($cookiepre.'saltkey', $saltkey, time() + 84600, $_config['cookie']['cookiepath'], $_config['cookie']['cookiedomain'], is_https(), true);
-	setcookie($cookiepre.'auth', authcode("{$password}\t{$uid}", 'ENCODE', $authkey), time() + 84600, $_config['cookie']['cookiepath'], $_config['cookie']['cookiedomain'], is_https(), true);
-	setcookie($cookiepre.'adminauth', authcode("{$password}\t{$uid}", 'ENCODE', $authkey), 0, $_config['cookie']['cookiepath'], $_config['cookie']['cookiedomain'], is_https(), true);
-	$db->query("insert into {$tablepre}common_admincp_session SET uid='$uid', adminid=1, panel=1, dateline='$timestamp', ip='".addslashes($_SERVER['REMOTE_ADDR'])."', errorcount='-1'");
 
 	!VIEW_OFF && showjsmessage(lang('initdbdataresult_succ')."\n");
 } elseif($method == 'do_db_upgrade') {

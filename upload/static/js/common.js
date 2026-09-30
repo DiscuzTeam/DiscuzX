@@ -2494,3 +2494,7 @@ if (typeof IN_ADMINCP == 'undefined') {
 
 document.addEventListener('DOMContentLoaded', loadAvatar);
 document.addEventListener('DOMContentLoaded', initZoom);
+
+if (typeof PWAON != 'undefined' && PWAON == 1 && 'serviceWorker' in navigator) {
+	navigator.serviceWorker.register(SITEURL + 'pwa.js?' + VERHASH);
+}

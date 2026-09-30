@@ -29,11 +29,15 @@ $lang =
 	'post_single_banned' => '**** This post is banned ****',
 	'message_ishidden_hiddenreplies' => 'This post is only visible to the author',
 	'post_reply_quote' => '{author} posted on {time}',
-	'post_edit' => "[i=s] This post was last edited by {editor} on {edittime} [/i]\n\n",
+	'post_edit' => "[i=s] This post was last edited by {editor} on {edittime} [/i]
+
+",
 	'post_edit_regexp' => '/^\[i=s\] This post was last edited by .*? on .*? edited \[\/i\][\r\n][\r\n]/s',
 	'post_edithtml' => '[i=s] This post was last edited by {editor} on {edittime} [/i]<br /><br />',
 	'post_edithtml_regexp' => '/^\[i=s\] This post was last edited by .*? on .*? edited \[\/i\]&lt;br \/&gt;&lt;br \/&gt;/s',
-	'post_editnobbcode' => "[ This post was last edited by {editor} on {edittime} ]\n\n",
+	'post_editnobbcode' => "[ This post was last edited by {editor} on {edittime} ]
+
+",
 	'post_editnobbcode_regexp' => '/^\[ This post was last edited by .*? on .*? edited \][\r\n][\r\n]/s',
 	'post_reply' => 'Reply',
 	'post_thread' => '\'s posts',
@@ -69,7 +73,7 @@ $lang =
 	'attach_credits_policy' => 'View Credit Policy',
 	'attach_img' => 'Image Attachment',
 	'attach_readperm' => 'Read Permission',
-	'attach_img_zoom' => 'Click to view full image in new window\nCTRL+mouse wheel to zoom in or out',
+	'attach_img_zoom' => 'Click to view full image in new window\\nCTRL+mouse wheel to zoom in or out',
 	'attach_img_thumb' => 'Click to view full image in new window',
 	'attach_downloads' => 'Downloads',
 
@@ -119,8 +123,8 @@ $lang =
 
 	'credit_total' => 'Total Credits',
 
-	'invite_payment' => 'Purchase Invitation Code',
-	'invite_forum_payment' => 'Purchase Invitation Code',
+	'invite_payment' => 'Buy Invitation Code',
+	'invite_forum_payment' => 'Buy Invitation Code',
 	'invite_forum_payment_unit' => 'pieces',
 	'invite_forum_royalty' => 'Transaction Fee',
 
@@ -147,7 +151,7 @@ $lang =
 	'eccredit_explain' => 'Explanation',
 
 	'modcp_logs_action_home' => 'Internal Message',
-	'modcp_logs_action_moderate' => 'Moderate',
+	'modcp_logs_action_moderate' => 'Moderation',
 	'modcp_logs_action_member' => 'User Management',
 	'modcp_logs_action_forumaccess' => 'User Permissions',
 	'modcp_logs_action_thread' => 'Thread Management',
@@ -167,7 +171,7 @@ $lang =
 	'pm_to' => 'Recipient',
 	'pm_date' => 'Date',
 
-	'share_message' => 'Hello! I saw this thread on {$_G[\'setting\'][\'bbname\']} and found it very valuable, so I\'m specially recommending it to you.\n\n$thread[\'subject\']\nURL [url={$threadurl}]{$threadurl}[/url]\n\nHope you like it',
+	'share_message' => 'Hello! I saw this thread on {$_G[\'setting\'][\'bbname\']} and found it very valuable, so I\'m specially recommending it to you.\\n\\n$thread[\'subject\']\\nURL [url={$threadurl}]{$threadurl}[/url]\\n\\nHope you like it',
 
 	'week_0' => 'Sunday',
 	'week_1' => 'Monday',
@@ -184,7 +188,7 @@ $lang =
 	'perms_allowvisit' => 'Visit Forum',
 	'perms_readaccess' => 'Read Permission',
 	'perms_allowviewpro' => 'View User Profile',
-	'perms_allowinvisible' => 'Invisible',
+	'perms_allowinvisible' => 'Invisible Mode',
 	'perms_allowsearch' => 'Use Search',
 	'perms_allownickname' => 'Use Nickname',
 	'perms_allowcstatus' => 'Custom Title',
@@ -213,7 +217,7 @@ $lang =
 	'perms_maxsizeperday' => 'Max Total Attachment Size Per Day',
 	'perms_maxattachnum' => 'Max Attachment Count Per Day',
 	'perms_allowbioimgcode' => 'Use [img] Code in Bio',
-	'perms_attachextensions' => 'Attachment Type',
+	'perms_attachextensions' => 'Attachment Types',
 	'perms_allowstickthread' => 'Sticky Thread',
 	'perms_allowdigestthread' => 'Digest Thread',
 	'perms_allowstickthread_value' => 'Sticky',
@@ -234,7 +238,7 @@ $lang =
 	'perms_allowremovereward' => 'Remove Reward',
 	'perms_alloweditactivity' => 'Manage Activities',
 	'perms_allowedittrade' => 'Manage Goods',
-	'perms_alloweditpost' => 'Edit Post',
+	'perms_alloweditpost' => 'Edit Posts',
 	'perms_allowwarnpost' => 'Warn Posts',
 	'perms_allowbanpost' => 'Ban Posts',
 	'perms_allowdelpost' => 'Delete Posts',
@@ -276,7 +280,7 @@ $lang =
 	'perms_allowmediacode' => 'Allow Using Media Code',
 
 	'join_topic' => 'Join Topic',
-	'join_poll' => 'Vote in Polls',
+	'join_poll' => 'Join Poll',
 	'buy_trade' => 'Buy Goods',
 	'join_reward' => 'Join Reward',
 	'join_activity' => 'Join Activity',
@@ -314,7 +318,7 @@ $lang =
 	'patch_name' => 'Vulnerability Name',
 	'patch_dateline' => 'Release Date',
 	'patch_status' => 'Current Status',
-	'patch_close' => 'Disable',
+	'patch_close' => 'Close',
 
 	'plugin_title' => 'Plugin Update Reminder',
 	'plugin_memo' => 'You have <span class="xi1">{number}</span> plugins with available updates',

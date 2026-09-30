@@ -12,7 +12,7 @@ if(!defined('IN_DISCUZ')) {
 global $_G;
 $operation = in_array(getgpc('op'), ['list', 'unbind', 'verifyemail', 'verify']) ? trim(getgpc('op')) : 'list';
 $method = in_array(getgpc('method'), array_merge(account_base::getInterfaces(), ['bind', 'unbind', 'bindmobile', 'unbindmobile', 'chgemail', 'chgpassword', 'chgusername', 'chgquestion', 'resend', 'freeze'])) ? trim(getgpc('method')) : '';
-$interfaces_aType = account_base::Interfaces_aType;
+$interfaces_aType = account_base::Interfaces_aType();
 
 if($operation != 'list' && empty($method)) {
 	showmessage('undefined_action');
@@ -22,9 +22,6 @@ if($operation == 'list') {
 	$list = [];
 	foreach(account_base::getInterfaces() as $interface) {
 		if(!account_base::allow($interface)) {
-			continue;
-		}
-		if(in_array($interface, account_base::Interfaces_noBind)) {
 			continue;
 		}
 		if((new (account_base::getClass($interface)))->interface_noBind) {

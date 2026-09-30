@@ -52,7 +52,14 @@ class discuz_upload {
 			$attach['extension'] = $this->get_target_extension($attach['ext']);
 			$attach['attachdir'] = $this->get_target_dir($this->type, $extid, true, $subdir, $dirtype);
 			$attach['attachment'] = $attach['attachdir'].$this->get_target_filename($this->type, $this->extid, $this->forcename, $filename).'.'.$attach['extension'];
-			$attach['target'] = getglobal('setting/attachdir').'./'.$this->type.'/'.$attach['attachment'];
+
+			// 自定义类型(如tag)存储在 data/attachment/{type}/ 目录下
+			if(self::is_custom_type($this->type)) {
+				$attach['target'] = getglobal('setting/attachdir').'./'.$this->type.'/'.$attach['attachment'];
+			} else {
+				$attach['target'] = getglobal('setting/attachdir').'./'.$this->type.'/'.$attach['attachment'];
+			}
+
 			$this->attach = &$attach;
 			$this->errorcode = 0;
 			return true;
@@ -60,13 +67,17 @@ class discuz_upload {
 
 	}
 
-	function save($ignore = 0) {
+	function save($ignore = 0, $ftpcmd = 1) {
 		if($ignore) {
 			if(!$this->save_to_local($this->attach['tmp_name'], $this->attach['target'])) {
 				$this->errorcode = -103;
 				return false;
 			} else {
-				$this->ftpupload();
+				if($ftpcmd && !$this->ftpupload()) {
+					$this->errorcode = -103;
+					@unlink($this->attach['target']);
+					return false;
+				}
 				$this->errorcode = 0;
 				return true;
 			}
@@ -84,7 +95,11 @@ class discuz_upload {
 			$this->errorcode = -104;
 			@unlink($this->attach['target']);
 		} else {
-			$this->ftpupload();
+			if($ftpcmd && !$this->ftpupload()) {
+				$this->errorcode = -103;
+				@unlink($this->attach['target']);
+				return false;
+			}
 			$this->errorcode = 0;
 			return true;
 		}
@@ -96,6 +111,7 @@ class discuz_upload {
 		if($this->ftpcmd && ftpperm(fileext($this->attach['name']), $this->attach['size'])) {
 			$this->remote = ftpcmd('upload', $this->type.'/'.$this->attach['attachment']);
 		}
+		return true;
 	}
 
 	function error() {
@@ -111,7 +127,7 @@ class discuz_upload {
 	}
 
 	public static function is_image_ext($ext) {
-		static $imgext = ['jpg', 'jpeg', 'gif', 'png', 'bmp', 'webp'];
+		static $imgext = ['jpg', 'jpeg', 'gif', 'png', 'bmp', 'webp', 'heif', 'heic'];
 		return in_array($ext, $imgext) ? 1 : 0;
 	}
 
@@ -154,8 +170,9 @@ class discuz_upload {
 
 	public static function get_target_filename($type, $extid = 0, $forcename = '', $filename = '') {
 		if(empty($filename)) {
-			if($type == 'group' || ($type == 'common' && $forcename != '')) {
-				$filename = $type.'_'.intval($extid).($forcename != '' ? "_$forcename" : '');
+			// 自定义类型(如tag)或group/common类型且指定了forcename时，使用强制文件名
+			if(self::is_custom_type($type) || $type == 'group' || ($type == 'common' && $forcename != '')) {
+				$filename = $forcename != '' ? $forcename : ($type.'_'.intval($extid));
 			} else {
 				$filename = date('His').strtolower(random(16));
 			}
@@ -164,7 +181,7 @@ class discuz_upload {
 	}
 
 	public static function get_target_extension($ext) {
-		static $safeext = ['attach', 'jpg', 'jpeg', 'gif', 'png', 'webp', 'swf', 'bmp', 'txt', 'zip', 'rar', 'mp3', 'mp4', 'wmv', 'wma', 'mov'];
+		static $safeext = ['attach', 'jpg', 'jpeg', 'gif', 'png', 'webp', 'heif', 'heic', 'swf', 'bmp', 'txt', 'zip', 'rar', 'mp3', 'mp4', 'wmv', 'wma', 'mov', 'aac', 'm4a', 'ogg', 'wav', 'flac', 'webm', 'ogv'];
 		if(defined('IN_ADMINCP')) {
 			$safeext[] = 'svg';
 		}
@@ -211,13 +228,25 @@ class discuz_upload {
 		return preg_match('/^[a-z]+[a-z0-9_]*$/i', $type) ? $type : 'temp';
 	}
 
+	public static function is_custom_type($type) {
+		// 检查是否为自定义上传类型(如tag等)
+		static $custom_types = ['tag'];
+		return in_array(strtolower($type), $custom_types);
+	}
+
 	public static function check_dir_exists($type = '', $sub1 = '', $sub2 = '') {
 
 		$type = discuz_upload::check_dir_type($type);
 
 		$basedir = !getglobal('setting/attachdir') ? (DISCUZ_ROOT.'./data/attachment') : getglobal('setting/attachdir');
 
-		$typedir = $type ? ($basedir.'/'.$type) : '';
+		// 自定义类型直接使用basedir，不添加type子目录
+		if(self::is_custom_type($type)) {
+			$typedir = $basedir;
+		} else {
+			$typedir = $type ? ($basedir.'/'.$type) : '';
+		}
+
 		$subdir1 = $type && $sub1 !== '' ? ($typedir.'/'.$sub1) : '';
 		$subdir2 = $sub1 && $sub2 !== '' ? ($subdir1.'/'.$sub2) : '';
 
@@ -234,9 +263,9 @@ class discuz_upload {
 	function save_to_local($source, $target) {
 		if(!discuz_upload::is_upload_file($source)) {
 			$succeed = false;
-		} elseif(@copy($source, $target)) {
-			$succeed = true;
 		} elseif(function_exists('move_uploaded_file') && @move_uploaded_file($source, $target)) {
+			$succeed = true;
+		} elseif(@copy($source, $target)) {
 			$succeed = true;
 		} elseif(@is_readable($source) && (@$fp_s = fopen($source, 'rb')) && (@$fp_t = fopen($target, 'wb'))) {
 			while(!feof($fp_s)) {

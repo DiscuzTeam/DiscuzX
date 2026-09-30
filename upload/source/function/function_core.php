@@ -1594,7 +1594,13 @@ function hookscript($script, $hscript, $type = 'funcs', $param = [], $func = '',
 		$funcs = !$func ? $_G['setting'][HOOKTYPE][$hscript][$script][$type] : [$func => $_G['setting'][HOOKTYPE][$hscript][$script][$type][$func]];
 		foreach($funcs as $hookkey => $hookfuncs) {
 			foreach($hookfuncs as $hookfunc) {
-				if($hooksadminid[$hookfunc[0]]) {
+				$return = null;
+				if(!empty($hookfunc[2])) {
+					if(!method_exists($hookfunc[0], $hookfunc[1])) {
+						continue;
+					}
+					$return = call_user_func([$hookfunc[0], $hookfunc[1]], $param);
+				} elseif($hooksadminid[$hookfunc[0]]) {
 					$classkey = (HOOKTYPE != 'hookscriptmobile' ? '' : 'mobile').'plugin_'.($hookfunc[0].($hscript != 'global' ? '_'.$hscript : ''));
 					if(!class_exists($classkey, false)) {
 						continue;
@@ -1606,11 +1612,12 @@ function hookscript($script, $hscript, $type = 'funcs', $param = [], $func = '',
 						continue;
 					}
 					$return = call_user_func([$pluginclasses[$classkey], $hookfunc[1]], $param);
+				}
+				if(str_ends_with($hookkey, '_extend') && !empty($_G['setting']['pluginhooks'][$hookkey])) {
+					continue;
+				}
 
-					if(str_ends_with($hookkey, '_extend') && !empty($_G['setting']['pluginhooks'][$hookkey])) {
-						continue;
-					}
-
+				if($return !== null) {
 					if(is_array($return)) {
 						if(!isset($_G['setting']['pluginhooks'][$hookkey]) || is_array($_G['setting']['pluginhooks'][$hookkey])) {
 							foreach($return as $k => $v) {

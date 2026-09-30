@@ -35,7 +35,7 @@ function import_smilies() {
 	return $renamed;
 }
 
-function import_styles($ignoreversion = 1, $dir = '', $restoreid = 0, $updatecache = 1, $validate = 1) {
+function import_styles($ignoreversion = 1, $dir = '', $restoreid = 0, $updatecache = 1, $validate = 1, $returnonly = 0, $setdefault = 0) {
 	global $_G, $importtxt, $stylearray;
 	if(empty($dir)) {
 		$stylearrays = [getimportdata('Discuz! Style')];
@@ -60,9 +60,12 @@ function import_styles($ignoreversion = 1, $dir = '', $restoreid = 0, $updatecac
 			if(str_starts_with($searchentry, 'discuz_style_') && (fileext($searchentry) == 'xml' || fileext($searchentry) == 'json')) {
 				$importfile = $templatedir.'/'.$searchentry;
 				$importtxt = implode('', file($importfile));
-				$stylearrays[] = getimportdata('Discuz! Style');
+				$stylearrays[] = getimportdata('Discuz! Style', 0, $returnonly);
 			}
 		}
+	}
+	if($returnonly) {
+		return $stylearrays;
 	}
 
 	foreach($stylearrays as $stylearray) {
@@ -170,6 +173,79 @@ function import_styles($ignoreversion = 1, $dir = '', $restoreid = 0, $updatecac
 				unset($var['styleid']);
 				$stylearray['var'][$var['variable']] = $var;
 			}
+
+			if(!empty($stylearray['forumportal'])) {
+				$forumportal = &$_G['setting']['forumportal'];
+				$froms = [];
+				foreach($forumportal['navList'] as $row) {
+					if(!empty($row['from'])) {
+						$froms[$row['from']] = $row['from'];
+					}
+				}
+				foreach($stylearray['forumportal'] as $data) {
+					if(!in_array($data['from'], $froms)) {
+						$forumportal['navList'][] = $data;
+					}
+				}
+				table_common_setting::t()->update_batch(['forumportal' => $forumportal]);
+			}
+
+			if(!empty($stylearray['defaultindex'])) {
+				$exists = 0;
+				foreach(table_common_nav::t()->fetch_all_by_navtype(0) as $nav) {
+					if($nav['url'] == $stylearray['defaultindex']) {
+						$exists = $nav['id'];
+						break;
+					}
+				}
+				if($exists) {
+					table_common_setting::t()->update_batch(['defaultindex' => $stylearray['defaultindex']]);
+					table_common_nav::t()->update($exists, ['available' => '1']);
+				} else {
+					table_common_nav::t()->insert([
+						'parentid' => '0',
+						'name' => cplang('home'),
+						'title' => 'Index',
+						'url' => $stylearray['defaultindex'],
+						'identifier' => '',
+						'target' => '0',
+						'type' => '1',
+						'available' => '1',
+						'displayorder' => '0',
+						'highlight' => '0',
+						'level' => '0',
+						'subtype' => '0',
+						'subcols' => '0',
+						'icon' => '',
+						'subname' => '',
+						'suburl' => '',
+						'navtype' => '0',
+						'logo' => '',
+						'assert' => '',
+						'perm' => '',
+					]);
+				}
+			}
+
+			if(!empty($stylearray['diy']) && is_array($stylearray['diy'])) {
+				foreach($stylearray['diy'] as $data) {
+					if(empty($data['filename']) || empty($data['tplname'])) {
+						continue;
+					}
+					$filename = DISCUZ_ROOT.$stylearray['directory'].'/portal/diyxml/'.$data['filename'];
+					import_diy_file($stylearray['directory'], $filename, $data['tplname'], $data['tplname']);
+					updatecache('diytemplatename');
+				}
+			}
+
+			if($setdefault) {
+				$stylearray['setting']['styleid'] = $styleidnew;
+			}
+
+			if(!empty($stylearray['setting'])) {
+				table_common_setting::t()->update_batch($stylearray['setting']);
+			}
+
 		}
 	}
 
@@ -179,10 +255,70 @@ function import_styles($ignoreversion = 1, $dir = '', $restoreid = 0, $updatecac
 	}
 
 	if($updatecache) {
-		updatecache('styles');
-		updatecache('setting');
+		updatecache(['setting', 'styles']);
 	}
 	return $renamed;
+}
+
+function import_diy_file($tpldir, $importfile, $primaltplname, $targettplname) {
+	require_once libfile('class/xml');
+	require_once libfile('function/portalcp');
+
+	global $_G;
+
+	$css = $html = '';
+	$arr = [];
+
+	$content = file_get_contents($importfile);
+	if(empty($content)) {
+		return;
+	}
+	if(($start = strpos($content, ('<?xml '))) === false) {
+		return;
+	}
+	$content = substr($content, $start);
+	$diycontent = xml2array($content);
+	$diycontent = is_array($diycontent) ? $diycontent : [];
+
+	if($diycontent) {
+
+		foreach($diycontent['layoutdata'] as $key => $value) {
+			if(!empty($value)) getframeblock($value);
+		}
+		$newframe = [];
+		foreach($_G['curtplframe'] as $value) {
+			$newframe[] = $value['type'].random(6);
+		}
+
+		$mapping = [];
+		if(!empty($diycontent['blockdata'])) {
+			$mapping = block_import($diycontent['blockdata']);
+			unset($diycontent['blockdata']);
+		}
+
+		$oldbids = $newbids = [];
+		if(!empty($mapping)) {
+			foreach($mapping as $obid => $nbid) {
+				$oldbids[] = 'portal_block_'.$obid;
+				$newbids[] = 'portal_block_'.$nbid;
+				$_G['block'][$nbid] = table_common_block::t()->fetch($nbid);
+				block_updatecache($nbid, true);
+			}
+		}
+
+		$xml = array2xml($diycontent['layoutdata'], true);
+		$xml = str_replace($oldbids, $newbids, $xml);
+		$xml = str_replace((array)array_keys($_G['curtplframe']), $newframe, $xml);
+		$diycontent['layoutdata'] = xml2array($xml);
+
+		$css = str_replace($oldbids, $newbids, $diycontent['spacecss']);
+		$css = str_replace((array)array_keys($_G['curtplframe']), $newframe, $css);
+
+		$arr['spacecss'] = $css;
+		$arr['layoutdata'] = $diycontent['layoutdata'];
+		$arr['style'] = $diycontent['style'];
+		save_diy_data($tpldir, $primaltplname, $targettplname, $arr, true);
+	}
 }
 
 function import_block($xmlurl, $clientid, $xmlkey = '', $signtype = '', $ignoreversion = 1, $update = 0) {

@@ -11,7 +11,7 @@ $data = [[
     'cpgroupname' => 'PortalAdministrator',
   ],[
     'cpgroupid' => '2',
-    'cpgroupname' => 'Forum Administrator',
+    'cpgroupname' => 'ForumAdministrator',
   ],[
     'cpgroupid' => '3',
     'cpgroupname' => 'GroupAdministrator',

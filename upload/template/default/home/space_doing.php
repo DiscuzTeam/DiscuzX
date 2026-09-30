@@ -130,7 +130,7 @@
 													zoomfile="{if $attach['remote']}{$_G['setting']['ftp']['attachurl']}{else}{$_G['setting']['attachurl']}{/if}doing/{$attach['attachment']}"
 													file="{if $attach['remote']}{$_G['setting']['ftp']['attachurl']}{else}{$_G['setting']['attachurl']}{/if}doing/{$attach['attachment']}"
 													onclick="zoom(this, this.getAttribute('zoomfile'), 0, 0, 0)"
-													alt="" 
+													alt=""
 													class="doing_image zoom"
 													id="aimg_$attach[aid]"
 													aid="$attach[aid]" />
@@ -139,6 +139,15 @@
 										<!--{/if}-->
 										<!--{/loop}-->
 									</div>
+									<!--{loop $dv['attachments'] $attach}-->
+									<!--{if !$attach['isimage']}-->
+									<!--{eval $doing_videoext = strtolower(pathinfo($attach['attachment'], PATHINFO_EXTENSION));}-->
+									<div class="doing_video_item mbm">
+										<div id="doingvideo_$attach[aid]" class="doingvideo_box"><div id="doingvideo_$attach[aid]_container"></div></div>
+									</div>
+									<script type="text/javascript">html5Player('doingvideo_$attach[aid]', '$doing_videoext', '{if $attach['remote']}{$_G['setting']['ftp']['attachurl']}{else}{$_G['setting']['attachurl']}{/if}doing/$attach[attachment]', '100%', '405px');</script>
+									<!--{/if}-->
+									<!--{/loop}-->
 								<!--{/if}-->
 								<!--{if $dv['body_template']}-->
 									<div class="share_card_box mbm {$dv['type']} cl">
@@ -152,7 +161,27 @@
 										</div>
 									</div>
 								<!--{/if}-->
-								
+								<!--{if $dv['hotcomments']}-->
+								<div class="doing_hotcomments">
+									<div class="doing_hotcomments_list">
+										<!--{loop $dv['hotcomments'] $cm}-->
+										<div class="doing_hotcomment cl">
+											<div class="doing_hotcomment_avt"><a href="home.php?mod=space&uid=$cm['uid']" target="_blank"><!--{avatar($cm['uid'],'small')}--></a></div>
+											<div class="doing_hotcomment_body">
+												<p class="doing_hotcomment_text">
+													<a href="home.php?mod=space&uid=$cm['uid']" class="doing_hotcomment_author" target="_blank">$cm['username']</a>
+													<span class="doing_hotcomment_msg">：$cm['message']</span>
+												</p>
+												<p class="doing_hotcomment_meta"><span class="xg1"><!--{date($cm['dateline'], 'u')}--></span></p>
+											</div>
+										</div>
+										<!--{/loop}-->
+									</div>
+									<!--{if $hotcomment_count[$doid] > count($dv['hotcomments'])}-->
+									<a href="home.php?mod=space&do=doing&doid=$doid" class="doing_hotcomments_more"><!--{eval echo str_replace('@num@', $hotcomment_count[$doid], lang('home/template', 'doing_hotcomment_more'));}--><i class="fico-right"></i></a>
+									<!--{/if}-->
+								</div>
+								<!--{/if}-->
 							</div>
 							<div class="item_info">
 								<div class="item_info_interactions">
@@ -160,7 +189,8 @@
 										<!--{if $count == 1}-->
 										<a href="javascript:;" class="doing_comment_btn icon_box" onclick="docomment_get($doid, '$key', 1)" data-doid="$doid" data-key="$key" title="{lang reply}"><i class="fico-comment"></i><span><!--{if $dv['replynum']}-->$dv['replynum']<!--{else}-->{lang reply}<!--{/if}--></span></a>
 										<!--{else}-->
-										<a href="javascript:;" class="doing_comment_btn icon_box" onclick="docomment_get($doid, '$key', 1, true)" data-doid="$doid" data-key="$key" title="{lang reply}"><i class="fico-comment"></i><span><!--{if $dv['replynum']}-->$dv['replynum']<!--{else}-->{lang reply}<!--{/if}--></span></a>
+										<!-- 列表页采用微博式逻辑：热门评论已外透，点击评论数直接进入单条详情页查看/参与全部评论 -->
+										<a href="home.php?mod=space&do=doing&doid=$doid" class="doing_comment_btn icon_box" data-doid="$doid" title="{lang reply}"><i class="fico-comment"></i><span><!--{if $dv['replynum']}-->$dv['replynum']<!--{else}-->{lang reply}<!--{/if}--></span></a>
 										<!--{/if}-->
 										<a href="javascript:;" class="doing_recommend_btn icon_box" data-doid="{$doid}" data-status="<!--{if $dv['recommendstatus']}-->1<!--{else}-->0<!--{/if}-->">
 											<i class="<!--{if $dv['recommendstatus']}-->fico-thumbup fc-i<!--{else}-->fico-thumbup fc-s<!--{/if}-->"></i> 

@@ -25,6 +25,74 @@
 <script type="text/javascript">
 	initdhnav("#dhnav_li");
 </script>
+<!--{if $_G['uid'] && helper_access::check_module('doing')}-->
+<!-- 微博式顶部内嵌发布框：登录用户直接在当前页发布记录 -->
+<div class="doing_quickpost">
+	<!--{template home/space_doing_form}-->
+</div>
+<!--{/if}-->
+<script type="text/javascript">
+// DPlayer 资源加载状态（移动端 common.js 无 html5Player，需自行加载）
+// 注意：必须定义在记录列表之前，视频项的内联脚本在解析时就会调用
+var doingDpLoaded = false;
+var doingDpLoading = false;
+var doingDpCallbacks = [];
+function doingVideoPlayer(id, src) {
+	var box = document.getElementById(id);
+	if (!box) {
+		return;
+	}
+	var start = function() {
+		box.innerHTML = '';
+		new DPlayer({
+			container: box,
+			autoplay: false,
+			preload: 'none',
+			mutex: true,
+			video: {
+				url: src,
+				pic: src + '.thumb.jpg'
+			}
+		});
+	};
+	if (typeof DPlayer !== 'undefined') {
+		start();
+		return;
+	}
+	doingDpCallbacks.push(start);
+	if (!doingDpLoaded && !doingDpLoading) {
+		doingDpLoading = true;
+		var css = document.createElement('link');
+		css.rel = 'stylesheet';
+		css.href = STATICURL + 'js/player/dplayer.min.css';
+		document.head.appendChild(css);
+		var js = document.createElement('script');
+		js.src = STATICURL + 'js/player/dplayer.min.js';
+		js.onload = function() {
+			doingDpLoaded = true;
+			var cbs = doingDpCallbacks;
+			doingDpCallbacks = [];
+			for (var i = 0; i < cbs.length; i++) {
+				cbs[i]();
+			}
+		};
+		document.body.appendChild(js);
+	}
+	var timer = setInterval(function() {
+		if (typeof DPlayer !== 'undefined') {
+			clearInterval(timer);
+			var cbs = doingDpCallbacks;
+			doingDpCallbacks = [];
+			for (var i = 0; i < cbs.length; i++) {
+				cbs[i]();
+			}
+		}
+	}, 100);
+	setTimeout(function() {
+		clearInterval(timer);
+	}, 10000);
+}
+</script>
 <div class="doing_list threadlist_box cl">
 	<div class="doing_list_box threadlist cl">
 		<!--{if $tagname}-->
@@ -66,6 +134,9 @@
 								<!--{loop $dv['attachments'] $attach}-->
 								<!--{if $attach['isimage']}-->
 								<div class="doing_card_piclist_item "><img lass="hl_noloadimage lazy lazy-fade-in" width="300" height="300" src="{$attach['thumb']}" data-src="{if $attach['remote']}{$_G['setting']['ftp']['attachurl']}{else}{$_G['setting']['attachurl']}{/if}doing/{$attach['attachment']}" zoomfile="{if $attach['remote']}{$_G['setting']['ftp']['attachurl']}{else}{$_G['setting']['attachurl']}{/if}doing/{$attach['attachment']}"></div>
+								<!--{else}-->
+								<div class="doing_card_video_item"><div id="doingvideo_$attach[aid]"></div></div>
+								<script type="text/javascript">doingVideoPlayer('doingvideo_$attach[aid]', '{if $attach['remote']}{$_G['setting']['ftp']['attachurl']}{else}{$_G['setting']['attachurl']}{/if}doing/$attach[attachment]');</script>
 								<!--{/if}-->
 								<!--{/loop}-->
 							</div>
@@ -84,6 +155,25 @@
 							$dv[body_template]
 						</div>
 					</div>
+				<!--{/if}-->
+				<!--{if $dv['hotcomments']}-->
+				<div class="doing_hotcomments">
+					<!--{loop $dv['hotcomments'] $cm}-->
+					<div class="doing_hotcomment">
+						<div class="doing_hotcomment_avt"><a href="home.php?mod=space&uid=$cm['uid']"><!--{avatar($cm['uid'],'small')}--></a></div>
+						<div class="doing_hotcomment_body">
+							<p class="doing_hotcomment_text">
+								<a href="home.php?mod=space&uid=$cm['uid']" class="doing_hotcomment_author">$cm['username']</a>
+								<span class="doing_hotcomment_msg">：$cm['message']</span>
+							</p>
+							<p class="doing_hotcomment_meta"><span><!--{date($cm['dateline'], 'u')}--></span></p>
+						</div>
+					</div>
+					<!--{/loop}-->
+					<!--{if $hotcomment_count[$doid] > count($dv['hotcomments'])}-->
+					<a href="home.php?mod=space&do=doing&doid=$doid" class="doing_hotcomments_more"><!--{eval echo str_replace('@num@', $hotcomment_count[$doid], lang('home/template', 'doing_hotcomment_more'));}--><i class="dm-c-right"></i></a>
+					<!--{/if}-->
+				</div>
 				<!--{/if}-->
 				<div class="doing_card_bottom">
 					<div class="doing_card_bottom_left">
@@ -229,10 +319,11 @@ function generateCommentItemHTML(comment, doid, key) {
 	if (comment.layer > 0) commentClass += ' comment-item-child';
 	if (comment.is_hidden) commentClass += ' comment-item-hidden';
 	
-	// 生成头像HTML
+	// 生成头像HTML（一级、二级评论都显示头像，二级评论头像更小）
 	var avatarHtml = '';
-	if (comment.layer == 0) {
-		avatarHtml = '<div class="comment-avatar"><a href="home.php?mod=space&uid=' + comment.uid + '"><img src="' + comment.avatar + '" alt="' + comment.username + '" class="avatar-small"></a></div>';
+	{
+		var avatarSize = comment.layer == 0 ? 34 : 24;
+		avatarHtml = '<div class="comment-avatar"><a href="home.php?mod=space&uid=' + comment.uid + '"><img src="' + comment.avatar + '" alt="' + comment.username + '" class="avatar-small" style="width:' + avatarSize + 'px;height:' + avatarSize + 'px;"></a></div>';
 	}
 	
 	// 生成回复信息HTML
@@ -347,7 +438,7 @@ function generateCommentHTML(data, doid, key) {
 		
 		if (formContainer && formContainer.innerHTML === '') {
 			// 如果表单不存在，加载表单
-			var url = 'home.php?mod=spacecp&ac=doing&op=docomment&handlekey=msg_' + doid + '&doid=' + doid + '&docid=' + docid + '&key=' + key;
+			var url = 'home.php?mod=spacecp&ac=doing&op=docomment&handlekey=msg_' + doid + '&doid=' + doid + '&docid=' + docid + '&key=' + key + '&fragment=1';
 			var xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState === 4 && xhr.status === 200) {
@@ -367,7 +458,7 @@ function generateCommentHTML(data, doid, key) {
 	}
 
 	// 移动端专用的评论加载函数，请求JSON数据并解析插入 - 定义在全局作用域
-	function docomment_get(doid, key, page, append) {
+	function docomment_get(doid, key, page, append, callback) {
 		var showid = key + '_' + doid;
 		var opid = key + '_do_a_op_' + doid;
 		var commentContainerId = key + 'dl' + doid;
@@ -445,6 +536,14 @@ function generateCommentHTML(data, doid, key) {
 							commentContainer.style.display = '';
 						}
 					}
+					// 评论渲染完成后触发回调（如单条详情页自动拉起回复框）
+					if (typeof callback === 'function') {
+						try {
+							callback(response);
+						} catch (e) {
+							console.error('docomment_get callback error:', e);
+						}
+					}
 				} catch (error) {
 					console.error('JSON parse error:', error);
 				}
@@ -461,23 +560,108 @@ function generateCommentHTML(data, doid, key) {
 
 	// 使用Discuz原生样式，几乎不使用自定义CSS
 var style = document.createElement('style');
-style.textContent = `		/* 评论容器 - 使用Discuz原生.do_comment样式 */
+style.textContent = `		/* 评论列表容器 */
 		.doing-card-comments {
-			padding: 10px;
+			padding: 2px 2px 0;
 		}
 
-		/* 评论项 - 使用Discuz原生.imglist li样式 */
+		/* 一级评论：微博式 头像 + 昵称 + 内容 + 底部操作栏 */
 		.comment-item {
 			display: flex;
-			margin-bottom: 10px;
-			padding: 10px 0;
+			padding: 14px 0;
 			border-bottom: 1px solid var(--dz-BOR-ed);
 		}
-
-		/* 子评论 */
-		.comment-item-child {
-			margin-left: 40px;
+		.comment-item:last-child {
+			border-bottom: none;
+		}
+		.comment-avatar {
+			flex-shrink: 0;
+			margin-right: 10px;
+		}
+		.comment-avatar img {
+			width: 34px;
+			height: 34px;
+			border-radius: 50%;
+			display: block;
+		}
+		.comment-content {
+			flex: 1;
+			min-width: 0;
+		}
+		.comment-header {
+			display: flex;
+			align-items: baseline;
+			gap: 6px;
+			margin-bottom: 5px;
+		}
+		.comment-author {
+			font-size: 14px;
+			font-weight: 600;
+			color: var(--dz-BG-color);
+			text-decoration: none;
+		}
+		.comment-reply-to {
+			font-size: 12px;
+			color: var(--dz-FC-999);
+		}
+		.comment-reply-to a {
+			color: var(--dz-BG-color);
+		}
+		.comment-body {
+			font-size: 14px;
+			line-height: 21px;
+			color: var(--dz-FC-333);
+			word-break: break-all;
+			overflow-wrap: break-word;
+		}
+		.comment-footer {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 			margin-top: 8px;
+		}
+		.comment-time {
+			font-size: 12px;
+			color: var(--dz-FC-999);
+		}
+		.comment-actions {
+			display: flex;
+			gap: 16px;
+			font-size: 12px;
+		}
+		.comment-action {
+			color: var(--dz-FC-999);
+			text-decoration: none;
+		}
+		.comment-action:active {
+			color: var(--dz-BG-color);
+		}
+
+		/* 二级评论：灰底圆角卡片，紧凑排版，无头像 */
+		.comment-item-child {
+			display: flex;
+			margin: 8px 0 0 44px;
+			padding: 8px 10px;
+			background: var(--dz-BG-5);
+			border-radius: 8px;
+			border-bottom: none;
+		}
+		.comment-item-child .comment-avatar {
+			flex-shrink: 0;
+			margin-right: 8px;
+		}
+		.comment-item-child .comment-header {
+			margin-bottom: 2px;
+		}
+		.comment-item-child .comment-author {
+			font-size: 13px;
+		}
+		.comment-item-child .comment-body {
+			font-size: 13px;
+			line-height: 19px;
+		}
+		.comment-item-child .comment-footer {
+			margin-top: 4px;
 		}
 
 		/* 隐藏的评论 */
@@ -485,83 +669,45 @@ style.textContent = `		/* 评论容器 - 使用Discuz原生.do_comment样式 */
 			display: none;
 		}
 
-		/* 评论头像 - 使用Discuz原生.imglist .mimg样式 */
-		.comment-avatar {
-			margin-right: 10px;
+		/* 展开/收起更多二级评论 */
+		.comment-toggle {
+			text-align: center;
+			margin: 8px 0 0 44px;
+			padding: 6px 0;
+			font-size: 12px;
+			color: var(--dz-FC-999);
 		}
-
-		/* 小头像 - 使用Discuz原生头像样式 */
-		.comment-avatar img {
-			width: 32px;
-			height: 32px;
-			border-radius: 50%;
+		.comment-toggle a {
+			color: inherit;
+			text-decoration: none;
 		}
-
-		/* 评论内容 */
-		.comment-content {
-			flex: 1;
-		}
-
-		/* 评论头部 */
-		.comment-header {
-			margin-bottom: 5px;
-		}
-
-		/* 评论作者 - 使用Discuz原生样式 */
-		.comment-author {
+		.comment-toggle .toggle-icon {
+			display: inline-block;
+			margin-right: 4px;
 			font-weight: 700;
-			color: var(--dz-FC-color);
-			margin-right: 5px;
 		}
 
-		/* 回复信息 */
-		.comment-reply-to {
+		/* 加载更多评论：整块灰色按钮 */
+		.comment-load-more {
+			margin-top: 12px;
+		}
+		.comment-load-more a {
+			display: block;
+			text-align: center;
+			padding: 10px 0;
+			font-size: 13px;
 			color: var(--dz-FC-999);
-			font-size: 12px;
-		}
-
-		/* 评论操作 */
-		.comment-actions {
-			display: flex;
-			gap: 10px;
-			font-size: 12px;
-		}
-
-		/* 评论操作按钮 - 使用Discuz原生样式 */
-		.comment-action {
-			color: var(--dz-FC-999);
+			background: var(--dz-BG-5);
+			border-radius: 8px;
 			text-decoration: none;
 		}
 
-		/* 回复按钮 - 使用Discuz原生样式 */
-		.comment-action-reply {
-			color: var(--dz-FC-color);
-		}
-
-		/* 删除按钮 - 使用Discuz原生样式 */
-		.comment-action-delete {
-			color: var(--dz-FC-a);
-		}
-
-		/* 展开/折叠按钮 */
-		.comment-toggle {
-			text-align: center;
-			margin: 10px 0;
-		}
-
-		/* 加载更多按钮 - 使用Discuz原生按钮样式 */
-		.comment-load-more {
-			text-align: center;
-			margin-top: 10px;
-		}
-
-		/* 无评论提示 - 使用Discuz原生空状态样式 */
+		/* 无评论提示 */
 		.no-comments {
 			text-align: center;
 			color: var(--dz-FC-999);
 			padding: 20px;
-			background-color: var(--dz-BG-5);
-			border-radius: 4px;
+			font-size: 13px;
 		}
 	`;
 document.head.appendChild(style);
@@ -615,7 +761,10 @@ document.head.appendChild(style);
 		var key = '<!--{$key}-->';
 
 		// 调用与电脑版一致的docomment_get函数
-		docomment_get(doid, key, 1);
+		// 评论列表渲染完成后自动拉起顶部回复框，对齐电脑端单条详情页交互
+		docomment_get(doid, key, 1, false, function() {
+			docomment_form(doid, 0, key);
+		});
 
 		// 自动加载更多评论功能
 		var autoLoadEnabled = true;

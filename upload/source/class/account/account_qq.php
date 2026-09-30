@@ -7,6 +7,10 @@
  */
 
 class account_qq extends account_base {
+
+	const aType = account::aType_qq;
+	const iconId = 'icon-social-qq';
+
 	private mixed $token;
 
 	private array $conf;
@@ -31,14 +35,16 @@ class account_qq extends account_base {
 	public function login($referer = '', $op = 0) {
 		global $_G;
 		$referer = $referer ?? account::referer();
+		$state = bin2hex(random_bytes(16));
 		$query_data = [
 			'response_type' => 'code',
 			'client_id' => $this->conf['clientId'],
-			'state' => uniqid(),
+			'state' => $state,
 			'scope' => 'get_user_info',
 			'redirect_uri' => $this->conf['callbackUrl'],
 		];
 		dsetcookie('qq_referer', $referer, 3600);
+		dsetcookie('qq_state', $state, 3600);
 		$url = (new qq_user(''))->getSsoUrl($query_data);
 		if($url) {
 			if(!$op) {
@@ -92,17 +98,28 @@ class account_qq extends account_base {
 		global $_G;
 		$account = new account();
 
+		// state 校验（防 CSRF）
+		$state = $_GET['state'] ?? '';
+		$cookieState = $_G['cookie']['qq_state'] ?? '';
+		if(!$state || !$cookieState || $state !== $cookieState) {
+			account_base::error_logger('qq login failed: state mismatch');
+			dheader('Location: '.(!empty($_G['cookie']['qq_referer']) ? $_G['cookie']['qq_referer'] : $_G['siteurl']), true, 302);
+		}
+		dsetcookie('qq_state', '', -1);
+
 		$this->code = $_GET['code'].'';
 		$this->token = self::_getToken();
 		$user = new qq_user($this->token);
 
 		$openid = $user->getOpenid();
 		if(!$openid) {
+			account_base::error_logger('qq login failed: empty openid');
 			dheader('Location: '.(!empty($_G['cookie']['qq_referer']) ? $_G['cookie']['qq_referer'] : $_G['siteurl']), true, 302);
 		}
 		//获取访问用户身份
 		$userInfo = $user->getAuthUser($openid);
 		if(!$userInfo) {
+			account_base::error_logger('qq login failed: empty userinfo');
 			dheader('Location: '.(!empty($_G['cookie']['qq_referer']) ? $_G['cookie']['qq_referer'] : $_G['siteurl']), true, 302);
 		}
 

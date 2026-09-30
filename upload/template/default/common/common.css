@@ -512,7 +512,7 @@ CSS 写作注意事项：
 				.oshr:hover { text-decoration: none; }
 				.oshr:before { font-family: dzicon; content: "\f114"; line-height: 14px; font-size: 16px; color: #FF9C00; margin-right: 2px; }
 /* 收藏按钮 with oshr */ .ofav:before { content: "\f12d"; }
-/* 邀请按钮 with oshr */ .oivt:before { content: "\f13e"; }
+/* 邀请按钮 with oshr */ .oivt:before { content: "\f099"; }
 
 
 /*

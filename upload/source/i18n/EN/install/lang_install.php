@@ -18,14 +18,14 @@ $lang = [
 	'agreement_yes' => 'Agree',
 	'agreement_no' => 'Cancel',
 	'agreement_notice' => 'To ensure a smooth installation, please carefully read and fully understand the terms of the license agreement',
-	'notset' => 'No limit',
+	'notset' => 'Unlimited',
 	'enable' => 'Enable',
 	'disable' => 'Disable',
 
-	'message_title' => 'Reminder',
+	'message_title' => 'Message',
 	'error_message' => 'Error Message',
-	'message_return' => 'Back',
-	'return' => 'Back',
+	'message_return' => 'Return',
+	'return' => 'Return',
 	'install_wizard' => 'Installation Wizard',
 	'config_nonexistence' => 'Configuration file does not exist',
 	'nodir' => 'Directory does not exist',
@@ -193,7 +193,7 @@ $lang = [
 	'init_credits_karma' => 'Reputation',
 	'init_credits_money' => 'Money',
 
-	'init_postno0' => 'Thread Starter',
+	'init_postno0' => 'Poster',
 	'init_postno1' => 'Sofa)',
 	'init_postno2' => 'Bench',
 	'init_postno3' => 'Floor',
@@ -202,17 +202,17 @@ $lang = [
 	'init_opposition' => 'Oppose',
 
 	'init_group_0' => 'Member',
-	'init_group_1' => 'Administrators',
+	'init_group_1' => 'Administrator',
 	'init_group_2' => 'Super Moderator',
-	'init_group_3' => 'Moderators',
-	'init_group_4' => 'Ban Speech',
-	'init_group_5' => 'Ban Access',
-	'init_group_6' => 'Ban IP',
+	'init_group_3' => 'Moderator',
+	'init_group_4' => 'Muted',
+	'init_group_5' => 'Access Denied',
+	'init_group_6' => 'IP Banned',
 	'init_group_7' => 'Guest',
 	'init_group_8' => 'Awaiting Validation',
 	'init_group_9' => 'Beggar',
 	'init_group_10' => 'Newbie',
-	'init_group_11' => 'Registered Members',
+	'init_group_11' => 'Registered Member',
 	'init_group_12' => 'Intermediate Member',
 	'init_group_13' => 'Senior Member',
 	'init_group_14' => 'Gold Member',
@@ -253,8 +253,8 @@ $lang = [
 	'init_default_template_copyright' => 'Discuz!',
 
 	'init_dataformat' => 'Y-n-j',
-	'init_modreasons' => 'Advertising/SPAM\\r\\nMalicious Flooding\\r\\nViolating Content\\r\\nOff-topic\\r\\nDuplicate Post\\r\\n\\r\\nI Agree\\r\\nQuality Article\\r\\nOriginal Content',
-	'init_userreasons' => 'Awesome!\\r\\nNothing Matters\\r\\nThumbs Up!\\r\\nCopycat\\r\\nCalm',
+	'init_modreasons' => 'Advertising/SPAM\r\nMalicious Flooding\r\nViolating Content\r\nOff-topic\r\nDuplicate Post\r\n\r\nI Agree\r\nQuality Article\r\nOriginal Content',
+	'init_userreasons' => 'Awesome!\r\nNothing Matters\r\nThumbs Up!\r\nCopycat\r\nCalm',
 	'init_link' => 'Discuz! Official Forum',
 	'init_link_note' => 'Provides the latest Discuz! product news, software downloads and technical discussions',
 
@@ -343,7 +343,7 @@ $lang = [
 	'no_utf8_tips' => 'Hello, you are using a localized encoding version such as GBK/BIG-5. This version is no longer the primary version. If you plan to build a new site, we strongly recommend using the latest official UTF-8 version for installation.',
 	'no_latest_tips' => 'Hello, you are using an older version which may have bugs and security risks. Unless there are special circumstances, we recommend using the latest official UTF-8 version for installation.',
 	'unstable_tips' => 'Hello, you are using an unofficial version which may have unknown bugs or defects. If you plan to build an official site or purchase plugins, we recommend using the latest official UTF-8 version for installation.',
-	'next_tips' => '\\r\\nClick [OK] to redirect to the latest official UTF-8 version download page, click [Cancel] to continue installation (not recommended)',
+	'next_tips' => '\r\nClick [OK] to redirect to the latest official UTF-8 version download page, click [Cancel] to continue installation (not recommended)',
 
 	'uc_installed' => 'You have already installed UCenter. If you need to reinstall, please delete the data/install.lock file',
 	'i_agree' => 'I have carefully read and agree to all the above terms',
@@ -360,7 +360,7 @@ $lang = [
 	'mysql' => 'MySQL Version',
 	'mysql_enable' => 'Not connected, cannot determine version',
 	'attachmentupload' => 'Attachment Upload',
-	'unlimit' => 'No limit',
+	'unlimit' => 'Unlimited',
 	'version' => 'Version',
 	'gdversion' => 'GD Library',
 	'allow' => 'Allow ',
@@ -413,6 +413,9 @@ $lang = [
 	'finish_btn_cloudaddon' => 'Install Plugins & Templates',
 	'finish_btn_direct' => 'Visit Site Directly',
 
+	'finish_btn_install_style_x5' => 'New Forum Mode',
+	'finish_btn_install_style_blog' => 'Enter Blog Mode',
+
 	'upgrade_confirm' => '
 	<ul style="font-size: 14px;line-height: 30px;list-style-type: decimal;padding-left: 20px;">
 	<li>Ensure your old Discuz! version must be X3.5. If not, please upgrade to this version first;</li>
@@ -455,7 +458,7 @@ $lang = [
 	'tool_updateceche_doing' => 'Cache updating...',
 	'tool_updatecache_done' => 'Cache update completed',
 
-	'done' => 'Complete',
+	'done' => 'Done',
 	'all_done_exists' => 'Current script deletion failed. For security reasons, please delete it manually',
 	'all_done_noexists' => 'Current script deletion completed',
 

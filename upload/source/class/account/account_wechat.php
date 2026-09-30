@@ -9,7 +9,12 @@
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
+
 class account_wechat extends account_base {
+
+	const aType = account::aType_wechatOpenid;
+	const iconId = 'icon-weixin';
+
 	private array $token = [];
 	private string $code = '';
 
@@ -29,7 +34,7 @@ class account_wechat extends account_base {
 	}
 
 	public function inEnv() {
-		return isset($_SERVER['HTTP_USER_AGENT']) && strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') && !strpos($_SERVER['HTTP_USER_AGENT'], 'wxwork');
+		return weixin::in_event();
 	}
 
 	public function hideInCp() {
@@ -171,9 +176,11 @@ class account_wechat extends account_base {
 		//获取访问用户身份
 		$userInfo = $user->getAuthUser();
 		if(!$userInfo) {
+			account_base::error_logger('wechat login failed: empty userinfo');
 			dheader('Location: '.(!empty($_GET['referer_url']) ? $_GET['referer_url'] : $_G['siteurl']), true, 302);
 		}
 		if(!$userInfo['success']) {
+			account_base::error_logger('wechat login failed: '.$userInfo['errmsg']);
 			showmessage($userInfo['errmsg']);
 		}
 
@@ -270,7 +277,7 @@ class account_wechat extends account_base {
 		} else {
 			if(!$authcode && $_G['uid']) {
 				showmessage('account_bind_other_exists', (!empty($_GET['referer_url']) ? $_GET['referer_url'] : $_G['siteurl']));
-			} elseif ($authcode && $account->getUid() > 0 && $_G['uid'] && $account->getUid() != $_G['uid']) {
+			} elseif($authcode && $account->getUid() > 0 && $_G['uid'] && $account->getUid() != $_G['uid']) {
 				showmessage('account_bind_other_exists', 'home.php?mod=spacecp&ac=account');
 			} else {
 				$account->userLogin();

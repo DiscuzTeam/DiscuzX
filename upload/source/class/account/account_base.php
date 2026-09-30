@@ -11,28 +11,6 @@ if(!defined('IN_DISCUZ')) {
 }
 
 class account_base {
-	// 支持的所有类型
-	const Interfaces = ['wechat', 'qq', 'discuz', 'ucenter'];
-	// 为当前站点启用的类型
-	const Interfaces_Used = ['wechat', 'qq', 'discuz', 'ucenter'];
-	// 类型代码
-	const Interfaces_aType = [
-		'wechat' => account::aType_wechatOpenid,
-		'qq' => account::aType_qq,
-		'discuz' => account::aType_discuz,
-		'ucenter' => account::aType_ucenter,
-	];
-	// 类型ICON
-	const Interfaces_iconId = [
-		'wechat' => 'icon-weixin',
-		'qq' => 'icon-social-qq',
-		'discuz' => 'icon-discuz',
-		'ucenter' => 'icon-ucenter',
-	];
-	// 不支持账号管理中绑定的类型
-	const Interfaces_noBind = [];
-	// 不支持自动同步头像的类型
-	const Interfaces_noAutoAvatar = ['discuz', 'ucenter'];
 
 	public bool $interface_loginAuto = true;
 	public bool $interface_noBind = false;
@@ -41,22 +19,62 @@ class account_base {
 	public static function autoload() {
 		spl_autoload_register(function($class) {
 			[$interface] = explode('_', $class);
-			if(isset(self::Interfaces_aType[$interface]) && file_exists($f = DISCUZ_ROOT.'./source/class/account/'.$interface.'/'.$class.'.php')) {
+			if(isset(self::Interfaces_aType()[$interface]) && file_exists($f = DISCUZ_ROOT.'./source/class/account/'.$interface.'/'.$class.'.php')) {
 				require_once $f;
 			}
 		}, true, true);
 	}
 
-	public static function getInterfaces() {
-		$interfaces = self::Interfaces;
-		$return = [];
-		foreach($interfaces as $method) {
-			if(in_array($method, self::Interfaces_Used)) {
-				$return[] = $method;
+	public static function Interfaces_Used() {
+		list($interfaces, ,) = self::cacheInterfaces();
+		return $interfaces;
+	}
+
+	public static function Interfaces_aType() {
+		list(, $aTypes,) = self::cacheInterfaces();
+		return $aTypes;
+	}
+
+	public static function Interfaces_iconId() {
+		list(, , $iconIds) = self::cacheInterfaces();
+		return $iconIds;
+	}
+
+	public static function cacheInterfaces(bool $force = false) {
+		global $_G;
+		static $value = null;
+		if($value !== null) {
+			return $value;
+		}
+		if(!$force) {
+			loadcache('account_interfaces');
+			if(!empty($_G['cache']['account_interfaces'])) {
+				return $value = $_G['cache']['account_interfaces'];
 			}
 		}
+		$interfaces = $aTypes = $iconIds = [];
+		$dir = DISCUZ_ROOT.'./source/class/account/';
+		foreach(glob($dir.'account_*.php') as $f) {
+			$interface = str_replace('account_', '', $c = basename($f, '.php'));
+			if($interface == 'base') {
+				continue;
+			}
+			if(defined($c.'::aType')) {
+				$aTypes[$interface] = $c::aType;
+			}
+			if(defined($c.'::iconId')) {
+				$iconIds[$interface] = $c::iconId;
+			}
+			$interfaces[] = $interface;
+		}
+		savecache('account_interfaces', $value = [$interfaces, $aTypes, $iconIds]);
+		return $value;
+	}
 
+	public static function getInterfaces() {
 		global $_G;
+		$return = self::Interfaces_Used();
+
 		if(!empty($_G['setting']['account_plugin_atypes'])) {
 			foreach($_G['setting']['account_plugin_atypes'] as $pluginid => $atype) {
 				if(in_array($pluginid, $_G['setting']['plugins']['available'])) {
@@ -370,7 +388,7 @@ class account_base {
 			$pluginid = substr($interface, 7);
 			return !empty($_G['setting']['account_plugin_confs'][$pluginid]) ? $_G['setting']['account_plugin_confs'][$pluginid] : [];
 		} else {
-			return !empty($_G['setting'][$interface]) ? $_G['setting'][$interface] : [];
+			return !empty($_G['setting'][$interface]) && is_array($_G['setting'][$interface]) ? $_G['setting'][$interface] : [];
 		}
 	}
 
@@ -403,7 +421,7 @@ class account_base {
 
 		$account = $_G['setting']['account'];
 		$iconId = !empty($account['iconId'][$interface]) ? $account['iconId'][$interface] :
-			(!empty(account_base::Interfaces_iconId[$interface]) ? account_base::Interfaces_iconId[$interface] : '');
+			(!empty(account_base::Interfaces_iconId()[$interface]) ? account_base::Interfaces_iconId()[$interface] : '');
 		if($iconId) {
 			return [
 				'<svg class="iconfont" aria-hidden="true"><use xlink:href="#'.$iconId.'"></use></svg>',

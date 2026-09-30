@@ -9,7 +9,13 @@
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
+
 class account_ucenter extends account_base {
+
+	const aType = account::aType_ucenter;
+	const iconId = 'icon-ucenter';
+
+	public bool $interface_noAutoAvatar = true;
 
 	public bool $interface_loginAuto = false;
 
@@ -70,12 +76,14 @@ class account_ucenter extends account_base {
 
 		$ret = $this->_request('/user/check_code', array('code' => $_GET['code']));
 		if(!$ret || $ret['ret'] > 0) {
+			account_base::error_logger('ucenter login failed: /user/check_code ret='.($ret['ret'] ?? 'null'));
 			showmessage('account_api_error', '', ['message' => ': '.$ret['ret'].', /user/check_code']);
 		}
 
 		//获取访问用户身份
 		$ret = $this->_request('/user/get_user', array('username' => $ret['data']['uid'], 'isuid' => 1));
 		if(!$ret || $ret['ret'] > 0) {
+			account_base::error_logger('ucenter login failed: /user/get_user ret='.($ret['ret'] ?? 'null'));
 			showmessage('account_api_error', '', ['message' => ': '.$ret['ret'].', /user/get_user']);
 		}
 

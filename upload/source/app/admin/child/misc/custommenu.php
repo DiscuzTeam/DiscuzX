@@ -110,18 +110,7 @@ EOT;
 	if($cmenu = table_common_admincp_cmenu::t()->fetch(intval($_GET['mid']))) {
 		$url = rawurldecode($cmenu['url']);
 		$url = str_replace('&amp;', '&', $url);
-		if(strpos($url, 'platform=system') !== false) {
-			dheader('location: '.$url);
-		} else {
-			if(strpos($url, 'frames=yes') === false) {
-				$url .= '&frames=yes';
-			}
-			echo <<<EOS
-<script language="javascript" type="text/javascript">
-window.top.location='$url';
-</script>
-EOS;
-		}
+		dheader('location: '.$url);
 	} else {
 		cpmsg('parameters_error', '', 'error');
 	}

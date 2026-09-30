@@ -399,7 +399,7 @@ function uc_friend_ls($uid, $page = 1, $pagesize = 10, $totalnum = 10, $directio
 }
 
 function uc_user_register($username, $password, $email = '', $questionid = '', $answer = '', $regip = '', $secmobicc = '', $secmobile = '', $censor = true) {
-	if($censor) {
+	if($censor && function_exists('censor')) {
 		$ret = censor($username, NULL, TRUE, FALSE);
 		if(is_array($ret)) {
 			return -1;
@@ -463,7 +463,7 @@ function uc_avatar_path($uid, $size = 'big', $type = '') {
 }
 
 function uc_user_checkname($username, $censor = true) {
-	if($censor) {
+	if($censor && function_exists('censor')) {
 		$ret = censor($username, NULL, TRUE, FALSE);
 		if(is_array($ret)) {
 			return -2;

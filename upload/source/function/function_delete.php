@@ -730,11 +730,9 @@ function deletedoings($ids) {
 		$attachments[] = $attach;
 	}
 
-	// 删除物理文件
+	// 删除物理文件（包含图片与视频等全部附件；视频封面「附件名.thumb.jpg」一并清理）
 	foreach($attachments as $attach) {
-		if($attach['isimage']) {
-			pic_delete($attach['attachment'], 'doing', 0, $attach['remote']);
-		}
+		pic_delete($attach['attachment'], 'doing', empty($attach['isimage']) ? 1 : 0, $attach['remote']);
 	}
 
 	// 删除附件记录

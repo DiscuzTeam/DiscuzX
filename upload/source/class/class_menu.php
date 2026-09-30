@@ -12,6 +12,15 @@ if(!defined('IN_DISCUZ')) {
 
 class menu {
 
+	const defaultLogo = '<a href="{ADMINSCRIPT}?frames=yes&action=index" class="logo"><img src="static/image/admincp/logo.svg" alt="Discuz! Administrator\'s Control Panel"></a>';
+
+	const defaultNavbar = '
+<form name="search" method="post" autocomplete="off" action="{ADMINSCRIPT}?action=search" target="main">
+	<input type="text" name="keywords" value="" class="txt" required>
+	<button type="submit" name="searchsubmit" value="yes" class="btn"></button>
+</form>
+';
+
 	const newTemplate = '<?xml version="1.0" encoding="ISO-8859-1"?>
 <root>
 	<name><![CDATA[新平台]]></name>
@@ -147,10 +156,25 @@ class menu {
 		return $menuData;
 	}
 
+	// 补全平台菜单的 logo 与 navbar：未提供、或 logo 中不含图片时使用默认值，避免后台顶部用户信息显示错位
+	private static function fixdefault(&$menuData) {
+		if(empty($menuData['logo']) || (stripos($menuData['logo'], '<img') === false && stripos($menuData['logo'], '<svg') === false)) {
+			$menuData['logo'] = self::defaultLogo;
+		}
+		if(empty($menuData['navbar'])) {
+			$menuData['navbar'] = self::defaultNavbar;
+		}
+	}
+
 	public static function platform_add($platform, $data, $isarray = false) {
 		global $_G;
 
 		$menuData = !$isarray ? self::menu2array($data) : $data;
+		if(!empty($menuData['custom'])) {
+			self::fixdefault($menuData['custom']);
+		} else {
+			self::fixdefault($menuData);
+		}
 		table_common_admincp_menu_platform::t()->insert([
 			'platform' => $platform,
 			'menu' => serialize($menuData)

@@ -430,7 +430,7 @@ function cpheader() {
 }
 
 function showsubmenu($title, $menus = [], $right = '', $replace = []) {
-	$s = (!empty($title) || !empty($right)) ? '<div class="itemtitle"><div class="titlerow"><h3>'.cplang($title, $replace).'</h3>'.$right.'</div>' : '<div class="itemtitle">';
+	$s = '<div class="itemtitle"><div class="titlerow"><h3>'.cplang($title, $replace).'</h3>'.$right.'</div>';
 	if(empty($menus)) {
 		$s .= '</div>';
 	} elseif(is_array($menus)) {

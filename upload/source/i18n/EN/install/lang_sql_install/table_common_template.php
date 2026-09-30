@@ -11,10 +11,5 @@ $data = [[
     'name' => 'Default Template Set',
     'directory' => './template/default',
     'copyright' => 'Discuz!',
-  ],[
-    'templateid' => '2',
-    'name' => 'X5 Template',
-    'directory' => './template/discuzx5',
-    'copyright' => 'Discuz!',
   ],
 ];

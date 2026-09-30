@@ -14,14 +14,9 @@ class menu_default {
 
 	public static function getMenu() {
 
-		$logo = '<a href="{ADMINSCRIPT}?frames=yes&action=index" class="logo"><img src="static/image/admincp/logo.svg" alt="Discuz! Administrator\'s Control Panel"></a>';
+		$logo = menu::defaultLogo;
 
-		$navbar = '
-<form name="search" method="post" autocomplete="off" action="{ADMINSCRIPT}?action=search" target="main">
-	<input type="text" name="keywords" value="" class="txt" required>
-	<button type="submit" name="searchsubmit" value="yes" class="btn"></button>
-</form>
-';
+		$navbar = menu::defaultNavbar;
 
 		$menu = [];
 
@@ -47,6 +42,7 @@ class menu_default {
 		$menu['global'] = [
 			['menu_setting_basic', 'setting_basic'],
 			['menu_setting_login', 'account'],
+			['menu_setting_tpfunctions', 'tpfunctions_index'],
 			['menu_setting_access', 'setting_access'],
 			['menu_setting_functions', 'setting_functions'],
 			['menu_setting_optimize', 'setting_cachethread', 0, '', '', ['setting_serveropti', 'setting_memory', 'setting_memorydata']],

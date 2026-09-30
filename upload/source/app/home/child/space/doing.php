@@ -155,7 +155,8 @@ $attachments = [];
 if (!empty($all_doids)) {
 	$attach_list = table_home_doing_attachment::t()->fetch_all_by_id(0, 'doid', $all_doids);
 	foreach ($attach_list as $attach) {
-		$attach['thumb'] = getdiscuzimg('doing', $attach['aid'], 0, 140, 140);
+		// 视频等非图片附件不生成缩略图
+		$attach['thumb'] = $attach['isimage'] ? getdiscuzimg('doing', $attach['aid'], 0, 140, 140) : '';
 		$attachments[$attach['doid']][] = $attach;
 	}
 }
@@ -164,6 +165,23 @@ foreach ($dolist as &$dv) {
 	$dv['attachments'] = isset($attachments[$dv['doid']]) ? $attachments[$dv['doid']] : [];
 }
 unset($dv);
+
+// 列表页外透每条记录最热门的前3条一级评论（单条详情页无需外透，本身展示完整评论）
+// 注意：列表模式下 $doid 为 0（empty 默认值），标签页为数组，单条查看为正整数
+$hotcomment_count = [];
+if (empty($doid) && !empty($all_doids)) {
+	$hotcomments = table_home_docomment::t()->fetch_hot_top_by_doids($all_doids, 3);
+	foreach ($hotcomments as $cm) {
+		$dv_hot[$cm['doid']][] = $cm;
+	}
+	foreach (table_home_docomment::t()->count_top_by_doids($all_doids) as $row) {
+		$hotcomment_count[$row['doid']] = intval($row['cnt']);
+	}
+	foreach ($dolist as &$dv) {
+		$dv['hotcomments'] = isset($dv_hot[$dv['doid']]) ? $dv_hot[$dv['doid']] : [];
+	}
+	unset($dv);
+}
 
 // 处理评论
 $clist = [];
@@ -211,4 +229,11 @@ if($_G['uid'] != $space['uid'] && $space['username']) {
 }
 $metakeywords = $navtitle;
 $metadescription = $navtitle;
+
+// 移动端列表页顶部内嵌发布框（微博式）所需的模板变量初始化
+$type = '';
+$id = 0;
+$topicid = 0;
+$commentcable = [];
+
 include_once template('diy:home/space_doing');

@@ -41,7 +41,7 @@ class class_attach {
 		global $_G;
 
 		$upload = new discuz_upload();
-		if($upload->init($file, 'common', subdir: $subdir, dirtype: $dirtype, filename: $filename) && $upload->save()) {
+		if($upload->init($file, $path, subdir: $subdir, dirtype: $dirtype, filename: $filename) && $upload->save()) {
 			return $_G['setting']['attachurl'].$path.'/'.$upload->attach['attachment'];
 		} else {
 			return '';

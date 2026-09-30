@@ -49,7 +49,7 @@ if(submitcheck('paysubmit')) {
 		}
 	}
 
-	if($pay_channel == 'wechat' && checkmobile() && str_contains($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger')) {
+	if($pay_channel == 'wechat' && checkmobile() && weixin::in_event()) {
 		$redirect_uri = $_G['siteurl'].'home.php?mod=spacecp&ac=payment&op=pay&sop=wxjsapi&order_id='.$order_id;
 		$state = md5($order_id.$order['dateline']);
 		$pay_url = $payclass->wechat_authorize($redirect_uri, $state);

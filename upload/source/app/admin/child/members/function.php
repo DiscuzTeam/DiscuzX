@@ -36,7 +36,7 @@ function showsearchform($operation = '') {
 	}
 
 
-	$interfaces_aType = account_base::Interfaces_aType;
+	$interfaces_aType = account_base::Interfaces_aType();
 	if(!empty($_G['setting']['account_plugin_atypes'])) {
 		foreach($_G['setting']['account_plugin_atypes'] as $pluginid => $atype) {
 			$interfaces_aType['plugin_'.$pluginid] = $atype;

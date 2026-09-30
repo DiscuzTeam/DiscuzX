@@ -28,8 +28,10 @@ function build_cache_setting() {
 		'security_usergroups_white_list', 'security_forums_white_list', 'account', 'oss', 'chgusername', 'cells', 'forumportal', 'log', 'upgroup_name',
 		'i18n', 'i18ns', 'i18n_custom', 'account_plugin_atypes', 'account_plugin_confs', 'mediasetting',
 		'mobile',
+		'wxshare', 'pwa',
 	];
-	$serialized = array_merge($serialized, account_base::Interfaces);
+	account_base::cacheInterfaces(true);
+	$serialized = array_merge($serialized, account_base::Interfaces_Used());
 
 	$data = [];
 
@@ -351,6 +353,7 @@ function build_cache_setting() {
 	$data['focus'] = $focus;
 
 	list($data['plugins'], $data['pluginlinks'], $data['hookscript'], $data['hookscriptmobile'], $data['threadplugins'], $data['specialicon']) = get_cachedata_setting_plugin();
+	unset($data['newhook'], $data['hooksort']);
 
 	if(empty($data['defaultindex'])) $data['defaultindex'] = '';
 	list($data['navs'], $data['subnavs'], $data['menunavs'], $data['navmns'], $data['navmn'], $data['navdms'], $data['navlogos']) = get_cachedata_mainnav();
@@ -410,6 +413,10 @@ function build_cache_setting() {
 	if($data['ftp']['on'] == 2) {
 		$data['csspathv'] = $data['jspath'] = $data['ftp']['attachurl'].'cache/';
 		writetojscache();
+	}
+
+	if($data['pwa']['allow']) {
+		pwa::updatecache();
 	}
 
 	if(!$data['csspathv']) {
@@ -871,39 +878,63 @@ function get_cachedata_setting_plugin($method = '') {
 		savecache('adminmenu', array_merge((array)$adminmenu[0], (array)$adminmenu[1]));
 	}
 
+	$hookfuncTypes = ['funcs', 'outputfuncs', 'messagefuncs'];
+
+	$setting = table_common_setting::t()->fetch_all_setting(['hooksort', 'newhook'], true);
+	$hooksort = $setting['hooksort'] ?? [];
+	$newhook = $setting['newhook'] ?? [];
 
 	$data['pluginhooks'] = [];
 	foreach(['hookscript', 'hookscriptmobile'] as $hooktype) {
 		foreach($data[$hooktype] as $hscript => $hookscript) {
 			foreach($hookscript as $curscript => $scriptdata) {
-				if(is_array($scriptdata['funcs'])) {
-					foreach($scriptdata['funcs'] as $funcname => $funcs) {
+				foreach($hookfuncTypes as $functype) {
+					if(!is_array($scriptdata[$functype])) {
+						continue;
+					}
+					foreach($scriptdata[$functype] as $funcname => $funcs) {
 						usort($funcs, 'pluginmodulecmp');
 						$tmp = [];
 						foreach($funcs as $k => $v) {
+							$sk = md5($v['func'][0].':'.$v['func'][1]);
+							if(isset($hooksort[$hooktype][$hscript][$curscript][$functype][$funcname][$sk])) {
+								$v['func'][99] = $hooksort[$hooktype][$hscript][$curscript][$functype][$funcname][$sk];
+							}
 							$tmp[$k] = $v['func'];
 						}
-						$data[$hooktype][$hscript][$curscript]['funcs'][$funcname] = $tmp;
+						$data[$hooktype][$hscript][$curscript][$functype][$funcname] = $tmp;
 					}
 				}
-				if(is_array($scriptdata['outputfuncs'])) {
-					foreach($scriptdata['outputfuncs'] as $funcname => $funcs) {
-						usort($funcs, 'pluginmodulecmp');
-						$tmp = [];
-						foreach($funcs as $k => $v) {
-							$tmp[$k] = $v['func'];
+			}
+		}
+
+		if(!empty($newhook[$hooktype])) {
+			foreach($newhook[$hooktype] as $hscript => $hookscript) {
+				foreach($hookscript as $curscript => $scriptdata) {
+					foreach($scriptdata as $functype => $funcnames) {
+						foreach($funcnames as $funcname => $funcs) {
+							foreach($funcs as $func) {
+								$func[2] = true;
+								$sk = md5($func[0].':'.$func[1]);
+								if(isset($hooksort[$hooktype][$hscript][$curscript][$functype][$funcname][$sk])) {
+									$func[99] = $hooksort[$hooktype][$hscript][$curscript][$functype][$funcname][$sk];
+								}
+								$data[$hooktype][$hscript][$curscript][$functype][$funcname][] = $func;
+							}
 						}
-						$data[$hooktype][$hscript][$curscript]['outputfuncs'][$funcname] = $tmp;
 					}
 				}
-				if(is_array($scriptdata['messagefuncs'])) {
-					foreach($scriptdata['messagefuncs'] as $funcname => $funcs) {
-						usort($funcs, 'pluginmodulecmp');
-						$tmp = [];
-						foreach($funcs as $k => $v) {
-							$tmp[$k] = $v['func'];
-						}
-						$data[$hooktype][$hscript][$curscript]['messagefuncs'][$funcname] = $tmp;
+			}
+		}
+
+		foreach($data[$hooktype] as $hscript => $hookscript) {
+			foreach($hookscript as $curscript => $scriptdata) {
+				foreach($hookfuncTypes as $functype) {
+					if(!is_array($scriptdata[$functype])) {
+						continue;
+					}
+					foreach($scriptdata[$functype] as $funcname => $funcs) {
+						usort($data[$hooktype][$hscript][$curscript][$functype][$funcname], 'hooksortcmp');
 					}
 				}
 			}
@@ -1447,11 +1478,17 @@ function _appendjsvar() {
 	$s = [];
 	$defaultavatar = $_G['setting']['defaultavatar'];
 	$s[] = "DEFAULTAVATAR = '$defaultavatar'";
-	return 'var '.implode(",", $s).";\n";
+	$pwaon = !empty($_G['setting']['pwa']['allow']) ? 1 : 0;
+	$s[] = "PWAON = $pwaon";
+	return 'var '.implode(',', $s).";\n";
 }
 
 function pluginmodulecmp($a, $b) {
 	return $a['displayorder'] > $b['displayorder'] ? 1 : -1;
+}
+
+function hooksortcmp($a, $b) {
+	return $a[99] > $b[99] ? 1 : -1;
 }
 
 function parsehighlight($highlight) {

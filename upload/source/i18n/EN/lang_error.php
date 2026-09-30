@@ -12,7 +12,7 @@ if(!defined('IN_DISCUZ')) {
 
 $lang =
 	[
-	'System Message' => 'Site Information',
+	'System Message' => 'Site Info',
 
 	'config_notfound' => 'Configuration file "config_global.php" not found or inaccessible, please confirm you have installed the program correctly',
 	'template_notfound' => 'Template file not found or inaccessible',

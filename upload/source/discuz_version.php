@@ -13,7 +13,7 @@ if(!defined('IN_DISCUZ')) {
 if(!defined('DISCUZ_VERSION')) {
 	define('DISCUZ_VERSION_NAME', 'Discuz! OpenSource');
 	define('DISCUZ_VERSION', 'X5.0');
-	define('DISCUZ_SUBVERSION', '.2.Intl');
-	define('DISCUZ_RELEASE', '20260910');
+	define('DISCUZ_SUBVERSION', '.4.Intl');
+	define('DISCUZ_RELEASE', '20261001');
 }
 

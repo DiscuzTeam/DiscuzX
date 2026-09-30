@@ -21,7 +21,8 @@ if(submitcheck('settingsubmit')) {
 		}
 		if($setting[$key] != $val) {
 			$updatecache = TRUE;
-			if(in_array($key, ['defaultforumid', 'pollforumid', 'tradeforumid', 'rewardforumid', 'activityforumid', 'debateforumid'])) {
+			if(in_array($key, ['defaultforumid', 'pollforumid', 'tradeforumid', 'rewardforumid', 'activityforumid', 'debateforumid',
+				'doingimgmaxnum', 'doingimgmaxsize', 'doingvideoallow', 'doingvideomaxsize'])) {
 				$val = (float)$val;
 			}
 			$settings[$key] = $val;
@@ -69,6 +70,18 @@ if(submitcheck('settingsubmit')) {
 		showsetting('setting_home_base_default_'.$key.'_forum', "settingnew[{$key}forumid]", $setting[$key.'forumid'], sprintf($forumselect, "settingnew[{$key}forumid]"));
 	}
 	showsetting('setting_doing_dynamic_fname', 'settingnew[doing_dynamic_fname]', $setting['doing_dynamic_fname'], 'radio');
+
+	// 记录图片/视频上传限制设置，未保存过设置时显示默认值
+	$setting['doingimgmaxnum'] = isset($setting['doingimgmaxnum']) ? $setting['doingimgmaxnum'] : 9;
+	$setting['doingimgmaxsize'] = isset($setting['doingimgmaxsize']) ? $setting['doingimgmaxsize'] : 2048;
+	$setting['doingvideoallow'] = isset($setting['doingvideoallow']) ? $setting['doingvideoallow'] : 1;
+	$setting['doingvideomaxsize'] = isset($setting['doingvideomaxsize']) ? $setting['doingvideomaxsize'] : 50;
+	$setting['doingvideoext'] = isset($setting['doingvideoext']) && $setting['doingvideoext'] !== '' ? $setting['doingvideoext'] : 'mp4,webm,mov';
+	showsetting('setting_doing_imgmaxnum', 'settingnew[doingimgmaxnum]', $setting['doingimgmaxnum'], 'text');
+	showsetting('setting_doing_imgmaxsize', 'settingnew[doingimgmaxsize]', $setting['doingimgmaxsize'], 'text');
+	showsetting('setting_doing_videoallow', 'settingnew[doingvideoallow]', $setting['doingvideoallow'], 'radio');
+	showsetting('setting_doing_videomaxsize', 'settingnew[doingvideomaxsize]', $setting['doingvideomaxsize'], 'text');
+	showsetting('setting_doing_videoext', 'settingnew[doingvideoext]', $setting['doingvideoext'], 'text');
 
 	showtablefooter();
 	/*search*/

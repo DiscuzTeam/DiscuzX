@@ -40,7 +40,7 @@ if(!submitcheck('importsubmit') && empty($_GET['dir'])) {
 		$_GET['dir'] = $style['directory'];
 	}
 	if(!empty($_GET['dir'])) {
-		$renamed = import_styles($_GET['ignoreversion'], $_GET['dir'], $restore);
+		$renamed = import_styles($_GET['ignoreversion'], $_GET['dir'], $restore, setdefault: !empty($_GET['default']));
 	} else {
 		$renamed = import_styles($_GET['ignoreversion'], $_GET['dir']);
 	}

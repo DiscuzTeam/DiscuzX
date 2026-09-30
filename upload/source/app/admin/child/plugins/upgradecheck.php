@@ -99,9 +99,11 @@ if(!$nowarray && !$newarray && !$errarray) {
 	shownav('plugin');
 	showsubmenu('nav_plugins', [
 		['plugins_list', 'plugins', 0],
+		['plugins_hooklist', 'plugins&operation=hooklist', 0],
 		['plugins_validator', 'plugins&operation=upgradecheck', 1],
 		['cloudaddons_plugin_link', 'cloudaddons&frame=no&operation=plugins&from=more', 0, 1],
-	], '<a href="https://www.dismall.com/?from=plugins_question" target="_blank" class="rlink">'.$lang['plugins_question'].'</a>');
+		['cloudaddons_witframe_link', 'cloudaddons&frame=no&operation=witframe&from=more', 0, 1],
+	]);
 	showboxheader('', '', '', 1);
 	if($nowarray) {
 		showboxtitle('plugins_validator_nowupgrade');

@@ -1,0 +1,25 @@
+{
+  "name": "{PWA_NAME}",
+  "short_name": "{PWA_SHORT_NAME}",
+  "description": "{PWA_DESCRIPTION}",
+  "start_url": "{PATH}",
+  "display": "standalone",
+  "background_color": "{PWA_BACKGROUND_COLOR}",
+  "theme_color": "{PWA_THEME_COLOR}",
+  "orientation": "portrait-primary",
+  "scope": "{PATH}",
+  "icons": [
+    {
+      "src": "{PWA_CACHE_URLS_192}",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "{PWA_CACHE_URLS_512}",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -71,8 +71,8 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
+		<div class="template_bottom"><input type="text" class="txt" name="namenew[{$id}]" value="{$style['name']}" /></div>
 	<!--{else}-->
 		<div class="template_center">
 			<div class="template_preview">
@@ -89,9 +89,9 @@
 					<p style="margin-bottom: 2px;"><font color="red">New!</font></p>
 				<!--{/if}-->
 			</div>
-
 		</div>
+		<input type="hidden" name="namenew[{$id}]" value="{$style['name']}" />
+		<!--{if !empty($style['desc'])}--><div class="template_bottom xg1">{$style['desc']}</div><!--{/if}-->
 	<!--{/if}-->
-	<div class="template_bottom"><input type="text" class="txt" name="namenew[{$id}]" value="{$style['name']}" style="margin:0; width: 204px;" /></div>
 </div>
 <!--{/block}-->

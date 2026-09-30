@@ -59,7 +59,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '4',
-    'rulename' => 'Upload Attachments',
+    'rulename' => 'Upload Attachment',
     'action' => 'postattach',
     'cycletype' => '4',
     'cycletime' => '0',
@@ -76,7 +76,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '5',
-    'rulename' => 'Download Attachments',
+    'rulename' => 'Download Attachment',
     'action' => 'getattach',
     'cycletype' => '4',
     'cycletime' => '0',
@@ -93,7 +93,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '6',
-    'rulename' => 'Send PM',
+    'rulename' => 'Send Short Message',
     'action' => 'sendpm',
     'cycletype' => '4',
     'cycletime' => '0',
@@ -263,7 +263,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '17',
-    'rulename' => 'Poke',
+    'rulename' => 'Greet',
     'action' => 'poke',
     'cycletype' => '1',
     'cycletime' => '0',
@@ -280,7 +280,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '18',
-    'rulename' => 'Message',
+    'rulename' => 'Leave a Message',
     'action' => 'guestbook',
     'cycletype' => '1',
     'cycletime' => '0',
@@ -314,7 +314,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '20',
-    'rulename' => 'Post Status',
+    'rulename' => 'Publish Record',
     'action' => 'doing',
     'cycletype' => '1',
     'cycletime' => '0',
@@ -331,7 +331,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '21',
-    'rulename' => 'Post Blog',
+    'rulename' => 'Publish Blog',
     'action' => 'publishblog',
     'cycletype' => '1',
     'cycletime' => '0',
@@ -348,7 +348,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '22',
-    'rulename' => 'Vote in Polls',
+    'rulename' => 'Participate in Poll',
     'action' => 'joinpoll',
     'cycletype' => '1',
     'cycletime' => '0',
@@ -433,7 +433,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '29',
-    'rulename' => 'Edit Domain',
+    'rulename' => 'Modify Domain',
     'action' => 'modifydomain',
     'cycletype' => '0',
     'cycletime' => '0',
@@ -450,7 +450,7 @@ $data = [[
     'fids' => '',
   ],[
     'rid' => '30',
-    'rulename' => 'Article Comments',
+    'rulename' => 'ArticleComment',
     'action' => 'portalcomment',
     'cycletype' => '1',
     'cycletime' => '0',

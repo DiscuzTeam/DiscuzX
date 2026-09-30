@@ -57,7 +57,7 @@
 				<a href="forum.php?mod=viewthread&tid=$thread['tid']&extra=$extra"><div class="threadlist_mes cl">{$threadlist_data[$thread['tid']]['message']}</div></a>
 				<div class="threadlist_foot cl">
 					<ul>
-						<li class="mr"><a href="forum.php?mod=forumdisplay&fid=$thread['fid']">#{$_G['cache']['forums'][$thread['fid']]['name']}</a></li>
+						<li class="mr"><a href="forum.php?mod=forumdisplay&fid=$thread['fid']">#{$list['forumnames'][$thread['fid']]['name']}</a></li>
 						<li class="stats"><i class="dm-eye-fill"></i>{$thread['views']}</li>
 						<li class="stats"><i class="dm-chat-s-fill"></i>{$thread['replies']}</li>
 					</ul>

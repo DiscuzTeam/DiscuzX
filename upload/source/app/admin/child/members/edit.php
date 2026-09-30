@@ -18,7 +18,7 @@ if($do == 'account') {
 		['account', 'members&operation=edit&do=account&uid='.$uid, 1],
 	]);
 
-	$interfaces_aType = account_base::Interfaces_aType;
+	$interfaces_aType = account_base::Interfaces_aType();
 	$interfaces_aType = array_flip($interfaces_aType);
 
 	$interfaces = [];

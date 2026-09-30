@@ -203,7 +203,7 @@ formula: 按照权限公式表达式方式显示
 			if(!empty($extra['hide']['account']) && in_array($interface, $extra['hide']['account'])) {
 				continue;
 			}
-			$atype = \account_base::Interfaces_aType[$interface];
+			$atype = \account_base::Interfaces_aType()[$interface];
 			if(empty($atype) && str_starts_with($interface, 'plugin_')) {
 				$atype = \account_base::getAccountType(substr($interface, 7));
 			}

@@ -388,14 +388,6 @@
 				}else{
 					var whitelistDomains = [SITEURL];
 				}
-				_attachEvent(iframeDoc.body, 'paste', function (e) {
-					setTimeout(function() {
-						if (wysiwyg) {
-							switchEditor(0);
-							switchEditor(1);
-						}
-					}, 1);
-				});
 			}
 		});
 		</script>
