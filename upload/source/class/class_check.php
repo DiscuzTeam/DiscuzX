@@ -87,7 +87,7 @@ class check {
 		$this->checkfiles('data/download/', '\.htm', 0);
 		$this->checkfiles('data/addonmd5/', '\.htm', 0);
 		$this->checkfiles('source/', '\.php|\.md5|\.htm|\.table|\.xml', 0);
-		$this->checkfiles('source/data/', '\.md5|\.htm|\.table|\.xml|\.dat|\.txt|\.png|\.jpg|\.gif|\.ttf|\.php', 1, 'discuzfiles.md5');
+		$this->checkfiles('source/data/', '\.md5|\.htm|\.table|\.xml|\.dat|\.txt|\.png|\.jpg|\.gif|\.ttf|\.php|\.js|\.json', 1, 'discuzfiles.md5');
 		$this->checkfiles('source/archiver/', '\.php|\.md5|\.htm|\.table|\.xml');
 		$this->checkfiles('source/app/', '\.php|\.htm');
 		$this->checkfiles('source/i18n/', '\.php|\.htm');
