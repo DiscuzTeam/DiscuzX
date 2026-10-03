@@ -2043,6 +2043,134 @@ body { background: none !important; }
 /* 重定义 tab 标签样式 by Pony 11081614 */
 .ttp .a a { padding-left: 8px; padding-right: 8px; }
 .ttp li.xw1 { font-weight: 400; }
+
+/* ------------------------------------------------------------------------
+   统计页现代化组件（.stat-*）：替代 .dt 布局用表格，配合 static/js/stat.js 的 echarts 助手
+   注：上方 .dt 系列规则仍需保留，stat_misc.php 暂未改造，依旧使用 .dt 表格
+   ------------------------------------------------------------------------ */
+.stat-page { padding-bottom: 4px; }
+	.stat-page > h1.mt { margin-bottom: 12px; }
+
+/* 卡片：统一圆角 + 双层柔和投影 */
+.stat-card { margin-bottom: 12px; padding: 14px 16px; border: 1px solid {COMMONBORDER}; border-radius: 12px; background: {WRAPBG}; box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 10px 24px -10px rgba(16,24,40,.14); }
+	.stat-card-hd { margin-bottom: 12px; }
+		.stat-card-hd h2 { font-size: 14px; font-weight: 700; }
+		.stat-card-sub { margin-top: 2px; color: {LIGHTTEXT}; font-size: 12px; }
+
+/* 指标卡片网格 */
+.stat-kpis { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin: 0; padding: 0; }
+	.stat-kpi { display: block; padding: 12px 14px; border: 1px solid {COMMONBORDER}; border-radius: 10px; background: {COMMONBG}; transition: border-color .18s ease, box-shadow .18s ease; }
+		.stat-kpi:hover { border-color: {SPECIALBORDER}; box-shadow: 0 4px 12px -4px rgba(16,24,40,.12); }
+		.stat-kpi-num { display: block; color: {MENUBGCOLOR}; font-size: 22px; font-weight: 700; line-height: 1.3; letter-spacing: .5px; }
+		.stat-kpi-label { display: block; margin-top: 2px; color: {MIDTEXT}; font-size: 12px; }
+		.stat-kpi-sub { display: block; margin-top: 4px; color: {LIGHTTEXT}; font-size: 11px; }
+	.stat-kpis-sm .stat-kpi { padding: 10px 12px; }
+	.stat-kpis-sm .stat-kpi-num { font-size: 16px; }
+
+/* 图表容器：高度由修饰类给定，避免 echarts 初始化时高度塌陷 */
+.stat-chart { width: 100%; }
+	.stat-chart-h240 { height: 240px; }
+	.stat-chart-h320 { height: 320px; }
+	.stat-chart-h420 { height: 420px; }
+.stat-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+	.stat-cols > .stat-card { margin-bottom: 0; }
+.stat-empty { padding: 40px 16px; border-radius: 10px; background: {COMMONBG}; color: {LIGHTTEXT}; text-align: center; }
+
+/* 筛选栏：替代 .dt 的 th/td 两列排版 */
+.stat-filter { margin-bottom: 12px; padding: 12px 14px; border: 1px solid {COMMONBORDER}; border-radius: 12px; background: {COMMONBG}; }
+	.stat-filter-row { display: flex; flex-wrap: wrap; align-items: flex-start; padding: 8px 0; border-bottom: 1px dashed {COMMONBORDER}; }
+		.stat-filter-row:last-of-type { border-bottom: none; }
+		.stat-filter-key { flex: none; width: 92px; padding-top: 4px; color: {MIDTEXT}; font-weight: 700; font-size: 12px; }
+		.stat-filter-val { flex: 1 1 auto; min-width: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* 复选框 → 胶囊 chip */
+.stat-chip { display: inline-flex; align-items: center; margin: 0; padding: 4px 12px; border: 1px solid {COMMONBORDER}; border-radius: 999px; background: {WRAPBG}; color: {MIDTEXT}; cursor: pointer; white-space: nowrap; transition: background-color .18s ease, color .18s ease, border-color .18s ease; }
+	.stat-chip:hover { border-color: {SPECIALBORDER}; background: {SPECIALBG}; color: {HIGHLIGHTLINK}; }
+	.stat-chip input.pc { margin: 0 6px 0 0; vertical-align: -2px; }
+	.stat-chip.on { border-color: {MENUBGCOLOR}; background: {MENUBGCOLOR}; color: #FFF; font-weight: 700; }
+		.stat-chip.on:hover { background: {MENUCURBGCOLOR}; color: #FFF; }
+
+/* 快捷时间区间 + 操作条 */
+.stat-range { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+	.stat-range a { display: inline-block; padding: 4px 12px; border: 1px solid {COMMONBORDER}; border-radius: 999px; background: {WRAPBG}; color: {MIDTEXT}; white-space: nowrap; transition: background-color .18s ease, color .18s ease, border-color .18s ease; }
+		.stat-range a:hover { border-color: {SPECIALBORDER}; background: {SPECIALBG}; color: {HIGHLIGHTLINK}; text-decoration: none; }
+	.stat-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed {COMMONBORDER}; }
+
+/* 网格化列表：替代数据表格（stat_team / stat_memberlist） */
+.stat-list { margin: 0; padding: 0; }
+	.stat-list-hd { display: flex; align-items: center; gap: 8px; }
+	.stat-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 10px 12px; border-radius: 8px; transition: background-color .18s ease; }
+		.stat-row:nth-child(even) { background: {COMMONBG}; }
+		.stat-row:hover { background: {SPECIALBG}; }
+		.stat-cell { flex: 1 1 auto; min-width: 0; }
+		.stat-cell-w1 { flex: 0 0 56px; }
+		.stat-cell-w2 { flex: 0 0 92px; }
+		.stat-cell-w3 { flex: 0 0 120px; }
+		.stat-cell-num { flex: 0 0 72px; text-align: right; font-weight: 700; }
+		.stat-cell-hd { color: {MIDTEXT}; font-size: 12px; font-weight: 700; }
+	.stat-list .stat-row .stat-cell { color: {TABLETEXT}; }
+	.stat-list .stat-row .stat-cell a { color: {HIGHLIGHTLINK}; }
+
+/* 成员卡片（stat_team）：把 8~11 列压成「名称 + 标签 + 指标 chip 行」 */
+.stat-member { padding: 12px; border-radius: 10px; border: 1px solid transparent; transition: background-color .18s ease, border-color .18s ease; }
+	.stat-member:hover { border-color: {SPECIALBORDER}; background: {SPECIALBG}; }
+	.stat-member-hd { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+		.stat-member-name { font-weight: 700; }
+	.stat-tag { display: inline-block; padding: 1px 8px; border-radius: 999px; background: {COMMONBG}; color: {MIDTEXT}; font-size: 11px; line-height: 16px; }
+		.stat-tag-act { background: {SPECIALBG}; color: {HIGHLIGHTLINK}; }
+	.stat-metrics { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+		.stat-metric { flex: 0 0 auto; min-width: 74px; padding: 4px 8px; border-radius: 6px; background: {COMMONBG}; text-align: center; }
+		.stat-metric b { display: block; color: {MENUBGCOLOR}; font-size: 13px; }
+		.stat-metric span { display: block; color: {LIGHTTEXT}; font-size: 11px; }
+		.stat-metric a { display: block; color: {HIGHLIGHTLINK}; }
+	.stat-group { margin-top: 12px; padding-top: 10px; border-top: 1px dashed {COMMONBORDER}; }
+		.stat-group-hd { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-weight: 700; }
+
+/* 排行榜（stat_trade） */
+.stat-rank { margin: 0; padding: 0; counter-reset: statrank; }
+	.stat-rank li { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 8px; transition: background-color .18s ease; }
+		.stat-rank li:nth-child(even) { background: {COMMONBG}; }
+		.stat-rank li:hover { background: {SPECIALBG}; }
+		.stat-rank-no { flex: none; width: 22px; height: 22px; border-radius: 999px; background: {SPECIALBG}; color: {HIGHLIGHTLINK}; font-size: 11px; font-weight: 700; line-height: 22px; text-align: center; }
+			.stat-rank li:nth-child(1) .stat-rank-no { background: {MENUBGCOLOR}; color: #FFF; }
+		.stat-rank-t { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+		.stat-rank-v { flex: none; color: {MENUBGCOLOR}; font-weight: 700; }
+
+	.stat-page .notice { margin-top: 10px; }
+
+/* 会员列表（stat_memberlist）：卡片头部右侧工具位 + 可排序表头 + 头像行 */
+.stat-card-hd-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+	.stat-card-hd-bar .stat-card-hd-txt { min-width: 0; }
+	.stat-card-hd-bar .stat-card-sub { margin-top: 2px; }
+	.stat-search { display: flex; flex-wrap: wrap; gap: 6px; }
+		.stat-search .px { width: 160px; }
+.stat-list .stat-row-hd { padding: 8px 12px; border-bottom: 1px solid {COMMONBORDER}; border-radius: 0; }
+	.stat-list .stat-row-hd:hover { background: none; }
+.stat-sort { color: {MIDTEXT}; white-space: nowrap; }
+	.stat-sort:hover { color: {HIGHLIGHTLINK}; text-decoration: none; }
+	.stat-sort.on { color: {HIGHLIGHTLINK}; font-weight: 700; }
+		.stat-sort.on:after { content: " \2193"; font-size: 10px; }
+		.stat-sort.on.asc:after { content: " \2191"; font-size: 10px; }
+.stat-cell-user { display: flex; align-items: center; gap: 8px; min-width: 150px; }
+	.stat-cell-user img { flex: none; width: 28px; height: 28px; border-radius: 8px; }
+	.stat-ava-txt { display: flex; flex-direction: column; min-width: 0; line-height: 1.35; }
+		.stat-ava-txt a { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+		.stat-ava-uid { color: {LIGHTTEXT}; font-size: 11px; font-style: normal; }
+.stat-pgs { margin-top: 12px; }
+
+/* 矩阵表（管理统计）：用 sticky 首列 + sticky 表头替代原 .stl/.str 双表 + 3000px 定宽的冻结列 hack，
+   单表即可横向滚动，不再需要左右两块表格做行高对齐 */
+.stat-matrix { overflow: auto; max-width: 100%; border-radius: 10px; }
+	.stat-mx { border-collapse: separate; border-spacing: 0; width: max-content; min-width: 100%; font-size: 12px; }
+		.stat-mx th, .stat-mx td { padding: 6px 10px; border-right: 1px solid {COMMONBORDER}; border-bottom: 1px solid {COMMONBORDER}; text-align: center; white-space: nowrap; }
+		.stat-mx thead th { position: sticky; top: 0; z-index: 2; background: {COMMONBG}; font-weight: 700; }
+		.stat-mx .stat-mx-row, .stat-mx .stat-mx-corner { position: sticky; left: 0; z-index: 1; background: {WRAPBG}; text-align: left; }
+		.stat-mx .stat-mx-corner { z-index: 3; }
+		.stat-mx tbody tr:hover td, .stat-mx tbody tr:hover .stat-mx-row { background: {SPECIALBG}; }
+		.stat-mx .stat-mx-empty { color: {LIGHTTEXT}; }
+		.stat-mx .stat-mx-total { color: {MENUBGCOLOR}; font-weight: 700; }
+		.stat-mx .stat-mx-sum { background: {COMMONBG}; font-weight: 700; }
+		.stat-mx .stat-mx-sum .stat-mx-row { background: {COMMONBG}; }
 /** end **/
 
 
