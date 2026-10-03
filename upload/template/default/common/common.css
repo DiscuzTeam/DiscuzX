@@ -668,15 +668,35 @@ CSS 写作注意事项：
 					#g_upmine_menu li { float: none; display: block; padding-left: 5px !important; }
 					#g_upmine_menu ul.extg li { padding-left: 0px !important; }
 
-				#qmenu { float: right; display: inline; margin: 5px 8px 0; padding: 0 5px; width: 103px; height: 24px; background: #fff; line-height: 24px; text-align: center; color: {HIGHLIGHTLINK}; font-weight: 700; overflow: hidden; }
-					#qmenu:hover { text-decoration: none; }
+				#qmenu { float: right; display: inline; margin: 5px 8px 0; padding: 0 5px; width: 103px; height: 24px; border-radius: 6px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.08); line-height: 24px; text-align: center; color: {HIGHLIGHTLINK}; font-weight: 700; overflow: hidden; transition: box-shadow .18s ease; }
+					#qmenu:hover { text-decoration: none; box-shadow: 0 2px 8px rgba(0,0,0,.14); }
 					#qmenu::after { display: inline-block; margin-left: 0.255em; vertical-align: 0.255em; content: ""; border-top: 0.3em solid; border-right: 0.3em solid transparent; border-bottom: 0; border-left: 0.3em solid transparent; }
 					#qmenu.a { position: relative; z-index: 302;}
 					#qmenu.a::after { border-top: 0; border-bottom: 0.3em solid; }
-				#qmenu_menu { margin-top: -2px; padding: 20px 5px 10px; width: 610px; border-color: #DCE4EB; }
-					#qmenu_menu ul.nav li { float: left; }
-					#qmenu_menu ul.nav a { margin-bottom: 10px; padding: 47px 0 0; width: 60px; border: none; border-radius: 4px; background: no-repeat 50% 5px; background-image: linear-gradient(0deg, #e8eff5, #e8eff5); background-size: 40px 40px; text-align: center; }
-						#qmenu_menu ul.nav a:hover { background-color: {SPECIALBG}; color: {HIGHLIGHTLINK}; text-shadow: none; }
+				#qmenu_menu { box-sizing: content-box; margin-top: -2px; padding: 14px 12px; width: 610px; border-color: #E4E9EF; border-radius: 12px; box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 12px 28px -8px rgba(16,24,40,.18); animation: qmenu_fadein .16s ease-out; }
+					@keyframes qmenu_fadein { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+					#qmenu_menu ul.nav { display: flex; flex-wrap: wrap; margin: 0; }
+						#qmenu_menu ul.nav:after { display: none; }
+						#qmenu_menu ul.nav li { float: none; display: block; flex: none; margin: 0 8px 8px 0; }
+						#qmenu_menu ul.nav a { display: block; margin: 0; padding: 44px 0 8px; width: 68px; border: none; border-radius: 12px; background: none no-repeat 50% 8px / 34px 34px; color: {LINK}; font-size: 12px; line-height: 16px; letter-spacing: .3px; text-align: center; text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; box-shadow: 0 0 0 rgba(16,24,40,0); transition: background-color .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease; }
+							#qmenu_menu ul.nav a:hover { background-color: {SPECIALBG}; color: {HIGHLIGHTLINK}; text-shadow: none; text-decoration: none; box-shadow: 0 6px 14px -4px rgba(16,24,40,.16); transform: translateY(-1px); }
+							#qmenu_menu ul.nav a:active { transform: none; box-shadow: 0 0 0 rgba(16,24,40,0); }
+							#qmenu_menu ul.nav a:focus-visible { outline: 2px solid {HIGHLIGHTLINK}; outline-offset: 2px; }
+					/* 未登录：紧凑提示气泡（圆形图标 + 居中文案） */
+					#qmenu_menu.blk { width: auto; min-width: 240px; padding: 20px 24px; text-align: center; }
+						#qmenu_menu.blk:before { content: "\f100"; display: block; margin: 0 auto 10px; width: 44px; height: 44px; border-radius: 50%; background: {SPECIALBG}; font-family: dzicon; font-size: 24px; line-height: 44px; color: {HIGHLIGHTLINK}; }
+						#qmenu_menu.blk .ptm, #qmenu_menu.blk .pbw { padding: 0 !important; }
+					/* 版块快速跳转（#fjump_menu）：只调整配色/圆角/交互，列宽与列数一律不动，避免三级结构错位 */
+					#qmenu_menu #fjump_menu { padding: 12px 0 0; border-top: 1px solid #ECEFF3; }
+						#qmenu_menu #fjump_menu .jump_bdl li { border-color: #E7ECF1; border-radius: 10px; box-shadow: 0 1px 2px rgba(16,24,40,.04); }
+						#qmenu_menu #fjump_menu .jump_bdl p.bbda { border-bottom-style: solid; border-bottom-color: #EFF2F5; border-radius: 8px 8px 0 0; }
+						#qmenu_menu #fjump_menu .jump_bdl p a { display: block; border-radius: 6px; }
+						#qmenu_menu #fjump_menu .jump_bdl p:not(.a) a:hover { background-color: {COMMONBG}; color: {HIGHLIGHTLINK}; text-decoration: none; }
+						#qmenu_menu #fjump_menu .jump_bdl p.a a { background-color: {SPECIALBG}; color: {HIGHLIGHTLINK}; font-weight: 700; }
+						#qmenu_menu #fjump_menu .jump_bdl li::-webkit-scrollbar { width: 6px; }
+						#qmenu_menu #fjump_menu .jump_bdl li::-webkit-scrollbar-thumb { border-radius: 3px; background: #CFD9E2; }
+						#qmenu_menu #fjump_menu .jump_bdl li::-webkit-scrollbar-track { background: transparent; }
+				@media (prefers-reduced-motion: reduce) { #qmenu_menu { animation: none; } #qmenu_menu ul.nav a { transition: none; } }
 				#shortcut { position: relative; display: none; height: 30px; line-height: 30px; background-color: #3A83F1; color: white; text-align: center; }
 					#shortcuttip { padding: 2px 8px; background: #fff; border-radius: 3px; color: #3A83F1; font-weight: 700; }
 					#shortcutcloseid { position: absolute; right: 8px; top: 8px; display: block; width: 12px; height: 12px; background: #09c; line-height: 12px; overflow: hidden; }
