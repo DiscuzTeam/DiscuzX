@@ -326,18 +326,23 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 /** forum::viewthread,forum::forumdisplay,forum::post,group **/
 /* 主题图标 by michael */
-#newspecial_menu { min-width: 90px; }
-	#newspecial_menu li, #sti .wx { display: block; zoom: 1; }
-	#newspecial_menu li:before, #sti .wx:before { content: "\f134"; font-family: dzicon; display: inline-block; height: 24px; width: 30px; line-height: 24px; text-align: center; font-size: 20px; color: #FF9C00; vertical-align: middle; }
-	#newspecial_menu li.plugin_special_thread {background-repeat: no-repeat; background-position: left 8px center;}
-	#newspecial_menu li.plugin_special_thread:before { content:""; }
+	#newspecial_menu { min-width: 160px; max-width: 260px; padding: 6px; border-radius: 10px; box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 12px 28px -8px rgba(16,24,40,.18); animation: dzmenu_fadein .16s ease-out; }
+	#newspecial_menu li { display: flex; align-items: center; gap: 8px; margin: 0 0 2px; padding: 5px 8px; border-radius: 8px; zoom: 1; transition: background-color .18s ease; }
+		#newspecial_menu li:last-child { margin-bottom: 0; }
+		#newspecial_menu li:hover { background-color: {SPECIALBG}; }
+	#sti .wx { display: block; zoom: 1; }
+	#newspecial_menu li:before { content: "\f134"; flex: none; display: block; width: 24px; height: 24px; border-radius: 6px; background: rgba(255,156,0,.12); font-family: dzicon; font-size: 18px; line-height: 24px; text-align: center; color: #FF9C00; }
+	#sti .wx:before { content: "\f134"; font-family: dzicon; display: inline-block; height: 24px; width: 30px; line-height: 24px; text-align: center; font-size: 20px; color: #FF9C00; vertical-align: middle; }
+	#newspecial_menu li.plugin_special_thread { background-repeat: no-repeat; background-origin: content-box; background-position: 3px center; background-size: 18px 18px; }
+	#newspecial_menu li.plugin_special_thread:before { content: ""; background: none; }
 		#newspecial_menu .poll:before, #sti .poll:before { content: "\f13b"; }
 		#newspecial_menu .trade:before, #sti .trade:before { content: "\f13f"; }
 		#newspecial_menu .reward:before, #sti .reward:before { content: "\f13c"; }
 		#newspecial_menu .activity:before, #sti .activity:before { content: "\f113"; }
 		#newspecial_menu .debate:before, #sti .debate:before { content: "\f13d"; }
-		#newspecial_menu a { display: inline-block; padding: 0; height: 24px; line-height: 24px; white-space: normal; vertical-align: middle; }
-			#newspecial_menu a:hover { background: none; color: {HIGHLIGHTLINK}; text-shadow: none; text-decoration: underline; }
+		#newspecial_menu a { flex: 1 1 auto; display: block; padding: 0; min-height: 24px; border: none; line-height: 24px; color: {LINK}; white-space: normal; text-decoration: none; }
+		#newspecial_menu li:hover a { color: {HIGHLIGHTLINK}; }
+			#newspecial_menu a:hover { background: none; color: {HIGHLIGHTLINK}; text-shadow: none; text-decoration: none; }
 #sti {}
 	#sti .wx { padding-left: 25px; background-position: 0 50%; }
 	#sti .tb { margin-top: 0; }
@@ -1238,12 +1243,23 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	Explain:		返回列表中显示的访问过的帖子和版块
 	Last Modify:	Pony
 */
-#visitedforums_menu { width: 150px; }
-	#visitedforums_menu li { display: block; float: none; }
-	#visitedforums_menu td { padding: 5px 10px; vertical-align: top; }
-	#visitedforums_menu a { white-space: normal !important; display: inline-block; overflow: hidden; height: 1.5em; }
-	#v_forums { width: 120px; }
-#v_threads li, #v_forums li { padding-left: 10px; background: url({IMGDIR}/dot.gif) no-repeat 0 7px; }
+	#visitedforums_menu { width: auto; min-width: 160px; max-width: 220px; }
+	#v_forums { padding: 8px 10px 6px; }
+	/* 兜底：模板已拆除 table（现为 div#v_forums），此规则对第三方/未同步模板仍为 table 结构时生效，
+	   把 table/tbody/tr/td 降级为普通块级盒，使表格盒模型退出、布局与新版一致。
+	   用 display:block 而非 display:contents —— 行为确定，无表内元素兼容风险。 */
+	#visitedforums_menu table, #visitedforums_menu tbody, #visitedforums_menu tr, #visitedforums_menu td { display: block; width: auto; margin: 0; border: none; background: none; }
+	#visitedforums_menu td { padding: 8px 10px 6px; }
+	#visitedforums_menu h3 { border-bottom-style: solid; border-bottom-color: #EDF1F5; }
+	/* 列表用了 class="xl xl1"，而 .xl1 li 自带 height:1.5em + overflow:hidden：
+	   会把 a 的上下内边距裁掉、行高不一致（高度不和谐的根源），这里显式解除并给出统一行高 */
+	#visitedforums_menu li { display: block; float: none; position: relative; height: auto; min-height: 26px; margin: 0 0 1px; padding: 0 8px 0 13px; border-radius: 6px; overflow: visible; transition: background-color .18s ease; }
+		#visitedforums_menu li:hover { background-color: {SPECIALBG}; }
+	#v_threads li, #v_forums li { height: auto; min-height: 26px; overflow: visible; padding-left: 13px; background: none; }
+	#v_threads li:before, #v_forums li:before { content: ""; position: absolute; left: 3px; top: 50%; margin-top: -2px; width: 4px; height: 4px; border-radius: 50%; background: {SPECIALBORDER}; }
+	#visitedforums_menu a { display: block; padding: 4px 0; height: auto; line-height: 1.5; color: {LINK}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+		#visitedforums_menu li:hover a { color: {HIGHLIGHTLINK}; }
+			#visitedforums_menu a:hover { background: none; color: {HIGHLIGHTLINK}; text-decoration: none; }
 
 /* 快速表情 */
 #fastsmilies { text-align: right; }

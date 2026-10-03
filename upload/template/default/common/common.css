@@ -673,10 +673,15 @@ CSS 写作注意事项：
 					#task_ntc:before { content: "\f11a"; }
 				#um .pipe { margin: 0 5px 0 0; }
 
-				#extcreditmenu, #g_upmine { margin-right: 2px !important; padding-top: 3px; padding-bottom: 3px; padding-left: 10px; }
-					#g_upmine { margin-right: 1px !important; border: 1px solid transparent; }
-					#extcreditmenu.a, #g_upmine.a { position: relative; z-index: 302; margin-right: 1px !important; border: 1px solid; border-color: {DROPMENUBORDER}; border-bottom: none; background-color: {WRAPBG}; }
-					#extcreditmenu_menu, #g_upmine_menu { margin-top: -1px; width: auto; }
+				/* 常态也带透明边框，保证展开/收起时盒尺寸一致，不会出现 2px 跳动 */
+				#extcreditmenu, #g_upmine { margin-right: 2px !important; padding-top: 3px; padding-bottom: 3px; padding-left: 10px; border: 1px solid transparent; }
+					#g_upmine { margin-right: 1px !important; }
+					/* 无缝衔接：展开态触发器「去下边框 + 上方圆角」，弹出层「上方两角不倒角、下方两角圆角」，
+					   两者拼成一个整体。上方两角都去圆角是因为 showMenu 的 pos 43 会按视口余量在
+					   左对齐/右对齐之间自动翻转，只去单侧会有时错位。触发器 z-index 302 高于弹出层，
+					   其白底盖住弹出层顶边，接缝不可见。 */
+					#extcreditmenu.a, #g_upmine.a { position: relative; z-index: 302; margin-right: 1px !important; border: 1px solid; border-color: {DROPMENUBORDER}; border-bottom: none; border-radius: 6px 6px 0 0; background-color: {WRAPBG}; }
+					#extcreditmenu_menu, #g_upmine_menu { margin-top: -1px; width: auto; border-radius: 0 0 10px 10px; }
 						#extcreditmenu_menu li { float: none; display: block; padding-left: 5px !important; padding-right: 1em !important; }
 					#g_upmine_menu li { float: none; display: block; padding-left: 5px !important; }
 					#g_upmine_menu ul.extg li { padding-left: 0px !important; }
@@ -686,15 +691,14 @@ CSS 写作注意事项：
 					#qmenu::after { display: inline-block; margin-left: 0.255em; vertical-align: 0.255em; content: ""; border-top: 0.3em solid; border-right: 0.3em solid transparent; border-bottom: 0; border-left: 0.3em solid transparent; }
 					#qmenu.a { position: relative; z-index: 302; border-radius: 6px 6px 0 0; box-shadow: none; }
 					#qmenu.a::after { border-top: 0; border-bottom: 0.3em solid; }
-				#qmenu_menu { box-sizing: content-box; margin-top: -2px; padding: 14px 12px; width: 610px; border-color: #E4E9EF; border-radius: 12px 0 12px 12px; box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 12px 28px -8px rgba(16,24,40,.18); animation: qmenu_fadein .16s ease-out; }
-					@keyframes qmenu_fadein { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+				#qmenu_menu { box-sizing: content-box; margin-top: -2px; padding: 14px 12px; width: 610px; border-color: #E4E9EF; border-radius: 12px 0 12px 12px; box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 12px 28px -8px rgba(16,24,40,.18); animation: dzmenu_fadein .16s ease-out; }
+					@keyframes dzmenu_fadein { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
 					#qmenu_menu ul.nav { display: flex; flex-wrap: wrap; margin: 0; }
 						#qmenu_menu ul.nav:after { display: none; }
 						#qmenu_menu ul.nav li { float: none; display: block; flex: none; margin: 0 8px 8px 0; }
 						#qmenu_menu ul.nav a { display: block; margin: 0; padding: 44px 0 8px; width: 68px; border: none; border-radius: 12px; background: none no-repeat 50% 8px / 34px 34px; color: {LINK}; font-size: 12px; line-height: 16px; letter-spacing: .3px; text-align: center; text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; box-shadow: 0 0 0 rgba(16,24,40,0); transition: background-color .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease; }
 							#qmenu_menu ul.nav a:hover { background-color: {SPECIALBG}; color: {HIGHLIGHTLINK}; text-shadow: none; text-decoration: none; box-shadow: 0 6px 14px -4px rgba(16,24,40,.16); transform: translateY(-1px); }
 							#qmenu_menu ul.nav a:active { transform: none; box-shadow: 0 0 0 rgba(16,24,40,0); }
-							#qmenu_menu ul.nav a:focus-visible { outline: 2px solid {HIGHLIGHTLINK}; outline-offset: 2px; }
 					/* 未登录：同宽面板 + 圆形图标 + 居中文案 */
 					#qmenu_menu.blk:before { content: "\f100"; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; width: 44px; height: 44px; border-radius: 50%; background: {SPECIALBG}; font-family: dzicon; font-size: 24px; color: {HIGHLIGHTLINK}; }
 						#qmenu_menu.blk .ptm, #qmenu_menu.blk .pbw { padding: 0 !important; }
@@ -708,7 +712,7 @@ CSS 写作注意事项：
 						#qmenu_menu #fjump_menu .jump_bdl li::-webkit-scrollbar { width: 6px; }
 						#qmenu_menu #fjump_menu .jump_bdl li::-webkit-scrollbar-thumb { border-radius: 3px; background: #CFD9E2; }
 						#qmenu_menu #fjump_menu .jump_bdl li::-webkit-scrollbar-track { background: transparent; }
-				@media (prefers-reduced-motion: reduce) { #qmenu_menu { animation: none; } #qmenu_menu ul.nav a { transition: none; } }
+				@media (prefers-reduced-motion: reduce) { .p_pop, #qmenu_menu, #newspecial_menu { animation: none; } .p_pop a, #qmenu_menu ul.nav a, #newspecial_menu li { transition: none; } }
 				#shortcut { position: relative; display: none; height: 30px; line-height: 30px; background-color: #3A83F1; color: white; text-align: center; }
 					#shortcuttip { padding: 2px 8px; background: #fff; border-radius: 3px; color: #3A83F1; font-weight: 700; }
 					#shortcutcloseid { position: absolute; right: 8px; top: 8px; display: block; width: 12px; height: 12px; background: #09c; line-height: 12px; overflow: hidden; }
@@ -1075,15 +1079,30 @@ CSS 写作注意事项：
 	Explain:		页面头部的 DIY 按钮
 	Last Modify:	Pony 1207021442
 */
-	#diy-tg { float: right; margin: 5px 1px 5px 5px; padding: 0 !important; width: 48px; height: 16px !important; border: 1px solid #EE831F; border-radius: 2px; background: #FBF5E4; overflow: hidden; font-weight: normal; line-height: 16px; text-align: center; }
-	#diy-tg:hover { text-decoration: none; }
-		#diy-tg_menu { position: absolute; margin: -2px 0 0 0; padding: 6px 0; width: 72px; height: 48px; line-height: 24px; border: 1px solid #EE831F; border-top: 0; border-radius: 2px 0px 2px 2px; background: #FBF5E4 no-repeat; text-align: center; background-image: linear-gradient(90deg, #EE831F 33%, #FBF5E4 33%); background-size: 100% 1px; }
-			#diy-tg_menu a { float: none !important; }
 
-    #i18n-switch { float: right; margin: 5px 1px 5px 5px; padding: 0 20px 0 10px !important; width: 48px; height: 16px !important; border: 1px solid #EE831F; border-radius: 2px; background: #FBF5E4; overflow: hidden; font-weight: normal; line-height: 16px; text-align: center; }
-    #i18n-switch:hover { text-decoration: none; }
-        #i18n-switch_menu { position: absolute; margin: -2px 0 0 0; padding: 6px 0; width: 72px; line-height: 24px; border: 1px solid #EE831F; border-top: 0; border-radius: 2px 0px 2px 2px; background: #FBF5E4 no-repeat; text-align: center; background-size: 100% 1px; }
-            #i18n-switch_menu a { float: none !important; }
+	/* 保留 DIY 的橙/奶油配色身份，改为圆角胶囊 + 橙色系柔和投影；
+	   尺寸（48×16 + 5px 外边距 = 28px，正好等于 #toptb 行高）保持不变，不影响顶部工具条高度。
+	   下半部两角必须为直角：下拉以 margin-top:-2px 上移压住按钮底部 2px，
+	   若按钮带圆角，其橙色右边框会先向内弯再接上下拉的直边框，错位缺口等于圆角半径
+	   （原实现 radius 仅 2px 所以看不出来，改 6px 后就明显了）。
+	   该按钮没有 open 态 class（showMenu 未传 ctrlclass），故下缘常驻直角，收起时呈"挂着下拉的标签"形态。 */
+	#diy-tg { float: right; margin: 5px 1px 5px 5px; padding: 0 !important; width: 48px; height: 16px !important; border: 1px solid #EE831F; border-radius: 6px 6px 0 0; background: #FBF5E4; overflow: hidden; font-weight: normal; line-height: 16px; text-align: center; transition: background-color .18s ease, box-shadow .18s ease; }
+	#diy-tg:hover { text-decoration: none; background: #F7EDD6; box-shadow: 0 1px 4px rgba(238,131,31,.28); }
+		/* 与按钮无缝拼接：下拉比按钮宽且右对齐，顶边只描「露在按钮左侧」的那一段。
+		   48px = 按钮内容宽度（总宽 50px 含左右边框），算得露出段 24px，比理论值多 1px，
+		   正好压住按钮左边框，避免出现 1px 断口；右上角是接缝角，不倒角。 */
+		#diy-tg_menu { position: absolute; margin: -2px 0 0 0; padding: 6px 0; width: 72px; line-height: 26px; border: 1px solid #EE831F; border-top: 0; border-radius: 10px 0 10px 10px; background: #FBF5E4 no-repeat; box-shadow: 0 8px 20px -8px rgba(238,131,31,.4); text-align: center; background-image: linear-gradient(90deg, #EE831F 0, #EE831F calc(100% - 48px), rgba(238,131,31,0) calc(100% - 48px)); background-size: 100% 1px; }
+			#diy-tg_menu a { float: none !important; display: block; height: auto; padding: 0 8px; border-radius: 6px; white-space: nowrap; transition: background-color .18s ease; }
+				#diy-tg_menu a:hover { background: rgba(238,131,31,.12); text-decoration: none; }
+
+	/* 语言切换按钮：与 diy-tg 同一套组件，保持视觉一致。
+	   差异：按钮（80px）比下拉（74px）更宽，下拉整条顶边都在按钮下方，
+	   因此不需要顶部描边，且上方两角都要去圆角（否则圆角会在按钮底边内切出一个缺口）。 */
+    #i18n-switch { float: right; margin: 5px 1px 5px 5px; padding: 0 20px 0 10px !important; width: 48px; height: 16px !important; border: 1px solid #EE831F; border-radius: 6px 6px 0 0; background: #FBF5E4; overflow: hidden; font-weight: normal; line-height: 16px; text-align: center; transition: background-color .18s ease, box-shadow .18s ease; }
+    #i18n-switch:hover { text-decoration: none; background: #F7EDD6; box-shadow: 0 1px 4px rgba(238,131,31,.28); }
+        #i18n-switch_menu { position: absolute; margin: -2px 0 0 0; padding: 6px 0; width: 72px; line-height: 26px; border: 1px solid #EE831F; border-top: 0; border-radius: 0 0 10px 10px; background: #FBF5E4; box-shadow: 0 8px 20px -8px rgba(238,131,31,.4); text-align: center; }
+            #i18n-switch_menu a { float: none !important; display: block; height: auto; padding: 0 8px; border-radius: 6px; white-space: nowrap; transition: background-color .18s ease; }
+                #i18n-switch_menu a:hover { background: rgba(238,131,31,.12); text-decoration: none; }
 
 /*
 	Name:			mod_switch_button
@@ -1101,12 +1120,12 @@ CSS 写作注意事项：
 			.sslct_btn i { float: left; display: inline; margin: 1px; width: 10px; height: 10px; background: #2E80D1; overflow: hidden; font-style: normal; }
 	#toptb a.switchblind{ width: 10px; background-image: none; text-indent: -9999px; }
 /* 弹出菜单、弹出层及弹出窗口 */
-	.p_pop, .p_pof, .sllt { padding: 4px; border: 1px solid; min-width: 60px; border-color: {DROPMENUBORDER}; {DROPMENUBGCODE}; box-shadow: 2px 4px 4px rgba(0,0,0,0.2); }
-		.p_pof .p_pop { padding: 0; border: none; box-shadow: none; }
+	.p_pop, .p_pof, .sllt { padding: 6px; border: 1px solid; min-width: 60px; border-color: {DROPMENUBORDER}; border-radius: 10px; {DROPMENUBGCODE}; box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 12px 28px -8px rgba(16,24,40,.18); animation: dzmenu_fadein .16s ease-out; }
+		.p_pof .p_pop { padding: 0; border: none; border-radius: 0; box-shadow: none; animation: none; }
 		.p_pof { width: 500px; }
 		.p_opt { padding: 10px; }
 		.p_pop li { display: inline; }
-		.p_pop a { display: block; padding: 3px 5px; border-bottom: 1px solid {SPECIALBG}; white-space: nowrap; }
+		.p_pop a { display: block; padding: 6px 10px; border: none; border-radius: 6px; white-space: nowrap; transition: background-color .18s ease, color .18s ease; }
 			.p_pop li:last-child a { border: none; }
 			.p_pop a:hover, .p_pop a.a, #sctype_menu .sca { background-color: {SPECIALBG}; color: {HIGHLIGHTLINK}; text-decoration: none; }
 			.prompt_news, .prompt_follower,.prompt_news_0, .prompt_follower_0, .ignore_notice, .prompt_concern { float: left; width: 18px; height: 14px; line-height: 14px; font-family: dzicon; font-size: 18px; margin: 3px 3px 5px 0; display: inline; }
@@ -1768,7 +1787,7 @@ em.hot { position: absolute; left: -2px; top: -2px; text-indent: -9999px; overfl
 	.gsh .pns .px { margin-right: 3px; width: 190px; }
 
 /* 名片 */
-.card { padding: 0; width: 295px !important; border-color: {SPECIALBORDER}; background: #FDFEFF; }
+.card { padding: 0; width: 295px !important; overflow: hidden; border-color: {SPECIALBORDER}; background: #FDFEFF; }
 	.card .p_opt { padding: 0; }
 	.card .avt { position: absolute; display: inline; margin-left: -70px; width: 70px; }
 	.card_mn, .card_info { padding: 10px 10px 10px 80px; }
