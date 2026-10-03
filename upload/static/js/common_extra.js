@@ -1361,3 +1361,210 @@ function _setShortcut() {
 	};
 	this.autozoomin();
 }
+
+/**
+ * 主导航（#nv）横向滚动增强
+ *
+ * 解决的问题：主导航项过多时，#nv 需要单行展示、不换行、不压缩文字、不出现滚动条，
+ * 同时被溢出的隐藏项必须仍然能够完整查看与点击。
+ *
+ * 提供的交互（均基于浏览器原生滚动，不重写滚动逻辑）：
+ *   1. 滚轮横移：指针在导航上纵向滚动即横向滚动导航，并阻止页面跟随滚动；
+ *   2. 拖拽：按住拖动，位移超过 4px 判定为拖拽并抑制误点击；
+ *   3. 边缘悬停：指针进入左右 56px 区域自动连续滚动，移开即停；
+ *   4. 当前页导航项自动滚入可见区（手动计算 offsetLeft，避免 scrollIntoView 连带滚动页面）。
+ *
+ * 第三方模板兜底策略：
+ *   1) 模板未同步 common.css 中 #nv 的样式时，自动补齐最小必需样式（横向滚动 + 隐藏滚动条），
+ *      只补功能不覆盖视觉，避免出现滚动条或换行错位；
+ *   2) 导航结构不匹配（无 ul 列表、id 被改名等）时静默退出，不抛异常、不影响页面；
+ *   3) 通过 nv.navscroll 初始化标记避免重复绑定，防止与第三方脚本或二次调用冲突；
+ *   4) 不支持 addEventListener 的老浏览器直接返回，保持原有行为。
+ */
+function _navscroll() {
+	var nv = $('nv'), uls, ul = null, i;
+	if(!nv || nv.navscroll || !nv.getElementsByTagName) {
+		return;
+	}
+	uls = nv.getElementsByTagName('ul');
+	for(i = 0; i < uls.length; i++) {
+		if(uls[i].parentNode == nv) {
+			ul = uls[i];
+			break;
+		}
+	}
+	if(!ul && uls.length) {
+		ul = uls[0];
+	}
+	if(!ul || !ul.addEventListener) {
+		return;
+	}
+	nv.navscroll = 1;
+
+	var over = function() { return ul.scrollWidth - ul.clientWidth; },
+		addcls = function(el, c) {
+			if((' ' + el.className + ' ').indexOf(' ' + c + ' ') < 0) {
+				el.className = el.className ? el.className + ' ' + c : c;
+			}
+		},
+		delcls = function(el, c) {
+			el.className = el.className.replace(new RegExp('(^|\\s)' + c + '(?=\\s|$)', 'g'), ' ').replace(/^\s+|\s+$/g, '');
+		},
+		edgeTimer = 0, edgeDir = 0, px = -9999,
+		down = false, moved = false, sx = 0, sl = 0, rt = 0;
+
+	function stopEdge() {
+		if(edgeTimer) {
+			clearInterval(edgeTimer);
+			edgeTimer = 0;
+		}
+		edgeDir = 0;
+	}
+
+	// 模板未同步样式时的兜底：仅补齐滚动能力与隐藏滚动条，不改动任何视觉样式
+	function fallback() {
+		if(window.getComputedStyle && getComputedStyle(ul).overflowX == 'visible') {
+			ul.style.overflowX = 'auto';
+			ul.style.overflowY = 'hidden';
+		}
+		addcls(ul, 'navscroll');
+		if(!$('navscroll_css')) {
+			var st = document.createElement('style');
+			st.id = 'navscroll_css';
+			st.appendChild(document.createTextNode('.navscroll{scrollbar-width:none}.navscroll::-webkit-scrollbar{height:0;width:0}'));
+			(document.getElementsByTagName('head')[0] || document.documentElement).appendChild(st);
+		}
+	}
+
+	function sync() {
+		if(over() > 1) {
+			addcls(nv, 'nav-overflow');
+		} else {
+			delcls(nv, 'nav-overflow');
+			stopEdge();
+		}
+	}
+
+	function edge() {
+		var d = 0, r = ul.getBoundingClientRect();
+		if(over() < 1 || down) {
+			stopEdge();
+			return;
+		}
+		if(px - r.left < 56) {
+			d = -1;
+		} else if(r.right - px < 56) {
+			d = 1;
+		}
+		if(d > 0 && ul.scrollLeft >= over()) {
+			d = 0;
+		} else if(d < 0 && ul.scrollLeft <= 0) {
+			d = 0;
+		}
+		if(d == edgeDir) {
+			return;
+		}
+		stopEdge();
+		if(d) {
+			edgeDir = d;
+			edgeTimer = setInterval(function() {
+				ul.scrollLeft += edgeDir * 10;
+			}, 16);
+		}
+	}
+
+	try {
+		// 滚轮横移
+		ul.addEventListener('wheel', function(e) {
+			var d;
+			if(over() < 1) {
+				return;
+			}
+			d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+			if(!d) {
+				return;
+			}
+			e.preventDefault();
+			ul.scrollLeft += d;
+		}, false);
+
+		// 拖拽滚动
+		ul.addEventListener('mousedown', function(e) {
+			if(e.button !== 0 || over() < 1) {
+				return;
+			}
+			down = true;
+			moved = false;
+			sx = e.clientX;
+			sl = ul.scrollLeft;
+			e.preventDefault();
+		}, false);
+		document.addEventListener('mousemove', function(e) {
+			var d;
+			px = e.clientX;
+			if(!down) {
+				return;
+			}
+			d = px - sx;
+			if(!moved && Math.abs(d) > 4) {
+				moved = true;
+				addcls(ul, 'nav-drag');
+			}
+			ul.scrollLeft = sl - d;
+		}, false);
+		document.addEventListener('mouseup', function() {
+			if(!down) {
+				return;
+			}
+			down = false;
+			delcls(ul, 'nav-drag');
+		}, false);
+		ul.addEventListener('click', function(e) {
+			if(moved) {
+				moved = false;
+				e.preventDefault();
+				e.stopPropagation();
+			}
+		}, true);
+
+		// 边缘悬停自动滚动
+		ul.addEventListener('mousemove', function(e) {
+			if(!down) {
+				px = e.clientX;
+				edge();
+			}
+		}, false);
+		ul.addEventListener('mouseleave', function() {
+			px = -9999;
+			stopEdge();
+		}, false);
+
+		// 窗口尺寸变化后重新判定
+		window.addEventListener('resize', function() {
+			if(rt) {
+				clearTimeout(rt);
+			}
+			rt = setTimeout(sync, 150);
+		}, false);
+	} catch(e) {
+	}
+
+	fallback();
+	sync();
+
+	// 当前页导航项自动滚入可见区
+	var cur = ul.querySelector ? (ul.querySelector('li.a') || ul.querySelector('.a')) : null;
+	if(cur && over() > 1) {
+		var l = cur.offsetLeft, r = l + cur.offsetWidth;
+		if(l < ul.scrollLeft) {
+			ul.scrollLeft = l - 10;
+		} else if(r > ul.scrollLeft + ul.clientWidth) {
+			ul.scrollLeft = r - ul.clientWidth + 10;
+		}
+	}
+
+	// 字体加载完成后可能发生重排，再校正一次溢出状态
+	if(document.fonts && document.fonts.ready && document.fonts.ready.then) {
+		document.fonts.ready.then(sync);
+	}
+}

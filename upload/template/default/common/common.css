@@ -630,15 +630,28 @@ CSS 写作注意事项：
 				#scbar_hot { padding-left: 8px; height: 45px; overflow: hidden; }
 					#scbar_hot strong, #scbar_hot a { float: left; margin-right: 8px; white-space: nowrap; }
 
-			#nv { overflow: hidden; height: 33px; {MENUBGCODE}; }
-				#nv li { float: left; padding-right: 1px; height: 33px; line-height: 33px; background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='1' height='33'%3e%3cpath fill='%23fff' fill-opacity='0.2' d='M0 7h1v20H0z'/%3e%3c/svg%3e") no-repeat 100% 0; font-weight: 700; font-size: 14px; }
-					#nv li a { float: left; padding: 0 15px; height: 33px; }
-						#nv li a { color: {MENUTEXT}; }
-						#nv li span { display: none; }
-					#nv li.a { margin-left: -1px; {MENUCURBGCODE}; }
+			#nv { display: flex; align-items: center; overflow: hidden; height: 40px; {MENUBGCODE}; }
+				/* 导航项过多时：不换行、不压缩文字、不显示滚动条。横向滚动能力与交互（滚轮横移 / 拖拽 / 边缘悬停自动滚动 /
+				   当前页导航项自动滚入可见区）由 static/js/common_extra.js 的 _navscroll() 提供，第三方模板未同步本段样式时
+				   脚本会自动补齐最小必需样式；左右边缘用 background-attachment:local 遮罩 + scroll 阴影实现
+				   "仅在真正溢出时"才出现的渐隐提示，遮罩色取 {MENUBGCOLOR}，跟随主题配色。 */
+				#nv > ul { display: flex; flex: 1 1 auto; flex-wrap: nowrap; align-items: center; min-width: 0; height: 100%; margin: 0; padding: 0; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -ms-overflow-style: none; background-image: linear-gradient(to right, {MENUBGCOLOR} 40%, rgba(255,255,255,0)), linear-gradient(to left, {MENUBGCOLOR} 40%, rgba(255,255,255,0)), linear-gradient(to right, rgba(0,0,0,.22), rgba(255,255,255,0)), linear-gradient(to left, rgba(0,0,0,.22), rgba(255,255,255,0)); background-position: left center, right center, left center, right center; background-size: 32px 100%, 32px 100%, 14px 100%, 14px 100%; background-repeat: no-repeat; background-attachment: local, local, scroll, scroll; }
+					#nv > ul::-webkit-scrollbar { display: none; }
+					#nv > ul.navscroll { scrollbar-width: none; }
+					#nv > ul.navscroll::-webkit-scrollbar { display: none; }
+					#nv.nav-overflow > ul { cursor: grab; }
+					#nv.nav-overflow > ul.nav-drag, #nv.nav-overflow > ul.nav-drag a { cursor: grabbing; }
+				#nv li { float: none; display: block; flex: none; height: 30px; margin: 0 2px; border-radius: 8px; line-height: 30px; background: none; font-weight: 700; font-size: 14px; }
+					#nv li:first-child { margin-left: 10px; }
+					#nv li a { float: none; display: block; padding: 0 12px; border-radius: 8px; color: {MENUTEXT}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: background-color .18s ease; }
+						#nv li a b.icon_down { display: inline-block; width: 0; height: 0; margin-left: 6px; border: 4px solid transparent; border-top-color: currentColor; vertical-align: middle; }
+						#nv li a:focus-visible { outline: 2px solid {MENUTEXT}; outline-offset: -2px; }
+					#nv li span { display: none; }
+					#nv li.a { margin-left: 2px; box-shadow: inset 0 -2px 0 rgba(255,255,255,.35); {MENUCURBGCODE}; }
+						#nv li:first-child.a { margin-left: 10px; }
 						#nv li.a a { color: {MENUHOVERTEXT}; }
-						#nv li a:hover { background: {MENUHOVERBGCOLOR}; }
-						#nv li.hover a:hover, #nv li.hover a { background: {MENUHOVERBGCOLOR} url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='4'%3e%3cpath fill='%23fff' d='M0 4h8L4 0z'/%3e%3c/svg%3e") no-repeat bottom center; }
+					#nv li a:hover { background: {MENUHOVERBGCOLOR}; }
+					#nv li.hover a:hover, #nv li.hover a { background: {MENUHOVERBGCOLOR} url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='4'%3e%3cpath fill='%23fff' d='M0 4h8L4 0z'/%3e%3c/svg%3e") no-repeat bottom center; }
 			#mu { position: relative; z-index: 1; }
 				#mu ul { background: #f8f8f8; line-height: 22px; z-index: 2; font-size: 12px; }
 					#mu li { float: left; height: 32px }
@@ -668,7 +681,7 @@ CSS 写作注意事项：
 					#g_upmine_menu li { float: none; display: block; padding-left: 5px !important; }
 					#g_upmine_menu ul.extg li { padding-left: 0px !important; }
 
-				#qmenu { float: right; display: inline; margin: 5px 8px 0; padding: 0 5px; width: 103px; height: 24px; border-radius: 6px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.08); line-height: 24px; text-align: center; color: {HIGHLIGHTLINK}; font-weight: 700; overflow: hidden; transition: box-shadow .18s ease; }
+				#qmenu { order: 2; float: none; flex: none; align-self: center; margin: 0 10px; padding: 0 5px; width: 103px; height: 24px; border-radius: 6px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.08); line-height: 24px; text-align: center; color: {HIGHLIGHTLINK}; font-weight: 700; overflow: hidden; transition: box-shadow .18s ease; }
 					#qmenu:hover { text-decoration: none; box-shadow: 0 2px 8px rgba(0,0,0,.14); }
 					#qmenu::after { display: inline-block; margin-left: 0.255em; vertical-align: 0.255em; content: ""; border-top: 0.3em solid; border-right: 0.3em solid transparent; border-bottom: 0; border-left: 0.3em solid transparent; }
 					#qmenu.a { position: relative; z-index: 302; border-radius: 6px 6px 0 0; box-shadow: none; }
