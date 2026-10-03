@@ -682,9 +682,8 @@ CSS 写作注意事项：
 							#qmenu_menu ul.nav a:hover { background-color: {SPECIALBG}; color: {HIGHLIGHTLINK}; text-shadow: none; text-decoration: none; box-shadow: 0 6px 14px -4px rgba(16,24,40,.16); transform: translateY(-1px); }
 							#qmenu_menu ul.nav a:active { transform: none; box-shadow: 0 0 0 rgba(16,24,40,0); }
 							#qmenu_menu ul.nav a:focus-visible { outline: 2px solid {HIGHLIGHTLINK}; outline-offset: 2px; }
-					/* 未登录：紧凑提示气泡（圆形图标 + 居中文案） */
-					#qmenu_menu.blk { width: auto; min-width: 240px; padding: 20px 24px; text-align: center; }
-						#qmenu_menu.blk:before { content: "\f100"; display: block; margin: 0 auto 10px; width: 44px; height: 44px; border-radius: 50%; background: {SPECIALBG}; font-family: dzicon; font-size: 24px; line-height: 44px; color: {HIGHLIGHTLINK}; }
+					/* 未登录：同宽面板 + 圆形图标 + 居中文案 */
+					#qmenu_menu.blk:before { content: "\f100"; display: block; margin: 0 auto 10px; width: 44px; height: 44px; border-radius: 50%; background: {SPECIALBG}; font-family: dzicon; font-size: 24px; line-height: 44px; color: {HIGHLIGHTLINK}; }
 						#qmenu_menu.blk .ptm, #qmenu_menu.blk .pbw { padding: 0 !important; }
 					/* 版块快速跳转（#fjump_menu）：只调整配色/圆角/交互，列宽与列数一律不动，避免三级结构错位 */
 					#qmenu_menu #fjump_menu { padding: 12px 0 0; border-top: 1px solid #ECEFF3; }
