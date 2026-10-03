@@ -671,9 +671,9 @@ CSS 写作注意事项：
 				#qmenu { float: right; display: inline; margin: 5px 8px 0; padding: 0 5px; width: 103px; height: 24px; border-radius: 6px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.08); line-height: 24px; text-align: center; color: {HIGHLIGHTLINK}; font-weight: 700; overflow: hidden; transition: box-shadow .18s ease; }
 					#qmenu:hover { text-decoration: none; box-shadow: 0 2px 8px rgba(0,0,0,.14); }
 					#qmenu::after { display: inline-block; margin-left: 0.255em; vertical-align: 0.255em; content: ""; border-top: 0.3em solid; border-right: 0.3em solid transparent; border-bottom: 0; border-left: 0.3em solid transparent; }
-					#qmenu.a { position: relative; z-index: 302;}
+					#qmenu.a { position: relative; z-index: 302; border-radius: 6px 6px 0 0; box-shadow: none; }
 					#qmenu.a::after { border-top: 0; border-bottom: 0.3em solid; }
-				#qmenu_menu { box-sizing: content-box; margin-top: -2px; padding: 14px 12px; width: 610px; border-color: #E4E9EF; border-radius: 12px; box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 12px 28px -8px rgba(16,24,40,.18); animation: qmenu_fadein .16s ease-out; }
+				#qmenu_menu { box-sizing: content-box; margin-top: -2px; padding: 14px 12px; width: 610px; border-color: #E4E9EF; border-radius: 12px 0 12px 12px; box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 12px 28px -8px rgba(16,24,40,.18); animation: qmenu_fadein .16s ease-out; }
 					@keyframes qmenu_fadein { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
 					#qmenu_menu ul.nav { display: flex; flex-wrap: wrap; margin: 0; }
 						#qmenu_menu ul.nav:after { display: none; }
@@ -683,7 +683,7 @@ CSS 写作注意事项：
 							#qmenu_menu ul.nav a:active { transform: none; box-shadow: 0 0 0 rgba(16,24,40,0); }
 							#qmenu_menu ul.nav a:focus-visible { outline: 2px solid {HIGHLIGHTLINK}; outline-offset: 2px; }
 					/* 未登录：同宽面板 + 圆形图标 + 居中文案 */
-					#qmenu_menu.blk:before { content: "\f100"; display: block; margin: 0 auto 10px; width: 44px; height: 44px; border-radius: 50%; background: {SPECIALBG}; font-family: dzicon; font-size: 24px; line-height: 44px; color: {HIGHLIGHTLINK}; }
+					#qmenu_menu.blk:before { content: "\f100"; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; width: 44px; height: 44px; border-radius: 50%; background: {SPECIALBG}; font-family: dzicon; font-size: 24px; color: {HIGHLIGHTLINK}; }
 						#qmenu_menu.blk .ptm, #qmenu_menu.blk .pbw { padding: 0 !important; }
 					/* 版块快速跳转（#fjump_menu）：只调整配色/圆角/交互，列宽与列数一律不动，避免三级结构错位 */
 					#qmenu_menu #fjump_menu { padding: 12px 0 0; border-top: 1px solid #ECEFF3; }
