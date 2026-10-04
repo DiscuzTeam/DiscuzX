@@ -2048,7 +2048,7 @@ body { background: none !important; }
    统计页现代化组件（.stat-*）：替代 .dt 布局用表格，配合 static/js/stat.js 的 echarts 助手
    注：上方 .dt 系列规则仍需保留，stat_misc.php 暂未改造，依旧使用 .dt 表格
    ------------------------------------------------------------------------ */
-.stat-page { padding-bottom: 4px; }
+.stat-page { --stat-c1: {MENUBGCOLOR}; --stat-c2: {MENUCURBGCOLOR}; --stat-c3: {HIGHLIGHTLINK}; --stat-c4: {NOTICETEXT}; --stat-c5: {MIDTEXT}; --stat-c6: {COMMONBORDER}; --stat-warn: #F0A020; --stat-good: #7CBE00; --stat-grid: {COMMONBG}; --stat-axis: {COMMONBORDER}; --stat-label: {MIDTEXT}; --stat-pointer: {COMMONBG}; --stat-surface: {WRAPBG}; padding-bottom: 4px; }
 	.stat-page > h1.mt { margin-bottom: 12px; }
 
 /* 卡片：统一圆角 + 双层柔和投影 */
@@ -2087,8 +2087,8 @@ body { background: none !important; }
 .stat-chip { display: inline-flex; align-items: center; margin: 0; padding: 4px 12px; border: 1px solid {COMMONBORDER}; border-radius: 999px; background: {WRAPBG}; color: {MIDTEXT}; cursor: pointer; white-space: nowrap; transition: background-color .18s ease, color .18s ease, border-color .18s ease; }
 	.stat-chip:hover { border-color: {SPECIALBORDER}; background: {SPECIALBG}; color: {HIGHLIGHTLINK}; }
 	.stat-chip input.pc { margin: 0 6px 0 0; vertical-align: -2px; }
-	.stat-chip.on { border-color: {MENUBGCOLOR}; background: {MENUBGCOLOR}; color: #FFF; font-weight: 700; }
-		.stat-chip.on:hover { background: {MENUCURBGCOLOR}; color: #FFF; }
+	.stat-chip.on { border-color: {MENUBGCOLOR}; background: {MENUBGCOLOR}; color: {MENUTEXT}; font-weight: 700; }
+		.stat-chip.on:hover { background: {MENUCURBGCOLOR}; color: {MENUHOVERTEXT}; }
 
 /* 快捷时间区间 + 操作条 */
 .stat-range { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
@@ -2132,7 +2132,7 @@ body { background: none !important; }
 		.stat-rank li:nth-child(even) { background: {COMMONBG}; }
 		.stat-rank li:hover { background: {SPECIALBG}; }
 		.stat-rank-no { flex: none; width: 22px; height: 22px; border-radius: 999px; background: {SPECIALBG}; color: {HIGHLIGHTLINK}; font-size: 11px; font-weight: 700; line-height: 22px; text-align: center; }
-			.stat-rank li:nth-child(1) .stat-rank-no { background: {MENUBGCOLOR}; color: #FFF; }
+			.stat-rank li:nth-child(1) .stat-rank-no { background: {MENUBGCOLOR}; color: {MENUTEXT}; }
 		.stat-rank-t { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 		.stat-rank-v { flex: none; color: {MENUBGCOLOR}; font-weight: 700; }
 

@@ -328,27 +328,27 @@
 
 <!--{if $op == 'forumstat' && $_GET['fid']}-->
 	<script src="{STATICURL}js/echarts/echarts.common.min.js"></script>
-	<script src="{$_G['setting']['jspath']}stat.js"></script>
+	<script src="{$_G['setting']['jspath']}stat.js?{VERHASH}"></script>
 	<script type="text/javascript">
 	statLine($('statchart'), {echo json_encode(array_column((array)$logs, 'logdate'))}, [{name: '{lang stats_main_total_posted}', type: 'line', smooth: true, showSymbol: true, data: {echo json_encode(array_map('intval', array_column((array)$logs, 'value')))}}]);
 	</script>
 <!--{/if}-->
 <!--{if $op == 'modworks'}-->
 	<script src="{STATICURL}js/echarts/echarts.common.min.js"></script>
-	<script src="{$_G['setting']['jspath']}stat.js"></script>
+	<script src="{$_G['setting']['jspath']}stat.js?{VERHASH}"></script>
 	<script type="text/javascript">
 	<!--{if $op == 'modworks' && $uid}-->
-		statBarH($('stat_bar_modaction'), {echo json_encode($mwCats)}, {echo json_encode($mwVals)}, {color: '#F2994A'});
+		statBarH($('stat_bar_modaction'), {echo json_encode($mwCats)}, {echo json_encode($mwVals)}, {color: 3});
 		statLine($('stat_line_modday'), {echo json_encode($mwDays)}, [{name: '{lang stats_modworks}', type: 'line', smooth: true, showSymbol: true, data: {echo json_encode($mwTotals)}}]);
 	<!--{else}-->
-		statBarH($('stat_bar_modaction'), {echo json_encode($maCats)}, {echo json_encode($maVals)}, {color: '#F2994A'});
-		statBarH($('stat_bar_modmember'), {echo json_encode($mmCats)}, {echo json_encode($mmVals)}, {color: '#2B7ACD', labelWidth: 72});
+		statBarH($('stat_bar_modaction'), {echo json_encode($maCats)}, {echo json_encode($maVals)}, {color: 3});
+		statBarH($('stat_bar_modmember'), {echo json_encode($mmCats)}, {echo json_encode($mmVals)}, {color: 0, labelWidth: 72});
 	<!--{/if}-->
 	</script>
 <!--{/if}-->
 <!--{if $op == 'forumstat' && !$_GET['fid']}-->
 	<script src="{STATICURL}js/echarts/echarts.common.min.js"></script>
-	<script src="{$_G['setting']['jspath']}stat.js"></script>
+	<script src="{$_G['setting']['jspath']}stat.js?{VERHASH}"></script>
 	<script type="text/javascript">
 	<!--{if $fCats}-->statBarH($('stat_bar_forums'), {echo json_encode($fCats)}, {echo json_encode($fVals)}, {labelWidth: 110});<!--{/if}-->
 	</script>

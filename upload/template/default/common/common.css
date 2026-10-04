@@ -635,7 +635,7 @@ CSS 写作注意事项：
 				   当前页导航项自动滚入可见区）由 static/js/common_extra.js 的 _navscroll() 提供，第三方模板未同步本段样式时
 				   脚本会自动补齐最小必需样式；左右边缘用 background-attachment:local 遮罩 + scroll 阴影实现
 				   "仅在真正溢出时"才出现的渐隐提示，遮罩色取 {MENUBGCOLOR}，跟随主题配色。 */
-				#nv > ul { display: flex; flex: 1 1 auto; flex-wrap: nowrap; align-items: center; min-width: 0; height: 100%; margin: 0; padding: 0; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -ms-overflow-style: none; background-image: linear-gradient(to right, {MENUBGCOLOR} 40%, rgba(255,255,255,0)), linear-gradient(to left, {MENUBGCOLOR} 40%, rgba(255,255,255,0)), linear-gradient(to right, rgba(0,0,0,.22), rgba(255,255,255,0)), linear-gradient(to left, rgba(0,0,0,.22), rgba(255,255,255,0)); background-position: left center, right center, left center, right center; background-size: 32px 100%, 32px 100%, 14px 100%, 14px 100%; background-repeat: no-repeat; background-attachment: local, local, scroll, scroll; }
+				#nv > ul { display: flex; flex: 1 1 auto; flex-wrap: nowrap; align-items: center; min-width: 0; height: 100%; margin: 0; padding: 0; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -ms-overflow-style: none; background-image: linear-gradient(to right, {MENUBGCOLOR} 40%, transparent), linear-gradient(to left, {MENUBGCOLOR} 40%, transparent), linear-gradient(to right, {MENUCURBGCOLOR}, transparent), linear-gradient(to left, {MENUCURBGCOLOR}, transparent); background-position: left center, right center, left center, right center; background-size: 32px 100%, 32px 100%, 14px 100%, 14px 100%; background-repeat: no-repeat; background-attachment: local, local, scroll, scroll; }
 					#nv > ul::-webkit-scrollbar { display: none; }
 					#nv > ul.navscroll { scrollbar-width: none; }
 					#nv > ul.navscroll::-webkit-scrollbar { display: none; }
@@ -691,7 +691,7 @@ CSS 写作注意事项：
 					#qmenu::after { display: inline-block; margin-left: 0.255em; vertical-align: 0.255em; content: ""; border-top: 0.3em solid; border-right: 0.3em solid transparent; border-bottom: 0; border-left: 0.3em solid transparent; }
 					#qmenu.a { position: relative; z-index: 302; border-radius: 6px 6px 0 0; box-shadow: none; }
 					#qmenu.a::after { border-top: 0; border-bottom: 0.3em solid; }
-				#qmenu_menu { box-sizing: content-box; margin-top: -2px; padding: 14px 12px; width: 610px; border-color: #E4E9EF; border-radius: 12px 0 12px 12px; box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 12px 28px -8px rgba(16,24,40,.18); animation: dzmenu_fadein .16s ease-out; }
+				#qmenu_menu { box-sizing: content-box; margin-top: -2px; padding: 14px 12px; width: 610px; border-color: {COMMONBORDER}; border-radius: 12px 0 12px 12px; box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 12px 28px -8px rgba(16,24,40,.18); animation: dzmenu_fadein .16s ease-out; }
 					@keyframes dzmenu_fadein { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
 					#qmenu_menu ul.nav { display: flex; flex-wrap: wrap; margin: 0; }
 						#qmenu_menu ul.nav:after { display: none; }
@@ -703,14 +703,14 @@ CSS 写作注意事项：
 					#qmenu_menu.blk:before { content: "\f100"; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; width: 44px; height: 44px; border-radius: 50%; background: {SPECIALBG}; font-family: dzicon; font-size: 24px; color: {HIGHLIGHTLINK}; }
 						#qmenu_menu.blk .ptm, #qmenu_menu.blk .pbw { padding: 0 !important; }
 					/* 版块快速跳转（#fjump_menu）：只调整配色/圆角/交互，列宽与列数一律不动，避免三级结构错位 */
-					#qmenu_menu #fjump_menu { padding: 12px 0 0; border-top: 1px solid #ECEFF3; }
-						#qmenu_menu #fjump_menu .jump_bdl li { border-color: #E7ECF1; border-radius: 10px; box-shadow: 0 1px 2px rgba(16,24,40,.04); }
-						#qmenu_menu #fjump_menu .jump_bdl p.bbda { border-bottom-style: solid; border-bottom-color: #EFF2F5; border-radius: 8px 8px 0 0; }
+					#qmenu_menu #fjump_menu { padding: 12px 0 0; border-top: 1px solid {COMMONBORDER}; }
+						#qmenu_menu #fjump_menu .jump_bdl li { border-color: {COMMONBORDER}; border-radius: 10px; box-shadow: 0 1px 2px rgba(16,24,40,.04); }
+						#qmenu_menu #fjump_menu .jump_bdl p.bbda { border-bottom-style: solid; border-bottom-color: {COMMONBG}; border-radius: 8px 8px 0 0; }
 						#qmenu_menu #fjump_menu .jump_bdl p a { display: block; border-radius: 6px; }
 						#qmenu_menu #fjump_menu .jump_bdl p:not(.a) a:hover { background-color: {COMMONBG}; color: {HIGHLIGHTLINK}; text-decoration: none; }
 						#qmenu_menu #fjump_menu .jump_bdl p.a a { background-color: {SPECIALBG}; color: {HIGHLIGHTLINK}; font-weight: 700; }
 						#qmenu_menu #fjump_menu .jump_bdl li::-webkit-scrollbar { width: 6px; }
-						#qmenu_menu #fjump_menu .jump_bdl li::-webkit-scrollbar-thumb { border-radius: 3px; background: #CFD9E2; }
+						#qmenu_menu #fjump_menu .jump_bdl li::-webkit-scrollbar-thumb { border-radius: 3px; background: {COMMONBORDER}; }
 						#qmenu_menu #fjump_menu .jump_bdl li::-webkit-scrollbar-track { background: transparent; }
 				@media (prefers-reduced-motion: reduce) { .p_pop, #qmenu_menu, #newspecial_menu { animation: none; } .p_pop a, #qmenu_menu ul.nav a, #newspecial_menu li { transition: none; } }
 				#shortcut { position: relative; display: none; height: 30px; line-height: 30px; background-color: #3A83F1; color: white; text-align: center; }

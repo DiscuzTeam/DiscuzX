@@ -91,9 +91,9 @@
 	</div>
 </div>
 <script src="{STATICURL}js/echarts/echarts.common.min.js"></script>
-<script src="{$_G['setting']['jspath']}stat.js"></script>
+<script src="{$_G['setting']['jspath']}stat.js?{VERHASH}"></script>
 <script type="text/javascript">
-<!--{if $tradesums}-->statBarH($('stat_bar_tradesum'), {echo json_encode($sumCats)}, {echo json_encode($sumVals)}, {color: '#F2994A'});<!--{/if}-->
-<!--{if $totalitems}-->statBarH($('stat_bar_totalitems'), {echo json_encode($itemCats)}, {echo json_encode($itemVals)}, {color: '#2B7ACD'});<!--{/if}-->
+<!--{if $tradesums}-->statBarH($('stat_bar_tradesum'), {echo json_encode($sumCats)}, {echo json_encode($sumVals)}, {color: 3});<!--{/if}-->
+<!--{if $totalitems}-->statBarH($('stat_bar_totalitems'), {echo json_encode($itemCats)}, {echo json_encode($itemVals)}, {color: 0});<!--{/if}-->
 </script>
 <!--{template common/footer}-->

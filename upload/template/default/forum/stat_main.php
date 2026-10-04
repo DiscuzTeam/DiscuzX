@@ -117,7 +117,7 @@
 	<!--{subtemplate common/stat}-->
 </div>
 <script src="{STATICURL}js/echarts/echarts.common.min.js"></script>
-<script src="{$_G['setting']['jspath']}stat.js"></script>
+<script src="{$_G['setting']['jspath']}stat.js?{VERHASH}"></script>
 <script type="text/javascript">
 statPie($('stat_pie_poster'), [
 	{name: '{lang stats_main_posters}', value: $mempost},

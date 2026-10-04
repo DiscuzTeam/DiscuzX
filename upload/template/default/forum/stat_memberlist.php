@@ -75,7 +75,7 @@
 	<!--{subtemplate common/stat}-->
 </div>
 <script src="{STATICURL}js/echarts/echarts.common.min.js"></script>
-<script src="{$_G['setting']['jspath']}stat.js"></script>
+<script src="{$_G['setting']['jspath']}stat.js?{VERHASH}"></script>
 <script type="text/javascript">
 <!--{if $mcats}-->statBarH($('stat_bar_toppost'), {echo json_encode($mcats)}, {echo json_encode($mvals)}, {labelWidth: 96});<!--{/if}-->
 </script>

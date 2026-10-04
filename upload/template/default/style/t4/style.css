@@ -64,3 +64,32 @@ body { background: #FFF url(bgimg.jpg) no-repeat 50% 28px; background-size: 1400
 .p_pop a { border-bottom-color: #F8EFF8; }
 	.p_pop a:hover, .p_pop a.a, #sctype_menu .sca { background-color: #F8EFF8; color: #6F099E; }
 	.blk a:hover { background-color: transparent; }
+
+/* ============================================================
+   新增 UI 组件配色（胶囊导航 / 快捷导航气泡 / 统计页）
+   主色：#9934B7  当前项：#6C1992  悬停：#5C127D  强调：#6F099E
+   高亮底：#F8EFF8  高亮边框：#DFCDDE
+   ============================================================ */
+/* 导航条溢出渐隐：遮罩=导航底色，边缘阴影=当前项色 */
+#nv > ul { background-image: linear-gradient(to right, #9934B7 40%, transparent), linear-gradient(to left, #9934B7 40%, transparent), linear-gradient(to right, #6C1992, transparent), linear-gradient(to left, #6C1992, transparent); }
+
+/* 快捷导航气泡 */
+#qmenu_menu { border-color: #DFCDDE; }
+	#qmenu_menu.blk:before { background: #F8EFF8; color: #6F099E; }
+	#qmenu_menu ul.nav a:hover { background-color: #F8EFF8; color: #6F099E; }
+	#qmenu_menu #fjump_menu { border-top-color: #DFCDDE; }
+		#qmenu_menu #fjump_menu .jump_bdl li { border-color: #DFCDDE; }
+		#qmenu_menu #fjump_menu .jump_bdl p.bbda { border-bottom-color: #F8EFF8; }
+		#qmenu_menu #fjump_menu .jump_bdl p:not(.a) a:hover { background-color: #F8EFF8; color: #6F099E; }
+		#qmenu_menu #fjump_menu .jump_bdl p.a a { background-color: #F8EFF8; color: #6F099E; }
+		#qmenu_menu #fjump_menu .jump_bdl li::-webkit-scrollbar-thumb { background: #DFCDDE; }
+
+/* 统计页：图表配色由 static/js/stat.js 读取这些自定义属性 */
+.stat-page { --stat-c1: #9934B7; --stat-c2: #6C1992; --stat-c3: #6F099E; --stat-c6: #DFCDDE; --stat-grid: #F8EFF8; --stat-axis: #DFCDDE; --stat-pointer: #F8EFF8; }
+	.stat-kpi-num, .stat-metric b, .stat-mx .stat-mx-total { color: #9934B7; }
+	.stat-chip.on { border-color: #9934B7; background: #9934B7; }
+	.stat-rank li:nth-child(1) .stat-rank-no { background: #9934B7; }
+	.stat-rank-no, .stat-sort.on, .stat-sort:hover { color: #6F099E; }
+	.stat-chip:hover, .stat-range a:hover { border-color: #DFCDDE; background: #F8EFF8; color: #6F099E; }
+	.stat-rank li:hover, .stat-row:hover, .stat-mx tbody tr:hover td, .stat-mx tbody tr:hover .stat-mx-row { background: #F8EFF8; }
+	.stat-rank-no { background: #F8EFF8; }
