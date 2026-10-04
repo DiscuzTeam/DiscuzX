@@ -123,7 +123,7 @@ statPie($('stat_pie_poster'), [
 	{name: '{lang stats_main_posters}', value: $mempost},
 	{name: '{lang stats_main_nonposters}', value: $memnonpost}
 ]);
-statGauge($('stat_gauge_active'), $activeindex, {title: '{lang stats_main_board_activity}', max: <!--{echo max(100, intval(ceil($activeindex * 1.5)))}-->});
+statGauge($('stat_gauge_active'), $activeindex, {title: '{lang stats_main_board_activity}'});
 statBarH($('stat_bar_hotforum'), ['{lang stats_main_threads_count}', '{lang stats_main_posts_count}'], {echo json_encode($hotvals)});
 </script>
 <!--{template common/footer}-->

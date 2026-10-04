@@ -15,6 +15,34 @@ var STAT_RESIZE_TIMER = 0;
 var STAT_FALLBACK = ['#2B7ACD', '#5B9BD5', '#7FB2E5', '#F2994A', '#F0A020', '#7CBE00', '#4CB0A8', '#EB5757', '#9B51E0', '#56CCF2'];
 var STAT_PALETTE = [];
 var STAT_INK = {};
+var STAT_ERRORS = [];
+var STAT_TYPE_OK = {};
+
+/* 图表类型支持探测：Discuz 自带的 echarts.common.min.js 是裁剪版（只含 line/bar/pie/scatter），
+   不支持的类型（如 gauge/radar）调用 setOption 不会报错，但永远不创建画布，表现为"图表空白且无提示"。
+   这里用一次性离屏实例探测并缓存结果，供需要降级的地方使用 */
+function statSupports(type) {
+	if(typeof STAT_TYPE_OK[type] !== 'undefined') {
+		return STAT_TYPE_OK[type];
+	}
+	var ok = false;
+	if(typeof echarts !== 'undefined' && document.body) {
+		var probe = document.createElement('div');
+		probe.style.cssText = 'position:absolute;left:-9999px;top:0;width:80px;height:80px;';
+		document.body.appendChild(probe);
+		try {
+			echarts.getInstanceByDom(probe).dispose();
+			var c = echarts.init(probe);
+			c.setOption({animation: false, xAxis: {}, yAxis: {}, series: [{type: type, data: [1, 2, 3]}]}, true);
+			ok = !!probe.querySelector('canvas');
+		} catch(e) {
+			ok = false;
+		}
+		probe.parentNode.removeChild(probe);
+	}
+	STAT_TYPE_OK[type] = ok;
+	return ok;
+}
 
 /* 配色统一从 CSS 自定义属性读取（module.css 的 .stat-page 用主题变量定义），
    切换模板/配色后图表自动跟随；取不到时回退到 STAT_FALLBACK */
@@ -68,7 +96,8 @@ function statNum(n) {
 	return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-/* 初始化图表并登记，供窗口缩放时统一 resize */
+/* 初始化图表并登记，供窗口缩放时统一 resize
+   失败时把原因写进 STAT_ERRORS 并输出到控制台，避免"图表空白且无任何线索" */
 function statInit(el, option) {
 	var chart;
 	if(typeof echarts == 'undefined' || !el) {
@@ -78,10 +107,22 @@ function statInit(el, option) {
 		chart = echarts.getInstanceByDom(el) || echarts.init(el);
 		chart.setOption(option, true);
 	} catch(e) {
+		STAT_ERRORS.push((e && e.message ? e.message : String(e)));
+		if(window.console && console.warn) {
+			console.warn('[stat.js] 图表初始化失败：', STAT_ERRORS[STAT_ERRORS.length - 1]);
+		}
 		return null;
 	}
 	if(STAT_CHARTS.indexOf(chart) < 0) {
 		STAT_CHARTS.push(chart);
+	}
+	// 裁剪版 echarts 对不支持的图表类型不会报错，只是永远不建画布，这里补一条可见提示
+	if(el && el.querySelector && !el.querySelector('canvas')) {
+		var t = option && option.series && option.series[0] && option.series[0].type;
+		STAT_ERRORS.push('图表类型 ' + t + ' 未渲染（当前 echarts 构建可能不支持该类型）');
+		if(window.console && console.warn) {
+			console.warn('[stat.js] 图表类型 ' + t + ' 未渲染，请确认 echarts 构建是否包含该类型');
+		}
 	}
 	return chart;
 }
@@ -143,28 +184,74 @@ function statBarH(el, cats, vals, opt) {
 	});
 }
 
-/* 仪表盘（指数类） */
+/* 环形进度（指数/完成率类）
+   Discuz 自带的 echarts 精简构建不含 gauge 图表，仪表盘会自动降级到这里；
+   pie 是全量构建都支持的基础类型，因此用双层饼图模拟仪表指针 + 中心数值 */
+function statRing(el, value, max, opt) {
+	opt = opt || {};
+	var val = Math.max(0, Number(value) || 0);
+	var top = Math.max(1, Number(max) || Math.max(10, Math.ceil(val * 1.5)));
+	var ratio = Math.min(1, val / top);
+	statInit(el, {
+		textStyle: { fontSize: 12 },
+		title: {
+			text: statNum(Math.round(val * 10) / 10),
+			subtext: opt.title || '',
+			left: 'center',
+			top: 'center',
+			textStyle: { fontSize: 26, fontWeight: 700, color: statColor(opt.color) },
+			subtextStyle: { fontSize: 12, color: STAT_INK.label }
+		},
+		series: [{
+			type: 'pie',
+			radius: [opt.inner || '66%', '82%'],
+			center: ['50%', '50%'],
+			silent: true,
+			avoidLabelOverlap: false,
+			label: { show: false },
+			labelLine: { show: false },
+			itemStyle: { borderColor: STAT_INK.surface, borderWidth: 2, borderRadius: 4 },
+			data: [
+				{value: ratio * 100, itemStyle: {color: statColor(opt.color)}},
+				{value: (1 - ratio) * 100, itemStyle: {color: STAT_INK.grid}}
+			]
+		}]
+	});
+}
+
+/* 仪表盘（指数类）
+   活跃指数这类综合指标没有固定上限（Discuz 的公式是加权后 ×1500 再累加），
+   因此量程必须自适应：默认取 max(10, 值×1.5)，保证指针始终落在约 2/3 处；
+   需要固定量程时由调用方传 opt.max 覆盖 */
 function statGauge(el, value, opt) {
 	opt = opt || {};
+	var val = Number(value) || 0;
+	var max = opt.max || Math.max(10, Math.ceil(val * 1.5));
+	// 精简构建没有 gauge 图表时降级成环形进度，视觉与语义都保留
+	if(!statSupports('gauge')) {
+		statRing(el, val, max, opt);
+		return;
+	}
 	statInit(el, {
 		textStyle: { fontSize: 12 },
 		series: [{
-			type: 'gauge', min: 0, max: opt.max || 100,
+			type: 'gauge', min: 0, max: max,
 			startAngle: 210, endAngle: -30,
 			radius: '92%', center: ['50%', '58%'],
+			splitNumber: 3,
 			progress: { show: true, width: 12, roundCap: true, itemStyle: { color: statColor(opt.color) } },
-			axisLine: { roundCap: true, lineStyle: { width: 12, color: [[0.3, STAT_PALETTE[3]], [0.6, STAT_INK.warn], [1, STAT_INK.good]] } },
+			axisLine: { roundCap: true, lineStyle: { width: 12, color: [[0.34, STAT_PALETTE[3]], [0.67, STAT_INK.warn], [1, STAT_INK.good]] } },
 			pointer: { width: 4, length: '62%', itemStyle: { color: statColor(opt.color) } },
-			axisTick: { distance: -18, splitNumber: 5, lineStyle: { width: 1, color: STAT_INK.label } },
+			axisTick: { distance: -18, splitNumber: 3, lineStyle: { width: 1, color: STAT_INK.label } },
 			splitLine: { distance: -20, length: 8, lineStyle: { width: 1, color: STAT_INK.label } },
-			axisLabel: { distance: -6, fontSize: 11, color: STAT_INK.label },
+			axisLabel: { distance: -6, fontSize: 11, color: STAT_INK.label, formatter: function(v) { return statNum(v); } },
 			anchor: { show: true, size: 10, itemStyle: { color: statColor(opt.color) } },
 			title: { show: !!opt.title, offsetCenter: [0, '72%'], fontSize: 12, color: STAT_INK.label },
 			detail: {
 				valueAnimation: true, offsetCenter: [0, '42%'], fontSize: 26, fontWeight: 700,
 				color: statColor(opt.color), formatter: function(v) { return statNum(v); }
 			},
-			data: [{ value: Number(value) || 0, name: opt.title || '' }]
+			data: [{ value: val, name: opt.title || '' }]
 		}]
 	});
 }
