@@ -396,17 +396,17 @@ if(!submitcheck('replysubmit', 0, $seccodecheck, $secqaacheck)) {
 
 		foreach($blocksData['blocks'] as $key => $value) {
 			if(in_array($value['type'], $identifiers)) {
-				if($value['type'] != 'images') {
-					$_aid = $value['data']['file']['aid'];
-					if(!empty($_aid)) {
-						$_GET['attachnew'][$_aid] = ['description' => '', 'readperm' => '', 'price' => 0];
-					}
-				} else {
+				if(!empty($value['data']['files'])) {
 					$_aids = $value['data']['files'] ?? [];
 					foreach($_aids as $_aid) {
 						if(!empty($_aid)) {
 							$_GET['attachnew'][$_aid['aid']] = ['description' => '', 'readperm' => '', 'price' => 0];
 						}
+					}
+				} elseif(!empty($value['data']['file'])) {
+					$_aid = $value['data']['file']['aid'];
+					if(!empty($_aid)) {
+						$_GET['attachnew'][$_aid] = ['description' => '', 'readperm' => '', 'price' => 0];
 					}
 				}
 			}
