@@ -78,3 +78,32 @@ body { background: transparent url(bgimg.jpg) no-repeat 50% 0; background-size: 
 
 /* 重定义好友列表 */
 #nv_home .buddy li { background-color: transparent; border: none; }
+
+/* ============================================================
+   新增 UI 组件配色（胶囊导航 / 快捷导航气泡 / 统计页）
+   主色：#C00  当前项：#800  悬停：#600  强调：#BA350F
+   高亮底：#FFECEC  高亮边框：#FCC  页面底：#FAF6ED
+   ============================================================ */
+/* 导航条溢出渐隐：遮罩=导航底色，边缘阴影=当前项色 */
+#nv > ul { background-image: linear-gradient(to right, #C00 40%, transparent), linear-gradient(to left, #C00 40%, transparent), linear-gradient(to right, #800, transparent), linear-gradient(to left, #800, transparent); }
+
+/* 快捷导航气泡 */
+#qmenu_menu { border-color: #FCC; }
+	#qmenu_menu.blk:before { background: #FFECEC; color: #BA350F; }
+	#qmenu_menu ul.nav a:hover { background-color: #FFECEC; color: #BA350F; }
+	#qmenu_menu #fjump_menu { border-top-color: #FCC; }
+		#qmenu_menu #fjump_menu .jump_bdl li { border-color: #FCC; }
+		#qmenu_menu #fjump_menu .jump_bdl p.bbda { border-bottom-color: #FFECEC; }
+		#qmenu_menu #fjump_menu .jump_bdl p:not(.a) a:hover { background-color: #FFECEC; color: #BA350F; }
+		#qmenu_menu #fjump_menu .jump_bdl p.a a { background-color: #FFECEC; color: #BA350F; }
+		#qmenu_menu #fjump_menu .jump_bdl li::-webkit-scrollbar-thumb { background: #FCC; }
+
+/* 统计页：图表配色由 static/js/stat.js 读取这些自定义属性 */
+.stat-page { --stat-c1: #C00; --stat-c2: #800; --stat-c3: #BA350F; --stat-c6: #FCC; --stat-grid: #FFECEC; --stat-axis: #FCC; --stat-pointer: #FFECEC; }
+	.stat-kpi-num, .stat-metric b, .stat-mx .stat-mx-total { color: #C00; }
+	.stat-chip.on { border-color: #C00; background: #C00; }
+	.stat-rank li:nth-child(1) .stat-rank-no { background: #C00; }
+	.stat-rank-no, .stat-sort.on, .stat-sort:hover { color: #BA350F; }
+	.stat-chip:hover, .stat-range a:hover { border-color: #FCC; background: #FFECEC; color: #BA350F; }
+	.stat-rank li:hover, .stat-row:hover, .stat-mx tbody tr:hover td, .stat-mx tbody tr:hover .stat-mx-row { background: #FFECEC; }
+	.stat-rank-no { background: #FFECEC; }

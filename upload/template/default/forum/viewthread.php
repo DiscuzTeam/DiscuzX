@@ -381,16 +381,12 @@ $_G['forum_tagscript']
 
 <!--{if ($_G['setting']['visitedforums']) && $_G['forum']['status'] != 3}-->
 	<div id="visitedforums_menu" class="p_pop blk cl" style="display: none;">
-		<table cellspacing="0" cellpadding="0">
-			<tr>
-				<td id="v_forums">
-					<h3 class="mbn pbn bbda xg1">{lang viewed_forums}</h3>
-					<ul class="xl xl1">
-						$_G['setting']['visitedforums']
-					</ul>
-				</td>
-			</tr>
-		</table>
+		<div id="v_forums">
+			<h3 class="mbn pbn bbda xg1">{lang viewed_forums}</h3>
+			<ul class="xl xl1">
+				$_G['setting']['visitedforums']
+			</ul>
+		</div>
 	</div>
 <!--{/if}-->
 <!--{if $_G['medal_list']}-->

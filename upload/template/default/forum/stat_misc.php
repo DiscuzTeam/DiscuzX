@@ -59,183 +59,314 @@
 					$statsbar_dayposts
 				</table>
 		<!--{elseif $op == 'forumstat' && !$_GET['fid']}-->
-			<div class="bm bw0">
+			<!-- 图表数据预计算：eval 块内不可出现花括号，故统一用单语句数组函数 -->
+			<!--{eval $fposts = array_map('intval', array_column((array)$forums, 'posts'));}-->
+			<!--{eval $fnames = array_column((array)$forums, 'name');}-->
+			<!--{eval $fids = array_column((array)$forums, 'fid');}-->
+			<!--{eval $ftypes = array_column((array)$forums, 'type');}-->
+			<!--{eval array_multisort($fposts, SORT_DESC, SORT_NUMERIC, $fnames, $fids, $ftypes);}-->
+			<!--{eval $fCats = array_slice($fnames, 0, 15);}-->
+			<!--{eval $fVals = array_slice($fposts, 0, 15);}-->
+			<div class="bm bw0 stat-page">
 				<h1 class="mt">{lang stats_forums_stat}</h1>
-				<table summary="{lang stats_forum_stat}" class="dt bm">
-					<tr>
-						<th class="xw1">{lang stats_forums_forumname}</th>
-						<th class="xw1">{lang stats_main_posts_count}</th>
-					</tr>
-					<!--{loop $forums $forum}-->
-						<tr class="{echo swapclass('alt')}">
-							<td><a href="misc.php?mod=stat&op=forumstat&fid={$forum['fid']}">$forum['name']</a><!--{if $forum['type'] == 'sub'}--><span class="xg1"> ({lang stats_forums_sub})</span><!--{/if}--></td>
-							<td>$forum['posts']</td>
-						</tr>
-					<!--{/loop}-->
-				</table>
+				<section class="stat-card">
+					<header class="stat-card-hd">
+						<h2>{lang stats_main_posts_count} · 版块排行</h2>
+						<p class="stat-card-sub">发帖量前 {echo min(15, count($fCats))} 的版块，点击版块名查看逐日走势</p>
+					</header>
+					<div class="stat-chart stat-chart-h420" id="stat_bar_forums"></div>
+				</section>
+				<section class="stat-card">
+					<header class="stat-card-hd">
+						<h2>{lang stats_forums_stat}</h2>
+						<p class="stat-card-sub">共 {echo count($forums)} 个版块</p>
+					</header>
+					<ul class="stat-rank">
+						<!--{loop $fnames $fkey $fname}-->
+							<li>
+								<span class="stat-rank-no">{echo $fkey + 1}</span>
+								<a class="stat-rank-t" href="misc.php?mod=stat&op=forumstat&fid=$fids[$fkey]">$fname<!--{if $ftypes[$fkey] == 'sub'}--><span class="xg1">（{lang stats_forums_sub}）</span><!--{/if}--></a>
+								<span class="stat-rank-v">$fposts[$fkey]</span>
+							</li>
+						<!--{/loop}-->
+					</ul>
+				</section>
 			</div>
 		<!--{elseif $op == 'forumstat' && $_GET['fid']}-->
-			<div class="bm bw0">
+			<div class="bm bw0 stat-page">
 				<h1 class="mt">{lang stats_forum_stat_log} - $foruminfo[name] - $month</h1>
-				<script src="{STATICURL}js/echarts/echarts.common.min.js"></script>
-				<script src="{$_G['setting']['jspath']}stat.js"></script>
-				<div id="statchart"></div>
-				<script type="text/javascript">drawstatchart('{$statuspara}');</script>
+
+				<section class="stat-card">
+					<header class="stat-card-hd">
+						<h2>$foruminfo[name] · $month</h2>
+						<p class="stat-card-sub">{lang stats_forum_stat_log}</p>
+					</header>
+					<div class="stat-chart stat-chart-h420" id="statchart"></div>
+				</section>
+
 				<!--{if $logs}-->
-				<table summary="{lang stats_forum_stat_log}" class="dt bm mtw mbw">
-					<tr>
-						<th width="100">{lang stats_date}</th>
-						<th>{lang stats_main_total_posted}</th>
-					</tr>
-					<!--{loop $logs $log}-->
-					<tr>
-						<td>$log['logdate']</td>
-						<td>$log['value']</td>
-					</tr>
-					<!--{/loop}-->
-				</table>
+					<section class="stat-card">
+						<header class="stat-card-hd">
+							<h2>{lang stats_date} · {lang stats_main_total_posted}</h2>
+							<p class="stat-card-sub">本月 {echo count($logs)} 天</p>
+						</header>
+						<div class="stat-list">
+							<div class="stat-row">
+								<span class="stat-cell-w2 stat-cell-hd">{lang stats_date}</span>
+								<span class="stat-cell-num stat-cell-hd">{lang stats_main_total_posted}</span>
+							</div>
+							<!--{loop $logs $log}-->
+								<div class="stat-row">
+									<span class="stat-cell-w2">$log[logdate]</span>
+									<span class="stat-cell-num">$log[value]</span>
+								</div>
+							<!--{/loop}-->
+						</div>
+					</section>
 				<!--{/if}-->
 
-				<table class="dt bm">
-					<caption><h2 class="mbn">{lang stats_history} - $foruminfo[name]</h2></caption>
-					<tr>
-						<th width="100">{lang stats_forums_month}</th>
-						<th>{lang stats_main_total_posted}</th>
-					</tr>
-					<!--{loop $monthlist $month}-->
-						<tr>
-							<td><a href="misc.php?mod=stat&op=forumstat&fid={$_GET['fid']}&month=$month">$month</a></td>
-							<td>$monthposts[$month]</td>
-						</tr>
-					<!--{/loop}-->
-				</table>
+				<section class="stat-card">
+					<header class="stat-card-hd">
+						<h2>{lang stats_history} - $foruminfo[name]</h2>
+						<p class="stat-card-sub">点击月份查看该月逐日发帖走势</p>
+					</header>
+					<ul class="stat-rank">
+						<!--{loop $monthlist $mkey $mname}-->
+							<li>
+								<span class="stat-rank-no">{echo $mkey + 1}</span>
+								<a class="stat-rank-t" href="misc.php?mod=stat&op=forumstat&fid=$_GET[fid]&month=$mname">$mname</a>
+								<span class="stat-rank-v">$monthposts[$mname]</span>
+							</li>
+						<!--{/loop}-->
+					</ul>
+				</section>
 			</div>
 		<!--{elseif $op == 'modworks' && $uid}-->
-			<div class="bm bw0">
+			<!--{eval $cntAll = array_combine(array_keys(array_diff_key((array)$totalactions, array('total' => 1))), array_map('intval', array_column((array)$totalactions, 'count')));}-->
+			<!--{eval $mwPos = array_filter(array_replace(array_fill_keys(array_keys((array)$modactioncode), 0), $cntAll));}-->
+			<!--{eval arsort($mwPos);}-->
+			<!--{eval $mwTop = array_slice($mwPos, 0, 15, true);}-->
+			<!--{eval $mwCats = array_slice(array_values(array_replace(array_flip(array_keys($mwTop)), (array)$modactioncode)), 0, count($mwTop));}-->
+			<!--{eval $mwVals = array_values($mwTop);}-->
+			<!--{if count($mwPos) > 15}-->
+				<!--{eval $mwVals[] = array_sum(array_slice($mwPos, 15));}-->
+				<!--{eval $mwCats[] = 'other';}-->
+			<!--{/if}-->
+			<!--{eval $mwDays = array_keys((array)$modactions);}-->
+			<!--{eval $mwTotals = array_map('intval', array_column((array)$modactions, 'total'));}-->
+			<div class="bm bw0 stat-page">
 				<h1 class="mt">{lang stats_modworks} - $username</h1>
-				<h3>$username {lang stats_modworks_in} {$starttime} {lang stats_modworks_to} {$endtime} {lang stats_modworks_data} &nbsp; <a href="misc.php?mod=stat&op=modworks&exportexcel=1&uid=$uid&modworks_starttime=$starttime&modworks_endtime=$endtime" class="xi2">[{lang stats_modworks_export}]</a></h3>
-				<ul class="ttp cl">
-					<!--{loop $monthlinks $link}-->
-					$link
-					<!--{/loop}-->
-					<li>
-						<script src="{$_G[setting][jspath]}calendar.js?{VERHASH}" type="text/javascript"></script>
-						<form action="misc.php?mod=stat&op=modworks&uid=$uid" method="post">
-							<input type="hidden" name="formhash" value="{FORMHASH}" />
-							{lang stats_modworks_timerange}: <input type="text" name="modworks_starttime" class="px vm" size="10" onclick="showcalendar(event, this, false)" autocomplete="off" /> {lang stats_modworks_to} <input type="text" name="modworks_endtime" class="px vm" size="10" onclick="showcalendar(event, this, false)" autocomplete="off" />
-							<button type="submit" class="pn vm" name="modworkssubmit" value="true"><em>{lang focus_show}</em></button>
-						</form>
-					</li>
-				</ul>
-				<div class="cl">
-					<div class="stl">
-						<table class="dt bm">
-							<tr>
-								<th>{lang time}</th>
-							</tr>
-							<!--{loop $modactions $day $modaction}-->
-								<tr class="{echo swapclass('alt')}">
-									<td>$day</td>
-								</tr>
-							<!--{/loop}-->
-							<tr>
-								<td>{lang stats_modworks_total}</td>
-							</tr>
-						</table>
-					</div>
-					<div class="str">
-						<table class="dt" style="width: 3000px;">
-							<tr>
-								<!--{loop $modactioncode $key $val}--><th width="$tdwidth">$val</th><!--{/loop}-->
-								<th width="$tdwidth">{lang stats_modworks_total}</th>
-							</tr>
-							<!--{eval unset($swapc);}-->
-							<!--{loop $modactions $day $modaction}-->
-								<tr class="{echo swapclass('alt')}">
-									<!--{loop $modactioncode $key $val}-->
-										<!--{if $modaction[$key]['posts']}--><td title="{lang posts}: $modaction[$key][posts]">$modaction[$key][count]<!--{else}--><td>&nbsp;<!--{/if}--></td>
-									<!--{/loop}-->
-									<td>$modaction[total]</td>
-								</tr>
-							<!--{/loop}-->
-							<tr>
-								<!--{loop $modactioncode $key $val}-->
-									<!--{if $totalactions[$key]['posts']}--><td class="{$bgarray[$key]}" title="{lang posts}: {$totalactions[$key][posts]}">$totalactions[$key][count]<!--{else}--><td>&nbsp;<!--{/if}--></td>
-								<!--{/loop}-->
-								<td>$totalactions[total]</td>
-							</tr>
-						</table>
-					</div>
+
+				<section class="stat-card">
+					<header class="stat-card-hd">
+						<h2>$username · $starttime ~ $endtime</h2>
+						<p class="stat-card-sub"><a href="misc.php?mod=stat&op=modworks&exportexcel=1&uid=$uid&modworks_starttime=$starttime&modworks_endtime=$endtime">{lang stats_modworks_export}</a></p>
+					</header>
+					<ul class="stat-range">
+						<!--{loop $monthlinks $link}-->
+							$link
+						<!--{/loop}-->
+						<li>
+							<script src="{$_G[setting][jspath]}calendar.js?{VERHASH}" type="text/javascript"></script>
+							<form action="misc.php?mod=stat&op=modworks&uid=$uid" method="post">
+								<input type="hidden" name="formhash" value="{FORMHASH}" />
+								{lang stats_modworks_timerange}: <input type="text" name="modworks_starttime" class="px vm" size="10" onclick="showcalendar(event, this, false)" autocomplete="off" /> {lang stats_modworks_to} <input type="text" name="modworks_endtime" class="px vm" size="10" onclick="showcalendar(event, this, false)" autocomplete="off" />
+								<button type="submit" class="pn vm" name="modworkssubmit" value="true"><em>{lang focus_show}</em></button>
+							</form>
+						</li>
+					</ul>
+				</section>
+
+				<div class="stat-cols">
+					<section class="stat-card">
+						<header class="stat-card-hd"><h2>操作类型分布</h2><p class="stat-card-sub">按次数统计 · 最多显示 15 项，其余归入"其他"</p></header>
+						<!--{if count($mwCats) > 8}--><div class="stat-chart stat-chart-h420" id="stat_bar_modaction"></div><!--{else}--><div class="stat-chart stat-chart-h320" id="stat_bar_modaction"></div><!--{/if}-->
+					</section>
+					<section class="stat-card">
+						<header class="stat-card-hd"><h2>每日操作量</h2><p class="stat-card-sub">$starttime ~ $endtime</p></header>
+						<div class="stat-chart stat-chart-h320" id="stat_line_modday"></div>
+					</section>
 				</div>
+
+				<section class="stat-card">
+					<header class="stat-card-hd">
+						<h2>{lang stats_modworks} 明细</h2>
+						<p class="stat-card-sub">横向滚动查看全部操作类型，表头与日期列已固定</p>
+					</header>
+					<div class="stat-matrix">
+						<table class="stat-mx">
+							<thead>
+								<tr>
+									<th class="stat-mx-corner">{lang time}</th>
+									<!--{loop $modactioncode $key $val}-->
+										<th>$val</th>
+									<!--{/loop}-->
+									<th class="stat-mx-total">{lang stats_modworks_total}</th>
+									</tr>
+									</thead>
+									<tbody>
+									<!--{loop $modactions $day $modaction}-->
+									<tr>
+										<th class="stat-mx-row">$day</th>
+										<!--{loop $modactioncode $key $val}-->
+											<!--{if isset($modaction[$key]['posts']) && $modaction[$key]['posts']}-->
+												<td title="{lang posts}: $modaction[$key][posts]">$modaction[$key][count]</td>
+											<!--{else}-->
+												<td class="stat-mx-empty">&nbsp;</td>
+											<!--{/if}-->
+										<!--{/loop}-->
+										<td class="stat-mx-total">$modaction[total]</td>
+									</tr>
+								<!--{/loop}-->
+								<tr class="stat-mx-sum">
+									<th class="stat-mx-row">{lang stats_modworks_total}</th>
+									<!--{loop $modactioncode $key $val}-->
+										<!--{if isset($totalactions[$key]['posts']) && $totalactions[$key]['posts']}-->
+											<td title="{lang posts}: $totalactions[$key][posts]">$totalactions[$key][count]</td>
+										<!--{else}-->
+											<td class="stat-mx-empty">&nbsp;</td>
+										<!--{/if}-->
+									<!--{/loop}-->
+									<td class="stat-mx-total">$totalactions[total]</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
 			</div>
 
 		<!--{elseif $op == 'modworks'}-->
-			<div class="bm bw0">
+			<!--{eval $cntAll2 = array_combine(array_keys(array_diff_key((array)$total, array('total' => 1))), array_map('intval', array_column((array)$total, 'count')));}-->
+			<!-- 同上：只保留有记录的操作类型；total 汇总项是标量而非数组，需先从键里剔除 -->
+			<!--{eval $maPos = array_filter(array_replace(array_fill_keys(array_keys((array)$modactioncode), 0), $cntAll2));}-->
+			<!--{eval arsort($maPos);}-->
+			<!--{eval $maTop = array_slice($maPos, 0, 15, true);}-->
+			<!--{eval $maCats = array_slice(array_values(array_replace(array_flip(array_keys($maTop)), (array)$modactioncode)), 0, count($maTop));}-->
+			<!--{eval $maVals = array_values($maTop);}-->
+			<!--{if count($maPos) > 15}-->
+				<!--{eval $maVals[] = array_sum(array_slice($maPos, 15));}-->
+				<!--{eval $maCats[] = '其他';}-->
+			<!--{/if}-->
+			<!--{eval $mmNames = array_column((array)$members, 'username', 'uid');}-->
+			<!--{eval $mmTotals = array_replace(array_fill_keys(array_keys($mmNames), 0), array_map('intval', array_column((array)$members, 'total', 'uid')));}-->
+			<!--{eval arsort($mmTotals);}-->
+			<!--{eval $mmTop = array_slice($mmTotals, 0, 10, true);}-->
+			<!--{eval $mmCats = array_map('strip_tags', array_slice(array_values(array_replace(array_flip(array_keys($mmTop)), $mmNames)), 0, count($mmTop)));}-->
+			<!--{eval $mmVals = array_values($mmTop);}-->
+			<div class="bm bw0 stat-page">
 				<h1 class="mt">{lang stats_modworks} - {lang stats_modworks_all}</h1>
-				<h3>{$starttime} {lang stats_modworks_to} {$endtime} {lang stats_modworks_data} &nbsp; <a href="misc.php?mod=stat&op=modworks&exportexcel=1&modworks_starttime=$starttime&modworks_endtime=$endtime" class="xi2">[{lang stats_modworks_export}]</a></h3>
-				<ul class="ttp cl">
-					<!--{loop $monthlinks $link}-->
-					$link
-					<!--{/loop}-->
-					<li>
-						<script src="{$_G[setting][jspath]}calendar.js?{VERHASH}" type="text/javascript"></script>
-						<form action="misc.php?mod=stat&op=modworks" method="post">
-							<input type="hidden" name="formhash" value="{FORMHASH}" />
-							{lang stats_modworks_timerange}: <input type="text" name="modworks_starttime" class="px vm" size="10" onclick="showcalendar(event, this, false)" autocomplete="off" /> {lang stats_modworks_to} <input type="text" name="modworks_endtime" class="px vm" size="10" onclick="showcalendar(event, this, false)" autocomplete="off" />
-							<button type="submit" class="pn vm" name="modworkssubmit" value="true"><em>{lang focus_show}</em></button>
-						</form>
-					</li>
-				</ul>
-				<div class="cl">
-					<div class="stl">
-						<table class="dt bm">
-							<tr>
-								<th>{lang username}</th>
-							</tr>
-							<!--{loop $members $uid $member}-->
-								<tr class="{echo swapclass('alt')}">
-									<td><a href="misc.php?mod=stat&op=modworks{if isset($_GET[before])}&before=$_GET[before]{/if}&uid=$uid{if $starttime || $endtime}&modworks_starttime=$starttime&modworks_endtime=$endtime{/if}" title="{lang stats_modworks_details}">{$member[username]}</a></td>
-								</tr>
-							<!--{/loop}-->
-							<!--{if $members}-->
-								<tr>
-									<td>{lang stats_modworks_total}</td>
-								</tr>
-							<!--{/if}-->
-						</table>
-					</div>
 
-					<div class="str">
-						<table class="dt" style="width: 3000px;">
-							<tr>
-								<!--{loop $modactioncode $key $val}--><th width="$tdwidth">$val</th><!--{/loop}-->
-								<th width="$tdwidth">{lang stats_modworks_total}</th>
-							</tr>
-							<!--{eval unset($swapc);}-->
-							<!--{loop $members $uid $member}-->
-								<tr class="{echo swapclass('alt')}">
-									<!--{loop $modactioncode $key $val}-->
-										<!--{if $member[$key]['posts']}--><td title="{lang posts}: {$member[$key]['posts']}">{$member[$key][count]}<!--{else}--><td>&nbsp;<!--{/if}--></td>
-									<!--{/loop}-->
-									<td>$member[total]</td>
-								</tr>
-							<!--{/loop}-->
-							<!--{if $members}-->
+				<section class="stat-card">
+					<header class="stat-card-hd">
+						<h2>$starttime ~ $endtime</h2>
+						<p class="stat-card-sub">{echo count($members)} 位管理人员 · <a href="misc.php?mod=stat&op=modworks&exportexcel=1&modworks_starttime=$starttime&modworks_endtime=$endtime">{lang stats_modworks_export}</a></p>
+					</header>
+					<ul class="stat-range">
+						<!--{loop $monthlinks $link}-->
+							$link
+						<!--{/loop}-->
+						<li>
+							<script src="{$_G[setting][jspath]}calendar.js?{VERHASH}" type="text/javascript"></script>
+							<form action="misc.php?mod=stat&op=modworks" method="post">
+								<input type="hidden" name="formhash" value="{FORMHASH}" />
+								{lang stats_modworks_timerange}: <input type="text" name="modworks_starttime" class="px vm" size="10" onclick="showcalendar(event, this, false)" autocomplete="off" /> {lang stats_modworks_to} <input type="text" name="modworks_endtime" class="px vm" size="10" onclick="showcalendar(event, this, false)" autocomplete="off" />
+								<button type="submit" class="pn vm" name="modworkssubmit" value="true"><em>{lang focus_show}</em></button>
+							</form>
+						</li>
+					</ul>
+				</section>
+
+				<div class="stat-cols">
+					<section class="stat-card">
+						<header class="stat-card-hd"><h2>操作类型分布</h2><p class="stat-card-sub">全部管理人员合计 · 最多显示 15 项，其余归入"其他"</p></header>
+						<!--{if count($maCats) > 8}--><div class="stat-chart stat-chart-h420" id="stat_bar_modaction"></div><!--{else}--><div class="stat-chart stat-chart-h320" id="stat_bar_modaction"></div><!--{/if}-->
+					</section>
+					<section class="stat-card">
+						<header class="stat-card-hd"><h2>管理人员排行</h2><p class="stat-card-sub">操作量 TOP {echo min(10, count($mmCats))}</p></header>
+						<div class="stat-chart stat-chart-h320" id="stat_bar_modmember"></div>
+					</section>
+				</div>
+
+				<section class="stat-card">
+					<header class="stat-card-hd">
+						<h2>{lang stats_modworks} 明细</h2>
+						<p class="stat-card-sub">横向滚动查看全部操作类型，表头与人员列已固定；点击人员名查看逐日明细</p>
+					</header>
+					<div class="stat-matrix">
+						<table class="stat-mx">
+							<thead>
 								<tr>
+									<th class="stat-mx-corner">{lang username}</th>
 									<!--{loop $modactioncode $key $val}-->
-										<!--{if $total[$key]['posts']}--><td title="{lang posts}: {$total[$key]['posts']}">{$total[$key][count]}<!--{else}--><td>&nbsp;<!--{/if}--></td>
-									<!--{/loop}-->
-									<td>$total[total]</td>
+									<th>$val</th>
+								<!--{/loop}-->
+									<th class="stat-mx-total">{lang stats_modworks_total}</th>
 								</tr>
-							<!--{/if}-->
+							</thead>
+							<tbody>
+								<!--{loop $members $muid $member}-->
+									<tr>
+										<th class="stat-mx-row"><a href="misc.php?mod=stat&op=modworks{if isset($_GET[before])}&before=$_GET[before]{/if}&uid=$muid{if $starttime || $endtime}&modworks_starttime=$starttime&modworks_endtime=$endtime{/if}" title="{lang stats_modworks_details}">{$member[username]}</a></th>
+										<!--{loop $modactioncode $key $val}-->
+											<!--{if isset($member[$key]['posts']) && $member[$key]['posts']}-->
+												<td title="{lang posts}: {$member[$key]['posts']}">{$member[$key][count]}</td>
+											<!--{else}-->
+												<td class="stat-mx-empty">&nbsp;</td>
+											<!--{/if}-->
+										<!--{/loop}-->
+										<td class="stat-mx-total">$member[total]</td>
+									</tr>
+								<!--{/loop}-->
+								<!--{if $members}-->
+									<tr class="stat-mx-sum">
+										<th class="stat-mx-row">{lang stats_modworks_total}</th>
+										<!--{loop $modactioncode $key $val}-->
+											<!--{if isset($total[$key]['posts']) && $total[$key]['posts']}-->
+												<td title="{lang posts}: {$total[$key]['posts']}">{$total[$key][count]}</td>
+											<!--{else}-->
+												<td class="stat-mx-empty">&nbsp;</td>
+											<!--{/if}-->
+										<!--{/loop}-->
+										<td class="stat-mx-total">$total[total]</td>
+									</tr>
+								<!--{/if}-->
+							</tbody>
 						</table>
 					</div>
-				</div>
+				</section>
 			</div>
 		<!--{/if}-->
 
 	</div>
 	<!--{subtemplate common/stat}-->
 </div>
+
+<!--{if $op == 'forumstat' && $_GET['fid']}-->
+	<script src="{STATICURL}js/echarts/echarts.common.min.js"></script>
+	<script src="{$_G['setting']['jspath']}stat.js?{VERHASH}"></script>
+	<script type="text/javascript">
+	statLine($('statchart'), {echo json_encode(array_column((array)$logs, 'logdate'))}, [{name: '{lang stats_main_total_posted}', type: 'line', smooth: true, showSymbol: true, data: {echo json_encode(array_map('intval', array_column((array)$logs, 'value')))}}]);
+	</script>
+<!--{/if}-->
+<!--{if $op == 'modworks'}-->
+	<script src="{STATICURL}js/echarts/echarts.common.min.js"></script>
+	<script src="{$_G['setting']['jspath']}stat.js?{VERHASH}"></script>
+	<script type="text/javascript">
+	<!--{if $op == 'modworks' && $uid}-->
+		<!--{if $mwCats}-->statBarH($('stat_bar_modaction'), {echo json_encode($mwCats)}, {echo json_encode($mwVals)}, {color: 3});<!--{else}-->statNoData($('stat_bar_modaction'));<!--{/if}-->
+		statLine($('stat_line_modday'), {echo json_encode($mwDays)}, [{name: '{lang stats_modworks}', type: 'line', smooth: true, showSymbol: true, data: {echo json_encode($mwTotals)}}]);
+	<!--{else}-->
+		<!--{if $maCats}-->statBarH($('stat_bar_modaction'), {echo json_encode($maCats)}, {echo json_encode($maVals)}, {color: 3});<!--{else}-->statNoData($('stat_bar_modaction'));<!--{/if}-->
+		statBarH($('stat_bar_modmember'), {echo json_encode($mmCats)}, {echo json_encode($mmVals)}, {color: 0, labelWidth: 72});
+	<!--{/if}-->
+	</script>
+<!--{/if}-->
+<!--{if $op == 'forumstat' && !$_GET['fid']}-->
+	<script src="{STATICURL}js/echarts/echarts.common.min.js"></script>
+	<script src="{$_G['setting']['jspath']}stat.js?{VERHASH}"></script>
+	<script type="text/javascript">
+	<!--{if $fCats}-->statBarH($('stat_bar_forums'), {echo json_encode($fCats)}, {echo json_encode($fVals)}, {labelWidth: 110});<!--{/if}-->
+	</script>
+<!--{/if}-->
 
 <!--{template common/footer}-->

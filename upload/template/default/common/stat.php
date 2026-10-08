@@ -1,7 +1,7 @@
 <?php exit('Access Denied');?>
 <div class="appl">
 	<div class="tbn">
-		<h2 class="mt bbda">{lang stats}</h2>
+		<h2 class="mt">{lang stats}</h2>
 		<ul>
 			<li class="cl{if $op == 'basic'} a{/if}"><a href="misc.php?mod=stat&op=basic">{lang basic_situation}</a></li>
 			<li class="cl{if $op == 'forumstat'} a{/if}"><a href="misc.php?mod=stat&op=forumstat">{lang forum_stat}</a></li>
