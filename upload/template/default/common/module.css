@@ -2071,6 +2071,7 @@ body { background: none !important; }
 .stat-chart { width: 100%; }
 	.stat-chart-h240 { height: 240px; }
 	.stat-chart-h320 { height: 320px; }
+	.stat-chart-h360 { height: 360px; }
 	.stat-chart-h420 { height: 420px; }
 .stat-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
 	.stat-cols > .stat-card { margin-bottom: 0; }

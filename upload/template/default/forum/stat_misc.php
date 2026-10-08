@@ -142,9 +142,16 @@
 				</section>
 			</div>
 		<!--{elseif $op == 'modworks' && $uid}-->
-			<!--{eval $mwCats = array_values((array)$modactioncode);}-->
-			<!--{eval $taList = array_replace(array_fill_keys(array_keys((array)$modactioncode), array('count' => 0, 'posts' => 0)), array_diff_key((array)$totalactions, array('total' => 0)));}-->
-			<!--{eval $mwVals = array_map('intval', array_column($taList, 'count'));}-->
+			<!--{eval $cntAll = array_combine(array_keys(array_diff_key((array)$totalactions, array('total' => 1))), array_map('intval', array_column((array)$totalactions, 'count')));}-->
+			<!--{eval $mwPos = array_filter(array_replace(array_fill_keys(array_keys((array)$modactioncode), 0), $cntAll));}-->
+			<!--{eval arsort($mwPos);}-->
+			<!--{eval $mwTop = array_slice($mwPos, 0, 15, true);}-->
+			<!--{eval $mwCats = array_slice(array_values(array_replace(array_flip(array_keys($mwTop)), (array)$modactioncode)), 0, count($mwTop));}-->
+			<!--{eval $mwVals = array_values($mwTop);}-->
+			<!--{if count($mwPos) > 15}-->
+				<!--{eval $mwVals[] = array_sum(array_slice($mwPos, 15));}-->
+				<!--{eval $mwCats[] = 'other';}-->
+			<!--{/if}-->
 			<!--{eval $mwDays = array_keys((array)$modactions);}-->
 			<!--{eval $mwTotals = array_map('intval', array_column((array)$modactions, 'total'));}-->
 			<div class="bm bw0 stat-page">
@@ -172,8 +179,8 @@
 
 				<div class="stat-cols">
 					<section class="stat-card">
-						<header class="stat-card-hd"><h2>操作类型分布</h2><p class="stat-card-sub">按次数统计</p></header>
-						<div class="stat-chart stat-chart-h320" id="stat_bar_modaction"></div>
+						<header class="stat-card-hd"><h2>操作类型分布</h2><p class="stat-card-sub">按次数统计 · 最多显示 15 项，其余归入"其他"</p></header>
+						<!--{if count($mwCats) > 8}--><div class="stat-chart stat-chart-h420" id="stat_bar_modaction"></div><!--{else}--><div class="stat-chart stat-chart-h320" id="stat_bar_modaction"></div><!--{/if}-->
 					</section>
 					<section class="stat-card">
 						<header class="stat-card-hd"><h2>每日操作量</h2><p class="stat-card-sub">$starttime ~ $endtime</p></header>
@@ -229,14 +236,22 @@
 			</div>
 
 		<!--{elseif $op == 'modworks'}-->
-			<!--{eval $maCats = array_values((array)$modactioncode);}-->
-			<!--{eval $taList2 = array_replace(array_fill_keys(array_keys((array)$modactioncode), array('count' => 0, 'posts' => 0)), array_diff_key((array)$total, array('total' => 0)));}-->
-			<!--{eval $maVals = array_map('intval', array_column($taList2, 'count'));}-->
+			<!--{eval $cntAll2 = array_combine(array_keys(array_diff_key((array)$total, array('total' => 1))), array_map('intval', array_column((array)$total, 'count')));}-->
+			<!-- 同上：只保留有记录的操作类型；total 汇总项是标量而非数组，需先从键里剔除 -->
+			<!--{eval $maPos = array_filter(array_replace(array_fill_keys(array_keys((array)$modactioncode), 0), $cntAll2));}-->
+			<!--{eval arsort($maPos);}-->
+			<!--{eval $maTop = array_slice($maPos, 0, 15, true);}-->
+			<!--{eval $maCats = array_slice(array_values(array_replace(array_flip(array_keys($maTop)), (array)$modactioncode)), 0, count($maTop));}-->
+			<!--{eval $maVals = array_values($maTop);}-->
+			<!--{if count($maPos) > 15}-->
+				<!--{eval $maVals[] = array_sum(array_slice($maPos, 15));}-->
+				<!--{eval $maCats[] = '其他';}-->
+			<!--{/if}-->
 			<!--{eval $mmNames = array_column((array)$members, 'username', 'uid');}-->
 			<!--{eval $mmTotals = array_replace(array_fill_keys(array_keys($mmNames), 0), array_map('intval', array_column((array)$members, 'total', 'uid')));}-->
 			<!--{eval arsort($mmTotals);}-->
 			<!--{eval $mmTop = array_slice($mmTotals, 0, 10, true);}-->
-			<!--{eval $mmCats = array_map('strip_tags', array_values(array_replace(array_flip(array_keys($mmTop)), $mmNames)));}-->
+			<!--{eval $mmCats = array_map('strip_tags', array_slice(array_values(array_replace(array_flip(array_keys($mmTop)), $mmNames)), 0, count($mmTop)));}-->
 			<!--{eval $mmVals = array_values($mmTop);}-->
 			<div class="bm bw0 stat-page">
 				<h1 class="mt">{lang stats_modworks} - {lang stats_modworks_all}</h1>
@@ -263,8 +278,8 @@
 
 				<div class="stat-cols">
 					<section class="stat-card">
-						<header class="stat-card-hd"><h2>操作类型分布</h2><p class="stat-card-sub">全部管理人员合计</p></header>
-						<div class="stat-chart stat-chart-h320" id="stat_bar_modaction"></div>
+						<header class="stat-card-hd"><h2>操作类型分布</h2><p class="stat-card-sub">全部管理人员合计 · 最多显示 15 项，其余归入"其他"</p></header>
+						<!--{if count($maCats) > 8}--><div class="stat-chart stat-chart-h420" id="stat_bar_modaction"></div><!--{else}--><div class="stat-chart stat-chart-h320" id="stat_bar_modaction"></div><!--{/if}-->
 					</section>
 					<section class="stat-card">
 						<header class="stat-card-hd"><h2>管理人员排行</h2><p class="stat-card-sub">操作量 TOP {echo min(10, count($mmCats))}</p></header>
@@ -338,10 +353,10 @@
 	<script src="{$_G['setting']['jspath']}stat.js?{VERHASH}"></script>
 	<script type="text/javascript">
 	<!--{if $op == 'modworks' && $uid}-->
-		statBarH($('stat_bar_modaction'), {echo json_encode($mwCats)}, {echo json_encode($mwVals)}, {color: 3});
+		<!--{if $mwCats}-->statBarH($('stat_bar_modaction'), {echo json_encode($mwCats)}, {echo json_encode($mwVals)}, {color: 3});<!--{else}-->statNoData($('stat_bar_modaction'));<!--{/if}-->
 		statLine($('stat_line_modday'), {echo json_encode($mwDays)}, [{name: '{lang stats_modworks}', type: 'line', smooth: true, showSymbol: true, data: {echo json_encode($mwTotals)}}]);
 	<!--{else}-->
-		statBarH($('stat_bar_modaction'), {echo json_encode($maCats)}, {echo json_encode($maVals)}, {color: 3});
+		<!--{if $maCats}-->statBarH($('stat_bar_modaction'), {echo json_encode($maCats)}, {echo json_encode($maVals)}, {color: 3});<!--{else}-->statNoData($('stat_bar_modaction'));<!--{/if}-->
 		statBarH($('stat_bar_modmember'), {echo json_encode($mmCats)}, {echo json_encode($mmVals)}, {color: 0, labelWidth: 72});
 	<!--{/if}-->
 	</script>

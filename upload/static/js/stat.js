@@ -177,7 +177,7 @@ function statBarH(el, cats, vals, opt) {
 			axisLabel: { fontSize: 11, width: opt.labelWidth || 96, overflow: 'truncate' }
 		},
 		series: [{
-			type: 'bar', data: vals, barMaxWidth: 18,
+			type: 'bar', data: vals, barMaxWidth: 18, barCategoryGap: opt.rowGap || '38%',
 			itemStyle: { borderRadius: [0, 5, 5, 0] },
 			label: { show: true, position: 'right', fontSize: 11, formatter: function(p) { return statNum(p.value); } }
 		}]
