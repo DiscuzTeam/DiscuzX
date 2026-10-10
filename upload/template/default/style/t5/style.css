@@ -8,3 +8,33 @@ body { background: #FFF url(bgimg.jpg) no-repeat 50% 0; }
 	#nv li.a { background: #2B7ACD; }
 		#nv li.a a, #nv li.a a:hover { background: #FFF; color: #369 !important; border-radius: 4px 4px 0 0; box-shadow: inset 0px 2px 2px #114F90; }
 .ct2_a, .ct3_a { background-color: #FFF; }
+
+/* ============================================================
+   新增 UI 组件配色（胶囊导航 / 快捷导航气泡 / 统计页）
+   主色：#2B7ACD  强调：#369  白底 tab 阴影：#114F90
+   ============================================================ */
+/* 导航条溢出渐隐：遮罩=导航底色，边缘阴影=白底 tab 的内阴影色 */
+#nv > ul { background-image: linear-gradient(to right, #2B7ACD 40%, transparent), linear-gradient(to left, #2B7ACD 40%, transparent), linear-gradient(to right, #114F90, transparent), linear-gradient(to left, #114F90, transparent); }
+/* 白底 tab 已有内阴影，去掉主样式里的白色高光，避免叠加发灰 */
+#nv li.a { box-shadow: none; }
+
+/* 快捷导航气泡 */
+#qmenu_menu { border-color: #C2D5E3; }
+	#qmenu_menu.blk:before { background: #E5EDF2; color: #369; }
+	#qmenu_menu ul.nav a:hover { background-color: #E5EDF2; color: #369; }
+	#qmenu_menu #fjump_menu { border-top-color: #C2D5E3; }
+		#qmenu_menu #fjump_menu .jump_bdl li { border-color: #C2D5E3; }
+		#qmenu_menu #fjump_menu .jump_bdl p.bbda { border-bottom-color: #E5EDF2; }
+		#qmenu_menu #fjump_menu .jump_bdl p:not(.a) a:hover { background-color: #E5EDF2; color: #369; }
+		#qmenu_menu #fjump_menu .jump_bdl p.a a { background-color: #E5EDF2; color: #369; }
+		#qmenu_menu #fjump_menu .jump_bdl li::-webkit-scrollbar-thumb { background: #C2D5E3; }
+
+/* 统计页：图表配色由 static/js/stat.js 读取这些自定义属性 */
+.stat-page { --stat-c1: #2B7ACD; --stat-c2: #114F90; --stat-c3: #369; --stat-c6: #C2D5E3; --stat-grid: #E5EDF2; --stat-axis: #C2D5E3; --stat-pointer: #E5EDF2; }
+	.stat-kpi-num, .stat-metric b, .stat-mx .stat-mx-total { color: #2B7ACD; }
+	.stat-chip.on { border-color: #2B7ACD; background: #2B7ACD; }
+	.stat-rank li:nth-child(1) .stat-rank-no { background: #2B7ACD; }
+	.stat-rank-no, .stat-sort.on, .stat-sort:hover { color: #369; }
+	.stat-chip:hover, .stat-range a:hover { border-color: #C2D5E3; background: #E5EDF2; color: #369; }
+	.stat-rank li:hover, .stat-row:hover, .stat-mx tbody tr:hover td, .stat-mx tbody tr:hover .stat-mx-row { background: #E5EDF2; }
+	.stat-rank-no { background: #E5EDF2; }

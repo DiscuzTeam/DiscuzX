@@ -78,3 +78,32 @@ body { background: #FCFAF0 url(bgimg.jpg) no-repeat 50% 0; background-size: 1400
 
 /* 重定义好友列表 */
 #nv_home .buddy li { background-color: transparent; border: none; }
+
+/* ============================================================
+   新增 UI 组件配色（胶囊导航 / 快捷导航气泡 / 统计页）
+   主色：#FE9500  当前项：#DF3200  悬停：#CA2D00  强调：#CA4312
+   高亮底：#FCF6E6  高亮边框：#FC6  页面底：#FCFAF0
+   ============================================================ */
+/* 导航条溢出渐隐：遮罩=导航底色，边缘阴影=当前项色 */
+#nv > ul { background-image: linear-gradient(to right, #FE9500 40%, transparent), linear-gradient(to left, #FE9500 40%, transparent), linear-gradient(to right, #DF3200, transparent), linear-gradient(to left, #DF3200, transparent); }
+
+/* 快捷导航气泡 */
+#qmenu_menu { border-color: #FC6; }
+	#qmenu_menu.blk:before { background: #FCF6E6; color: #CA4312; }
+	#qmenu_menu ul.nav a:hover { background-color: #FCF6E6; color: #CA4312; }
+	#qmenu_menu #fjump_menu { border-top-color: #FC6; }
+		#qmenu_menu #fjump_menu .jump_bdl li { border-color: #FC6; }
+		#qmenu_menu #fjump_menu .jump_bdl p.bbda { border-bottom-color: #FCF6E6; }
+		#qmenu_menu #fjump_menu .jump_bdl p:not(.a) a:hover { background-color: #FCF6E6; color: #CA4312; }
+		#qmenu_menu #fjump_menu .jump_bdl p.a a { background-color: #FCF6E6; color: #CA4312; }
+		#qmenu_menu #fjump_menu .jump_bdl li::-webkit-scrollbar-thumb { background: #FC6; }
+
+/* 统计页：图表配色由 static/js/stat.js 读取这些自定义属性 */
+.stat-page { --stat-c1: #FE9500; --stat-c2: #DF3200; --stat-c3: #CA4312; --stat-c6: #FC6; --stat-grid: #FCF6E6; --stat-axis: #FC6; --stat-pointer: #FCF6E6; }
+	.stat-kpi-num, .stat-metric b, .stat-mx .stat-mx-total { color: #FE9500; }
+	.stat-chip.on { border-color: #FE9500; background: #FE9500; }
+	.stat-rank li:nth-child(1) .stat-rank-no { background: #FE9500; }
+	.stat-rank-no, .stat-sort.on, .stat-sort:hover { color: #CA4312; }
+	.stat-chip:hover, .stat-range a:hover { border-color: #FC6; background: #FCF6E6; color: #CA4312; }
+	.stat-rank li:hover, .stat-row:hover, .stat-mx tbody tr:hover td, .stat-mx tbody tr:hover .stat-mx-row { background: #FCF6E6; }
+	.stat-rank-no { background: #FCF6E6; }

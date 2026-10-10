@@ -1,52 +1,6 @@
 <?php exit('Access Denied');?>
-<!--{if $op == 'modworks' && $uid}-->
-	{lang stats_modworks} - $username
-	<!--{echo "\r\n";}-->
-	{$starttime} {lang stats_modworks_to} {$endtime} {lang stats_modworks_data}
-	<!--{echo "\r\n";}-->
-	{lang time},
-	<!--{loop $modactioncode $key $val}-->
-		$val,<!--{/loop}-->
-	{lang stats_modworks_total}
-	<!--{echo "\n";}-->
-
-	<!--{loop $modactions $day $modaction}-->
-		$day,
-		<!--{loop $modactioncode $key $val}-->
-			<!--{if $modaction[$key]['posts']}-->$modaction[$key][count],<!--{else}-->,<!--{/if}-->
-		<!--{/loop}-->
-		$modaction[total]
-		<!--{echo "\n";}-->
-	<!--{/loop}-->
-	{lang stats_modworks_total},
-	<!--{loop $modactioncode $key $val}-->
-		<!--{if $totalactions[$key]['posts']}-->$totalactions[$key][count],<!--{else}-->,<!--{/if}-->
-	<!--{/loop}-->
-	$totalactions[total]
-
-<!--{elseif $op == 'modworks'}-->
-	{lang stats_modworks} - {lang stats_modworks_all}
-	<!--{echo "\r\n";}-->
-	{$starttime} {lang stats_modworks_to} {$endtime} {lang stats_modworks_data}
-	<!--{echo "\r\n";}-->
-	{lang username},
-	<!--{loop $modactioncode $key $val}-->
-		$val,<!--{/loop}-->
-	{lang stats_modworks_total}
-	<!--{echo "\r\n";}-->
-	<!--{loop $members $uid $member}-->
-		<!--{eval echo strip_tags($member['username']);}-->,
-		<!--{loop $modactioncode $key $val}-->
-			<!--{if $member[$key]['posts']}-->{$member[$key][count]},<!--{else}-->,<!--{/if}-->
-		<!--{/loop}-->
-		$member[total]
-		<!--{echo "\n";}-->
-	<!--{/loop}-->
-	<!--{if $members}-->
-		{lang stats_modworks_total},
-		<!--{loop $modactioncode $key $val}-->
-			<!--{if $total[$key]['posts']}-->{$total[$key][count]},<!--{else}-->,<!--{/if}-->
-		<!--{/loop}-->
-		$total[total]
-	<!--{/if}-->
+<!--{eval echo "\xEF\xBB\xBF";}-->
+<!--{if $op == 'modworks' && $uid}-->{lang stats_modworks} - $username{echo "\r\n"}{$starttime} {lang stats_modworks_to} {$endtime} {lang stats_modworks_data}{echo "\r\n"}{lang time},{echo implode(',', (array)$modactioncode).','}{lang stats_modworks_total}{echo "\r\n"}<!--{loop $modactions $day $modaction}-->$day,<!--{loop $modactioncode $key $val}--><!--{if $modaction[$key]['posts']}-->$modaction[$key][count],<!--{else}-->,<!--{/if}--><!--{/loop}-->$modaction[total]{echo "\r\n"}<!--{/loop}-->{lang stats_modworks_total},<!--{loop $modactioncode $key $val}--><!--{if $totalactions[$key]['posts']}-->$totalactions[$key][count],<!--{else}-->,<!--{/if}--><!--{/loop}-->$totalactions[total]{echo "\r\n"}
+<!--{elseif $op == 'modworks'}-->{lang stats_modworks} - {lang stats_modworks_all}{echo "\r\n"}{$starttime} {lang stats_modworks_to} {$endtime} {lang stats_modworks_data}{echo "\r\n"}{lang username},{echo implode(',', (array)$modactioncode).','}{lang stats_modworks_total}{echo "\r\n"}<!--{loop $members $muid $member}--><!--{eval echo strip_tags($member['username']);}-->,<!--{loop $modactioncode $key $val}--><!--{if $member[$key]['posts']}-->{$member[$key][count]},<!--{else}-->,<!--{/if}--><!--{/loop}-->$member[total]{echo "\r\n"}<!--{/loop}--><!--{if $members}-->{lang stats_modworks_total},<!--{loop $modactioncode $key $val}--><!--{if $total[$key]['posts']}-->{$total[$key][count]},<!--{else}-->,<!--{/if}--><!--{/loop}-->$total[total]{echo "\r\n"}
+<!--{/if}-->
 <!--{/if}-->

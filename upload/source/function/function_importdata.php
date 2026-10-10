@@ -221,8 +221,6 @@ function import_styles($ignoreversion = 1, $dir = '', $restoreid = 0, $updatecac
 						'suburl' => '',
 						'navtype' => '0',
 						'logo' => '',
-						'assert' => '',
-						'perm' => '',
 					]);
 				}
 			}

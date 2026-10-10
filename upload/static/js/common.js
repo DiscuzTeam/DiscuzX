@@ -2494,6 +2494,12 @@ if (typeof IN_ADMINCP == 'undefined') {
 
 document.addEventListener('DOMContentLoaded', loadAvatar);
 document.addEventListener('DOMContentLoaded', initZoom);
+// 主导航横向滚动增强：存在 #nv 时按需加载 common_extra.js 并初始化（静态资源为所有模板共用，第三方模板无需改动模板文件）
+document.addEventListener('DOMContentLoaded', function() {
+	if ($('nv')) {
+		$F('_navscroll', []);
+	}
+});
 
 if (typeof PWAON != 'undefined' && PWAON == 1 && 'serviceWorker' in navigator) {
 	navigator.serviceWorker.register(SITEURL + 'pwa.js?' + VERHASH);
