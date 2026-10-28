@@ -536,6 +536,14 @@ foreach($postarr as $post) {
 
 		$post['incurpage'] = in_array($post['pid'], $curpagepids);
 		$postusers[$post['authorid']] = [];
+
+		$post['postappend'] = '';
+		if(strpos($post['message'], '[postappend]') !== false) {
+			preg_match_all('/\[postappend\](.*?)\[\/postappend\]/s', $post['message'], $m);
+			$post['postappend'] = implode("\n\n", $m[1]);
+			$post['message'] = str_replace(['[postappend]', '[/postappend]'], '', $post['message']);
+		}
+
 		// 开始解析json编辑器内容
 		if(is_valid_non_empty_json($post['content'], true)) {
 			$content = json_decode($post['content'], true);
@@ -561,6 +569,9 @@ foreach($postarr as $post) {
 				}
 				if(!empty($content['extend']['quote_default'])) {
 					$post['message'] = discuzcode($content['extend']['quote_default']).$post['message'];
+				}
+				if(!empty($post['postappend'])) {
+					$post['message'] .= "<br/><br/>".discuzcode($post['postappend']);
 				}
 			}
 		}
