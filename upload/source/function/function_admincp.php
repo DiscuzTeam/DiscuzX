@@ -107,8 +107,12 @@ function cplang($name, $replace = [], $output = false, $mitframeApp = false) {
 	}
 	$lang = [];
 	$mitframeApp = $mitframeApp ?: (defined('MITFRAME_APP_ADMIN') ? MITFRAME_APP_ADMIN : '');
-	if($mitframeApp && file_exists($loadfile = MITFRAME_APP($mitframeApp).'/language/lang_admincp.php')) {
-		include $loadfile;
+	if($mitframeApp) {
+		if(!empty($_G['i18n']) && file_exists($loadfile = MITFRAME_APP($mitframeApp).'/i18n/'.$_G['i18n'].'/lang_admincp.php')) {
+			include $loadfile;
+		} elseif(file_exists($loadfile = MITFRAME_APP($mitframeApp).'/i18n/'.currentlang().'/lang_admincp.php')) {
+			include $loadfile;
+		}
 		$_G['lang']['admincp'] += $lang;
 	}
 

@@ -26,7 +26,7 @@ if(submitcheck('postappendsubmit')) {
 		$specialextra = substr($post['message'], $sppos + 3);
 		$post['message'] = substr($post['message'], 0, $sppos);
 	}
-	$message = $post['message']."\n\n[b]".lang('forum/misc', 'postappend_content'). ' (' .dgmdate(TIMESTAMP)."):[/b]\n$message";
+	$message = $post['message']."\n\n[postappend][b]".lang('forum/misc', 'postappend_content').' ('.dgmdate(TIMESTAMP)."):[/b]\n$message"."[/postappend]";
 	if($sppos) {
 		$message .= chr(0).chr(0).chr(0).$specialextra;
 	}
