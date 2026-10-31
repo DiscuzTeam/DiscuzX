@@ -140,43 +140,139 @@ class pay_wechat extends pay_base {
 	public function wechat_sign_verify() {
 		$xml = file_get_contents('php://input');
 		$data = $this->wechat_x2o($xml);
+		if(!is_array($data) || empty($data['sign'])) {
+			return ['code' => 50000, 'data' => $data];
+		}
 		$sign = $this->wechat_sign($this->settings['v1_key'], $data, 1);
 		if($sign != $data['sign']) {
 			return ['code' => 50001, 'data' => $data];
 		}
-		if($data['return_code'] != 'SUCCESS') {
-			return ['code' => 50002, 'data' => $data];
+		if(($data['return_code'] ?? '') != 'SUCCESS') {
+			return ['code' => 50008, 'data' => $data];
 		}
-		if($data['result_code'] != 'SUCCESS') {
-			return ['code' => 50003, 'data' => $data];
+		if(($data['result_code'] ?? '') != 'SUCCESS') {
+			return ['code' => 50007, 'data' => $data];
 		}
 		return ['code' => 200, 'data' => $data];
 	}
 
 	public function v3_wechat_sign_verify() {
-		$nonce = $_SERVER['HTTP_WECHATPAY_NONCE'];
-		$timestamp = $_SERVER['HTTP_WECHATPAY_TIMESTAMP'];
-		$serial = $_SERVER['HTTP_WECHATPAY_SERIAL'];
+		$nonce = $_SERVER['HTTP_WECHATPAY_NONCE'] ?? '';
+		$timestamp = $_SERVER['HTTP_WECHATPAY_TIMESTAMP'] ?? '';
+		$serial = $_SERVER['HTTP_WECHATPAY_SERIAL'] ?? '';
+		$signature = $_SERVER['HTTP_WECHATPAY_SIGNATURE'] ?? '';
 		$json = file_get_contents('php://input');
-		$signature = $_SERVER['HTTP_WECHATPAY_SIGNATURE'];
-
-		$serial = strtoupper(ltrim($serial, '0'));
-		$public_key = $this->settings['v3_certificates'][$serial];
-		if(!$public_key) {
-			return ['code' => 50001, 'data' => $json];
+		if($nonce === '' || $timestamp === '' || $serial === '' || $signature === '' || $json === '') {
+			return ['code' => 50000, 'data' => $json, 'serial' => $serial];
 		}
-		$signature = base64_decode($signature);
+		$public_key = $this->v3_wechat_public_key($serial);
+		if(!$public_key) {
+			// 序列号未匹配到验签公钥：把本地缓存的证书序列号一并带出，便于直接判断是证书轮换还是公钥模式未配置
+			return [
+				'code' => 50001,
+				'data' => $json,
+				'serial' => $serial,
+				'certs' => is_array($this->settings['v3_certificates'] ?? null) ? implode(',', array_keys($this->settings['v3_certificates'])) : '',
+			];
+		}
 		$signstr = $timestamp."\n".$nonce."\n".$json."\n";
-		if(!openssl_verify($signstr, $signature, $public_key, 'sha256WithRSAEncryption')) {
-			return ['code' => 50002, 'data' => $json];
+		if(openssl_verify($signstr, base64_decode($signature), $public_key, 'sha256WithRSAEncryption') !== 1) {
+			return ['code' => 50001, 'data' => $json, 'serial' => $serial];
 		}
 		$resource = json_decode($json, true);
-		if($resource['event_type'] != 'TRANSACTION.SUCCESS') {
-			return ['code' => 50003, 'data' => $resource];
+		if(!is_array($resource) || empty($resource['event_type'])) {
+			return ['code' => 50008, 'data' => $json, 'serial' => $serial];
 		}
-		$resource = $resource['resource'];
-		$data = $this->v3_wechat_decrypt2string($resource['associated_data'], $resource['nonce'], $resource['ciphertext']);
+		if($resource['event_type'] != 'TRANSACTION.SUCCESS') {
+			// 非支付成功事件（如退款结果通知）不属于本接口处理范围，但仍需应答成功
+			return ['code' => 200, 'data' => '', 'ignored' => true, 'event_type' => $resource['event_type']];
+		}
+		$resource = $resource['resource'] ?? [];
+		$data = $this->v3_wechat_decrypt2string($resource['associated_data'] ?? '', $resource['nonce'] ?? '', $resource['ciphertext'] ?? '');
+		if(!$data) {
+			return ['code' => 50006, 'data' => $json, 'serial' => $serial];
+		}
 		return ['code' => 200, 'data' => $data];
+	}
+
+	/**
+	 * 按 Wechatpay-Serial 取验签公钥：优先「微信支付公钥」，其次平台证书（序列号未命中时自动刷新）
+	 */
+	private function v3_wechat_public_key($serial) {
+		$serial = strtoupper(trim($serial));
+		if($serial === '') {
+			return '';
+		}
+		$publickeyid = strtoupper(trim($this->settings['v3_public_key_id'] ?? ''));
+		if(!empty($this->settings['v3_public_key']) && ($publickeyid === '' || $publickeyid === $serial)) {
+			$public_key = self::wechat_pem_format($this->settings['v3_public_key']);
+			if($public_key) {
+				return $public_key;
+			}
+		}
+		$public_key = $this->v3_wechat_certificate_find($serial);
+		if($public_key) {
+			return $public_key;
+		}
+		$this->v3_wechat_certificates_refresh();
+		return $this->v3_wechat_certificate_find($serial);
+	}
+
+	private function v3_wechat_certificate_find($serial) {
+		$certificates = is_array($this->settings['v3_certificates'] ?? null) ? $this->settings['v3_certificates'] : [];
+		if(empty($certificates)) {
+			return '';
+		}
+		if(!empty($certificates[$serial])) {
+			return $certificates[$serial];
+		}
+		// 序列号大小写/前导 0 差异的兜底匹配
+		$normalized = strtoupper(ltrim($serial, '0'));
+		foreach($certificates as $k => $v) {
+			if(strtoupper(ltrim($k, '0')) === $normalized) {
+				return $v;
+			}
+		}
+		return '';
+	}
+
+	/**
+	 * 刷新微信支付平台证书（每小时最多一次，避免平台证书不可用时被回调反复触发）
+	 */
+	private function v3_wechat_certificates_refresh() {
+		$lasttime = intval($this->settings['v3_certificates_time'] ?? 0);
+		if($lasttime && TIMESTAMP - $lasttime < 3600) {
+			return false;
+		}
+		$result = $this->v3_wechat_certificates();
+		$save = ['v3_certificates_time' => TIMESTAMP];
+		if($result['code'] == 200 && !empty($result['data'])) {
+			$save['v3_certificates'] = $result['data'];
+		}
+		$settings = table_common_setting::t()->fetch_setting('ec_wechat', true);
+		$settings = is_array($settings) ? array_filter($settings, 'is_string', ARRAY_FILTER_USE_KEY) : [];
+		table_common_setting::t()->update_setting('ec_wechat', array_merge($settings, $save));
+		$this->settings = array_merge((array)$this->settings, $save);
+		if(empty($save['v3_certificates'])) {
+			payment::notifylog('wechat', 0, 50005, '', ['detail' => 'platform certificates refresh failed', 'response' => $result['response'] ?? '']);
+		}
+		return !empty($save['v3_certificates']);
+	}
+
+	private static function wechat_pem_format($pem) {
+		$pem = trim(str_replace(["\r\n", "\r", '\\n'], ["\n", "\n", "\n"], (string)$pem));
+		if($pem === '') {
+			return '';
+		}
+		if(!str_contains($pem, '-----BEGIN')) {
+			// 允许只粘贴 base64 主体
+			$body = preg_replace('/\s+/', '', $pem);
+			if($body === '') {
+				return '';
+			}
+			$pem = "-----BEGIN PUBLIC KEY-----\n".chunk_split($body, 64, "\n")."-----END PUBLIC KEY-----";
+		}
+		return $pem;
 	}
 
 	public function v3_wechat_support() {
@@ -194,10 +290,10 @@ class pay_wechat extends pay_base {
 	public function v3_wechat_certificates() {
 		global $_G;
 		$api = SDK_WEIXIN_PAY_V3_CERTIFICATES;
-		$res = $this->v3_wechat_request_json($api, '', 'GET');
-		$res = json_decode($res, true);
+		$raw = $this->v3_wechat_request_json($api, '', 'GET');
+		$res = json_decode($raw, true);
 		$list = [];
-		if($res['data']) {
+		if(!empty($res['data'])) {
 			foreach($res['data'] as $item) {
 				$serial_no = $item['serial_no'];
 				$item = $item['encrypt_certificate'];
@@ -205,7 +301,8 @@ class pay_wechat extends pay_base {
 				$list[$serial_no] = $data;
 			}
 		}
-		return ['code' => 200, 'data' => $list];
+		// response 仅在拉取失败时回传原始应答，便于日志定位（如商户号使用「微信支付公钥」模式时该接口不可用）
+		return ['code' => 200, 'data' => $list, 'response' => $list ? '' : substr((string)$raw, 0, 300)];
 	}
 
 	protected function enable() {
@@ -455,11 +552,18 @@ class pay_wechat extends pay_base {
 	}
 
 	private function wechat_x2o($xml) {
+		if(!is_string($xml) || trim($xml) === '') {
+			return [];
+		}
 		if(function_exists('libxml_disable_entity_loader')) {
 			libxml_disable_entity_loader(true);
 		}
-		$data = json_decode(json_encode(simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA)), true);
-		return $data;
+		$xmlobj = @simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
+		if(!$xmlobj) {
+			return [];
+		}
+		$data = json_decode(json_encode($xmlobj), true);
+		return is_array($data) ? $data : [];
 	}
 
 	private function wechat_sign($token, $data, $sign = 0) {
@@ -559,6 +663,14 @@ class pay_wechat extends pay_base {
 	}
 
 	private function v3_wechat_request_json($api, $json = '', $method = 'POST') {
+		$header = [
+			'Accept' => 'application/json',
+			'Authorization' => 'WECHATPAY2-SHA256-RSA2048 '.$this->v3_wechat_authorization($api, $method, $json)
+		];
+		if(!empty($this->settings['v3_public_key_id'])) {
+			// 微信支付公钥模式下，请求需要带上公钥 ID
+			$header['Wechatpay-Serial'] = $this->settings['v3_public_key_id'];
+		}
 		$client = filesock::open([
 			'url' => $api,
 			'method' => $method,
@@ -567,10 +679,7 @@ class pay_wechat extends pay_base {
 			// APIv3 returns error info as a JSON body with HTTP 4xx/5xx status.
 			// Must NOT fail-on-error, otherwise the error body is dropped and the caller gets an empty response.
 			'failonerror' => false,
-			'header' => [
-				'Accept' => 'application/json',
-				'Authorization' => 'WECHATPAY2-SHA256-RSA2048 '.$this->v3_wechat_authorization($api, $method, $json)
-			]
+			'header' => $header
 		]);
 		$data = $client->request();
 		if(!$data) {

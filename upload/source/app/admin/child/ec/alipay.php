@@ -86,6 +86,8 @@ if(!submitcheck('alipaysubmit')) {
 	table_common_setting::t()->update_setting('ec_alipay', $alipaysettings);
 	updatecache('setting');
 
+	payment::cron_sync();
+
 	cpmsg('alipay_succeed', 'action=ec&operation=alipay', 'succeed');
 }
 	

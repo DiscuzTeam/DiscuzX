@@ -15,6 +15,9 @@ if(!defined('APPTYPEID')) {
 $checktype = $_GET['checktype'];
 cpheader();
 
+// 幂等同步支付对账计划任务：老站点升级后打开本页即自动注册，无需执行 SQL
+payment::cron_sync();
+
 $operations[$operation] = true;
 
 $navs = [

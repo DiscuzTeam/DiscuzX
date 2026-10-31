@@ -39,18 +39,76 @@ class payment {
 		$param['enable'] = 1;
 		$channels[$channel] = $param;
 		table_common_setting::t()->update_setting('payment_channels', $channels);
+		self::cron_sync();
 	}
 
 	public static function channels_switch($channel, $boolean) {
 		$channels = self::channels_setting();
 		$channels[$channel]['enable'] = $boolean;
 		table_common_setting::t()->update_setting('payment_channels', $channels);
+		self::cron_sync();
 	}
 
 	public static function channels_delete($channel) {
 		$channels = self::channels_setting();
 		unset($channels[$channel]);
 		table_common_setting::t()->update_setting('payment_channels', $channels);
+		self::cron_sync();
+	}
+
+	/**
+	 * 支付对账计划任务与渠道开关的幂等同步
+	 *
+	 * 有任意支付渠道开通：写入（或重新启用）cron_payment_check.php，每 10 分钟执行一次
+	 * 全部渠道关闭：停用该计划任务（保留记录，便于再次开通时秒级生效）
+	 * 可重复调用，不会产生重复记录，供后台电子商务设置与渠道开关共用
+	 */
+	public static function cron_sync() {
+		$filename = 'cron_payment_check.php';
+		$cronid = table_common_cron::t()->get_cronid_by_filename($filename);
+		if(self::enable()) {
+			if(!$cronid) {
+				$name = '支付订单对账';
+				if(defined('IN_ADMINCP')) {
+					$langname = lang('admincp', 'ec_payment_check_cron');
+					if($langname && $langname != 'ec_payment_check_cron') {
+						$name = $langname;
+					}
+				}
+				table_common_cron::t()->insert([
+					'available' => 1,
+					'type' => 'system',
+					'name' => $name,
+					'filename' => $filename,
+					'lastrun' => 0,
+					'nextrun' => TIMESTAMP + 600,
+					'weekday' => -1,
+					'day' => -1,
+					'hour' => -1,
+					'minute' => "0\t10\t20\t30\t40\t50",
+				]);
+				return self::cron_reset_nextrun();
+			}
+			$cron = table_common_cron::t()->fetch($cronid);
+			if($cron && !$cron['available']) {
+				table_common_cron::t()->update($cronid, ['available' => 1, 'nextrun' => TIMESTAMP + 600]);
+				return self::cron_reset_nextrun();
+			}
+		} elseif($cronid) {
+			$cron = table_common_cron::t()->fetch($cronid);
+			if($cron && $cron['available']) {
+				table_common_cron::t()->update($cronid, ['available' => 0]);
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * 让计划任务缓存（cronnextrun）在下一次请求时重新计算，使新增/启用的任务尽快生效
+	 */
+	private static function cron_reset_nextrun() {
+		savecache('cronnextrun', TIMESTAMP);
+		return true;
 	}
 
 	public static function channels_setting() {
@@ -155,7 +213,7 @@ class payment {
 			} else {
 				$error = 50003;
 			}
-			self::paymentlog($channel, 0, 0, 0, $error, ['out_biz_no' => $out_biz_no, 'trade_no' => $trade_no]);
+			self::notifylog($channel, 0, $error, $out_biz_no, ['trade_no' => $trade_no], is_array($order) ? $order : []);
 			return true;
 		}
 
@@ -168,9 +226,67 @@ class payment {
 		if($status) {
 			self::retry_callback_order($order);
 		} else {
-			self::paymentlog($channel, 0, $order['uid'], $order['id'], 50004, ['out_biz_no' => $out_biz_no, 'trade_no' => $trade_no]);
+			self::notifylog($channel, 0, 50004, $out_biz_no, ['trade_no' => $trade_no], $order);
 		}
 		return true;
+	}
+
+	/**
+	 * 记录支付渠道异步回调日志（X5 标准日志，写入 common_log，type=pmt）
+	 *
+	 * 后台：工具 - 日志 - 支付日志；异常码对应语言包 payment_error_{code}
+	 *
+	 * @param string $channel   渠道标识 wechat/alipay/qpay
+	 * @param int $status       1=回调处理完成，0=回调异常
+	 * @param int $error        异常码，0 表示无异常
+	 * @param string $out_biz_no 商户订单号
+	 * @param array $data       附加信息（展开日志行可见）
+	 * @param array|null $order 已取到的订单记录，避免重复查询
+	 */
+	public static function notifylog($channel, $status, $error, $out_biz_no = '', $data = [], $order = null) {
+		if($order === null) {
+			$order = $out_biz_no ? table_common_payment_order::t()->fetch_by_biz_no($out_biz_no) : [];
+		}
+		$logdata = array_merge(['out_biz_no' => $out_biz_no], is_array($data) ? $data : ['detail' => $data]);
+		self::paymentlog($channel, $status ? 1 : 0, (int)($order['uid'] ?? 0), (int)($order['id'] ?? 0), intval($error), self::notifylog_filter($logdata));
+	}
+
+	/**
+	 * 回调日志落单：调用 finish_order 并记录成功回调
+	 *
+	 * 失败场景（订单不存在/已完成/更新失败）由 finish_order 自行记录，此处不重复记录
+	 */
+	public static function finish_order_notify($channel, $out_biz_no, $trade_no, $payment_time, $data = []) {
+		$order = $out_biz_no ? table_common_payment_order::t()->fetch_by_biz_no($out_biz_no) : [];
+		$unpaid = $order && empty($order['status']);
+		$is_success = self::finish_order($channel, $out_biz_no, $trade_no, $payment_time);
+		if($unpaid) {
+			$order = table_common_payment_order::t()->fetch_by_biz_no($out_biz_no);
+			if(!empty($order['status'])) {
+				self::notifylog($channel, 1, 0, $out_biz_no, array_merge([
+					'trade_no' => $trade_no,
+					'payment_time' => $payment_time ? dgmdate($payment_time, 'Y-m-d H:i:s') : ''
+				], is_array($data) ? $data : []), $order);
+			}
+		}
+		return $is_success;
+	}
+
+	private static function notifylog_filter($data) {
+		array_walk_recursive($data, function (&$v) {
+			if(!is_scalar($v) || is_bool($v)) {
+				$v = is_bool($v) ? intval($v) : '';
+				return;
+			}
+			$v = (string)$v;
+			if(strlen($v) > 500) {
+				$v = substr($v, 0, 500).'...';
+			}
+		});
+		// HEX_* 转义：日志明细会原样输出到后台页面，避免回调内容里的 HTML 被执行
+		// common_log.data 为 json 字段，编码失败会导致写入异常，此处兜底
+		$json = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
+		return $json === false ? '{"detail":"encode failed"}' : $json;
 	}
 
 	public static function retry_callback_order($order) {

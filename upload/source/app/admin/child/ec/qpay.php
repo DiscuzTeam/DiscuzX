@@ -70,6 +70,8 @@ if(!submitcheck('qpaysubmit')) {
 	table_common_setting::t()->update_setting('ec_qpay', $qpaysettings);
 	updatecache('setting');
 
+	payment::cron_sync();
+
 	cpmsg('qpay_succeed', 'action=ec&operation=qpay', 'succeed');
 }
 	

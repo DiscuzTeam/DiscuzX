@@ -70,15 +70,18 @@ class pay_qpay extends pay_base {
 	public function qpay_sign_verify() {
 		$xml = file_get_contents('php://input');
 		$data = $this->qpay_x2o($xml);
+		if(!is_array($data) || empty($data['sign'])) {
+			return ['code' => 50000, 'data' => $data];
+		}
 		$sign = $this->qpay_sign($this->settings['v1_key'], $data, 1);
 		if($sign != $data['sign']) {
 			return ['code' => 50001, 'data' => $data];
 		}
-		if($data['return_code'] != 'SUCCESS') {
-			return ['code' => 50002, 'data' => $data];
+		if(($data['return_code'] ?? '') != 'SUCCESS') {
+			return ['code' => 50008, 'data' => $data];
 		}
-		if($data['result_code'] != 'SUCCESS') {
-			return ['code' => 50003, 'data' => $data];
+		if(($data['result_code'] ?? '') != 'SUCCESS') {
+			return ['code' => 50007, 'data' => $data];
 		}
 		return ['code' => 200, 'data' => $data];
 	}
