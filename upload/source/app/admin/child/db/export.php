@@ -282,7 +282,7 @@ if(!submitcheck('exportsubmit')) {
 					'cachevalue' => serialize(['dateline' => $_G['timestamp']]),
 					'dateline' => $_G['timestamp'],
 				], false, true);
-				$deletetips = $_G['config']['admincp']['dbimport'] ? cplang('db_delete_tips', ['filename' => basename($_GET['usezip'] == 2 ? $backupfilename.'-1.zip' : $backupfilename), 'FORMHASH' => formhash()]) : '';
+				$deletetips = '';
 				cpmsg('database_export_multivol_succeed', '', 'succeed', ['volume' => $volume, 'filelist' => $filelist, 'deletetips' => $deletetips]);
 			}
 		}
