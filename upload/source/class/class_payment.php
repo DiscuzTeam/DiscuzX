@@ -258,6 +258,16 @@ class payment {
 	 */
 	public static function finish_order_notify($channel, $out_biz_no, $trade_no, $payment_time, $data = []) {
 		$order = $out_biz_no ? table_common_payment_order::t()->fetch_by_biz_no($out_biz_no) : [];
+		// 渠道一致性校验：订单已记录下单渠道且与回调渠道不符时不予落单，防跨渠道顶单/多渠道密钥混用
+		// 未记录渠道的历史订单不做限制；被拦截的订单可由后台「支付订单 - 查询」按实际支付渠道人工补单
+		if($order && !empty($order['channel']) && $order['channel'] != $channel) {
+			self::notifylog($channel, 0, 50011, $out_biz_no, array_merge([
+				'trade_no' => $trade_no,
+				'order_channel' => $order['channel'],
+			], is_array($data) ? $data : []), $order);
+			// 已确定无法自动完成，应答成功避免支付平台持续重试
+			return true;
+		}
 		$unpaid = $order && empty($order['status']);
 		$is_success = self::finish_order($channel, $out_biz_no, $trade_no, $payment_time);
 		if($unpaid) {

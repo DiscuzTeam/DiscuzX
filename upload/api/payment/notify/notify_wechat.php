@@ -19,6 +19,10 @@ $discuz->init();
 
 $payment = new pay_wechat();
 
+if(!$payment->enabled()) {
+	payment::notifylog('wechat', 0, 50010, '', ['detail' => 'callback received while channel disabled']);
+}
+
 if(!empty($_SERVER['HTTP_WECHATPAY_SIGNATURE'])) {
 
 	// APIv3
