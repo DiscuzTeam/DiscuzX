@@ -31,7 +31,7 @@ function getactionarray() {
 		if(!empty($menu_array['custom'])) {
 			$menu_array = $menu_array['custom'];
 		}
-		$menu += [$menuData['platform'] => ['name' => $menu_array['name'], 'menu' => $menu_array['menu']]];
+		$menu += [$menuData['platform'] => ['name' => $menu_array['name'] ?? $menu_array['title'] ?? $menuData['platform'], 'menu' => (array)($menu_array['menu'] ?? [])]];
 	}
 	foreach($menu as $platform => $pv) {
 		foreach($pv['menu'] as $top => $v) {
