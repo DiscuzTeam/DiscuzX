@@ -48,8 +48,9 @@
 						<div id="multipic_img"></div>
 					</div>
 				</li>
-				<!-- 隐藏的文件选择框：由工具行中的图片/视频入口触发 -->
-				<li id="mp_hidden_inputs" style="display:none;">
+				<!-- 隐藏的文件选择框：由工具行中的图片/视频入口触发。
+				     注意：不能用 display:none，部分手机浏览器（iOS / 内置 WebView）会忽略对不可见 file 控件的程序化点击 -->
+				<li id="mp_hidden_inputs" style="position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden;">
 					<input name="photos[]" type="file" class="file" id="multipic_sel" multiple="multiple"
 					       accept=".jpg,.jpeg,.png,.gif,.webp,.bmp,image/jpeg,image/png">
 					<!--{if $doing_videoallow}-->
@@ -88,12 +89,39 @@
 	var mpvideomaxsize = {$doing_videomaxsize} * 1048576;
 	var mpvideoexts = '{$doing_videoext}';
 	var MultiPicUploaded = 0;
+	// 已选择但尚未提交的文件：与 file 控件保持同步，保证预览里的图片能随表单一起上传
+	var mpFileStore = [];
 
 	function mpShowError(msg) {
 		if (typeof showError === 'function') {
 			showError(msg);
 		} else {
 			alert(msg);
+		}
+	}
+
+	// 同一元素的同一事件只绑定一次，避免重复绑定导致一次选择生成多份预览
+	function mpBind(el, evt, fn) {
+		if (!el || el['mpbound_' + evt]) {
+			return;
+		}
+		el['mpbound_' + evt] = true;
+		el.addEventListener(evt, fn);
+	}
+
+	// 把待上传文件回写到 file 控件，提交表单时才能带上这些文件
+	function mpSyncFileInput() {
+		var input = document.getElementById('multipic_sel');
+		if (!input || typeof DataTransfer === 'undefined') {
+			return;
+		}
+		try {
+			var dt = new DataTransfer();
+			for (var i = 0; i < mpFileStore.length; i++) {
+				dt.items.add(mpFileStore[i]);
+			}
+			input.files = dt.files;
+		} catch (e) {
 		}
 	}
 
@@ -105,7 +133,7 @@
 			var moodPicBtn = document.getElementById('moodfm_pic');
 			var fileInput = document.getElementById('multipic_sel');
 			if (moodPicBtn && fileInput) {
-				moodPicBtn.addEventListener('click', function(e) {
+				mpBind(moodPicBtn, 'click', function(e) {
 					e.preventDefault();
 					fileInput.click();
 				});
@@ -113,11 +141,11 @@
 			var moodVideoBtn = document.getElementById('moodfm_video');
 			var videoInput = document.getElementById('video_sel');
 			if (moodVideoBtn && videoInput) {
-				moodVideoBtn.addEventListener('click', function(e) {
+				mpBind(moodVideoBtn, 'click', function(e) {
 					e.preventDefault();
 					videoInput.click();
 				});
-				videoInput.addEventListener('change', function(event) {
+				mpBind(videoInput, 'change', function(event) {
 					const file = event.target.files && event.target.files[0];
 					if (!file) {
 						return;
@@ -202,7 +230,7 @@
 					imgContainer.insertBefore(preview, imgContainer.firstChild);
 				});
 			}
-			document.getElementById('multipic_sel').addEventListener('change', function(event) {
+			mpBind(document.getElementById('multipic_sel'), 'change', function(event) {
 				const imgContainer = document.getElementById('multipic_img');
 				const multiPicList = document.getElementById('MultiPicList');
 				const input = event.target;
@@ -210,7 +238,6 @@
 
 				// 先整体校验本次选择的文件：数量是否超限、单张是否超尺寸，未通过的立即提示并告知已选数量
 				const accepted = [];
-				let rejected = false;
 				for (let i = 0; i < files.length; i++) {
 					const file = files[i];
 					if (!file) {
@@ -219,25 +246,25 @@
 					if (MultiPicUploaded + accepted.length >= mpimgmax) {
 						var nummsg = '{lang doing_upload_pic_num_exceed}';
 						mpShowError(nummsg.replace('@num@', mpimgmax).replace('@cur@', MultiPicUploaded + accepted.length));
-						rejected = true;
 						break;
 					}
 					if (file.size > mpimgmaxsize) {
 						var picsizemsg = '{lang doing_upload_pic_size_exceed}';
 						mpShowError(picsizemsg.replace('@size@', {$doing_imgmaxsize}));
-						rejected = true;
 						continue;
 					}
 					accepted.push(file);
 				}
-				if (rejected && typeof DataTransfer !== 'undefined') {
-					// 把未通过校验的文件从本次选择中剔除，避免随表单提交后由服务端拦截
-					const dt = new DataTransfer();
-					for (let j = 0; j < accepted.length; j++) {
-						dt.items.add(accepted[j]);
-					}
-					input.files = dt.files;
+				// 把通过校验的文件并入待上传列表并回写到 file 控件：
+				// 未通过校验的文件不会进入列表，多次选择也可以累加，提交表单时一起上传
+				if (typeof DataTransfer !== 'undefined') {
+					mpFileStore = mpFileStore.concat(accepted);
+					mpSyncFileInput();
+				} else {
+					// 不支持 DataTransfer 的旧内核只能保留本次选择，避免预览与实际提交不一致
+					mpFileStore = accepted.slice(0);
 				}
+				MultiPicUploaded = mpFileStore.length;
 				if (accepted.length > 0 && multiPicList) {
 					multiPicList.style.display = '';
 				}
@@ -250,6 +277,8 @@
 							const imgWrapper = document.createElement('div');
 							imgWrapper.className = 'previewbigpic z';
 							imgWrapper.setAttribute('data-file-index', index);
+							// 记录预览对应的文件，删除预览时据此把它从待上传列表移除
+							imgWrapper.mpFile = currentFile;
 							const removeDiv = document.createElement('i');
 							removeDiv.className = 'fico-error';
 							removeDiv.onclick = function() {
@@ -261,7 +290,6 @@
 							img.style.height = '100%';
 							img.style.objectFit = 'cover';
 							imgContainer.prepend(imgWrapper);
-							MultiPicUploaded++;
 							updateMpCounter();
 						};
 						reader.onerror = function() {
@@ -269,14 +297,6 @@
 						reader.readAsDataURL(currentFile);
 					})(accepted[k], k);
 				}
-				// 选择完成后立刻替换一个新的空 file input（隐藏容器内），以便继续选择
-				const oldInput = document.getElementById('multipic_sel');
-				if (oldInput) {
-					const newInput = oldInput.cloneNode(true);
-					newInput.value = '';
-					oldInput.parentNode.replaceChild(newInput, oldInput);
-				}
-				listenup();
 			});
 		}
 	}
@@ -322,10 +342,21 @@
 	}
 
 	function MultiPicDel(obj) {
-		var oldAid = obj.getAttribute('dataid');
-		console.log(oldAid);
-		MultiPicUploaded--;
-		obj.parentNode.remove();
+		var wrapper = obj.parentNode;
+		// 从待上传列表中移除被删除的图片，并同步回 file 控件，避免删除后仍被提交
+		if (wrapper && wrapper.mpFile) {
+			for (var i = 0; i < mpFileStore.length; i++) {
+				if (mpFileStore[i] === wrapper.mpFile) {
+					mpFileStore.splice(i, 1);
+					break;
+				}
+			}
+			mpSyncFileInput();
+		}
+		MultiPicUploaded = mpFileStore.length;
+		if (wrapper) {
+			wrapper.remove();
+		}
 		updateMpCounter();
 
 		if (MultiPicUploaded <= 0) {
