@@ -12,7 +12,7 @@ if(!defined('IN_DISCUZ')) {
 
 class editorblock_image {
 
-	var $version = '1.2.2';
+	var $version = '1.2.3';
 	var $name = 'name';
 	var $available = 1; // 默认启用状态 0:不启用 1:启用
 	var $columns = 1; //  默认是否支持多列 0:不支持 1:支持
@@ -289,6 +289,7 @@ EOF;
             <div class="cdx-input image-tool__caption" data-placeholder="{data.caption}">{data.caption}</div>
         </div>
     </div>
+    [jsfile imageview.js]
 </div>
 EOF;
 	}
