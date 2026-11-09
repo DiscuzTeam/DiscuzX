@@ -214,8 +214,12 @@ class logging_ctl {
 				if($invite['id']) {
 					$result = table_common_invite::t()->count_by_uid_fuid($invite['uid'], $uid);
 					if(!$result) {
-						table_common_invite::t()->update($invite['id'], ['fuid' => $uid, 'fusername' => $_G['username']]);
-						updatestat('invite');
+						$consumed = table_common_invite::t()->update_consume($invite['id'], $uid, $_G['username']);
+						if(intval($consumed) !== 1) {
+							$invite = [];
+						} else {
+							updatestat('invite');
+						}
 					} else {
 						$invite = [];
 					}
@@ -590,7 +594,27 @@ class register_ctl {
 				$emailstatus = 1;
 			}
 
-			if($this->setting['regstatus'] == 2 && empty($invite) && !$invitestatus) {
+			$inviteLock = '';
+			if(!empty($invite['id'])) {
+				$inviteLock = 'invite_reg_'.intval($invite['id']);
+				if(discuz_process::islocked($inviteLock, 300, 1)) {
+					if($this->setting['regstatus'] == 2 && !$invitestatus) {
+						showmessage('not_open_registration_invite');
+					}
+					$invite = [];
+					$inviteLock = '';
+				} else {
+					$inviteRow = table_common_invite::t()->fetch($invite['id'], true);
+					if(empty($inviteRow) || !empty($inviteRow['fuid']) || $inviteRow['status'] != 1 || (!empty($inviteRow['endtime']) && $_G['timestamp'] >= $inviteRow['endtime'])) {
+						discuz_process::unlock($inviteLock);
+						$inviteLock = '';
+						if($this->setting['regstatus'] == 2 && !$invitestatus) {
+							showmessage('not_open_registration_invite');
+						}
+						$invite = [];
+					}
+				}
+			} elseif($this->setting['regstatus'] == 2 && !$invitestatus) {
 				showmessage('not_open_registration_invite');
 			}
 
@@ -868,11 +892,21 @@ class register_ctl {
 			if($invite['id']) {
 				$result = table_common_invite::t()->count_by_uid_fuid($invite['uid'], $uid);
 				if(!$result) {
-					table_common_invite::t()->update($invite['id'], ['fuid' => $uid, 'fusername' => $_G['username'], 'regdateline' => $_G['timestamp'], 'status' => 2]);
-					updatestat('invite');
+					$consumed = table_common_invite::t()->update_consume($invite['id'], $uid, $_G['username'], [
+						'regdateline' => $_G['timestamp'],
+						'status' => 2,
+					]);
+					if(intval($consumed) !== 1) {
+						$invite = [];
+					} else {
+						updatestat('invite');
+					}
 				} else {
 					$invite = [];
 				}
+			}
+			if($inviteLock) {
+				discuz_process::unlock($inviteLock);
 			}
 			if($invite['uid']) {
 				if($this->setting['inviteconfig']['inviteaddcredit']) {

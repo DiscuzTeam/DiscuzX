@@ -29,7 +29,7 @@ if($tasks) {
 			$task['name'].($task['filemtime'] > TIMESTAMP - 86400 ? ' <font color="red">New!</font>' : ''),
 			$task['version'],
 			$task['copyright'],
-			in_array($task['class'], $custom_scripts) ? "<a href=\"".ADMINSCRIPT."?action=tasks&operation=upgrade&script={$task['class']}\" class=\"act\">{$lang['tasks_upgrade']}</a> <a href=\"".ADMINSCRIPT."?action=tasks&operation=uninstall&script={$task['class']}\" class=\"act\">{$lang['tasks_uninstall']}</a><br />" : "<a href=\"".ADMINSCRIPT."?action=tasks&operation=install&script={$task['class']}\" class=\"act\">{$lang['tasks_install']}</a>"
+			in_array($task['class'], $custom_scripts) ? "<a href=\"".ADMINSCRIPT."?action=tasks&operation=upgrade&script={$task['class']}&formhash=".FORMHASH."\" class=\"act\">{$lang['tasks_upgrade']}</a> <a href=\"".ADMINSCRIPT."?action=tasks&operation=uninstall&script={$task['class']}&formhash=".FORMHASH."\" class=\"act\">{$lang['tasks_uninstall']}</a><br />" : "<a href=\"".ADMINSCRIPT."?action=tasks&operation=install&script={$task['class']}&formhash=".FORMHASH."\" class=\"act\">{$lang['tasks_install']}</a>"
 		]);
 	}
 } else {

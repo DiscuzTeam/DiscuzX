@@ -183,7 +183,7 @@
 										<h4>
 											<span class="xg1 xw0 y">
 											<!--{if $_GET['view'] == 'blacklist'}-->
-												<a href="home.php?mod=spacecp&ac=friend&op=blacklist&subop=delete&uid=$value[uid]&start=$_GET[start]">{lang delete_blacklist}</a>
+												<a href="home.php?mod=spacecp&ac=friend&op=blacklist&subop=delete&uid=$value[uid]&hash={FORMHASH}&start=$_GET[start]">{lang delete_blacklist}</a>
 											<!--{elseif $_GET['view'] == 'visitor' || $_GET['view'] == 'trace'}-->
 												<!--{date($value['dateline'], 'n{lang month}j{lang day}')}-->
 											<!--{elseif $_GET['view'] == 'online'}-->
@@ -300,7 +300,7 @@
 								if(values['type'] == 'add') {
 									fObj.innerHTML = '{lang follow_del}';
 									fObj.className = 'flw_btn_unfo';
-									fObj.href = 'home.php?mod=spacecp&ac=follow&op=del&fuid='+values['fuid']+'&from='+values['from'];
+									fObj.href = 'home.php?mod=spacecp&ac=follow&op=del&hash={FORMHASH}&fuid='+values['fuid']+'&from='+values['from'];
 								} else if(values['type'] == 'del') {
 									fObj.innerHTML = '{lang follow_add}TA';
 									fObj.className = 'flw_btn_fo';

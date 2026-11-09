@@ -10,15 +10,17 @@ if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
 
-$exif = table_forum_attachment_exif::t()->fetch($_GET['aid']);
-$s = $exif['exif'];
-if(!$s) {
-	require_once libfile('function/attachment');
-	$s = getattachexif($_GET['aid']);
-	table_forum_attachment_exif::t()->insert_exif($_GET['aid'], $s);
+$aid = intval($_GET['aid']);
+$exif = $aid ? table_forum_attachment_exif::t()->fetch($aid) : [];
+$s = $exif['exif'] ?? '';
+if(!$s && $aid) {
+    require_once libfile('function/attachment');
+    $s = getattachexif($aid);
+    if($s !== '') {
+        table_forum_attachment_exif::t()->insert_exif($aid, $s);
+    }
 }
 include template('common/header_ajax');
-echo $s;
+echo strip_tags($s, '<br>');
 include template('common/footer_ajax');
 exit;
-	

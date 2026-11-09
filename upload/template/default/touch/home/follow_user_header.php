@@ -33,7 +33,7 @@
 			<!--{else}-->
 				<span class="z flw_status_1">{lang follow_followed},</span>
 			<!--{/if}-->
-			<a id="a_followmod_{$uid}" href="home.php?mod=spacecp&ac=follow&op=del&fuid=$uid&from=head" onclick="ajaxget(this.href);doane(event);" class="xi2">{lang follow_del}</a>
+			<a id="a_followmod_{$uid}" href="home.php?mod=spacecp&ac=follow&op=del&hash={FORMHASH}&fuid=$uid&from=head" onclick="ajaxget(this.href);doane(event);" class="xi2">{lang follow_del}</a>
 		</div>
 		<div id="unfollowflag" {if isset($flag[$_G['uid']])}style="display: none"{/if}>
 			<!--{if isset($flag[$uid])}-->

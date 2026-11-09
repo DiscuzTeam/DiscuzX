@@ -206,8 +206,19 @@ $subject = isset($_GET['subject']) ? dhtmlspecialchars(censor(trim($_GET['subjec
 $subject = !empty($subject) ? str_replace("\t", ' ', $subject) : $subject;
 $message = isset($_GET['message']) ? censor($_GET['message'], NULL, FALSE, FALSE) : '';
 $content = isset($_GET['content']) ? censor($_GET['content'], NULL, FALSE, FALSE) : '';
-$contentType = daddslashes($_GET['contentType']) ?? 'text';
-$contentEditor = daddslashes($_GET['contentEditor']) ?? 'default';
+$contentType = preg_replace('/[^a-zA-Z0-9_:.]/', '', strval($_GET['contentType'] ?? ''));
+$contentType = substr($contentType, 0, 32);
+if($contentType === '') {
+	$contentType = 'text';
+}
+$contentEditor = preg_replace('/[^a-zA-Z0-9_:.]/', '', strval($_GET['contentEditor'] ?? ''));
+$contentEditor = substr($contentEditor, 0, 32);
+if($contentEditor === '') {
+	$contentEditor = 'default';
+}
+if($content !== '' && !is_valid_non_empty_json($content)) {
+	$content = '';
+}
 $polloptions = isset($polloptions) ? censor(trim($polloptions)) : '';
 $readperm = isset($_GET['readperm']) ? intval($_GET['readperm']) : 0;
 $price = isset($_GET['price']) ? intval($_GET['price']) : 0;

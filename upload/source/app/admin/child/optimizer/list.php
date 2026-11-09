@@ -51,6 +51,7 @@ if($_GET['checking']) {
 	$inc_unit = ceil(100 / count($optimizer_option));
 	$adminscipt = ADMINSCRIPT;
 	$C = '$C';
+	$formhash = FORMHASH;
 	print <<<END
 			<script type="text/javascript">
 				var checkpercent = 0;
@@ -108,11 +109,11 @@ if($_GET['checking']) {
 					var statusstr = '';
 					if(status != 0) {
 						if(type == 'header') {
-							statusstr = '<a class="btn" href="$adminscipt?action=optimizer&operation=optimize_unit&anchor={$_GET['anchor']}&type='+ optiontype + extraurl + '" target="_blank">{$lang['founder_optimizer_optimizer']}</a>';
+							statusstr = '<a class="btn" href="$adminscipt?action=optimizer&operation=optimize_unit&anchor={$_GET['anchor']}&type='+ optiontype + extraurl + '&formhash={$formhash}' + '" target="_blank">{$lang['founder_optimizer_optimizer']}</a>';
 						} else if(type == 'view') {
-							statusstr = '<a class="btn" href="$adminscipt?action=optimizer&operation=optimize_unit&anchor={$_GET['anchor']}&type='+ optiontype + extraurl + '" target="_blank">{$lang['founder_optimizer_view']}</a>';
+							statusstr = '<a class="btn" href="$adminscipt?action=optimizer&operation=optimize_unit&anchor={$_GET['anchor']}&type='+ optiontype + extraurl + '&formhash={$formhash}' + '" target="_blank">{$lang['founder_optimizer_view']}</a>';
 						} else if(type == 'scan') {
-							statusstr = '<a class="btn" href="$adminscipt?action=optimizer&operation=optimize_unit&anchor={$_GET['anchor']}&type='+ optiontype + extraurl + '" target="_blank">{$lang['founder_optimizer_scan']}</a>';
+							statusstr = '<a class="btn" href="$adminscipt?action=optimizer&operation=optimize_unit&anchor={$_GET['anchor']}&type='+ optiontype + extraurl + '&formhash={$formhash}' + '" target="_blank">{$lang['founder_optimizer_scan']}</a>';
 						}
 					}
 					newtr.insertCell(0).innerHTML = $(id + '_unit').innerHTML;

@@ -37,6 +37,24 @@ class table_common_invite extends discuz_table {
 		return DB::fetch_first('SELECT * FROM %t WHERE code=%s', [$this->_table, $code]);
 	}
 
+	public function update_consume($id, $uid, $fusername, array $extra = []) {
+		$id = intval($id);
+		$uid = intval($uid);
+		if(!$id || !$uid) {
+			return 0;
+		}
+
+		$data = array_merge($extra, [
+			'fuid' => $uid,
+			'fusername' => (string)$fusername,
+		]);
+
+		$condition = DB::field('id', $id).' AND '.DB::field('fuid', 0);
+		DB::update($this->_table, $data, $condition, true);
+
+		return DB::affected_rows();
+	}
+
 	public function fetch_all_by_uid($uid) {
 		return DB::fetch_all('SELECT * FROM %t WHERE uid=%d ORDER BY dateline DESC', [$this->_table, $uid], $this->_pk);
 	}

@@ -11,6 +11,9 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 }
 
 if(is_numeric($_GET['recommentctid'])) {
+	if(empty($_GET['formhash']) || FORMHASH != $_GET['formhash']) {
+		cpmsg('undefined_action');
+	}
 	$collectiondata = table_forum_collection::t()->fetch($_GET['recommentctid']);
 	if($collectiondata['ctid']) {
 		$collectionrecommend = $_G['setting']['collectionrecommend'] ? dunserialize($_G['setting']['collectionrecommend']) : [];

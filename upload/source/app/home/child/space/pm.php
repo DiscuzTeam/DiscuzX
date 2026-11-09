@@ -112,15 +112,17 @@ if($_GET['subop'] == 'view') {
 
 } elseif($_GET['subop'] == 'viewg') {
 
-	$grouppm = table_common_grouppm::t()->fetch($_GET['pmid']);
-	if(!$grouppm) {
-		$grouppm = array_merge((array)table_common_member_grouppm::t()->fetch_gpm($_G['uid'], $_GET['pmid']), $grouppm);
-	}
-	if($grouppm) {
-		$grouppm['numbers'] = $grouppm['numbers'] - 1;
-	}
-	if(!$grouppm['status']) {
-		table_common_member_grouppm::t()->update($_G['uid'], $_GET['pmid'], ['status' => 1, 'dateline' => TIMESTAMP]);
+	$pmid = intval($_GET['pmid']);
+	$grouppm = [];
+	$membergpm = $pmid ? table_common_member_grouppm::t()->fetch_gpm($_G['uid'], $pmid) : [];
+	if($membergpm) {
+		$grouppm = array_merge((array)$membergpm, (array)table_common_grouppm::t()->fetch($pmid));
+		if($grouppm) {
+			$grouppm['numbers'] = max(0, (int)($grouppm['numbers'] ?? 0) - 1);
+		}
+		if(empty($membergpm['status'])) {
+			table_common_member_grouppm::t()->update($_G['uid'], $pmid, ['status' => 1, 'dateline' => TIMESTAMP]);
+		}
 	}
 	$actives['announcepm'] = ' class="a"';
 

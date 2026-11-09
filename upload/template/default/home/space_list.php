@@ -33,7 +33,7 @@ function succeedhandle_followmod(url, msg, values) {
 	if(values['type'] == 'add') {
 		fObj.innerHTML = '{lang follow_del}';
 		fObj.className = 'flw_btn_unfo';
-		fObj.href = 'home.php?mod=spacecp&ac=follow&op=del&fuid='+values['fuid'];
+		fObj.href = 'home.php?mod=spacecp&ac=follow&op=del&hash={FORMHASH}&fuid='+values['fuid'];
 	} else if(values['type'] == 'del') {
 		fObj.innerHTML = '{lang follow_add}TA';
 		fObj.className = 'flw_btn_fo';

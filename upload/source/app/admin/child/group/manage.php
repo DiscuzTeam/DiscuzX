@@ -66,7 +66,7 @@ if(!$_GET['mtype']) {
 	$optype = $_GET['optype'];
 	$newtypeid = intval($_GET['newtypeid']);
 	$targetgroup = intval($_GET['targetgroup']);
-	if(submitcheck('confirmed', 1)) {
+	if(submitcheck('confirmed', 2)) {
 		$fidarray = explode(',', $fidarray);
 		$recommend = $_G['setting']['group_recommend'] ? array_keys(dunserialize($_G['setting']['group_recommend'])) : [];
 		$fidstr = $_G['setting']['group_recommend'] ? implode(',', $recommend) : '';
@@ -97,7 +97,7 @@ if(!$_GET['mtype']) {
 			if($tids) {
 				deletepost($tids, 'tid');
 				deletethread($tids);
-				cpmsg('group_thread_removing', 'action=group&operation=manage&mtype=managetype&optype=delete&submit=yes&confirmed=yes&fidarray='.$_GET['fidarray'].'&start='.($start + $pp));
+				cpmsg('group_thread_removing', 'action=group&operation=manage&mtype=managetype&optype=delete&submit=yes&confirmed=yes&formhash='.FORMHASH.'&fidarray='.$_GET['fidarray'].'&start='.($start + $pp));
 			}
 			loadcache('posttable_info');
 			if(!empty($_G['cache']['posttable_info']) && is_array($_G['cache']['posttable_info'])) {
@@ -191,7 +191,7 @@ if(!$_GET['mtype']) {
 				table_forum_groupcreditslog::t()->delete_by_fid($sourcefid);
 				table_forum_groupfield::t()->delete($sourcefid);
 				$start++;
-				cpmsg('group_merge_continue', 'action=group&operation=manage&mtype=managetype&optype='.$optype.'&submit=yes&confirmed=yes&targetgroup='.$targetgroup.'&fidarray='.$_GET['fidarray'].'&start='.$start, '', ['m' => $start, 'n' => count($fidarray) - $start]);
+				cpmsg('group_merge_continue', 'action=group&operation=manage&mtype=managetype&optype='.$optype.'&submit=yes&confirmed=yes&formhash='.FORMHASH.'&targetgroup='.$targetgroup.'&fidarray='.$_GET['fidarray'].'&start='.$start, '', ['m' => $start, 'n' => count($fidarray) - $start]);
 			}
 			$threads = $posts = 0;
 			$archive = 0;

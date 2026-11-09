@@ -282,7 +282,7 @@ EOT;
 
 } elseif($do == 'del') {
 
-	if(!submitcheck('prunesubmit', 1)) {
+	if(!submitcheck('prunesubmit', 2)) {
 
 		shownav('user', 'nav_modmembers');
 		showsubmenu('nav_moderate_users', [
@@ -306,7 +306,7 @@ EOT;
 		if((!$membernum = count($uids))) {
 			cpmsg('members_search_noresults', '', 'error');
 		} elseif(!$_GET['confirmed']) {
-			cpmsg('members_delete_confirm', 'action=moderate&operation=members&do=del&submitmore='.rawurlencode($_GET['submitmore']).'&regbefore='.rawurlencode($_GET['regbefore']).'&modbefore='.rawurlencode($_GET['modbefore']).'&regip='.rawurlencode($_GET['regip']).'&prunesubmit=yes', 'form', ['membernum' => $membernum]);
+			cpmsg('members_delete_confirm', 'action=moderate&operation=members&do=del&submitmore='.rawurlencode($_GET['submitmore']).'&regbefore='.rawurlencode($_GET['regbefore']).'&modbefore='.rawurlencode($_GET['modbefore']).'&regip='.rawurlencode($_GET['regip']).'&prunesubmit=yes&formhash='.FORMHASH, 'form', ['membernum' => $membernum]);
 		} else {
 			$numdeleted = table_common_member::t()->delete_no_validate(array_keys($uids));
 

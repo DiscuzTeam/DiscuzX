@@ -29,8 +29,8 @@ if($operation == 'plugininstall') {
 $installlang = load_installlang($dir);
 
 if(!empty($filename) && preg_match('/^[\w\.]+$/', $filename)) {
-	$filename = DISCUZ_PLUGIN().$dir.'/'.$filename;
-	if(file_exists($filename)) {
+	$filename = issafepath(DISCUZ_PLUGIN().$dir.'/'.$filename);
+	if($filename) {
 		@include_once $filename;
 	} else {
 		$finish = TRUE;

@@ -1351,6 +1351,13 @@ $lang = [
 	'json_editor_submit' => '发布',
 	'json_editor_title_seccode' => '安全验证',
 	'json_editor_seccode_desc' => '请输入验证码',
+	'thread_imgmanager' => '图片管理',
+	'batch_delete' => '批量删除',
+	'used' => '使用中',
+	'unused' => '未使用',
+	'no_images' => '暂无图片',
+	'select_images' => '请先选择要删除的图片',
+	'confirm_delete' => '确定要删除选中的图片吗？',
 
 	'collection_no_image' => '不使用图片',
 	'collection_cover' => '淘帖封面',

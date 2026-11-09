@@ -30,8 +30,8 @@ if(!$file) {
 	$pluginarray = getimportdata('Discuz! Plugin');
 }
 if(!empty($pluginarray[$operation.'file']) && preg_match('/^[\w\.]+$/', $pluginarray[$operation.'file'])) {
-	$filename = DISCUZ_PLUGIN($dir).'/'.$pluginarray[$operation.'file'];
-	if(file_exists($filename)) {
+	$filename = issafepath(DISCUZ_PLUGIN($dir).'/'.$pluginarray[$operation.'file']);
+	if($filename) {
 		$installlang = load_installlang($dir);
 		@include $filename;
 	}

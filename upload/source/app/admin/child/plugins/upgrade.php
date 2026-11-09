@@ -16,7 +16,7 @@ $dir = substr($plugin['directory'], 0, -1);
 
 if(!$_GET['confirmed']) {
 	cloudaddons_validator($dir.'.plugin');
-	$file = getimportfilename(DISCUZ_PLUGIN().$dir.'/discuz_plugin_'.$dir.($modules['extra']['installtype'] ? '_'.$modules['extra']['installtype'] : ''));
+	$file = getimportfilename(DISCUZ_PLUGIN($dir).'/discuz_plugin_'.$dir.($modules['extra']['installtype'] ? '_'.$modules['extra']['installtype'] : ''));
 	$upgrade = false;
 	if($file) {
 		$importtxt = @implode('', file($file));
@@ -24,7 +24,7 @@ if(!$_GET['confirmed']) {
 		$newver = !empty($pluginarray['plugin']['version']) ? $pluginarray['plugin']['version'] : 0;
 		$upgrade = $newver > $plugin['version'];
 	}
-	$entrydir = DISCUZ_PLUGIN().$dir;
+	$entrydir = DISCUZ_PLUGIN($dir);
 	$upgradestr = '';
 	if(file_exists($entrydir)) {
 		$d = dir($entrydir);
@@ -47,8 +47,8 @@ if(!$_GET['confirmed']) {
 		}
 	}
 	if(!empty($pluginarray['checkfile']) && preg_match('/^[\w\.]+$/', $pluginarray['checkfile'])) {
-		$filename = DISCUZ_PLUGIN().$plugin['identifier'].'/'.$pluginarray['checkfile'];
-		if(file_exists($filename)) {
+		$filename = issafepath(DISCUZ_PLUGIN().$plugin['identifier'].'/'.$pluginarray['checkfile']);
+		if($filename) {
 			$installlang = load_installlang($dir);
 			@include $filename;
 		}
@@ -92,7 +92,7 @@ if(!$_GET['confirmed']) {
 } else {
 
 	$installtype = !isset($_GET['installtype']) ? $modules['extra']['installtype'] : (preg_match('/^\w+$/', $_GET['installtype']) ? $_GET['installtype'] : '');
-	$importfile = getimportfilename(DISCUZ_PLUGIN().$dir.'/discuz_plugin_'.$dir.($installtype ? '_'.$installtype : ''));
+	$importfile = getimportfilename(DISCUZ_PLUGIN($dir).'/discuz_plugin_'.$dir.($installtype ? '_'.$installtype : ''));
 	if(!$importfile) {
 		cpmsg('plugin_file_error', '', 'error');
 	}
@@ -117,8 +117,8 @@ if(!$_GET['confirmed']) {
 		if(!empty($pluginarray['language'])) {
 			$installlang[$pluginarray['plugin']['identifier']] = $pluginarray['language']['installlang'];
 		}
-		$filename = DISCUZ_PLUGIN().$plugin['directory'].$pluginarray['checkfile'];
-		if(file_exists($filename)) {
+		$filename = issafepath(DISCUZ_PLUGIN($dir).'/'.$pluginarray['checkfile']);
+		if($filename) {
 			loadcache('pluginlanguage_install');
 			$installlang = $_G['cache']['pluginlanguage_install'][$plugin['identifier']];
 			@include $filename;
