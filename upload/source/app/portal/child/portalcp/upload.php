@@ -11,6 +11,8 @@ if(!defined('IN_DISCUZ')) {
 }
 $operation = $_GET['op'] ? $_GET['op'] : '';
 
+$_GET['attach_target_id'] = preg_replace('/[^A-Za-z0-9_\-]/', '', (string)getgpc('attach_target_id'));
+
 $upload = new discuz_upload();
 $downremotefile = false;
 $aid = intval(getgpc('aid'));
@@ -54,9 +56,13 @@ if($operation == 'downremotefile') {
 				if(preg_match('/^(http(s?):\/\/|\.)/i', $imageurl)) {
 					$content = dfsockopen($imageurl);
 				} elseif(checkperm('allowdownlocalimg')) {
+					if(str_contains($imageurl, '..') || str_contains($imageurl, "\0")) {
+						continue;
+					}
 					if(preg_match('/^data\/(.*?)\.thumb\.jpg$/i', $imageurl)) {
-						$content = file_get_contents(substr($imageurl, 0, strrpos($imageurl, '.') - 6));
-					} elseif(preg_match('/^data\/(.*?)\.(jpg|jpeg|gif|png)$/i', $imageurl)) {
+						$imageurl = substr($imageurl, 0, strrpos($imageurl, '.') - 6);
+					}
+					if(preg_match('/^data\/(.*?)\.(jpg|jpeg|gif|png)$/i', $imageurl)) {
 						$content = file_get_contents($imageurl);
 					}
 				}

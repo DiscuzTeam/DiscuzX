@@ -11,7 +11,10 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 }
 
 if($do == 'add') {
-	$addcustom = strip_tags($_GET['addcustom']);
+	if(FORMHASH != $_GET['formhash']) {
+		cpmsg('undefined_action', '', 'error');
+	}
+	$addcustom = strip_tags($_GET['addcustom'] ?? '');
 	if($addcustom) {
 		if(!($customid = table_common_advertisement_custom::t()->get_id_by_name($addcustom))) {
 			$customid = table_common_advertisement_custom::t()->insert(['name' => $addcustom], true);

@@ -56,10 +56,10 @@ if(!submitcheck('advsubmit')) {
 	$order_by = 'displayorder, advid DESC, targets DESC';
 	$start_limit = ($page - 1) * $advppp;
 
-	$title = $_GET['title'];
-	$starttime = $_GET['starttime'];
-	$endtime = $_GET['endtime'];
-	$orderby = $_GET['orderby'];
+	$title = dhtmlspecialchars(trim($_GET['title']));
+	$starttime = dhtmlspecialchars($_GET['starttime']);
+	$endtime = dhtmlspecialchars($_GET['endtime']);
+	$orderby = dhtmlspecialchars($_GET['orderby']);
 
 	$advnum = table_common_advertisement::t()->count_search($title, $starttime, $endtime, $type, $target);
 

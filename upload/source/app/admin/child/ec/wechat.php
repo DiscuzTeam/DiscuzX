@@ -65,6 +65,10 @@ if(!submitcheck('wechatsubmit')) {
 	showsetting('ec_wechat_v3_private_key', 'settingsnew[v3_private_key]', $wechat_securitycodemask, 'textarea');
 	$wechat_securitycodemask = $wechatsettings['v3_serial_no'] ? $wechatsettings['v3_serial_no'][0].'********'.substr($wechatsettings['v3_serial_no'], -4) : '';
 	showsetting('ec_wechat_v3_serial_no', 'settingsnew[v3_serial_no]', $wechat_securitycodemask, 'text');
+	$wechat_securitycodemask = $wechatsettings['v3_public_key_id'] ? $wechatsettings['v3_public_key_id'][0].'********'.substr($wechatsettings['v3_public_key_id'], -4) : '';
+	showsetting('ec_wechat_v3_public_key_id', 'settingsnew[v3_public_key_id]', $wechat_securitycodemask, 'text');
+	$wechat_securitycodemask = $wechatsettings['v3_public_key'] ? substr($wechatsettings['v3_public_key'], 0, 40).'********'.substr($wechatsettings['v3_public_key'], -40) : '';
+	showsetting('ec_wechat_v3_public_key', 'settingsnew[v3_public_key]', $wechat_securitycodemask, 'textarea');
 	showtagfooter('tbody');
 
 	showsetting('ec_wechat_check', '', '',
@@ -91,12 +95,16 @@ if(!submitcheck('wechatsubmit')) {
 	if($wechatsettings['ec_wechat_version'] && $wechatsettings['appid'] && $wechatsettings['mch_id'] && $wechatsettings['v3_key'] && $wechatsettings['v3_private_key'] && $wechatsettings['v3_serial_no']) {
 		$payment = payment::get('wechat');
 		$result = $payment->v3_wechat_certificates();
-		if($result['code'] == 200) {
+		// 记录本次刷新时间，避免回调侧在短时间内重复请求平台证书
+		$wechatsettings['v3_certificates_time'] = TIMESTAMP;
+		if($result['code'] == 200 && !empty($result['data'])) {
 			$wechatsettings['v3_certificates'] = $result['data'];
 		}
 		table_common_setting::t()->update_setting('ec_wechat', $wechatsettings);
 		updatecache('setting');
 	}
+
+	payment::cron_sync();
 
 	cpmsg('wechat_succeed', 'action=ec&operation=wechat', 'succeed');
 }

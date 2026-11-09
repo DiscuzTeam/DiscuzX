@@ -25,7 +25,12 @@ $conditions = [];
 $conditions[] = ['type', '=', "'".$operation."'"];
 if(!empty($_GET['search']) && !empty($_GET['search']['field']) && in_array($_GET['search']['field'], ['data', 'device']) && preg_match('/^\w+$/', $_GET['search']['key'])
 	&& !empty($_GET['search']['key'])&& !empty($_GET['search'][$_GET['search']['key']])) {
-	$conditions[] = ['JSON_EXTRACT('.$_GET['search']['field'].', \'$.'.$_GET['search']['key'].'\')', '=', "'".$_GET['search'][$_GET['search']['key']]."'"];
+	$searchvalue = $_GET['search'][$_GET['search']['key']];
+	if(!is_scalar($searchvalue)) {
+		$searchvalue = '';
+	}
+	$searchvalue = addslashes((string)$searchvalue);
+	$conditions[] = ['JSON_EXTRACT('.$_GET['search']['field'].', \'$.'.$_GET['search']['key'].'\')', '=', "'".$searchvalue."'"];
 }
 
 $logs = [];

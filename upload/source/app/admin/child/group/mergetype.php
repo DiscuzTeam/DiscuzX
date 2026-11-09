@@ -21,7 +21,7 @@ if($firstgroup[$fid]['secondlist']) {
 shownav('group', 'nav_group_type');
 showchildmenu([['nav_group_type', 'group&operation=type'], [$sourcetype['name'].' ', '']], cplang('group_mergetype'));
 
-if(!submitcheck('mergesubmit', 1)) {
+if(!submitcheck('mergesubmit', 2)) {
 	$groupselect = get_groupselect(0, 0, 0);
 	showformheader("group&operation=mergetype&fid=$fid", 'enctype');
 	showtableheader();
@@ -32,7 +32,7 @@ if(!submitcheck('mergesubmit', 1)) {
 } else {
 	$mergefid = $_GET['mergefid'];
 	if(empty($_GET['confirm'])) {
-		cpmsg('group_mergetype_confirm', 'action=group&operation=mergetype&fid='.$fid.'&mergesubmit=yes&confirm=1', 'form', [], '<input type="hidden" name="mergefid" value="'.$mergefid.'">');
+		cpmsg('group_mergetype_confirm', 'action=group&operation=mergetype&fid='.$fid.'&mergesubmit=yes&formhash='.FORMHASH.'&confirm=1', 'form', [], '<input type="hidden" name="mergefid" value="'.$mergefid.'">');
 	}
 	if($mergefid == $fid) {
 		cpmsg('group_mergetype_target_error', 'action=group&operation=mergetype&fid='.$fid, 'error');

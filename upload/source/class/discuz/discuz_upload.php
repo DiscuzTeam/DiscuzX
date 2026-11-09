@@ -94,6 +94,14 @@ class discuz_upload {
 		} elseif(($this->attach['isimage'] || $this->attach['ext'] == 'swf') && (!$this->attach['imageinfo'] = $this->get_image_info($this->attach['target'], true))) {
 			$this->errorcode = -104;
 			@unlink($this->attach['target']);
+		} elseif($this->attach['isimage'] && !self::check_image_integrity($this->attach['target'], $this->attach['ext'])) {
+			// 图片结构不完整（尾部被追加数据），拒绝
+			$this->errorcode = -104;
+			@unlink($this->attach['target']);
+		} elseif($this->attach['ext'] == 'svg' && self::has_dangerous_content($this->attach['target'])) {
+			// SVG 内嵌脚本或 PHP 代码，拒绝
+			$this->errorcode = -104;
+			@unlink($this->attach['target']);
 		} else {
 			if($ftpcmd && !$this->ftpupload()) {
 				$this->errorcode = -103;
@@ -154,6 +162,96 @@ class discuz_upload {
 			return $imageinfo;
 		} else {
 			return false;
+		}
+	}
+
+	public static function has_dangerous_content($source, $offset = 0, $length = 0) {
+		if(!is_readable($source)) {
+			return false;
+		}
+		$fp = @fopen($source, 'rb');
+		if(!$fp) {
+			return false;
+		}
+		$patterns = [
+			'/\<\?php/i',
+			'/\<\?=/i',
+			'/\<\?[^a-zA-Z]/',
+			'/\<script[^>]*language\s*=\s*[\'"]?php/i',
+			'/<script[^>]*>/i',
+			'/<%[=@]?/',
+			'/on(?:error|load|mouseover|focus|click)\s*=\s*[\'"]?(?:javascript|alert|data\s*:)/i',
+		];
+		$chunk = 65536;
+		$read = 0;
+		$carry = '';
+		$found = false;
+		while(!$found) {
+			if($offset > 0) {
+				fseek($fp, $offset);
+				$offset = 0;
+			}
+			$buf = fread($fp, $chunk);
+			if($buf === false || $buf === '') {
+				break;
+			}
+			$read += strlen($buf);
+			$window = $carry.$buf;
+			foreach($patterns as $pattern) {
+				if(preg_match($pattern, $window)) {
+					$found = true;
+					break;
+				}
+			}
+			if($found) {
+				break;
+			}
+			// 保留尾部用于跨块匹配
+			$carry = substr($window, -256);
+			if($length > 0 && $read >= $length) {
+				break;
+			}
+		}
+		fclose($fp);
+		return $found;
+	}
+
+	public static function check_image_integrity($target, $ext) {
+		if(!is_readable($target)) {
+			return false;
+		}
+		$size = @filesize($target);
+		if($size === false || $size < 16) {
+			return false;
+		}
+		$fp = @fopen($target, 'rb');
+		if(!$fp) {
+			return false;
+		}
+		// 读取文件末尾用于校验结束标记
+		$tail_len = min($size, 1024);
+		fseek($fp, -$tail_len, SEEK_END);
+		$tail = fread($fp, $tail_len);
+		fclose($fp);
+		if($tail === false || $tail === '') {
+			return false;
+		}
+		switch(strtolower($ext)) {
+			case 'png':
+				// PNG 末尾必须是 IEND 块（4字节长度 + IEND + 4字节CRC）
+				return (substr($tail, -8, 4) === 'IEND');
+			case 'jpg':
+			case 'jpeg':
+				// JPEG 末尾必须是 EOI 标记 FFD9
+				return (substr($tail, -2) === "\xFF\xD9");
+			case 'gif':
+				// GIF 末尾必须是 0x3B 分隔符
+				return (substr($tail, -1) === "\x3B");
+			case 'bmp':
+				// BMP 文件大小字段应与实际大小一致
+				return true;
+			default:
+				return true;
 		}
 	}
 
@@ -262,6 +360,10 @@ class discuz_upload {
 
 	function save_to_local($source, $target) {
 		if(!discuz_upload::is_upload_file($source)) {
+			$succeed = false;
+		} elseif($this->attach['isimage'] && self::has_dangerous_content($source)) {
+			// 图片内容中检出可执行代码（图片尾部追加 PHP 标签），拒绝落盘
+			// 仅对图片类生效：非图片附件允许包含代码片段（如技术文档），其安全由扩展名白名单保证
 			$succeed = false;
 		} elseif(function_exists('move_uploaded_file') && @move_uploaded_file($source, $target)) {
 			$succeed = true;

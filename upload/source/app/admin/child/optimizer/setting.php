@@ -10,7 +10,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
 }
 
-if(submitcheck('setting_optimizer', 1)) {
+if(submitcheck('setting_optimizer', 2)) {
 	$setting_options = $_GET['options'];
 	if($optimizer->option_optimizer($setting_options)) {
 		cpmsg('founder_optimizer_setting_succeed', 'action=optimizer&operation=setting_optimizer&type=optimizer_setting&anchor=performance', 'succeed');

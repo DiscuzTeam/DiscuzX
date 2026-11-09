@@ -26,8 +26,8 @@ if(!$importfile) {
 	$pluginarray = getimportdata('Discuz! Plugin');
 }
 if(!empty($pluginarray['checkfile']) && preg_match('/^[\w\.]+$/', $pluginarray['checkfile'])) {
-	$filename = DISCUZ_PLUGIN($plugin['identifier']).'/'.$pluginarray['checkfile'];
-	if(file_exists($filename)) {
+	$filename = issafepath(DISCUZ_PLUGIN($plugin['identifier']).'/'.$pluginarray['checkfile']);
+	if($filename) {
 		loadcache('pluginlanguage_install');
 		$installlang = $_G['cache']['pluginlanguage_install'][$plugin['identifier']];
 		@include $filename;
@@ -63,8 +63,8 @@ if(file_exists(DISCUZ_PLUGIN($dir).'/block/blockclass.php')) {
 }
 
 if(!empty($pluginarray['uninstallfile']) && preg_match('/^[\w\.]+$/', $pluginarray['uninstallfile'])) {
-	$filename = DISCUZ_PLUGIN($plugin['identifier']).'/'.$pluginarray['uninstallfile'];
-	if(file_exists($filename)) {
+	$filename = issafepath(DISCUZ_PLUGIN($plugin['identifier']).'/'.$pluginarray['uninstallfile']);
+	if($filename) {
 		loadcache('pluginlanguage_install');
 		$installlang = $_G['cache']['pluginlanguage_install'][$plugin['identifier']];
 		@include $filename;

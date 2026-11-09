@@ -93,12 +93,12 @@ class discuz_process {
 		$ret = '';
 		switch($cmd) {
 			case 'add':
-				$ret = table_common_process::t()->insert(['processid' => $name, 'expiry' => time() + $ttl], FALSE, true);
+				$ret = table_common_process::t()->insert(['processid' => $name, 'expiry' => time() + $ttl], FALSE, FALSE, TRUE);
 				break;
 			case 'get':
 				$ret = table_common_process::t()->fetch($name);
 				if(empty($ret) || $ret['expiry'] < time()) {
-					table_common_process::t()->delete_process($name, time());
+					table_common_process::t()->delete_process('', time());
 					$ret = false;
 				} else {
 					$ret = true;

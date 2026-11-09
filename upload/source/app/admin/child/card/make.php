@@ -10,7 +10,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
 }
 
-if(!submitcheck('cardsubmit', 1)) {
+if(!submitcheck('cardsubmit', 2)) {
 	if($card_log = table_common_card_log::t()->fetch_by_operation(1)) {
 		$card_log['rule'] = dunserialize($card_log['cardrule']);
 	}
@@ -120,7 +120,7 @@ EOT;
 	$_GET['fail_num'] += $card->fail;
 	if($nextstep) {
 		$_GET['rule'] = rawurlencode($_GET['rule']);
-		$nextlink = "action=card&operation=make&rule={$_GET['rule']}&num={$_GET['num']}&price={$_GET['price']}&extcreditskey={$_GET['extcreditskey']}&extcreditsval={$_GET['extcreditsval']}&cleardateline={$_GET['cleardateline']}&step={$nextstep}&succeed_num={$_GET['succeed_num']}&fail_num={$_GET['fail_num']}&typeid={$_GET['typeid']}&logid={$_GET['logid']}&cardsubmit=yes";
+		$nextlink = "action=card&operation=make&rule={$_GET['rule']}&num={$_GET['num']}&price={$_GET['price']}&extcreditskey={$_GET['extcreditskey']}&extcreditsval={$_GET['extcreditsval']}&cleardateline={$_GET['cleardateline']}&step={$nextstep}&succeed_num={$_GET['succeed_num']}&fail_num={$_GET['fail_num']}&typeid={$_GET['typeid']}&logid={$_GET['logid']}&cardsubmit=yes&formhash=".FORMHASH;
 		cpmsg('card_make_step', $nextlink, 'loading', ['step' => $nextstep - 1, 'step_num' => $step_num, 'succeed_num' => $card->succeed, 'fail_num' => $card->fail]);
 	} else {
 		$card_info = serialize(['num' => $_GET['num'], 'succeed_num' => $_GET['succeed_num'], 'fail_num' => $_GET['fail_num']]);

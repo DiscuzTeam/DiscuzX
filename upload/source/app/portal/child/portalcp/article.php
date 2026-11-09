@@ -103,9 +103,12 @@ if(submitcheck('articlesubmit', 0, $seccodecheck, $secqaacheck)) {
 
 	if($_GET['conver']) {
 		$converfiles = dunserialize($_GET['conver']);
-		$setarr['pic'] = $converfiles['pic'];
-		$setarr['thumb'] = intval($converfiles['thumb']);
-		$setarr['remote'] = intval($converfiles['remote']);
+		if(!is_array($converfiles)) {
+			$converfiles = [];
+		}
+		$setarr['pic'] = $converfiles['pic'] ?? '';
+		$setarr['thumb'] = intval($converfiles['thumb'] ?? 0);
+		$setarr['remote'] = intval($converfiles['remote'] ?? 0);
 	}
 
 	$id = 0;

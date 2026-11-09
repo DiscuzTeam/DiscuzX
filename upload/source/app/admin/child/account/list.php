@@ -24,34 +24,63 @@ if(!submitcheck('submit')) {
 	showtips('account_basesetting_tips');
 
 	echo '<script type="text/javascript" src="static/js/iconfont.js"></script>';
-	echo '<style>.atable {border-collapse: separate} .atable .header td{ padding: 2px 10px} .atable .header td {border:0}'.
-		'.atable .t {width:80px;text-align:center} .atable .c {text-align:center} .atable .l { border-left:1px dotted #DEEFFB !important} .atable .r {border-right:1px dotted #DEEFFB !important;}'.
-		'.iconfont { width: 1.5em; height: 1.5em; vertical-align: middle; fill: currentColor; overflow: hidden; margin-right: 5px;}</style>';
+	echo <<<'ACCSTYLE'
+<style>
+.acc-scroll { overflow-x: auto; }
+.acc-scroll .tb { min-width: 1080px; margin-bottom: 0; }
+.atable { border-collapse: separate; border-spacing: 0; }
+.atable td { vertical-align: middle; }
+.atable .header td { padding: 8px 10px; border: 0; background: var(--admincp-bgf7); color: var(--admincp-fb); font-weight: 400; }
+.atable .t { width: 84px; text-align: center; }
+.atable .c { text-align: center; }
+.atable .l { border-left: 1px solid var(--admincp-borderb); }
+.atable .acc-sticky { position: sticky; left: 0; z-index: 2; background: var(--admincp-bgf); }
+.atable .header .acc-sticky { background: var(--admincp-bgf7); }
+.atable .acc-name-cell { white-space: nowrap; }
+.atable .iconfont, .acc-chip .iconfont { width: 1.5em; height: 1.5em; fill: currentColor; overflow: hidden; vertical-align: middle; margin-right: 5px; }
+.atable tr.acc-none td { background: var(--admincp-bgf7); }
+.atable tr.acc-closed-row td { padding: 12px 10px 14px; }
+.acc-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.acc-chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 1px dashed var(--admincp-borderd); border-radius: var(--admincp-radius-xl); background: var(--admincp-bgf); color: var(--admincp-fb); }
+.acc-chip .iconfont { margin-right: 0; }
+</style>
+ACCSTYLE;
+
 	showformheader('account');
 	/*search={"account":"action=account"}*/
+	echo '<div class="acc-scroll">';
 	showtableheader('', 'atable');
+	$cols1 = explode(',', cplang('account_basesetting_cols1'));
+	$cols2 = explode(',', cplang('account_basesetting_cols2'));
+	while(count($cols1) < 7) {
+		$cols1[] = '';
+	}
+	while(count($cols2) < 12) {
+		$cols2[] = '';
+	}
 	$header = showtablerow('class="header"', [
-		'rowspan="2" style="width:230px"',
-		'colspan="2" class="l c r"',
+		'rowspan="2" class="acc-sticky" style="width:230px"',
+		'colspan="2" class="l c"',
 		'class="t"',
-		'colspan="3" class="l c"',
 		'colspan="2" class="l c"',
 		'colspan="3" class="l c"',
-	], explode(',', cplang('account_basesetting_cols1')), true);
+		'colspan="3" class="l c"',
+		'class="l t"',
+	], array_slice($cols1, 0, 7), true);
 	$header .= showtablerow('class="header"', [
 		'class="l t"',
 		'class="t"',
-		'class="l t"',
-		'class="l t"',
-		'class="t"',
 		'class="t"',
 		'class="l t"',
 		'class="t"',
 		'class="l t"',
 		'class="t"',
 		'class="t"',
-		'',
-	], explode(',', cplang('account_basesetting_cols2')), true);
+		'class="l t"',
+		'class="t"',
+		'class="t"',
+		'class="l t"',
+	], array_slice($cols2, 0, 12), true);
 	echo str_replace('header hover', 'header', $header);
 	echo '<tbody>';
 	foreach($interfaces as $interface) {
@@ -78,10 +107,7 @@ if(!submitcheck('submit')) {
 			'avatarBindAuto' => !$disabled && !empty($account['avatarBindAuto']) && in_array($interface, $account['avatarBindAuto']) ? 'checked ' : '',
 		];
 		showtablerow('', [
-			'',
-			'class="l t"',
-			'class="t r"',
-			'class="t"',
+			'class="acc-sticky acc-name-cell"',
 			'class="l t"',
 			'class="t"',
 			'class="t"',
@@ -90,6 +116,10 @@ if(!submitcheck('submit')) {
 			'class="l t"',
 			'class="t"',
 			'class="t"',
+			'class="l t"',
+			'class="t"',
+			'class="t"',
+			'class="l t"',
 		], [
 			$icon[0].
 			account_base::getName($interface).$notice.' <a href="'.ADMINSCRIPT.'?action=account&method='.$interface.'" style="float: right" class="act">'.cplang('edit').'</a>',
@@ -107,11 +137,8 @@ if(!submitcheck('submit')) {
 			'',
 		]);
 	}
-	showtablerow('', [
-		'',
-		'class="l t"',
-		'class="t r"',
-		'class="t"',
+	showtablerow('class="acc-none"', [
+		'class="acc-sticky acc-name-cell"',
 		'class="l t"',
 		'class="t"',
 		'class="t"',
@@ -120,6 +147,10 @@ if(!submitcheck('submit')) {
 		'class="l t"',
 		'class="t"',
 		'class="t"',
+		'class="l t"',
+		'class="t"',
+		'class="t"',
+		'class="l t"',
 	], [
 		'<svg class="iconfont" aria-hidden="true"><use xlink:href="#icon-wushuju"></use></svg>'.cplang('none'),
 		'<input name="account[loginAutoDefault]" value="" type="radio" class="radio" '.(empty($account['loginAutoDefault']) ? 'checked ' : '').'/>',
@@ -137,6 +168,7 @@ if(!submitcheck('submit')) {
 	]);
 	showsubmit('submit');
 	showtablefooter();
+	echo '</div>';
 	/*search*/
 	showformfooter();
 } else {

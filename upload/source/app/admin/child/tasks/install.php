@@ -10,6 +10,10 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
 }
 
+if(FORMHASH != $_GET['formhash']) {
+	cpmsg('undefined_action', '', 'error');
+}
+
 if(empty($_GET['script'])) {
 	cpmsg('undefined_action');
 }

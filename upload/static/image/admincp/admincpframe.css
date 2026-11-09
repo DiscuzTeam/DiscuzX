@@ -230,6 +230,11 @@ button::-moz-focus-inner { border: none; padding: 0; }
 .frameuinfo_menu .platform_box{ border-top: 1px solid var(--admincp-bordera); }
 .frameuinfo_menu .platform_box a:hover{ position: relative; background-color: var(--admincp-bgb); }
 .frameuinfo_menu .platform_box a:hover::before { content: ""; position: absolute; top: 0; left: -10px; right: -10px; bottom: 0; background-color: var(--admincp-bgb); z-index: -1; border-radius: var(--admincp-radius-s); }
+/* 平台名过长时兜底：菜单限定宽度、名称单行省略，完整名见 title 悬浮提示 */
+.frameuinfo_menu { max-width: min(320px, calc(100vw - 24px)); }
+.frameuinfo_menu .platform_box a { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.frameuinfo_menu .platform_box a > .dzicon { flex: 0 0 auto; }
+.frameuinfo_menu .platform_box .platform_name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .frameuinfo_menu .dzlogout{color: #ff6600;}
 .frameuinfo_menu .dzicon{font-family: dzicon;font-size: 16px;font-style: normal;-webkit-font-smoothing: antialiased;}
 .frameuinfo_menu .index:before{content: "\e604";}

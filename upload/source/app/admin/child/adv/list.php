@@ -86,7 +86,7 @@ if($customadv) {
 			echo '<tr>';
 		}
 		echo '<td width="'.$rowwidth.'%" class="hover" align="center"><div id="op_'.$custom['id'].'"><a href="'.ADMINSCRIPT.'?action=adv&operation=ad&type='.$customadv['class'].'&customid='.$custom['id'].'">';
-		echo $img.$lang['adv_custom'].' '.$custom['name'].($ads['custom_'.$custom['id']] ? '('.$ads['custom_'.$custom['id']].')' : '');
+		echo $img.$lang['adv_custom'].' '.dhtmlspecialchars($custom['name'], ENT_QUOTES).($ads['custom_'.$custom['id']] ? '('.$ads['custom_'.$custom['id']].')' : '');
 		echo '</a><br /><div class="right">';
 		echo '<a onclick="ajaxget(this.href, \'op_'.$custom['id'].'\');return false;" href="'.ADMINSCRIPT.'?action=adv&operation=custom&do=edit&id='.$custom['id'].'">'.$lang['edit'].'</a>&nbsp;';
 		echo '<a onclick="ajaxget(this.href, \'op_'.$custom['id'].'\');return false;" href="'.ADMINSCRIPT.'?action=adv&operation=custom&do=delete&id='.$custom['id'].'">'.$lang['delete'].'</a>';

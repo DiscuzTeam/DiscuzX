@@ -166,6 +166,71 @@ class menu {
 		}
 	}
 
+	// 以平台表为准全量重建缓存里的 platform 列表。
+	// 平台注册/卸载过去是「改进程内 $_G['cache']['admin'] 再整份 savecache」，
+	// 一旦调用方没先 loadcache('admin')，单条写入就会把其它平台从缓存里挤掉，
+	// 之后又被平台管理页的旧值回填固化成 NULL（右上角「全部应用」只剩图标没有名字）。
+	// 因此写库后一律从库全量重建，顺带丢弃 NULL / 缺 name / 缺 menu 的坏条目。
+	public static function platform_refresh() {
+		global $_G;
+
+		$cache = is_array($_G['cache']['admin'] ?? null) ? $_G['cache']['admin'] : [];
+		$platforms = [];
+		foreach(table_common_admincp_menu_platform::t()->fetch_all_data() as $platform => $row) {
+			$menuData = dunserialize($row['menu']);
+			if(!empty($menuData['custom']) && is_array($menuData['custom'])) {
+				$menuData = $menuData['custom'];
+			}
+			if(!is_array($menuData) || empty($menuData['menu'])) {
+				continue;
+			}
+			unset($menuData['custom']);
+			self::fixdefault($menuData);
+			if(empty($menuData['name'])) {
+				$menuData['name'] = !empty($menuData['title']) ? $menuData['title'] : $platform;
+			}
+			$platforms[$platform] = $menuData;
+		}
+		// system（框架自带后台）固定排在最前，不受显示顺序与注册先后影响
+		if(isset($platforms['system'])) {
+			$system = $platforms['system'];
+			unset($platforms['system']);
+			$platforms = ['system' => $system] + $platforms;
+		}
+
+		// 用严格比较：键顺序也算变更（system 必须始终在最前）
+		if(isset($cache['platform']) && is_array($cache['platform']) && $cache['platform'] === $platforms) {
+			return $platforms;
+		}
+		// 进程内 admin 缓存不完整时以已存缓存为底，避免整份缓存被写成只剩 platform
+		if(!isset($cache['platform'])) {
+			$stored = table_common_syscache::t()->fetch_syscache('admin');
+			if(is_array($stored)) {
+				$cache += $stored;
+			}
+		}
+		$cache['platform'] = $platforms;
+		$_G['cache']['admin'] = $cache;
+		savecache('admin', $cache);
+		return $platforms;
+	}
+
+	// 缓存里的平台列表是否已损坏（NULL 条目 / 缺 name / 缺 menu），后台入口据此自愈
+	public static function platform_cache_broken() {
+		global $_G;
+
+		$platforms = $_G['cache']['admin']['platform'] ?? null;
+		if(!is_array($platforms)) {
+			return true;
+		}
+		foreach($platforms as $platform_data) {
+			if(!is_array($platform_data) || empty($platform_data['name']) || empty($platform_data['menu'])) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public static function platform_add($platform, $data, $isarray = false) {
 		global $_G;
 
@@ -185,8 +250,7 @@ class menu {
 			unset($menuData['custom']);
 		}
 
-		$_G['cache']['admin']['platform'][$platform] = $menuData;
-		savecache('admin', $_G['cache']['admin']);
+		self::platform_refresh();
 		if($platform != 'system') {
 			echo "<script type=\"text/javascript\">top.addplatform('$platform', '{$menuData['name']}')</script>";
 		}
@@ -197,12 +261,9 @@ class menu {
 			return;
 		}
 
-		global $_G;
-
 		table_common_admincp_menu_platform::t()->delete($platform);
 
-		unset($_G['cache']['admin']['platform'][$platform]);
-		savecache('admin', $_G['cache']['admin']);
+		self::platform_refresh();
 		echo "<script type=\"text/javascript\">top.removeplatform('$platform')</script>";
 	}
 

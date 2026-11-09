@@ -17,7 +17,7 @@ if($cid && $_GET['op'] != 'requote') {
 }
 if($_GET['op'] == 'requote') {
 
-	$aid = $_GET['aid'];
+	$aid = intval($_GET['aid']);
 	$article = table_portal_article_title::t()->fetch($aid);
 
 	if($article['idtype'] == 'tid') {
@@ -32,6 +32,19 @@ if($_GET['op'] == 'requote') {
 		$comment = table_portal_comment::t()->fetch($cid);
 	}
 	unset($aid, $article);
+
+	if(!empty($comment)) {
+		$hidden = (isset($comment['status']) && intval($comment['status']) === 0)
+			|| (isset($comment['invisible']) && intval($comment['invisible']) !== 0);
+		if($hidden) {
+			$ownerUid  = intval($comment['uid'] ?? 0);
+			$isOwner   = ($_G['uid'] && $ownerUid === intval($_G['uid']));
+			$isManager = !empty($_G['group']['allowmanagearticle']) || intval($_G['adminid']) === 1;
+			if(!$isOwner && !$isManager) {
+				showmessage('comment_edit_noexist');
+			}
+		}
+	}
 
 	if(!empty($comment['message'])) {
 

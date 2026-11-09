@@ -15,7 +15,7 @@ if(!defined('IN_API')) {
 loadcore();
 
 $adid = $_GET['adid'];
-$data = adshow($adid);
+$data = adshow($adid, false);
 
 dheader('Content-Type: application/javascript');
 

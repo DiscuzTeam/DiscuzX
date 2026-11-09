@@ -80,12 +80,12 @@ class editor {
 		if($editorblock && $editorblock['parser'] && $editorblock['style']) {
 			$editorblock_parser = $editorblock['parser'];
 			$editorblock_style = $editorblock['style'];
-			$editorblock_static = empty($editorblock['plugin']) ? 'static/js/editorjs/tools/' . $type . '/' : 'source/plugin/' . $editorblock['plugin'] . '/editorblock/tools/' . $type . '/';
+			$editorblock_static = empty($editorblock['plugin']) ? 'static/js/editorjs/tools/'.$type.'/' : 'source/plugin/'.$editorblock['plugin'].'/editorblock/tools/'.$type.'/';
 		} else {
 			$editorblock = table_common_editorblock::t()->fetch_by_block_class($type);
 			$editorblock_parser = $editorblock['parser'];
 			$editorblock_style = $editorblock['style'];
-			$editorblock_static = empty($editorblock['plugin']) ? 'static/js/editorjs/tools/' . $type . '/' : 'source/plugin/' . $editorblock['plugin'] . '/editorblock/tools/' . $type . '/';
+			$editorblock_static = empty($editorblock['plugin']) ? 'static/js/editorjs/tools/'.$type.'/' : 'source/plugin/'.$editorblock['plugin'].'/editorblock/tools/'.$type.'/';
 			memory('set', 'editorblock_'.$type, $editorblock);
 		}
 		return [$editorblock_parser, $editorblock_style, $editorblock_static];
@@ -96,21 +96,24 @@ class editor {
 		return $parser;
 	}
 
-	public static function parser($content) {
+	public static function parser($content, $context = []) {
 		global $_G;
 		$blocksData = self::toArray($content);
+
+		$itemid = isset($context['itemid']) ? intval($context['itemid']) : intval($_G['tid'] ?? 0);
+		$authorid = isset($context['authorid']) ? intval($context['authorid']) : intval($_G['forum_thread']['authorid'] ?? 0);
 		$parserData = '';
 		$styleData = ['types' => [], 'style' => ''];
 		foreach($blocksData['blocks'] as $key => $value) {
-			list($editorblock_parser, $editorblock_style, $editorblock_static) = self::getBlockTemplate($value['type']);
-			// 是否用户回帖可见
+			[$editorblock_parser, $editorblock_style, $editorblock_static] = self::getBlockTemplate($value['type']);
+
 			$allowParser = true;
 			$isHideTuneBlock = false;
 			if($value['tunes']['hideTune']['hide']) {
 				$isHideTuneBlock = true;
 				$authorreplyexist = null;
 				if($_G['uid']) {
-					$authorreplyexist = table_forum_post::t()->fetch_pid_by_tid_authorid($_G['tid'], $_G['uid']);
+					$authorreplyexist = table_forum_post::t()->fetch_pid_by_tid_authorid($itemid, $_G['uid']);
 				}
 				if(!$authorreplyexist) {
 					$allowParser = false;
@@ -119,8 +122,50 @@ class editor {
 					$allowParser = true;
 				}
 			}
+
+			$payLocked = false;
+			$payCredits = 0;
+			$payBlockId = '';
+			$payNeedLogin = false;
+			if(!empty($value['tunes']['payTune']['pay']) && !empty($value['tunes']['payTune']['credits'])) {
+				$payCredits = intval($value['tunes']['payTune']['credits']);
+				if($payCredits > 0) {
+					$payBlockId = self::getBlockId($value);
+
+					if($allowParser) {
+						if(!$_G['uid']) {
+							$allowParser = false;
+							$payLocked = true;
+							$payNeedLogin = true;
+						} elseif($_G['adminid'] <= 0 && $authorid != $_G['uid']) {
+							if(!self::isBlockPaid($_G['uid'], $itemid, $payBlockId)) {
+								$allowParser = false;
+								$payLocked = true;
+							}
+						}
+					}
+				}
+			}
 			if(!$allowParser) {
-				$parser = '<div class="locked">'.($_G['uid'] ? $_G['username'] : lang('forum/template', 'guest')).lang('forum/template', 'post_hide_reply_hidden_text').'<a href="forum.php?mod=post&action=reply&fid='.$_G['fid'].'&tid='.$_G['tid'].'" onclick="showWindow(\'reply\', this.href)">'.lang('forum/template', 'reply').'</a></div>';
+				if($payLocked) {
+
+					$creditid = intval($_G['setting']['creditstransextra'][1]);
+					$credititle = !empty($_G['setting']['extcredits'][$creditid]['title']) ? $_G['setting']['extcredits'][$creditid]['title'] : 'credits';
+					$creditunit = !empty($_G['setting']['extcredits'][$creditid]['unit']) ? $_G['setting']['extcredits'][$creditid]['unit'] : '';
+
+					$credit_display = $credititle.($creditunit ? ' '.$creditunit : '');
+					if($payNeedLogin) {
+						$parser = '<div class="locked payblock-locked"><span class="pb-text">'.lang('forum/template', 'post_payblock_login_text').'</span> <a href="member.php?mod=logging&action=login" onclick="showWindow(\'login\', this.href)">'.lang('template', 'login').'</a></div>';
+					} else {
+						$payurl = 'forum.php?mod=misc&action=payblock&tid='.$itemid.'&block='.$payBlockId;
+						$parser = '<div class="locked payblock-locked">'
+							.'<span class="pb-text">'.lang('forum/template', 'post_payblock_hidden_text', ['credits' => $payCredits, 'credit_display' => $credit_display]).'</span> '
+							.'<a href="'.$payurl.'" onclick="showWindow(\'payblock\', this.href)" class="pb-btn">'.lang('forum/template', 'post_payblock_pay_button', ['credits' => $payCredits, 'credit_display' => $credit_display]).'</a>'
+							.'</div>';
+					}
+				} else {
+					$parser = '<div class="locked">'.($_G['uid'] ? $_G['username'] : lang('forum/template', 'guest')).lang('forum/template', 'post_hide_reply_hidden_text').'<a href="forum.php?mod=post&action=reply&fid='.$_G['fid'].'&tid='.$itemid.'" onclick="showWindow(\'reply\', this.href)">'.lang('forum/template', 'reply').'</a></div>';
+				}
 			} else {
 				$parser = (new editorBlock($editorblock_parser, $value, $editorblock_static))->replace();
 				if($isHideTuneBlock) {
@@ -128,17 +173,21 @@ class editor {
 				}
 			}
 
-			// 锚点解析
 			$anchorparse = explode(',', getglobal('setting/anchorparse')) ?? [];
 			if(in_array($value['type'], $anchorparse)) {
 				$parser = preg_replace_callback('/<a\s+href=[\'"]#([^\'"]+)[\'"](.*?)>/s', function($m) {
 					$href = $m[1];
-					// 在<a>标签中添加onclick属性
-					$onclick = "javascript: document.getElementById('".$href."').scrollIntoView();return false;";
-					return '<a href="#'.$href.'" onclick="'.$onclick.'"'.$m[2].'>';
+
+					$clean = preg_replace('/[^a-zA-Z0-9_\-]/', '', $href);
+					if($clean === '' || $clean !== $href) {
+						return '<a href="#'.$href.'"'.$m[2].'>';
+					}
+
+					$onclick = "javascript: document.getElementById('".$clean."').scrollIntoView();return false;";
+					return '<a href="#'.$clean.'" onclick="'.$onclick.'"'.$m[2].'>';
 				}, $parser);
 			}
-			// 追加
+
 			$parserData .= $parser;
 			if(!in_array($value['type'], $styleData['types'])) {
 				$styleData['types'][] = $value['type'];
@@ -148,12 +197,357 @@ class editor {
 		return [$parserData, $styleData['style']];
 	}
 
+	public static function getBlockId($block) {
+		if(!empty($block['id'])) {
+			$id = preg_replace('/[^a-zA-Z0-9_\-]/', '', strval($block['id']));
+			if($id !== '') {
+				return substr($id, 0, 64);
+			}
+		}
+		return 'md5'.substr(md5((isset($block['type']) ? $block['type'] : '').'#'.(isset($block['data']) ? json_encode($block['data']) : '')), 0, 28);
+	}
+
+	public static function isBlockPaid($uid, $tid, $blockid) {
+		static $cache = [];
+		$key = $uid.'_'.$tid.'_'.$blockid;
+		if(isset($cache[$key])) {
+			return $cache[$key];
+		}
+		$count = table_common_credit_log::t()->count_by_uid_operation_relatedid_memo($uid, 'BPB', $tid, 'block:'.$blockid);
+		$cache[$key] = $count > 0;
+		return $cache[$key];
+	}
+
 }
 
 class editorBlock {
 	var $html = '';
 	var $block = [];
 	var $static = '';
+
+	private static $urlAttrs = ['src', 'href', 'action', 'formaction', 'poster', 'xlink:href', 'data', 'cite', 'longdesc', 'background', 'srcset', 'dynsrc', 'lowsrc', 'usemap'];
+	var $ctxMap = null;
+	var $ctxOcc = [];
+
+	private function buildContextMap($template) {
+
+		$occ = [];
+		$map = [];
+		$propose = function($offset, $length, $ctx) use (&$occ) {
+
+			foreach($occ as &$o) {
+				if($o['start'] === $offset && $o['end'] === $offset + $length) {
+					if($this->ctxSeverity($ctx) < $this->ctxSeverity($o['ctx'])) {
+						$o['ctx'] = $ctx;
+					}
+					return;
+				}
+			}
+			$occ[] = ['start' => $offset, 'end' => $offset + $length, 'ctx' => $ctx];
+		};
+
+		if(preg_match_all('/<textarea\b[^>]*>.*?<\/textarea\s*>/is', $template, $ta, PREG_SET_ORDER | PREG_OFFSET_CAPTURE)) {
+			foreach($ta as $seg) {
+				$segStart = $seg[0][1];
+				foreach($this->extractPlaceholders($seg[0][0], $segStart) as $ph) {
+					$propose($ph['start'], $ph['end'] - $ph['start'], 'textarea');
+
+					if(preg_match('/^\{([a-zA-Z\.]+)\}$/', substr($seg[0][0], $ph['start'] - $segStart, $ph['end'] - $ph['start']), $pm)) {
+						$map[$pm[1]] = 'textarea';
+					}
+				}
+			}
+		}
+
+		if(preg_match_all('/<\s*\{[a-zA-Z\.]+\}/', $template, $tg, PREG_OFFSET_CAPTURE)) {
+			foreach($tg[0] as $t) {
+				foreach($this->extractPlaceholders($t[0], $t[1]) as $ph) {
+					$propose($ph['start'], $ph['end'] - $ph['start'], 'tag');
+					if(preg_match('/^\{([a-zA-Z\.]+)\}$/', substr($t[0], $ph['start'] - $t[1], $ph['end'] - $ph['start']), $pm)) {
+						$map[$pm[1]] = 'tag';
+					}
+				}
+			}
+		}
+
+		if(preg_match_all('/<([a-zA-Z][a-zA-Z0-9]*)(\s[^<>]*)?>/', $template, $tags, PREG_SET_ORDER | PREG_OFFSET_CAPTURE)) {
+			foreach($tags as $t) {
+				$attrs = isset($t[2]) ? $t[2][0] : '';
+				if($attrs === '' || strpos($attrs, '{') === false) {
+					continue;
+				}
+				$attrsOffset = $t[2][1];
+
+				$attrsScan = preg_replace_callback('/\[\/?if\b[^\]]*\]/i', function($mm) {
+					return str_repeat(' ', strlen($mm[0]));
+				}, $attrs);
+				if($attrsScan === null || strpos($attrsScan, '{') === false) {
+					continue;
+				}
+				if(preg_match_all('/([a-zA-Z_][a-zA-Z0-9_:.\-]*)\s*=\s*("([^"]*)"|\'([^\']*)\'|([^\s"\'>]+))/', $attrsScan, $am, PREG_SET_ORDER | PREG_OFFSET_CAPTURE)) {
+					foreach($am as $a) {
+						$attrName = strtolower($a[1][0]);
+						$rawVal = $a[2][0];
+						if(strpos($rawVal, '{') === false) {
+							continue;
+						}
+						$ctx = 'attr';
+						if(in_array($attrName, self::$urlAttrs)) {
+							$ctx = 'urlattr';
+						} elseif($attrName === 'style') {
+							$ctx = 'styleattr';
+						}
+
+						if(isset($a[5]) && $a[5][0] !== null && $a[5][0] !== '') {
+							$ctx = 'unq:'.$ctx;
+						}
+
+						$valAbsOffset = $attrsOffset + $a[2][1];
+						foreach($this->extractPlaceholders($rawVal, $valAbsOffset) as $ph) {
+							$propose($ph['start'], $ph['end'] - $ph['start'], $ctx);
+
+							if(preg_match('/^\{([a-zA-Z\.]+)\}$/', substr($rawVal, $ph['start'] - $valAbsOffset, $ph['end'] - $ph['start']), $pm)) {
+								$p = $pm[1];
+								if(!isset($map[$p]) || $this->ctxSeverity($ctx) < $this->ctxSeverity($map[$p])) {
+									$map[$p] = $ctx;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		if(preg_match_all('/\{[a-zA-Z\.]+\}/', $template, $all, PREG_OFFSET_CAPTURE)) {
+
+			$covered = [];
+			foreach($occ as $o) {
+				$covered[$o['start'].':'.$o['end']] = true;
+			}
+			foreach($all[0] as $m) {
+				$start = $m[1];
+				$end = $start + strlen($m[0]);
+				if(!isset($covered[$start.':'.$end])) {
+					$occ[] = ['start' => $start, 'end' => $end, 'ctx' => 'body'];
+				}
+			}
+		}
+
+		usort($occ, function($a, $b) {
+			return $a['start'] - $b['start'];
+		});
+		$this->ctxOcc = $occ;
+		$this->ctxMap = $map;
+		return $occ;
+	}
+
+	private function extractPlaceholders($subject, $baseOffset) {
+		$out = [];
+		if(preg_match_all('/\{[a-zA-Z\.]+\}/', $subject, $ms, PREG_OFFSET_CAPTURE)) {
+			foreach($ms[0] as $m) {
+				$out[] = ['start' => $baseOffset + $m[1], 'end' => $baseOffset + $m[1] + strlen($m[0])];
+			}
+		}
+		return $out;
+	}
+
+	private function resolveContext($m, $path) {
+
+		$pos = is_array($m[0]) ? ($m[0][1] ?? null) : null;
+		if($pos !== null && $this->ctxOcc) {
+
+			$lo = 0;
+			$hi = count($this->ctxOcc) - 1;
+			while($lo <= $hi) {
+				$mid = intval(($lo + $hi) / 2);
+				$o = $this->ctxOcc[$mid];
+				if($pos < $o['start']) {
+					$hi = $mid - 1;
+				} elseif($pos >= $o['end']) {
+					$lo = $mid + 1;
+				} else {
+					return $o['ctx'];
+				}
+			}
+		}
+
+		if(isset($this->ctxMap[$path])) {
+			return $this->ctxMap[$path];
+		}
+
+		if($path === 'tunes.anchorTune.anchor' || $path === 'id') {
+			return 'tag';
+		}
+		return 'body';
+	}
+
+	private function ctxSeverity($ctx) {
+		switch($ctx) {
+			case 'textarea':
+				return 1;
+			case 'tag':
+				return 2;
+			case 'urlattr':
+				return 3;
+			case 'styleattr':
+				return 4;
+			case 'attr':
+				return 5;
+			case 'body':
+				return 6;
+		}
+		return 6;
+	}
+
+	private function filterValueCtx($value, $ctx) {
+		if(is_array($value)) {
+			return $value;
+		}
+		$value = is_string($value) ? $value : (string)$value;
+
+		if(strpos($ctx, 'unq:') === 0) {
+			$value = preg_replace('/[\s"\'=<>`]/', '', $value);
+			$ctx = substr($ctx, 4);
+		}
+		switch($ctx) {
+			case 'textarea':
+				return dhtmlspecialchars($value);
+			case 'tag':
+
+				return preg_replace('/[^a-zA-Z0-9_\-]/', '', $value);
+			case 'urlattr':
+				return $this->sanitizeUrl($value);
+			case 'styleattr':
+
+				$cleaned = preg_replace_callback('/(expression|behavior|-moz-binding|javascript|vbscript)\s*(\(|:)/is', function($m) {
+					return 'blocked'.$m[2];
+				}, $value);
+				return dhtmlspecialchars($cleaned);
+			case 'attr':
+
+				return dhtmlspecialchars(self::sanitizeRich($value));
+			case 'body':
+			default:
+				return self::sanitizeRich($value);
+		}
+	}
+
+	private static $allowedTags = [
+		'a', 'abbr', 'b', 'blockquote', 'br', 'caption', 'cite', 'code', 'col', 'colgroup',
+		'dd', 'del', 'details', 'div', 'dl', 'dt', 'em', 'figcaption', 'figure', 'font',
+		'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'i', 'img', 'ins', 'kbd', 'li', 'mark',
+		'ol', 'p', 'pre', 'q', 's', 'samp', 'small', 'span', 'strike', 'strong', 'sub',
+		'summary', 'sup', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr', 'u', 'ul', 'var',
+	];
+	private static $allowedAttrs = [
+		'align', 'alt', 'border', 'cellpadding', 'cellspacing', 'class', 'color', 'colspan',
+		'face', 'height', 'id', 'lang', 'rel', 'rowspan', 'size', 'span', 'start', 'style',
+		'target', 'title', 'type', 'valign', 'value', 'width', 'checked', 'disabled', 'open',
+	];
+
+	public static function sanitizeRich($value) {
+		if(!is_string($value) || $value === '' || strpos($value, '<') === false) {
+			return $value;
+		}
+
+		$value = preg_replace('/<!--.*?-->/s', '', $value);
+		$value = preg_replace('/<\s*(script|style)\b[^>]*>.*?<\s*\/\s*\1\s*>/is', '', $value);
+
+		$value = preg_replace_callback(
+			'/<(\/?)\s*([a-zA-Z][a-zA-Z0-9]*)((?:[^>"\']|"[^"]*"|\'[^\']*\')*)>/s',
+			function($m) {
+				$closing = $m[1] === '/';
+				$tag = strtolower($m[2]);
+				if(!in_array($tag, self::$allowedTags, true)) {
+					return '';
+				}
+				if($closing) {
+					return '</'.$tag.'>';
+				}
+				return '<'.$tag.self::rebuildAttrs($m[3]).'>';
+			},
+			$value
+		);
+
+		$value = preg_replace_callback('/<(?![a-zA-Z\/!])/', function() {
+			return '&lt;';
+		}, $value);
+
+		$value = preg_replace_callback('/<[a-zA-Z][^<>]*$/', function($m) {
+			return dhtmlspecialchars($m[0]);
+		}, $value);
+		return $value;
+	}
+
+	private static function rebuildAttrs($attrStr) {
+		$out = '';
+		if($attrStr === '' || trim($attrStr) === '' || trim($attrStr) === '/') {
+			return $out;
+		}
+
+		if(!preg_match_all('/([a-zA-Z_:][a-zA-Z0-9_:.\-]*)(?:\s*=\s*("[^"]*"|\'[^\']*\'|[^\s"\'`=<>]+))?/', $attrStr, $am, PREG_SET_ORDER)) {
+			return $out;
+		}
+		foreach($am as $a) {
+			$name = strtolower($a[1]);
+
+			if(strpos($name, 'on') === 0) {
+				continue;
+			}
+			$isUrl = in_array($name, self::$urlAttrs, true);
+			$isData = strpos($name, 'data-') === 0 || strpos($name, 'aria-') === 0;
+			if(!in_array($name, self::$allowedAttrs, true) && !$isData && !$isUrl) {
+				continue;
+			}
+			if(!isset($a[2]) || $a[2] === '') {
+				$out .= ' '.$name;
+				continue;
+			}
+			$val = $a[2];
+			$quote = $val[0];
+			$raw = ($quote === '"' || $quote === "'") ? substr($val, 1, -1) : $val;
+
+			$raw = html_entity_decode($raw, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+			if($isUrl) {
+				$raw = self::sanitizeUrlStatic($raw);
+				if($raw === '') {
+					continue;
+				}
+			} elseif($name === 'style') {
+				$raw = preg_replace('/(expression|behavior|-moz-binding|javascript|vbscript)\s*(\(|:)/is', 'blocked$2', $raw);
+			} elseif($name === 'class' || $name === 'id') {
+				$raw = preg_replace('/[^a-zA-Z0-9_\-\s]/', '', $raw);
+			}
+			$out .= ' '.$name.'="'.dhtmlspecialchars($raw).'"';
+		}
+		return $out;
+	}
+
+	private static function sanitizeUrlStatic($url) {
+		if(!is_string($url)) {
+			return '';
+		}
+
+		$check = html_entity_decode($url, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+		$check = preg_replace('/[\x00-\x20\x7f]+/', '', $check);
+		$check = str_replace('\\', '/', $check);
+		if($check === '') {
+			return '';
+		}
+
+		if(preg_match('/^(?:javascript|vbscript|livescript|mocha|jscript|ecmascript|about|view-source):/i', $check)) {
+			return '';
+		}
+		if(preg_match('/^data:/i', $check) && !preg_match('/^data:image\/(png|jpe?g|gif|webp|bmp|avif|heic|x-icon);base64/i', $check)) {
+			return '';
+		}
+		return $url;
+	}
+
+	private function sanitizeUrl($url) {
+		$url = self::sanitizeUrlStatic($url);
+		return $url === '' ? '' : dhtmlspecialchars($url);
+	}
 
 	/*
 	 * [loop data.items]
@@ -165,28 +559,34 @@ class editorBlock {
 	const rLoopObject = '/\[loopobject ([a-zA-Z\.]+)\](.+?)\[\/loopobject\]/s';
 	const rLoopObjectData = '/\{loopobjectdata\}/';
 	const rVar = '/\{([a-zA-Z\.]+)\}/';
+
 	/*
 	 * [if data.ok]
 	 *   {text} or string
 	 * [/if]
 	 */
 	const rIf = '/\[if ([a-zA-Z\.]+)=(.+?)\](.*?)\[\/if\]/s';
+
 	/*
 	 * [url data.url]
 	 */
 	const rUrl = '/\[url ([a-zA-Z\.]+),([a-zA-Z\.]+),([a-zA-Z\.]+)\]/s';
+
 	/*
-	 * [url data.url]
+	 * [attach data.url]
 	 */
 	const rAttach = '/\[attach ([a-zA-Z\.]+)\]/s';
+
 	/*
 	* [column blocks]
 	*/
 	const rColumn = '/\[column ([a-zA-Z\.]+)\]/s';
+
 	/*
 	 * [script path]
 	 */
 	const rScript = '/\[script (.+?)\]/s';
+
 	/*
 	* [codeflask id,language,code]
 	*/
@@ -206,16 +606,30 @@ class editorBlock {
 		$this->html = $html;
 		$this->block = $block;
 		$this->static = $static;
+
+		$this->buildContextMap($this->html);
 	}
 
 	public function replace() {
-		//$this->html = preg_replace_callback(self::rScript, array($this, '_script'), $this->html);
-		$this->html = preg_replace_callback(self::rJsFile, [$this, '_jsfile'], $this->html);
-		$this->html = preg_replace_callback(self::rCssFile, [$this, '_cssfile'], $this->html);
-		$this->html = preg_replace_callback(self::rCodeflask, [$this, '_codeflask'], $this->html);
-		$this->html = preg_replace_callback(self::rLoop, [$this, '_loop'], $this->html);
-		$this->html = preg_replace_callback(self::rLoopObject, [$this, '_object'], $this->html);
-		$this->html = preg_replace_callback(self::rVar, [$this, '_var'], $this->html);
+
+		$replaced = 0;
+		$n = 0;
+		$this->html = preg_replace_callback(self::rJsFile, [$this, '_jsfile'], $this->html, -1, $n);
+		$replaced += $n;
+		$this->html = preg_replace_callback(self::rCssFile, [$this, '_cssfile'], $this->html, -1, $n);
+		$replaced += $n;
+		$this->html = preg_replace_callback(self::rCodeflask, [$this, '_codeflask'], $this->html, -1, $n);
+		$replaced += $n;
+		$this->html = preg_replace_callback(self::rLoop, [$this, '_loop'], $this->html, -1, $n);
+		$replaced += $n;
+		$this->html = preg_replace_callback(self::rLoopObject, [$this, '_object'], $this->html, -1, $n);
+		$replaced += $n;
+
+		if($replaced > 0) {
+			$this->buildContextMap($this->html);
+		}
+
+		$this->html = preg_replace_callback(self::rVar, [$this, '_var'], $this->html, -1, $cnt, PREG_OFFSET_CAPTURE);
 		$this->html = preg_replace_callback(self::rRecursive, [$this, '_recursive'], $this->html);
 		$this->html = preg_replace_callback(self::rUrl, [$this, '_url'], $this->html);
 		$this->html = preg_replace_callback(self::rAttach, [$this, '_attach'], $this->html);
@@ -229,6 +643,10 @@ class editorBlock {
 		$language = $this->_value($m[2], $value);
 		$n_count = $this->_value($m[3], $value) ?? 0;
 		$code = $this->_value($m[4], $value);
+
+		$id = preg_replace('/[^a-zA-Z0-9_\-]/', '', is_string($id) ? $id : (string)$id);
+		$language = preg_replace('/[^a-zA-Z0-9_\-]/', '', is_string($language) ? $language : (string)$language);
+		$n_count = intval($n_count);
 		$code = str_replace(
 			['`', '${'],
 			['\`', '\${'],
@@ -248,7 +666,7 @@ class editorBlock {
 				readonly: true
 			});
             		var code$rand = `$code`;
-            		code$rand = code$rand.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#039;/g, "'"); 
+            		code$rand = code$rand.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#039;/g, "'");
 			flask$rand.addLanguage('$language', Prism.languages['$language']);
 			flask$rand.onUpdate((code) => {
 				// do something with code here.
@@ -256,27 +674,30 @@ class editorBlock {
 				// in the editor changes.
 			    // console.log(code)
 			});
-			// flask.updateCode('');
+			// flask.updateCode('云诺');
 			// This will also trigger .onUpdate()
 			flask$rand.updateCode(code$rand);
 
 			const currentCode$rand = flask$rand.getCode();
-            
+
 		            var coderow$rand = parseInt('$n_count');
 			    if (coderow$rand === undefined || coderow$rand !== coderow$rand || coderow$rand === 0) {
 				    coderow$rand = flask$rand.lineNumber;
 			    }
-			    
-		            if (coderow$rand < 20) {
+
+		            if (coderow$rand < 10) {
+		                editorElem$rand.parentElement.style.height = '100px';
+				editorElem$rand.style.height = '100px';
+		            } else if (coderow$rand >= 10 && coderow$rand < 20) {
 		                editorElem$rand.parentElement.style.height = '300px';
 				editorElem$rand.style.height = '300px';
 		            } else if (coderow$rand >= 20) {
 		                editorElem$rand.parentElement.style.height = '500px';
 		                editorElem$rand.style.height = '500px';
 		            }
-		            
-			//console.log({currentCode$rand})    
-			
+
+			//console.log({currentCode$rand})
+
 			const copyBtn$rand = document.getElementById('codeflask-copy-{id}');
 			copyBtn$rand.addEventListener('click', function() {
 			    try {
@@ -287,7 +708,7 @@ class editorBlock {
 			                // 复制成功提示
 			                const originalText = copyBtn$rand.innerHTML;
 			                copyBtn$rand.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 已复制';
-			                
+
 			                // 一段时间后恢复原文本
 			                setTimeout(function() {
 			                    copyBtn$rand.innerHTML = originalText;
@@ -295,7 +716,7 @@ class editorBlock {
 			            }).catch(function(err) {
 			                // 复制失败处理
 			                console.error('复制失败:', err);
-			                
+
 			                // 降级方案：使用传统的复制方法
 			                fallbackCopyTextToClipboard(code$rand);
 			            });
@@ -303,7 +724,7 @@ class editorBlock {
 			            // Clipboard API 不可用时直接使用降级方案
 			            fallbackCopyTextToClipboard(code$rand);
 			        }
-			        
+
 			        // 提取降级方案为独立函数
 			        function fallbackCopyTextToClipboard(text) {
 			            const textArea = document.createElement('textarea');
@@ -312,12 +733,12 @@ class editorBlock {
 			            textArea.style.opacity = '0';
 			            document.body.appendChild(textArea);
 			            textArea.select();
-			            
+
 			            try {
 			                document.execCommand('copy');
 			                const originalText = copyBtn$rand.innerHTML;
 			                copyBtn$rand.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 已复制';
-			                
+
 			                setTimeout(function() {
 			                    copyBtn$rand.innerHTML = originalText;
 			                }, 2000);
@@ -331,7 +752,7 @@ class editorBlock {
 			        console.error('复制功能不可用:', err);
 			    }
 			});
-			
+
 			const bottomBtn$rand = document.getElementById('codeflask-bottomBtn-{id}');
 			const Toggle$rand = document.getElementById('codeflask-Toggle-{id}');
 			bottomBtn$rand.addEventListener('click', function() {
@@ -341,7 +762,7 @@ class editorBlock {
 				    const codeElement$rand = editorElem$rand.querySelector('.codeflask__code');
 			            if (codeElement$rand) {
 				            const actualHeight$rand = codeElement$rand.scrollHeight + 20;
-				           
+
 				            editorElem$rand.parentElement.style.height = actualHeight$rand + 'px';
 				            editorElem$rand.style.height = actualHeight$rand + 'px';
 			            }
@@ -361,7 +782,7 @@ class editorBlock {
 			            Toggle$rand.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
 				}
 			});
-			
+
 			Toggle$rand.addEventListener('click', function() {
 				bottomBtn$rand.click();
 			});
@@ -379,48 +800,43 @@ EOF;
 		$width = intval($m[3]) ?? 300;
 		$thumbnail = isset($m[4]) ? $m[4] : null;
 
-		// 验证URL合法性
+		$id = preg_replace('/[^a-zA-Z0-9_\-]/', '', is_string($id) ? $id : (string)$id);
+
 		$url = addslashes($url);
+
+		$url = str_replace(['"', "'", '\\'], '', dhtmlspecialchars($url));
 		if(!in_array(strtolower(substr($url, 0, 6)), ['http:/', 'https:', 'ftp://', 'rtsp:/', 'mms://']) && !preg_match('/^static\//', $url) && !preg_match('/^data\//', $url)) {
 			return dhtmlspecialchars($url);
 		}
 
-		// 获取文件类型
 		$cleanUrl = parse_url($url, PHP_URL_PATH) ?: $url;
 		$type = fileext($cleanUrl);
 		$randomid = $id;
 
+		$imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'heif', 'heic', 'bmp', 'ico', 'svg'];
+		if($thumbnail) {
 
-		// 定义常见的图片扩展名
-		$imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'ico', 'svg'];
-		if ($thumbnail) {
-			// 从thumbnail URL中提取扩展名
 			$thumbExt = fileext(parse_url($thumbnail, PHP_URL_PATH) ?: $thumbnail);
-			// 如果不是图片扩展名，则设置为空字符串
-			if (!in_array($thumbExt, $imageExtensions)) {
+
+			if(!in_array($thumbExt, $imageExtensions)) {
 				$thumbnail = '';
 			}
 		}
 
-
-		// 定义音频和视频扩展名数组
 		$audio = ['aac', 'flac', 'ogg', 'mp3', 'm4a', 'weba', 'wma', 'mid', 'wav', 'ra', 'ram'];
 		$video = ['rm', 'rmvb', 'flv', 'swf', 'asf', 'asx', 'wmv', 'avi', 'mpg', 'mpeg', 'mp4', 'm4v', '3gp', 'ogv', 'webm', 'mov'];
 
-		// 根据文件类型生成不同的播放器
+		$thumbParam = $thumbnail ? str_replace(['"', "'", '\\'], '', dhtmlspecialchars(addslashes($thumbnail))) : '';
 		if(in_array($type, $audio)) {
-			// 音频类型，高度使用固定值66
-			// 如果有缩略图，将其传递给 detectPlayer 函数
-			$thumbParam = $thumbnail ? addslashes($thumbnail) : '';
+
 			return '<ignore_js_op><div id="'.$type.'_'.$randomid.'" class="media" style="margin-left: auto;margin-right: auto;"><div id="'.$type.'_'.$randomid.'_container" class="media_container"></div><div id="'.$type.'_'.$randomid.'_tips" class="media_tips"><a href="'.$url.'" target="_blank">'.lang('template', 'parse_av_tips').'</a></div></div><script type="text/javascript">detectPlayer("'.$type.'_'.$randomid.'", "'.$type.'", "'.$url.'", "'.$width.'", "66", "'.$thumbParam.'");</script></ignore_js_op>';
 		} else if(in_array($type, $video)) {
-			// 视频类型，计算适当的高度
-			$height = intval($width * 0.75); // 保持4:3的宽高比
-			// 如果有缩略图，将其传递给 detectPlayer 函数
-			$thumbParam = $thumbnail ? addslashes($thumbnail) : '';
+
+			$height = intval($width * 0.75);
+
 			return '<ignore_js_op><div id="'.$type.'_'.$randomid.'" class="media" style="margin-left: auto;margin-right: auto;"><div id="'.$type.'_'.$randomid.'_container" class="media_container"></div><div id="'.$type.'_'.$randomid.'_tips" class="media_tips"><a href="'.$url.'" target="_blank">'.lang('template', 'parse_av_tips').'</a></div></div><script type="text/javascript">detectPlayer("'.$type.'_'.$randomid.'", "'.$type.'", "'.$url.'", "'.$width.'", "'.$height.'", "'.$thumbParam.'");</script></ignore_js_op>';
 		} else {
-			// 未知类型，返回链接
+
 			return '<a href="'.$url.'" target="_blank">'.$url.'</a>';
 		}
 	}
@@ -439,7 +855,12 @@ EOF;
 			return $m[2];
 		}
 		foreach($array as $ad) {
-			$t2 .= preg_replace(self::rLoopObjectData, $ad, $m[2]);
+
+			if(is_array($ad) || is_object($ad)) {
+				$ad = json_encode($ad, JSON_UNESCAPED_UNICODE);
+			}
+			$ad = $this->filterValueCtx($ad, 'body');
+			$t2 .= str_replace('{loopobjectdata}', $ad, $m[2]);
 		}
 		return $t2;
 	}
@@ -473,7 +894,10 @@ EOF;
 		if(!$url) {
 			return '';
 		} else {
-			// 兼容旧版url格式
+
+			$url = preg_replace('/["\'\\\\]/', '', is_string($url) ? $url : (string)$url);
+			$directoryParam = preg_replace('/[^a-zA-Z0-9_\-\/]/', '', is_string($directoryParam) ? $directoryParam : (string)$directoryParam);
+
 			$url = isset($remoteParam) && $directoryParam ?
 				(($remoteParam ? getglobal('setting/ftp/attachurl') : getglobal('setting/attachurl')).$directoryParam.'/'.$url)
 				: (str_contains($url, 'http') ? $url : getglobal('siteurl').$url);
@@ -502,9 +926,9 @@ EOF;
 			return '';
 		}
 
-		$path = $this->static . $filename . '?' . getglobal('style/verhash');
+		$path = $this->static.$filename.'?'.getglobal('style/verhash');
 
-		return '<script type="text/javascript" src="' . $path . '"></script>';
+		return '<script type="text/javascript" src="'.$path.'"></script>';
 	}
 
 	private function _cssfile($m, $value = null) {
@@ -514,9 +938,9 @@ EOF;
 			return '';
 		}
 
-		$path = $this->static . $filename . '?' . getglobal('style/verhash');
+		$path = $this->static.$filename.'?'.getglobal('style/verhash');
 
-		return '<link rel="stylesheet" type="text/css" href="' . $path . '" />';
+		return '<link rel="stylesheet" type="text/css" href="'.$path.'" />';
 	}
 
 	private function _script($m, $value = null) {
@@ -562,32 +986,21 @@ EOF;
 			$s .= preg_replace_callback(self::rColumn, function($m_sub) use ($node) {
 				$data = ['blocks' => []];
 				$data['blocks'] = $this->_var($m_sub, $node);
-				list($parserData, $styleData) = editor::parser(json_encode($data));
+				[$parserData, $styleData] = editor::parser(json_encode($data));
 				return $parserData.$styleData;
 			}, $t);
 		}
 		return $s;
 	}
 
-
-	/**
-	 * 完全参数化的无限级递归渲染方法
-	 * @param array $data 要处理的数据数组
-	 * @param array $config 配置参数数组
-	 * @param array $context 上下文数据，用于递归传递
-	 * @return string 生成的HTML内容
-	 *
-	 */
 	private function _recursiveRender($data, $config, $context = []) {
-		// 验证数据
+
 		if(!is_array($data) || empty($data)) {
 			return isset($config['emptyTemplate']) ? $config['emptyTemplate'] : '';
 		}
 
-		// 获取配置参数，确保所有必要参数都有默认值
 		$config = $this->_normalizeConfig($config);
 
-		// 转换数字格式的辅助函数
 		$formatNumber = function($number, $type) {
 			switch($type) {
 				case 'lower-roman':
@@ -595,82 +1008,68 @@ EOF;
 				case 'upper-roman':
 					return $this->_intToRoman($number);
 				case 'lower-alpha':
-					return chr(96 + $number); // 'a' 是 97
+					return chr(96 + $number);
 				case 'upper-alpha':
-					return chr(64 + $number); // 'A' 是 65
+					return chr(64 + $number);
 				case 'numeric':
 				default:
 					return (string)$number;
 			}
 		};
 
-		// 渲染所有子项目
 		$itemsHtml = '';
 		foreach($data as $index => $item) {
-			// 设置当前项的上下文
+
 			$itemContext = array_merge($context, [
 				'index' => $index,
 				'depth' => isset($context['depth']) ? $context['depth'] + 1 : 0,
 				'parent' => $context
 			]);
 
-			// 获取起始数字
 			$startNumber = isset($config['startNumber']) && intval($config['startNumber']) > 0 ? intval($config['startNumber']) : 1;
 			$currentNumber = $index + $startNumber;
 
-			// 生成层级编号
 			if(isset($context['levelNumber'])) {
-				// 对于多级编号，只转换最后一部分
+
 				$parentParts = explode('.', $context['levelNumber']);
 				$currentPart = $formatNumber($currentNumber, $config['counterType']);
-				$levelNumber = implode('.', $parentParts) . '.' . $currentPart;
+				$levelNumber = implode('.', $parentParts).'.'.$currentPart;
 			} else {
-				// 对于第一级，直接转换整个编号
+
 				$levelNumber = $formatNumber($currentNumber, $config['counterType']);
 			}
 			$itemContext['levelNumber'] = $levelNumber;
 
-			// 替换项目模板中的占位符
 			$itemHtml = $this->_replacePlaceholders($config['itemTemplate'], $item, $itemContext, $config);
 
-			// 如果有子项，递归处理
 			if(isset($item[$config['childrenKey']]) && !empty($item[$config['childrenKey']])) {
-				// 递归调用自身处理子项
+
 				$childrenHtml = $this->_recursiveRender($item[$config['childrenKey']], $config, $itemContext);
 
-				// 如果配置了childrenClass，则为子项容器添加这个类
 				if(isset($config['childrenClass']) && !empty($config['childrenClass'])) {
-					// 查找容器的开始标签并添加class
-					$childrenHtml = preg_replace('/^<([a-z][a-z0-9]*)\s*/i', '<$1 class="' . $config['childrenClass'] . '" ', $childrenHtml);
+
+					$childrenHtml = preg_replace('/^<([a-z][a-z0-9]*)\s*/i', '<$1 class="'.$config['childrenClass'].'" ', $childrenHtml);
 				}
 
-				// 替换子项占位符
-				$itemHtml = str_replace('{' . $config['childrenKey'] . '}', $childrenHtml, $itemHtml);
+				$itemHtml = str_replace('{'.$config['childrenKey'].'}', $childrenHtml, $itemHtml);
 			} else {
-				// 如果没有子项，清空子项占位符
-				$itemHtml = str_replace('{' . $config['childrenKey'] . '}', '', $itemHtml);
+
+				$itemHtml = str_replace('{'.$config['childrenKey'].'}', '', $itemHtml);
 			}
 
 			$itemsHtml .= $itemHtml;
 		}
 
-		// 组装完整的容器HTML
 		$containerHtml = $this->_replacePlaceholders($config['containerTemplate'], ['items' => $itemsHtml], $context, $config);
 
 		return $containerHtml;
 	}
 
-	/**
-	 * 将整数转换为罗马数字
-	 * @param int $num 要转换的整数
-	 * @return string 罗马数字字符串
-	 */
 	private function _intToRoman($num) {
-		// 确保输入是正整数
+
 		$num = intval($num);
 		if($num <= 0) return '0';
 
-		// 罗马数字映射
 		$romanMap = [
 			'M' => 1000,
 			'CM' => 900,
@@ -697,150 +1096,123 @@ EOF;
 		return $result;
 	}
 
-	/**
-	 * 替换模板中的占位符
-	 * @param string $template HTML模板
-	 * @param array $data 用于替换的数据
-	 * @param array $context 上下文数据
-	 * @param array $config 配置参数
-	 * @return string 替换后的HTML
-	 */
 	private function _replacePlaceholders($template, $data, $context, $config) {
 		$html = $template;
 
-		// 替换数据占位符
 		foreach($data as $key => $val) {
 			if(!is_array($val) && !is_object($val)) {
-				$html = str_replace('{' . $key . '}', $val, $html);
+				$html = str_replace('{'.$key.'}', $this->filterValueCtx($val, 'body'), $html);
 			}
 		}
 
-		// 替换上下文占位符
 		foreach($context as $key => $val) {
 			if(!is_array($val) && !is_object($val)) {
-				$html = str_replace('{context.' . $key . '}', $val, $html);
+				$html = str_replace('{context.'.$key.'}', self::sanitizeRich(is_string($val) ? $val : (string)$val), $html);
 			}
 		}
 
-		// 替换特殊占位符
 		if(isset($context['depth'])) {
-			$html = str_replace('{depth}', $context['depth'], $html);
+			$html = str_replace('{depth}', intval($context['depth']), $html);
 		} else {
 			$html = str_replace('{depth}', '', $html);
 		}
 		if(isset($context['index'])) {
-			$html = str_replace('{index}', $context['index'], $html);
+			$html = str_replace('{index}', strval($context['index']), $html);
 		} else {
 			$html = str_replace('{index}', '', $html);
 		}
-		// 添加层级编号占位符替换
+
 		if(isset($context['levelNumber'])) {
-			$html = str_replace('{levelNumber}', $context['levelNumber'], $html);
+
+			$html = str_replace('{levelNumber}', preg_replace('/[^a-zA-Z0-9.\-]/', '', is_string($context['levelNumber']) ? $context['levelNumber'] : (string)$context['levelNumber']), $html);
 		} else {
 			$html = str_replace('{levelNumber}', '', $html);
 		}
 
-		// 添加对任意嵌套数据的支持，利用现有的_value方法
-		// 使用正则表达式查找所有包含点分隔符的占位符（但排除context.开头的）
 		preg_match_all('/\{(?!context\.)([\w]+)\.([\w\.]+)\}/', $html, $matches);
 
-		if (!empty($matches[1])) {
-			// matches[1]包含根键名，matches[2]包含剩余的路径，matches[0]包含完整的占位符
-			foreach (array_keys($matches[1]) as $index) {
+		if(!empty($matches[1])) {
+
+			foreach(array_keys($matches[1]) as $index) {
 				$rootKey = $matches[1][$index];
 				$nestedPath = $matches[2][$index];
 				$fullPlaceholder = $matches[0][$index];
 
-				// 初始化为空字符串
 				$value = '';
 
-				// 检查根键是否存在于data中
-				if (isset($data[$rootKey])) {
-					// 使用_value方法获取嵌套值
+				if(isset($data[$rootKey])) {
+
 					$nestedValue = $this->_value($nestedPath, $data[$rootKey]);
 
-					// 如果值存在且不是数组或对象，则使用该值
-					if ($nestedValue !== false && !is_array($nestedValue) && !is_object($nestedValue)) {
+					if($nestedValue !== false && !is_array($nestedValue) && !is_object($nestedValue)) {
 						$value = $nestedValue;
 					}
 				}
 
-				// 无论值是否存在，都进行替换（不存在时替换为空字符串）
-				$html = str_replace($fullPlaceholder, $value, $html);
+				$html = str_replace($fullPlaceholder, $this->filterValueCtx($value, 'body'), $html);
 			}
 		}
 
 		return $html;
 	}
 
-	/**
-	 * 规范化配置参数
-	 * @param array $config 原始配置
-	 * @return array 规范化后的配置
-	 */
 	private function _normalizeConfig($config) {
-		// 确保所有必要的配置项都存在
+
 		$defaultConfig = [
 			'childrenKey' => 'items',
 			'itemTemplate' => '{content}',
 			'containerTemplate' => '{items}',
 			'emptyTemplate' => '',
 			'separator' => '',
-			'childrenClass' => 'cdx-list__item-children', // 默认的children类名
-			'counterType' => 'numeric', // 默认的计数器类型
-			'start' => 1 // 默认的起始编号
+			'childrenClass' => 'cdx-list__item-children',
+			'counterType' => 'numeric',
+			'start' => 1
 		];
 
 		return array_merge($defaultConfig, $config);
 	}
 
-	/**
-	 * 用于在模板中调用完全参数化递归渲染的方法
-	 * 用法: [recursive dataPath,configJson]
-	 * configJson格式: {"childrenKey":"items","itemTemplate":"<li>{content}</li>","containerTemplate":"<ul>{items}</ul>"}
-	 * 基本使用（使用默认配置）：[recursive data.data.items]
-	 * 自定义所有参数（匹配您提供的HTML格式）：[recursive data.data.items,"{\"childrenKey\":\"items\",\"itemTemplate\":\"<li class=\\\"cdx-list__item\\\"><div class=\\\"cdx-list__item-content\\\" contenteditable=\\\"true\\\" data-empty=\\\"false\\\">{content}</div>{items}</li>\",\"containerTemplate\":\"<ol class=\\\"cdx-list cdx-list-ordered\\\" style=\\\"--list-counter-type: numeric;\\\">{items}</ol>\"}"]
-	 * 使用不同的数据结构和键名：[recursive data.categories,"{\"childrenKey\":\"subcategories\",\"itemTemplate\":\"<option value=\\\"{id}\\\">{name}</option>{subcategories}\",\"containerTemplate\":\"<select>{items}</select>\"}"]
-	 * 使用上下文变量（如索引、深度等）：[recursive data.items,"{\"itemTemplate\":\"<div class=\\\"level-{depth}\\\">{index}: {content}</div>{items}\",\"containerTemplate\":\"<div>{items}</div>\"}"]
-	 */
 	private function _recursive($m, $value = null) {
-		// 解析参数 - 使用正则捕获组直接获取数据
+
 		$dataPath = isset($m[1]) ? trim($m[1]) : '';
 
-		// 获取JSON配置，只使用m[2]捕获组（与正则表达式匹配）
 		$configJson = isset($m[2]) ? trim($m[2]) : '{}';
 
-		// 移除配置字符串两端可能存在的引号
-		if ((strpos($configJson, '"') === 0 && strrpos($configJson, '"') === strlen($configJson) - 1) ||
+		if((strpos($configJson, '"') === 0 && strrpos($configJson, '"') === strlen($configJson) - 1) ||
 			(strpos($configJson, "'") === 0 && strrpos($configJson, "'") === strlen($configJson) - 1)) {
 			$configJson = substr($configJson, 1, -1);
 		}
 
-		// 处理JSON中的转义字符，确保HTML标签正确解析
 		$configJson = stripslashes($configJson);
 
-		// 解析配置JSON，并添加错误处理
 		$config = json_decode($configJson, true);
-		// 检查JSON解析是否成功
+
 		if(json_last_error() !== JSON_ERROR_NONE || !is_array($config)) {
-			// 如果解析失败，使用默认配置
+
 			$config = [];
 		}
 
-		// 获取数据
 		$data = [];
 		if($dataPath != 'null' && $dataPath != null) {
 			$data = $this->_value($dataPath, $value);
 		}
 
-		// 调用递归渲染方法
 		return $this->_recursiveRender($data, $config);
 	}
 
 	private function _var($m, $value = null) {
-		$v = $this->_value($m[1], $value);
-		//return $v !== false ? $v : '';
-		return $v !== false ? $v : $m[0];
+
+		$isOffset = is_array($m[0]);
+		$text = $isOffset ? $m[0][0] : $m[0];
+		$path = $isOffset ? $m[1][0] : $m[1];
+		$v = $this->_value($path, $value);
+		if($v !== false) {
+
+			$ctx = $this->resolveContext($m, $path);
+			$v = $this->filterValueCtx($v, $ctx);
+		}
+
+		return $v !== false ? $v : $text;
 	}
 
 	private function _value($var, $value = null) {

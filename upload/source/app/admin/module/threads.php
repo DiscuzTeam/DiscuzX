@@ -32,3 +32,9 @@ function delete_position($select) {
 	table_forum_thread::t()->update_status_by_tid($tids, '1111111111111110', '&');
 }
 
+function js_cpmsg($cpmsg) {
+	$cpmsg = cplang($cpmsg);
+	$cpmsg = $cpmsg ? "alert('$cpmsg');" : '';
+	echo '<script type="text/JavaScript">'.$cpmsg.'if(parent.$(\'threadforum\')) parent.$(\'threadforum\').searchsubmit.click();</script>';
+	exit;
+}

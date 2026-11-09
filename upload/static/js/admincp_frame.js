@@ -121,8 +121,9 @@ function switchplatform(platform, newwindow) {
 
 function addplatform(platform, name) {
 	showMenu({'ctrlid': 'frameuinfo', 'pos': '34'});
+	var safename = htmlspecialchars(name);
 	document.querySelector('div.platform_box').insertAdjacentHTML('beforeend',
-	    '<a href="javascript:;" platform="' + platform + '" onclick="switchplatform(\'' + platform + '\', 0)"><i class="dzicon platform"></i> ' + htmlspecialchars(name) + '</a>')
+	    '<a href="javascript:;" platform="' + platform + '" title="' + safename + '" onclick="switchplatform(\'' + platform + '\', 0)"><i class="dzicon platform"></i><span class="platform_name">' + safename + '</span></a>')
 }
 
 function removeplatform(platform) {

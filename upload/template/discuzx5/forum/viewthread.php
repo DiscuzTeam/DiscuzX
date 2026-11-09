@@ -478,7 +478,7 @@ function succeedhandle_followmod(url, msg, values) {
 	var fObj = $('followmod_'+values['fuid']);
 	if(values['type'] == 'add') {
 		fObj.innerHTML = '{lang nofollow}';
-		fObj.href = 'home.php?mod=spacecp&ac=follow&op=del&fuid='+values['fuid'];
+		fObj.href = 'home.php?mod=spacecp&ac=follow&op=del&hash={FORMHASH}&fuid='+values['fuid'];
 	} else if(values['type'] == 'del') {
 		fObj.innerHTML = '{lang follow}';
 		fObj.href = 'home.php?mod=spacecp&ac=follow&op=add&hash={FORMHASH}&fuid='+values['fuid'];

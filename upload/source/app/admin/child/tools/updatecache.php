@@ -48,9 +48,15 @@ if($step == 1) {
 		implode('', $extra),
 		'action=tools&operation=updatecache&step=2', 'form', '', FALSE);
 } elseif($step == 2) {
+	if(FORMHASH != $_GET['formhash']) {
+		cpmsg('undefined_action', '', 'error');
+	}
 	$type = implode('_', (array)$_GET['type']);
-	cpmsg(cplang('tools_updatecache_waiting'), "action=tools&operation=updatecache&step=3&type=$type", 'loading', '', FALSE);
+	cpmsg(cplang('tools_updatecache_waiting'), "action=tools&operation=updatecache&step=3&type=$type&formhash=".FORMHASH, 'loading', '', FALSE);
 } elseif($step == 3) {
+	if(FORMHASH != $_GET['formhash']) {
+		cpmsg('undefined_action', '', 'error');
+	}
 	if(substr($_GET['type'], 0, 6) != 'plugin') {
 		$type = explode('_', $_GET['type']);
 	} else {

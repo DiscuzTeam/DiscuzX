@@ -10,6 +10,9 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
 }
 
+if(FORMHASH != $_GET['formhash']) {
+	cpmsg('undefined_action', '', 'error');
+}
 $tableid = intval($_GET['tableid']);
 $tablename = "forum_thread_$tableid";
 $table_info = table_forum_thread::t()->gettablestatus($tableid);

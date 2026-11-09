@@ -85,6 +85,9 @@ if($operation) {
 $_GET['anchor'] = in_array($_GET['anchor'], ['security', 'serversec', 'performance']) ? $_GET['anchor'] : 'security';
 
 if($operation == 'optimize_unit') {
+	if(FORMHASH != $_GET['formhash']) {
+		cpmsg('undefined_action', '', 'error');
+	}
 	$optimizer->optimizer();
 } elseif($operation == 'check_unit') {
 	require_once childfile('optimizer/check_unit');

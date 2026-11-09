@@ -25,79 +25,40 @@ const DISABLEDEFENSE = true;
 
 $_ENV['remote'] = new discuz_remote();
 $_ENV['remote']->init();
-$_ENV['remote']->loadservice();
 
 class discuz_remote {
-
-	var $mod;
 
 	var $core;
 
 	function init() {
 
 		$path = dirname(__DIR__, 2);
+		$_config = [];
+		@include $path.'/config/config_global.php';
+		if(empty($_config)) {
+			exit('config_global.php is missing');
+		}
+
+		if(!$_config['remote']['on']) {
+			$this->error(1, 'remote service is down');
+		}
+
+		if(!$_config['remote']['cron']) {
+			$this->error(100, 'cron service is off. Please check "config.global.php" on your webserver folder.');
+		}
+
 		require_once($path.'/source/class/class_core.php');
 
-		$cachelist = [];
 		$this->core = C::app();
-
-		$this->core->cachelist = $cachelist;
-
-
 		$this->core->init_setting = true;
-
-		$this->core->init_cron = false;
+		$this->core->init_cron = true;
 		$this->core->init_user = false;
 		$this->core->init_session = false;
 		$this->core->init_misc = false;
 		$this->core->init_mobile = false;
-
 		$this->core->init();
 
-		define('SERVICE_DIR', getglobal('config/remote/dir') ? getglobal('config/remote/dir') : 'remote');
-		$this->core->reject_robot();
-	}
-
-	function loadservice() {
-
-		if(!$this->core->config['remote']['on']) {
-			$this->error(1, 'remote service is down');
-		}
-
-		$this->mod = 'cron';
-
-		$modfile = DISCUZ_ROOT.'./api/'.SERVICE_DIR.'/mod/mod_'.$this->mod.'.php';
-		if(!is_file($modfile)) {
-			$this->error(3, 'mod file is missing');
-		}
-
-		require $modfile;
-		$classname = 'mod_'.$this->mod;
-		if(class_exists($classname)) {
-			$service = new $classname;
-			$service->run();
-		}
-	}
-
-	function error($code, $msg) {
-		$code = sprintf('%04d', $code);
-		echo $code.':'.ucfirst($msg);
-		exit();
-	}
-
-}
-
-class remote_service {
-
-	var $version = '2.0.0';
-	var $config;
-
-	function __construct() {
-		$this->config = getglobal('config/remote');
-	}
-
-	function run() {
-		remote_service::success('service is done.');
+		$this->success('Cron work is done');
 	}
 
 	function error($code, $msg) {
@@ -107,8 +68,7 @@ class remote_service {
 	}
 
 	function success($msg) {
-		remote_service::error(0, $msg);
+		$this->error(0, $msg);
 	}
 
 }
-

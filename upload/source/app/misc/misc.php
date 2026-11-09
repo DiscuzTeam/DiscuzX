@@ -21,7 +21,7 @@ if(isset($_GET['mod']) && $_GET['mod'] != 'tag') {
 }
 $modarray = ['seccode', 'secqaa', 'initsys', 'invite', 'faq', 'report',
 	'swfupload', 'stat', 'ranklist', 'buyinvitecode',
-	'tag', 'diyhelp', 'mobile', 'patch', 'getatuser', 'imgcropper',
+	'tag', 'diyhelp', 'mobile', 'patch', 'getatuser',
 	'userstatus', 'secmobseccode', 'secemailseccode', 'share', 'wechat', 'i18n', 'darkroom', 'image'];
 
 $modcachelist = [

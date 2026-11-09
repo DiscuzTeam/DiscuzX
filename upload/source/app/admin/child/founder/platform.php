@@ -15,29 +15,59 @@ $default_platform = getglobal('cache/admin/default_platform') ?: 'system';
 
 if($do == 'list') {
 	showsubmenu('menu_platform');
-
-	showformheader('founder&operation=platform&do=update');
-	showtableheader();
-	showsubtitle(['', 'display_order', 'platform_name', '']);
+	showtips('platform_list_tips');
 
 	$adminscript = preg_replace('#\?platform=\w+#', '', ADMINSCRIPT);
-	foreach(table_common_admincp_menu_platform::t()->fetch_all_data() as $menuData) {
-		$menu = dunserialize($menuData['menu']);
-		$name = !empty($menu['custom']['name']) ? $menu['custom']['name'] : $menu['name'];
-		$default = $default_platform == $menuData['platform'] ? ' class="bold"' : '';
+	$platformlist = table_common_admincp_menu_platform::t()->fetch_all_data();
+	// system 固定置顶，与其 displayorder 无关
+	if(isset($platformlist['system'])) {
+		$system = $platformlist['system'];
+		unset($platformlist['system']);
+		$platformlist = ['system' => $system] + $platformlist;
+	}
 
-		showtablerow('style="height:20px"', ['class="td25"', 'class="td25"', '', ''], [
-			(!empty($menu['userdef']) ? '<input type="checkbox" name="delete[]" value="'.$menuData['platform'].'" class="checkbox">' : ''),
-			'<input type="text" name="displayorder['.$menuData['platform'].']" class="txt" value="'.$menuData['displayorder'].'" />',
-			'<a href="'.ADMINSCRIPT.'?action=founder&operation=platform&do=edit&id='.$menuData['platform'].'"'.$default.'>'.$name.'('.$menuData['platform'].')</a>',
-			'<a href="'.preg_replace('/platform=\w+/', 'platform='.$menuData['platform'], $adminscript).'" target="_blank">'.cplang('platform_enter').'</a>'.($menuData['platform'] == 'system' ? '&nbsp;<a href="'.ADMINSCRIPT.'?action=founder&operation=platform&frames=yes&resetmenu=true" target="_parent" class="lightnum">['.cplang('platform_resetmenu').']</a>' : '')
+	showformheader('founder&operation=platform&do=update');
+	showtableheader(cplang('platform_list').'&nbsp;&nbsp;<a href="'.ADMINSCRIPT.'?action=founder&operation=platform&do=edit&id=new">[+'.cplang('platform_new').']</a>');
+	showsubtitle(['', cplang('display_order'), cplang('platform_name'), cplang('platform_menu_items'), cplang('platform_op')]);
+
+	foreach($platformlist as $menuData) {
+		$menu = dunserialize($menuData['menu']);
+		if(!is_array($menu)) {
+			$menu = [];
+		}
+		$checkbox = !empty($menu['userdef']) ? '<input type="checkbox" name="delete[]" value="'.$menuData['platform'].'" class="checkbox">' : '';
+		if($checkbox) {
+			$hasdelete = true;
+		}
+		$name = !empty($menu['custom']['name']) ? $menu['custom']['name'] : ($menu['name'] ?? $menu['title'] ?? $menuData['platform']);
+		$issystem = $menuData['platform'] == 'system';
+		$isdefault = $default_platform == $menuData['platform'];
+		$editurl = ADMINSCRIPT.'?action=founder&operation=platform&do=edit&id='.$menuData['platform'];
+		$enterurl = preg_replace('/platform=\w+/', 'platform='.$menuData['platform'], $adminscript);
+		$menucount = 0;
+		foreach((array)($menu['menu'] ?? []) as $submenu) {
+			$menucount += count((array)$submenu);
+		}
+		$tags = ['<span class="lightnum">('.$menuData['platform'].')</span>'];
+		if($isdefault) {
+			$tags[] = '<span class="bold">'.cplang('platform_default').'</span>';
+		}
+		$tags[] = '<span class="lightnum">'.($issystem ? cplang('platform_system') : cplang('platform_custom')).'</span>';
+
+		$ops = '<a href="'.$editurl.'">'.cplang('edit').'</a>&nbsp;&nbsp;<a href="'.$enterurl.'" target="_blank">'.cplang('platform_enter').'</a>';
+		if($issystem) {
+			$ops .= '&nbsp;&nbsp;<a href="'.ADMINSCRIPT.'?action=founder&operation=platform&frames=yes&resetmenu=true" target="_parent" class="lightnum">['.cplang('platform_resetmenu').']</a>';
+		}
+
+		showtablerow('style="height:32px"', ['class="td25"', 'class="td25"', '', 'class="td25"', 'class="td26"'], [
+			$checkbox,
+			'<input type="text" name="displayorder['.$menuData['platform'].']" class="txt" style="width:60px;text-align:center" value="'.$menuData['displayorder'].'" />',
+			'<a href="'.$editurl.'"'.($isdefault ? ' class="bold"' : '').'>'.dhtmlspecialchars($name).'</a>&nbsp;'.implode('&nbsp;', $tags),
+			'<span class="lightnum">'.$menucount.'</span>',
+			$ops
 		]);
 	}
-	echo '<tr><td></td>'.
-		'<td width="30%" colspan="3"><a class="addtr" href="'.ADMINSCRIPT.'?action=founder&operation=platform&do=edit&id=new">'.cplang('platform_new').'</a></td><td></td>'.
-		'</tr>';
-	showsubmit('submit', 'submit', 'del');
-
+	showsubmit('submit', 'submit', !empty($hasdelete) ? 'del' : '');
 	showtablefooter();
 	showformfooter();
 
@@ -61,12 +91,9 @@ if($do == 'list') {
 				['displayorder' => $_GET['displayorder'][$menuData['platform']] ?? 0]);
 		}
 
-		$platformnew = [];
-		foreach(table_common_admincp_menu_platform::t()->fetch_all_data() as $_platform => $v) {
-			$platformnew[$_platform] = $_G['cache']['admin']['platform'][$_platform];
-		}
-		$_G['cache']['admin']['platform'] = $platformnew;
-		savecache('admin', $_G['cache']['admin']);
+		// 以平台表为准重建缓存：旧写法从 $_G['cache']['admin']['platform'] 逐项回填，
+		// 缓存里缺的平台会被写成 NULL 并 savecache，导致右上角「全部应用」出现空白入口
+		menu::platform_refresh();
 	}
 
 	cpmsg('founder_platform_update_succeed', 'action=founder&operation=platform', 'succeed');

@@ -152,10 +152,10 @@
 					<dd class="m avt"><a href="home.php?mod=space&uid=$fuser['followuid']" target="_blank"><!--{avatar($fuser['followuid'], 'middle')}--></a></dd>
 					<dt class="y">
 						<!--{if $viewself}-->
-							<p class="xw0"><a id="a_followmod_{$fuser['followuid']}" href="home.php?mod=spacecp&ac=follow&op=del&fuid=$fuser['followuid']" class="flw_btn_unfo dialog">{lang follow_del}</a></p>
+							<p class="xw0"><a id="a_followmod_{$fuser['followuid']}" href="home.php?mod=spacecp&ac=follow&op=del&hash={FORMHASH}&fuid=$fuser['followuid']" class="flw_btn_unfo dialog">{lang follow_del}</a></p>
 						<!--{elseif $fuser['followuid'] != $_G['uid']}-->
 							<!--{if $fuser['mutual']}-->
-								<p class="xw0"><!--{if $fuser['mutual'] > 0}--><span class="z flw_status_2">{lang follow_follower_mutual}</span><span class="pipe">|</span><!--{else}--><span class="z flw_status_1">{lang did_not_follow_to_me}</span><span class="pipe">|</span><!--{/if}--><a id="a_followmod_{$fuser['followuid']}" href="home.php?mod=spacecp&ac=follow&op=del&fuid=$fuser['followuid']" class="flw_btn_unfo dialog">{lang follow_del}</a></p>
+								<p class="xw0"><!--{if $fuser['mutual'] > 0}--><span class="z flw_status_2">{lang follow_follower_mutual}</span><span class="pipe">|</span><!--{else}--><span class="z flw_status_1">{lang did_not_follow_to_me}</span><span class="pipe">|</span><!--{/if}--><a id="a_followmod_{$fuser['followuid']}" href="home.php?mod=spacecp&ac=follow&op=del&hash={FORMHASH}&fuid=$fuser['followuid']" class="flw_btn_unfo dialog">{lang follow_del}</a></p>
 							<!--{elseif helper_access::check_module('follow')}-->
 								<p class="xw0"><a id="a_followmod_{$fuser['followuid']}" href="home.php?mod=spacecp&ac=follow&op=add&hash={FORMHASH}&fuid=$fuser['followuid']" class="flw_btn_fo dialog">{lang follow_add}</a></p>
 							<!--{/if}-->
@@ -181,7 +181,7 @@
 					<dt class="y">
 						<!--{if $fuser['uid'] != $_G['uid']}-->
 							<!--{if $fuser['mutual']}-->
-								<p class="xw0"><!--{if $fuser['mutual'] > 0}--><span class="z flw_status_2">{lang follow_follower_mutual}</span><span class="pipe">|</span><!--{else}--><span class="z flw_status_1">{lang did_not_follow_to_me}</span><span class="pipe">|</span><!--{/if}--><a id="a_followmod_{$fuser['uid']}" href="home.php?mod=spacecp&ac=follow&op=del&fuid=$fuser['uid']" class="flw_btn_unfo dialog">{lang follow_del}</a></p>
+								<p class="xw0"><!--{if $fuser['mutual'] > 0}--><span class="z flw_status_2">{lang follow_follower_mutual}</span><span class="pipe">|</span><!--{else}--><span class="z flw_status_1">{lang did_not_follow_to_me}</span><span class="pipe">|</span><!--{/if}--><a id="a_followmod_{$fuser['uid']}" href="home.php?mod=spacecp&ac=follow&op=del&hash={FORMHASH}&fuid=$fuser['uid']" class="flw_btn_unfo dialog">{lang follow_del}</a></p>
 							<!--{elseif helper_access::check_module('follow')}-->
 								<p class="xw0"><a id="a_followmod_{$fuser['uid']}" href="home.php?mod=spacecp&ac=follow&op=add&hash={FORMHASH}&fuid=$fuser['uid']" class="flw_btn_fo dialog">{lang follow_add}</a></p>
 							<!--{/if}-->

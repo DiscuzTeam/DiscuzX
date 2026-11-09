@@ -94,7 +94,7 @@ $shownotice
 						<!--{if !empty($_G['cache']['admin']['platform']) && count($_G['cache']['admin']['platform']) > 1}-->
 						<div class="platform_box">
 						<!--{loop $_G['cache']['admin']['platform'] $platform $platform_data}-->
-						<a href="javascript:;" platform="$platform" onclick="switchplatform('$platform', <!--{if !empty($platform_data['location'])}-->1<!--{else}-->0<!--{/if}-->)"><i class="dzicon platform"></i> {$platform_data['name']}</a>
+						<a href="javascript:;" platform="$platform" title="{$platform_data['name']}" onclick="switchplatform('$platform', <!--{if !empty($platform_data['location'])}-->1<!--{else}-->0<!--{/if}-->)"><i class="dzicon platform"></i><span class="platform_name">{$platform_data['name']}</span></a>
 						<!--{/loop}-->
 						</div>
 						<!--{/if}-->

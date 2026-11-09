@@ -176,7 +176,7 @@ if($step == 0) {
 				$plugin = table_common_plugin::t()->fetch_by_identifier($key);
 				if(!$plugin['pluginid']) {
 					$batch[$key.'.'.$type] = [
-						ADMINSCRIPT.'?action=plugins&operation=import&dir='.$key,
+						ADMINSCRIPT.'?action=plugins&operation=import&dir='.$key.'&formhash='.FORMHASH,
 						$lang['plugins_config_install'].' '.$entrytitle,
 					];
 				} else {

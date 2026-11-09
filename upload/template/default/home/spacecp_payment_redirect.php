@@ -26,7 +26,7 @@
 <script type="text/javascript">
     var isShowPaymentQrcodeWin = false, paymentStatusCheckTimer;
     function wxpay_order_status() {
-        ajaxget('{$_G['siteurl']}home.php?mod=spacecp&ac=payment&op=pay&sop=status&order_id={$order_id}&handlekey=paystatus', 'pay_order_status', '', '', '', function(a) {
+        ajaxget('{$_G['siteurl']}home.php?mod=spacecp&ac=payment&op=pay&sop=status&order_id={$order_id}&channel={$pay_channel}&handlekey=paystatus', 'pay_order_status', '', '', '', function(a) {
             if(isShowPaymentQrcodeWin) {
                 paymentStatusCheckTimer = setTimeout(wxpay_order_status, 5000);
             }

@@ -181,18 +181,18 @@ class discuz_error {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style type="text/css">
 	<!--
-	body { background-color: white; color: black; font: 9px verdana, arial, sans-serif;}
+	body { background-color: white; color: black; font: 12px verdana, arial, sans-serif;}
 	#container { max-width: 1024px; margin: auto; }
 	#message   { max-width: 1024px; color: black; }
 
 	.red  {color: red;}
-	a:link,a:visited  { font: 9px verdana, arial, sans-serif; color: red; }
-	span.guess { font: 9px verdana, arial, sans-serif; color: blue; }
+	a:link,a:visited  { font: 12px verdana, arial, sans-serif; color: red; }
+	span.guess { font: 12px verdana, arial, sans-serif; color: blue; }
 	h1 { color: #FF0000; font: 18px "Verdana"; margin-bottom: 1px; }
 	.bg1{ background-color: #F5D9D9;}
 	.bg2{ background-color: #EEEEEE;}
 	.bg3{ background-color: #FFA66C; font-weight: bold;}
-	.table {background: #AAAAAA; font: 9px Menlo,Consolas,"Lucida Console";}
+	.table {background: #AAAAAA; font: 12px Menlo,Consolas,"Lucida Console";}
 	.table tbody{word-break: break-all;}
 	.info {
 	    background: none repeat scroll 0 0 #F3F3F3;
@@ -209,7 +209,7 @@ class discuz_error {
 
 	.help {
 	    border-radius: 10px 10px 10px 10px;
-	    font: 9px verdana, arial, sans-serif;
+	    font: 12px verdana, arial, sans-serif;
 	    text-align: center;
 	    line-height: 160%;
 	    padding: 4px;
@@ -222,7 +222,7 @@ class discuz_error {
 	    border-radius: 5px;
 	    color: #000000;
 	    font: arial, sans-serif;
-	    font-size: 9px;
+	    font-size: 12px;
 	    line-height: 160%;
 	    margin-top: 2px;
 	    padding: 4px;
@@ -269,32 +269,34 @@ EOT;
 				echo '<tr><td><ul>'.$phpmsg.'</ul></td></tr>';
 			}
 			echo '</table></div>'."\n";
-
-			echo '<div class="info">';
-			echo '<p><strong>System Info</strong></p>';
-			echo '<table cellpadding="2" cellspacing="1" width="100%" class="table">';
-			if(defined('DISCUZ_ROOT')) {
-				include_once DISCUZ_ROOT.'./source/discuz_version.php';
+			if($_G['adminid']) {
+				echo '<div class="info">';
+				echo '<p><strong>System Info</strong></p>';
+				echo '<table cellpadding="2" cellspacing="1" width="100%" class="table">';
+				if(defined('DISCUZ_ROOT')) {
+					include_once DISCUZ_ROOT.'./source/discuz_version.php';
+				}
+				if(defined('DISCUZ_VERSION') && defined('DISCUZ_RELEASE')) {
+					echo '<tr class="bg2"><td width="50">Version</td><td>'.DISCUZ_VERSION.DISCUZ_SUBVERSION.' Release '.DISCUZ_RELEASE.'</td></tr>';
+				}
+				if(defined('PHP_OS') && function_exists('php_uname')) {
+					echo '<tr class="bg2"><td width="50">OS</td><td>'.PHP_OS.' / '.php_uname().'</td></tr>';
+				}
+				if(defined('PHP_VERSION') && defined('PHP_SAPI')) {
+					echo '<tr class="bg2"><td width="50">PHP</td><td>'.PHP_VERSION.' '.PHP_SAPI.(!empty($_SERVER['SERVER_SOFTWARE']) ? ' on '.$_SERVER['SERVER_SOFTWARE'] : '').'</td></tr>';
+				}
+				if(method_exists('helper_dbtool', 'dbversion') && class_exists('DB')) {
+					echo '<tr class="bg2"><td width="50">MySQL</td><td>'.helper_dbtool::dbversion().'</td></tr>';
+				}
+				if(function_exists('memory') && ($v = memory('check'))) {
+					echo '<tr class="bg2"><td width="50">Memory</td><td>'.$v.'</td></tr>';
+				}
+				echo '</table></div>';
 			}
-			if(defined('DISCUZ_VERSION') && defined('DISCUZ_RELEASE')) {
-				echo '<tr class="bg2"><td width="50">Version</td><td>'.DISCUZ_VERSION.DISCUZ_SUBVERSION.' Release '.DISCUZ_RELEASE.'</td></tr>';
-			}
-			if(defined('PHP_OS') && function_exists('php_uname')) {
-				echo '<tr class="bg2"><td width="50">OS</td><td>'.PHP_OS.' / '.php_uname().'</td></tr>';
-			}
-			if(defined('PHP_VERSION') && defined('PHP_SAPI')) {
-				echo '<tr class="bg2"><td width="50">PHP</td><td>'.PHP_VERSION.' '.PHP_SAPI.(!empty($_SERVER['SERVER_SOFTWARE']) ? ' on '.$_SERVER['SERVER_SOFTWARE'] : '').'</td></tr>';
-			}
-			if(method_exists('helper_dbtool', 'dbversion') && class_exists('DB')) {
-				echo '<tr class="bg2"><td width="50">MySQL</td><td>'.helper_dbtool::dbversion().'</td></tr>';
-			}
-			if(function_exists('memory') && ($v = memory('check'))) {
-				echo '<tr class="bg2"><td width="50">Memory</td><td>'.$v.'</td></tr>';
-			}
-			echo '</table></div>';
 		}
 
 		if(function_exists('lang')) {
+			echo '<div class="info">';
 			echo '<div class="help">'.lang('error', 'suggestion');
 
 			if(!isset($_G['config']['security']['error']['guessplugin']) || !empty($_G['config']['security']['error']['guessplugin'])) {
@@ -308,11 +310,10 @@ EOT;
 
 			echo '</div>';
 			$endmsg = lang('error', $_G['adminid'] ? 'error_end_message_admin' : 'error_end_message_user', ['host' => $host]);
-		} else {
-			$endmsg = '';
+			echo '<div class="help">'.$endmsg.'</div></div>';
 		}
 
-		echo '<div class="help">'.$endmsg.'</div></div></body></html>';
+		echo '</div></body></html>';
 	}
 
 	public static function clear($message) {

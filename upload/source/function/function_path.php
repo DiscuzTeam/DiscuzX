@@ -9,7 +9,6 @@
 if(!defined('IN_DISCUZ') && !defined('IN_API')) {
 	exit('Access Denied');
 }
-
 const PLUGIN_ROOT = './source/plugin/';
 const TEMPLATE_ROOT = './template/';
 
@@ -30,6 +29,9 @@ function DISCUZ_PLUGIN($plugin = '') {
 	$rootPath = DISCUZ_ROOT();
 	if($plugin === '') {
 		return $rootPath.PLUGIN_ROOT;
+	}
+	if(str_contains($plugin, '..')) {
+		return '';
 	}
 	static $cache = [];
 	if(isset($cache[$key])) {
@@ -53,6 +55,9 @@ function DISCUZ_TEMPLATE($template = '') {
 	$rootPath = DISCUZ_ROOT();
 	if($template === '') {
 		return $rootPath.TEMPLATE_ROOT;
+	}
+	if(str_contains($template, '..')) {
+		return '';
 	}
 	static $cache = [];
 	if(isset($cache[$key])) {

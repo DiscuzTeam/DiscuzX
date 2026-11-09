@@ -412,6 +412,9 @@ if($op == 'add') {
 } elseif($op == 'blacklist') {
 
 	if($_GET['subop'] == 'delete') {
+		if(FORMHASH != $_GET['hash']) {
+			showmessage('undefined_action');
+		}
 		$_GET['uid'] = intval($_GET['uid']);
 		table_home_blacklist::t()->delete_by_uid_buid($space['uid'], $_GET['uid']);
 		$count = table_home_blacklist::t()->count_by_uid_buid($space['uid']);

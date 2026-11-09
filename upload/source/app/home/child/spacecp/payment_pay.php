@@ -35,6 +35,12 @@ if(submitcheck('paysubmit')) {
 		showmessage('payment_type_no_exist', $_G['siteurl'].'home.php?mod=spacecp&ac=payment&op=pay&order_id='.$order_id, [], ['showdialog' => true, 'locationtime' => 3]);
 	}
 
+	// 记录本次使用的支付渠道，便于主动查单与对账（支付完成后会被 finish_order 覆盖为实际渠道）
+	if($order['channel'] != $pay_channel) {
+		table_common_payment_order::t()->update($order_id, ['channel' => $pay_channel]);
+		$order['channel'] = $pay_channel;
+	}
+
 	// QQ 钱包 JSAPI 支付
 	if($pay_channel == 'qpay' && checkmobile() && str_contains($_SERVER['HTTP_USER_AGENT'], ' QQ') && str_contains($_SERVER['HTTP_USER_AGENT'], 'MQQBrowser')) {
 		$ec_qpay = table_common_setting::t()->fetch_setting('ec_qpay', true);
@@ -89,6 +95,20 @@ if(submitcheck('paysubmit')) {
 	$title = dhtmlspecialchars($order['subject']);
 	include template('home/spacecp_payment_wxjsapi');
 } elseif($_GET['sop'] == 'status') {
+	// 前端轮询：主动向支付渠道查单，回调丢失时也能自动补单
+	$channel = daddslashes($_GET['channel'] ?? '');
+	if(!$channel) {
+		$channel = $order['channel'];
+	}
+	if($channel && !$order['status'] && $order['expire_time'] >= TIMESTAMP) {
+		payment::query_order($channel, $order_id);
+		$order = table_common_payment_order::t()->fetch($order_id);
+	}
+	if($order['status'] == 1) {
+		$return_url = $order['return_url'] ? $order['return_url'] : $_G['siteurl'].'home.php?mod=spacecp&ac=payment';
+		$return_url .= (str_contains($return_url, '?') ? '&' : '?').'order_id='.$order_id;
+		showmessage('payment_succeed', $return_url, [], ['alert' => 'right']);
+	}
 	exit();
 } else {
 	$order['subject'] = dhtmlspecialchars($order['subject']);

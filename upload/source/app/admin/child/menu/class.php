@@ -15,6 +15,11 @@ class menu_loader {
 	public static function run(&$menuData) {
 		global $_G;
 
+		// 缓存里的平台条目可能因历史单条写入而缺失或为 NULL，损坏时以平台表为准自愈一次
+		if(menu::platform_cache_broken()) {
+			menu::platform_refresh();
+		}
+
 		if(PLATFORM == 'system') {
 			if(!empty($_GET['closemenunotice'])) {
 				require_once libfile('function/cache');
@@ -40,11 +45,11 @@ class menu_loader {
 				}
 			}
 		}
-		$menuData = $_G['cache']['admin']['platform'][PLATFORM];
+		$menuData = $_G['cache']['admin']['platform'][PLATFORM] ?? [];
 		if(!empty($menuData['location'])) {
 			dheader('location: '.$menuData['location']);
 		}
-		foreach($menuData['menu'] as $key => $submenu) {
+		foreach((array)($menuData['menu'] ?? []) as $key => $submenu) {
 			foreach($submenu as $k => $row) {
 				if(!empty($row[3])) {
 					list($s1, $s2) = explode('::', $row[3]);
@@ -92,8 +97,8 @@ class menu_loader {
 			'{ADMINSCRIPT}' => ADMINSCRIPT,
 		];
 		foreach($replaces as $k => $v) {
-			$menuData['logo'] = str_replace($k, $v, $menuData['logo']);
-			$menuData['navbar'] = str_replace($k, $v, $menuData['navbar']);
+			$menuData['logo'] = str_replace($k, $v, $menuData['logo'] ?? '');
+			$menuData['navbar'] = str_replace($k, $v, $menuData['navbar'] ?? '');
 		}
 	}
 

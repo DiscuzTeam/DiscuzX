@@ -159,8 +159,15 @@ class account {
 		if($invite['id']) {
 			$result = table_common_invite::t()->count_by_uid_fuid($invite['uid'], $uid);
 			if(!$result) {
-				table_common_invite::t()->update($invite['id'], ['fuid' => $uid, 'fusername' => $this->user['username']]);
-				updatestat('invite');
+				$consumed = table_common_invite::t()->update_consume($invite['id'], $uid, $this->user['username'], [
+					'regdateline' => $GLOBALS['_G']['timestamp'],
+					'status' => 2,
+				]);
+				if(intval($consumed) !== 1) {
+					$invite = [];
+				} else {
+					updatestat('invite');
+				}
 			} else {
 				$invite = [];
 			}

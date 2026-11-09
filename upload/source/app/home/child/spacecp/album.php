@@ -53,7 +53,12 @@ if($_GET['op'] == 'edit') {
 			}
 		} elseif($_POST['friend'] == 4) {
 			$_POST['password'] = trim($_POST['password']);
-			if($_POST['password'] == '') $_POST['friend'] = 0;
+			if($_POST['password'] == '') {
+				$_POST['friend'] = 0;
+			}
+			if($_POST['password'] == '******') {
+				$_POST['password'] = $album['password'];
+			}
 		}
 		if($_POST['friend'] !== 2) {
 			$_POST['target_ids'] = '';
@@ -83,6 +88,7 @@ if($_GET['op'] == 'edit') {
 	$passwordstyle = $selectgroupstyle = 'display:none';
 	if($album['friend'] == 4) {
 		$passwordstyle = '';
+		$album['password'] = '******';
 	} elseif($album['friend'] == 2) {
 		$selectgroupstyle = '';
 		if($album['target_ids']) {

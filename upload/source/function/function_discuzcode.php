@@ -617,8 +617,8 @@ function parseflv($url, $width = 0, $height = 0) {
 			}
 			$width = addslashes($width);
 			$height = addslashes($height);
-			$flv = addslashes($flv);
-			$iframe = addslashes($iframe);
+			$flv = addslashes(dhtmlspecialchars($flv, ENT_QUOTES));
+			$iframe = addslashes(dhtmlspecialchars($iframe, ENT_QUOTES));
 			$randomid = 'flv_'.random(3);
 			// 允许media扩展只返回其中一种播放方式，如两种都返回，则根据浏览器是否支持HTML5进行自动选择
 			$player_iframe = $iframe ? "\"<iframe src='$iframe' border='0' scrolling='no' framespacing='0' allowfullscreen='true' style='max-width: 100%' width='$width' height='$height' frameborder='no'></iframe>\"" : '';
