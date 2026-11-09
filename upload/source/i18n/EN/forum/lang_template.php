@@ -1351,6 +1351,13 @@ $lang = [
 	'json_editor_submit' => 'Publish',
 	'json_editor_title_seccode' => 'Security Verification',
 	'json_editor_seccode_desc' => 'Please enter verification code',
+	'thread_imgmanager' => 'Image Management',
+	'batch_delete' => 'Batch Delete',
+	'used' => 'In Use',
+	'unused' => 'Unused',
+	'no_images' => 'No Images',
+	'select_images' => 'Please select the images to delete first',
+	'confirm_delete' => 'Are you sure you want to delete the selected images?',
 
 	'collection_no_image' => 'No Image',
 	'collection_cover' => 'Collection Cover',
