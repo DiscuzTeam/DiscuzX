@@ -24,7 +24,7 @@ $keyword = trim($_GET['keyword']);
 
 $_GET['crimesearch'] = 1;
 
-showformheader('logs', null, null, 'get');
+showformheader('logs', null, null, 'post');
 showtableheader('', 'fixpadding');
 
 foreach(crime('actions') as $key => $value) {

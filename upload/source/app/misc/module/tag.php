@@ -175,8 +175,9 @@ if(!$op || in_array($op, ['list', 'detail'])) {
 }elseif(in_array($_GET['op'], ['add', 'search', 'manage', 'set'])) {
 	global $_G;
 	$taglist = [];
-	if(intval($_GET['tid']) > 0) {
-		$postinfo = table_forum_post::t()->fetch_threadpost_by_tid_invisible(intval($_GET['tid']));
+	$_GET['tid'] = intval(getgpc('tid'));
+	if($_GET['tid'] > 0) {
+		$postinfo = table_forum_post::t()->fetch_threadpost_by_tid_invisible($_GET['tid']);
 		if($postinfo['tags']) {
 			$tagarray_all = $array_temp = $threadtag_array = [];
 			$tagarray_all = explode("\t", $postinfo['tags']);
