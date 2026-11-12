@@ -189,7 +189,7 @@ EOT;
 	showtableheader('usergroups_member', 'fixpadding', 'id="membergroups"'.($_GET['type'] && $_GET['type'] != 'member' ? ' style="display: none"' : ''));
 	showsubtitle(['', 'usergroups_title', '', 'usergroups_creditsrange', 'usergroups_stars', 'usergroups_color', '<input class="checkbox" type="checkbox" name="gcmember" onclick="checkAll(\'value\', this.form, \'gmember\', \'gcmember\', 1)" /> <a href="javascript:;" onclick="if(getmultiids()) window.open(\''.ADMINSCRIPT.'?action=usergroups&operation=edit&multi=\' + getmultiids());return false;">'.$lang['multiedit'].'</a>']);
 	echo $membergroup;
-	echo '<tr><td>&nbsp;</td><td colspan="8"><div><a href="###" onclick="addrow(this, 0)" class="addtr">'.$lang['usergroups_add'].'</a></div></td></tr>';
+	echo '<tr><td>&nbsp;</td><td colspan="7"><div><a href="###" onclick="addrow(this, 0)" class="addtr">'.$lang['usergroups_add'].'</a></div></td></tr>';
 	showsubmit('groupsubmit', 'submit', 'del');
 	showtablefooter();
 	showformfooter();
@@ -201,21 +201,21 @@ EOT;
 		echo $specialgroup['private'];
 	}
 	if($specialgroup['buy']) {
-		showsubtitle(['', 'usergroups_edit_system_buy']);
+		echo '<tr><td>&nbsp;</td><td colspan="7"><strong>'.cplang('usergroups_edit_system_buy').'</strong></td></tr>';
 		echo $specialgroup['buy'];
 	}
 	if($specialgroup['free']) {
-		showsubtitle(['', 'usergroups_edit_system_free']);
+		echo '<tr><td>&nbsp;</td><td colspan="7"><strong>'.cplang('usergroups_edit_system_free').'</strong></td></tr>';	
 		echo $specialgroup['free'];
 	}
 	if($specialgroup['up']) {
 		foreach($specialgroup['up'] as $groupid => $v) {
-			echo '<tr><td>&nbsp;</td><td colspan="6"><strong>'.$_G['setting']['upgroup_name'][$groupid].'</strong></td></tr>';
+			echo '<tr><td>&nbsp;</td><td colspan="7"><strong>'.$_G['setting']['upgroup_name'][$groupid].'</strong></td></tr>';
 			echo $v;
-			echo '<tr><td>&nbsp;</td><td colspan="6"><div><a href="###" onclick="addrow(this, 2, '.$groupid.', '.$lastupgid[$groupid].')" class="addtr">'.$lang['usergroups_sepcialup_add'].'</a></div></td></tr>';
+			echo '<tr><td>&nbsp;</td><td colspan="7"><div><a href="###" onclick="addrow(this, 2, '.$groupid.', '.$lastupgid[$groupid].')" class="addtr">'.$lang['usergroups_sepcialup_add'].'</a></div></td></tr>';
 		}
 	}
-	echo '<tr><td>&nbsp;</td><td colspan="6"><div><a href="###" onclick="addrow(this, 1)" class="addtr">'.$lang['usergroups_sepcial_add'].'</a></div></td></tr>';
+	echo '<tr><td>&nbsp;</td><td colspan="7"><div><a href="###" onclick="addrow(this, 1)" class="addtr">'.$lang['usergroups_sepcial_add'].'</a></div></td></tr>';
 	showsubmit('groupsubmit', 'submit', 'del');
 	showtablefooter();
 	showformfooter();
