@@ -290,7 +290,7 @@ class usermodel {
 			return -1;
 		}
 
-		$username = substr(md5($username), 8, 15);
+		$username = substr(md5(strtolower(trim($username))), 8, 15);
 		$expire = 15 * 60;
 		if(!$ip) {
 			$ip = $this->base->onlineip;

@@ -78,7 +78,7 @@ if($op == 'add') {
 } elseif($op == 'del') {
 	$_GET['handlekey'] = $_GET['handlekey'] ? $_GET['handlekey'] : 'followmod';
 	$delfollowuid = intval($_GET['fuid']);
-	if(empty($delfollowuid)) {
+	if($_GET['hash'] != FORMHASH || empty($delfollowuid)) {
 		exit('Access Denied');
 	}
 	$affectedrows = table_home_follow::t()->delete_by_uid_followuid($_G['uid'], $delfollowuid);
@@ -95,7 +95,7 @@ if($op == 'add') {
 		showmessage('follow_not_assignation_user');
 	}
 	if(submitcheck('editbkname')) {
-		$bkname = cutstr(strip_tags($_GET['bkname']), 30, '');
+		$bkname = dhtmlspecialchars(cutstr(strip_tags($_GET['bkname']), 30, ''), ENT_QUOTES);
 		table_home_follow::t()->update_by_uid_followuid($_G['uid'], $followuid, ['bkname' => $bkname]);
 		showmessage('follow_remark_succeed', dreferer(), ['bkname' => $bkname, 'btnstr' => empty($bkname) ? lang('spacecp', 'follow_add_remark') : lang('spacecp', 'follow_modify_remark')], ['showdialog' => true, 'closetime' => true]);
 	}

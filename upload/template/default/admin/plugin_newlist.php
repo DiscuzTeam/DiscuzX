@@ -19,6 +19,6 @@
 <!--{/block}-->
 <!--{block col3}-->
 <div class="control_btns">
-	<a href="{ADMINSCRIPT}?action=plugins&operation=import&dir={$entry}" class="control_btn"><img src="./static/image/admincp/svg/install.svg">{$lang['plugins_config_install']}</a>
+	<a href="{ADMINSCRIPT}?action=plugins&operation=import&dir={$entry}&formhash={FORMHASH}" class="control_btn"><img src="./static/image/admincp/svg/install.svg">{$lang['plugins_config_install']}</a>
 </div>
 <!--{/block}-->

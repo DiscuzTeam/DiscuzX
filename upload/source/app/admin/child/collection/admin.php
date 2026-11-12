@@ -60,7 +60,7 @@ if(!submitcheck('searchsubmit', 1)) {
 			"<a href='forum.php?mod=collection&action=view&ctid={$uniquecollection['ctid']}' target='_blank'>{$uniquecollection['name']}</a>",
 			"<a href='home.php?mod=space&uid={$uniquecollection['uid']}' target='_blank'>{$uniquecollection['username']}</a>",
 			dgmdate($uniquecollection['dateline']),
-			"<a href='".ADMINSCRIPT."?action=collection&operation=recommend&recommentctid={$uniquecollection['ctid']}'>".cplang('collection_recommend').'</a>',
+			"<a href='".ADMINSCRIPT."?action=collection&operation=recommend&recommentctid={$uniquecollection['ctid']}&formhash=".FORMHASH."'>".cplang('collection_recommend').'</a>',
 		]);
 	}
 	showtablerow('', ['class="td25" colspan="3"'], ['<input name="chkall" id="chkall" type="checkbox" class="checkbox" onclick="checkAll(\'prefix\', this.form, \'ctidarray\', \'chkall\')" /><label for="chkall">'.cplang('select_all').'</label>']);

@@ -50,7 +50,7 @@ if(empty($blog)) {
 		showmessage('operating_too_fast', '', ['waittime' => $waittime], ['return' => true]);
 	}
 
-	$blog['subject'] = empty($_GET['subject']) ? '' : (dstrlen($_GET['subject']) > $_G['setting']['maxsubjectsize'] ? getstr($_GET['subject'], $_G['setting']['maxsubjectsize']) : $_GET['subject']);
+	$blog['subject'] = empty($_GET['subject']) ? '' : getstr($_GET['subject'], $_G['setting']['maxsubjectsize']);
 	$blog['message'] = empty($_GET['message']) ? '' : getstr($_GET['message'], 5000);
 
 } else {

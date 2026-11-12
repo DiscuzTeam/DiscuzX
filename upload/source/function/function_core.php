@@ -1899,10 +1899,10 @@ function make_secqaa() {
 	return helper_seccheck::make_secqaa();
 }
 
-function adshow($parameter) {
+function adshow($parameter, $allowRegister = true) {
 	global $_G;
 	if(getgpc('inajax') || $_G['group']['closead']) {
-		return;
+		return '';
 	}
 	$return = (isset($_G['config']['plugindeveloper']) && $_G['config']['plugindeveloper'] == 2) ? '<hook>[ad '.$parameter.']</hook>' : '';
 	$params = explode('/', $parameter);
@@ -1915,10 +1915,12 @@ function adshow($parameter) {
 		loadcache('advs');
 		if(!empty($_G['cache']['advs']['addons'][$params[0]])) {
 			$customid = $_G['cache']['advs']['addons'][$params[0]];
-		} else {
+		} elseif($allowRegister) {
 			$customid = table_common_advertisement_custom::t()->insert(['name' => $params[0]], true);
 			require_once libfile('function/cache');
 			updatecache('advs');
+		} else {
+			return '';
 		}
 		$params[0] = 'custom';
 	}

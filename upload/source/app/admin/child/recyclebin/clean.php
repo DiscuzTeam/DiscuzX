@@ -10,7 +10,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
 }
 
-if(!submitcheck('rbsubmit', 1)) {
+if(!submitcheck('rbsubmit', 2)) {
 
 	shownav('topic', 'nav_recyclebin');
 	showsubmenu('nav_recyclebin', [
@@ -42,7 +42,7 @@ if(!submitcheck('rbsubmit', 1)) {
 		$delcount = deletethread($deletetids);
 		$threadsdel += $delcount;
 		$startlimit += $pernum;
-		cpmsg('recyclebin_clean_next', 'action=recyclebin&operation=clean&rbsubmit=1&threadsdel='.$threadsdel.'&days='.$days, 'loading', ['threadsdel' => $threadsdel]);
+		cpmsg('recyclebin_clean_next', 'action=recyclebin&operation=clean&rbsubmit=1&formhash='.FORMHASH.'&threadsdel='.$threadsdel.'&days='.$days, 'loading', ['threadsdel' => $threadsdel]);
 	} else {
 		cpmsg('recyclebin_succeed', 'action=recyclebin&operation=clean', 'succeed', ['threadsdel' => $threadsdel, 'threadsundel' => 0]);
 	}

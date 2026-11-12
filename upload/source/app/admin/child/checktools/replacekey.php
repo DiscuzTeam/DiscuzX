@@ -21,8 +21,14 @@ showtips('replacekey_tips');
 if($step == 1) {
 	cpmsg(cplang('replacekey_tips_step1'), 'action=checktools&operation=replacekey&step=2', 'form', '', FALSE);
 } elseif($step == 2) {
-	cpmsg(cplang('replacekey_tips_step2'), 'action=checktools&operation=replacekey&step=3', 'loading', '', FALSE);
+	if(FORMHASH != $_GET['formhash']) {
+		cpmsg('undefined_action', '', 'error');
+	}
+	cpmsg(cplang('replacekey_tips_step2'), 'action=checktools&operation=replacekey&step=3&formhash='.FORMHASH, 'loading', '', FALSE);
 } elseif($step == 3) {
+	if(FORMHASH != $_GET['formhash']) {
+		cpmsg('undefined_action', '', 'error');
+	}
 	if(!is_writeable('./config/config_global.php')) {
 		cpmsg('replacekey_must_write_config', '', 'error');
 	}

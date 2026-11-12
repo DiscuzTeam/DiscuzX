@@ -91,7 +91,7 @@
 					if(linkObj) {
 						if(values['type'] == 'add') {
 							linkObj.innerHTML = '{lang follow_del}';
-							linkObj.href = 'home.php?mod=spacecp&ac=follow&op=del&fuid='+values['fuid'];
+							linkObj.href = 'home.php?mod=spacecp&ac=follow&op=del&hash={FORMHASH}&fuid='+values['fuid'];
 						} else if(values['type'] == 'del') {
 							linkObj.innerHTML = '{lang follow_add}TA';
 							linkObj.href = 'home.php?mod=spacecp&ac=follow&op=add&hash={FORMHASH}&fuid='+values['fuid'];

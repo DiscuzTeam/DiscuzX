@@ -11,7 +11,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 }
 
 shownav('founder', 'nav_membersplit');
-if(!submitcheck('membersplit_split_submit', 1)) {
+if(!submitcheck('membersplit_split_submit', 2)) {
 	showsubmenu('membersplit');
 	/*search={"nav_membersplit":"action=membersplit","nav_membersplit":"action=membersplit&operation=check"}*/
 	showtips('membersplit_tips');
@@ -51,6 +51,6 @@ if(!submitcheck('membersplit_split_submit', 1)) {
 	if(!table_common_member::t()->split($splitnum)) {
 		cpmsg('membersplit_split_succeed', 'action=membersplit&operation=manage', 'succeed');
 	}
-	cpmsg('membersplit_split_doing', 'action=membersplit&operation=manage&membersplit_split_submit=1&step='.$step.'&splitnum='.$splitnum, 'loadingform', ['num' => $step * $splitnum]);
+	cpmsg('membersplit_split_doing', 'action=membersplit&operation=manage&membersplit_split_submit=1&formhash='.FORMHASH.'&step='.$step.'&splitnum='.$splitnum, 'loadingform', ['num' => $step * $splitnum]);
 }
 	

@@ -12,7 +12,7 @@ if(!defined('IN_DISCUZ')) {
 
 include template('common/header_ajax');
 if(empty($_GET['selectname'])) $_GET['selectname'] = 'threadtypeid';
-echo '<select name="'.$_GET['selectname'].'" '.($_GET['selectclass'] ? 'class="'.$_GET['selectclass'].'"' : '').'>';
+echo '<select name="'.dhtmlspecialchars($_GET['selectname'], ENT_QUOTES).'" '.($_GET['selectclass'] ? 'class="'.dhtmlspecialchars($_GET['selectclass'], ENT_QUOTES).'"' : '').'>';
 if(!empty($_G['forum']['threadtypes']['types'])) {
 	if(!$_G['forum']['threadtypes']['required']) {
 		echo '<option value="0"></option>';

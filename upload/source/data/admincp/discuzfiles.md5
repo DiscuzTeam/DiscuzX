@@ -1087,7 +1087,6 @@ abd914313595b426612646f658d3acd9 *source/app/misc/module/error.php
 81d1616086bca3b36b692535a545ae58 *source/app/misc/module/faq.php
 770009785c7e4f795fdfcbd56a9a178c *source/app/misc/module/getatuser.php
 1115681bbb6e8e2d7d475e91c734d357 *source/app/misc/module/i18n.php
-1dfdc947eb69db972a3baa021455b945 *source/app/misc/module/imgcropper.php
 d41d8cd98f00b204e9800998ecf8427e *source/app/misc/module/index.htm
 f3f61b43f8506e4caa96c12e775dacbc *source/app/misc/module/initsys.php
 fd539d812546eb8697e4189a8b39c5e9 *source/app/misc/module/invite.php
@@ -3667,7 +3666,6 @@ cb42ef9cd86743e07dbb3995f8a3a610 *static/js/home_uploadpic.js
 ed3e4e654013f36222c2d88cbdb965e6 *static/js/html2dynamic.js
 023fb2ec7eeeeb3c6ed5373af1c0646f *static/js/html5notification.js
 16ef3ed20fbed46a2e9b268c0c324f02 *static/js/iconfont.js
-9767f76effc9e6bc0fa32323cfda2460 *static/js/imgcropper.js
 d41d8cd98f00b204e9800998ecf8427e *static/js/index.htm
 d41d8cd98f00b204e9800998ecf8427e *static/js/jquery/index.htm
 b83db83a1d89113ee03ab730efa48c7a *static/js/jquery/jquery.min.js
@@ -3968,7 +3966,6 @@ e379c312edaeebe19be97e2bc2a4bdc2 *template/default/common/iefix.css
 d41d8cd98f00b204e9800998ecf8427e *template/default/common/index.htm
 6f21cb21a4732dd660cf81f6eb51c6d6 *template/default/common/invite.php
 8af7f0e21c296501fde7e02794fe87e5 *template/default/common/ipnotice.php
-d705a3ca3b98ce975fbd66a1c171248f *template/default/common/misc_imgcropper.php
 10cd8d6f0a184a6dee4efd3e4acf3043 *template/default/common/module.css
 992f69cd0f3c044084f5ee5d5af452d8 *template/default/common/preview.php
 bd61aae30c6b15930683cad6bfd9fff0 *template/default/common/pubsearchform.php

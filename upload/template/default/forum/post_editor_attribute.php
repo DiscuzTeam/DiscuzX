@@ -29,6 +29,9 @@
 			<!--{if $_G['group']['allowsetpublishdate'] && ($_GET[action] == 'newthread' || ($_GET[action] == 'edit' && $isfirstpost && $thread['displayorder'] == -4))}-->
 				<label id="extra_pubdate_b" onclick="showExtra('extra_pubdate')"><span id="extra_pubdate_chk">{lang post_timer}</span></label>
 			<!--{/if}-->
+			<!--{if $_GET[action] == 'edit' && $isJsonContent && $isfirstpost}-->
+				<label id="extra_imgmanager_b" onclick="showExtra('extra_imgmanager')"><span id="extra_imgmanager_chk">{lang thread_imgmanager}</span></label>
+			<!--{/if}-->
 		<!--{/if}-->
 		<!--{hook/post_attribute_extra}-->
 	</div>
@@ -157,6 +160,10 @@
 					<label><input type="checkbox" name="cronpublish" onclick="if(this.checked) {$('cronpublishdate').click();doane(event,false);};extraCheck(5);hidenFollowBtn(this.checked);" id="cronpublish" value="true" class="pc"{if $cronpublish} checked="checked"{/if} />{lang post_timer}</label>
 					<input type="text" name="cronpublishdate" id="cronpublishdate" class="px" onclick="showcalendar(event, this, true, false, false, true);" autocomplete="off" value="{$cronpublishdate}" onchange="if(this.value) $('cronpublish').checked = true;">
 				</div>
+			<!--{/if}-->
+
+			<!--{if $_GET[action] == 'edit' && $isJsonContent && $isfirstpost}-->
+				<!--{subtemplate forum/jsoneditor_imgmanager}-->
 			<!--{/if}-->
 		<!--{/if}-->
 

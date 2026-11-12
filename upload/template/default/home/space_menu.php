@@ -11,7 +11,7 @@
 				<!--{if !ckfollow($space['uid'])}-->
 					<a id="followmod" onclick="showWindow(this.id, this.href, 'get', 0);" href="home.php?mod=spacecp&ac=follow&op=add&hash={FORMHASH}&fuid=$space[uid]">{lang follow_add}TA</a>
 				<!--{else}-->
-					<a id="followmod" onclick="showWindow(this.id, this.href, 'get', 0);" href="home.php?mod=spacecp&ac=follow&op=del&fuid=$space[uid]">{lang follow_del}</a>
+					<a id="followmod" onclick="showWindow(this.id, this.href, 'get', 0);" href="home.php?mod=spacecp&ac=follow&op=del&hash={FORMHASH}&fuid=$space[uid]">{lang follow_del}</a>
 				<!--{/if}-->
 			</li>
 			<!--{/if}-->
@@ -34,7 +34,7 @@
 			var fObj = $('followmod');
 			if(values['type'] == 'add') {
 				fObj.innerHTML = '{lang follow_del}';
-				fObj.href = 'home.php?mod=spacecp&ac=follow&op=del&fuid='+values['fuid'];
+				fObj.href = 'home.php?mod=spacecp&ac=follow&op=del&hash={FORMHASH}&fuid='+values['fuid'];
 			} else if(values['type'] == 'del') {
 				fObj.innerHTML = '{lang follow_add}TA';
 				fObj.href = 'home.php?mod=spacecp&ac=follow&op=add&hash={FORMHASH}&fuid='+values['fuid'];

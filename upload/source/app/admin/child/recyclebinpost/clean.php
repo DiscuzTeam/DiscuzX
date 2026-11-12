@@ -10,7 +10,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
 }
 
-if(!submitcheck('cleanrbsubmit', 1)) {
+if(!submitcheck('cleanrbsubmit', 2)) {
 
 	shownav('topic', 'nav_recyclebinpost');
 	showsubmenu('nav_recyclebinpost', [
@@ -49,7 +49,7 @@ if(!submitcheck('cleanrbsubmit', 1)) {
 			$postsdel += recyclebinpostdelete($deletepids, $ptid);
 		}
 		$startlimit += $pernum;
-		cpmsg('recyclebinpost_clean_next', 'action=recyclebinpost&operation=clean&cleanrbsubmit=1&days='.$days.'&postsdel='.$postsdel, 'succeed', ['postsdel' => $postsdel]);
+		cpmsg('recyclebinpost_clean_next', 'action=recyclebinpost&operation=clean&cleanrbsubmit=1&formhash='.FORMHASH.'&days='.$days.'&postsdel='.$postsdel, 'succeed', ['postsdel' => $postsdel]);
 	} else {
 		cpmsg('recyclebinpost_succeed', 'action=recyclebinpost&operation=clean', 'succeed', ['postsdel' => $postsdel, 'postsundel' => $postsundel]);
 	}

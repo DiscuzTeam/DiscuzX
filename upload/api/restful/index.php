@@ -90,8 +90,12 @@ if($api[0] == 'token') {
 			echo lang('core', 'restful_auth_error');
 		}
 	} else {
-		header('location: '.base64_decode($_ENV['returntype']));
-		exit;
+		if($authed) {
+			header('location: '.base64_decode($_ENV['returntype']));
+			exit;
+		} else {
+			echo lang('core', 'restful_auth_error');
+		}
 	}
 } elseif($api[0] == 'authtoken') {
 	require_once '../../source/class/class_core.php';

@@ -10,11 +10,15 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
 }
 
+if($optype != '' && (empty($_GET['formhash']) || FORMHASH != $_GET['formhash'])) {
+	js_cpmsg('undefined_action');
+}
+
 $tidsarray = isset($_GET['tids']) ? explode(',', $_GET['tids']) : $_GET['tidarray'];
 $tidsadd = 'tid IN ('.dimplode($tidsarray).')';
 if($optype == 'moveforum') {
 	if(!table_forum_forum::t()->check_forum_exists($_GET['toforum'])) {
-		cpmsg('threads_move_invalid', '', 'error');
+		js_cpmsg('threads_move_invalid');
 	}
 	table_forum_thread::t()->update($tidsarray, ['fid' => $_GET['toforum'], 'typeid' => $_GET['threadtypeid'], 'isgroup' => 0]);
 	loadcache('posttableids');
@@ -33,7 +37,7 @@ if($optype == 'moveforum') {
 
 	if($_GET['tosort'] != 0) {
 		if(!table_forum_threadtype::t()->fetch($_GET['tosort'])) {
-			cpmsg('threads_move_invalid', '', 'error');
+			js_cpmsg('threads_move_invalid');
 		}
 	}
 
@@ -273,6 +277,6 @@ if($optype == 'moveforum') {
 }
 
 $_GET['tids'] && deletethreadcaches($_GET['tids']);
-$cpmsg = $cpmsg ? "alert('$cpmsg');" : '';
-echo '<script type="text/JavaScript">'.$cpmsg.'if(parent.$(\'threadforum\')) parent.$(\'threadforum\').searchsubmit.click();</script>';
+
+js_cpmsg($cpmsg);
 	

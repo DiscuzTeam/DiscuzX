@@ -590,7 +590,7 @@ if($op == 'delete') {
 					table_home_blogfield::t()->fetch($_GET['from_id'])
 				);
 				if($blog) {
-					if($blog['friend']) {
+					if($blog['friend'] || !empty($blog['status'])) {
 						showmessage('article_push_invalid_private');
 					}
 					$article['title'] = getstr($blog['subject'], 0);
@@ -605,6 +605,10 @@ if($op == 'delete') {
 				$thread = table_forum_thread::t()->fetch_thread($_GET['from_id']);
 				$thread = array_merge($thread, table_forum_post::t()->fetch_threadpost_by_tid_invisible($_GET['from_id']));
 				if($thread) {
+					if((isset($thread['displayorder']) && $thread['displayorder'] < 0)
+						|| (!empty($thread['readperm']) && $thread['readperm'] > $_G['group']['readaccess'])) {
+						showmessage('parameters_error');
+					}
 					$article['title'] = $thread['subject'];
 					$thread['message'] = portalcp_get_postmessage($thread, $_GET['getauthorall']);
 					$article['summary'] = portalcp_get_summary($thread['message']);

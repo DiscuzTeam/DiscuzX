@@ -208,6 +208,29 @@ function modulecmp($a, $b) {
 	return $a['displayorder'] > $b['displayorder'] ? 1 : -1;
 }
 
+function issafepath($filename) {
+	if(!$filename || !is_string($filename)) {
+		return false;
+	}
+	if(!preg_match('/\.php$/i', $filename)) {
+		return false;
+	}
+	$pluginroot = realpath(rtrim(DISCUZ_ROOT, '/\\').'/'.PLUGIN_ROOT);
+	if(!$pluginroot) {
+		return false;
+	}
+	$pluginroot = rtrim(str_replace('\\', '/', $pluginroot), '/');
+	$realfile = realpath($filename);
+	if(!$realfile || !is_file($realfile)) {
+		return false;
+	}
+	$realfile = str_replace('\\', '/', $realfile);
+	if(!str_starts_with($realfile, $pluginroot.'/')) {
+		return false;
+	}
+	return $realfile;
+}
+
 function updatepluginlanguage($pluginarray) {
 	global $_G;
 	if(!$pluginarray['language']) {
