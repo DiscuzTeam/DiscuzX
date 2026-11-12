@@ -149,7 +149,7 @@ if(!submitcheck('groupsubmit')) {
 
 	$systemoption = ' <label><input name="systemnewadd[]" value="1" class="checkbox" type="checkbox">'.$lang['usergroups_pub'].'</label>';
 	$systemoption .= '<label><input name="upnewadd[]" value="1" class="checkbox" type="checkbox" onclick="display(\\\'upname_{n}\\\')">'.$lang['usergroups_up'].'</label>';
-	$systemoption .= ' <input type="text" id="upname_{n}" style="display: none" class="txt" size="2" name="upnamenewadd[]">';
+	$systemoption .= ' <span style="width: 120px;display: inline-block"><input type="text" id="upname_{n}" style="display: none" class="txt" size="2" name="upnamenewadd[]"></span>';
 
 	echo <<<EOT
 <script type="text/JavaScript">
@@ -196,7 +196,7 @@ EOT;
 
 	showformheader('usergroups&type=special');
 	showtableheader('usergroups_special', 'fixpadding', 'id="specialgroups"'.($_GET['type'] != 'special' ? ' style="display: none"' : ''));
-	showsubtitle(['', 'usergroups_title', '', 'usergroups_system', 'usergroups_creditsrange', 'usergroups_stars', 'usergroups_color', '<input class="checkbox" type="checkbox" name="gcspecial" onclick="checkAll(\'value\', this.form, \'gspecial\', \'gcspecial\', 1)" /> <a href="javascript:;" onclick="if(getmultiids()) window.open(\''.ADMINSCRIPT.'?action=usergroups&operation=edit&multi=\' + getmultiids());return false;">'.$lang['multiedit'].'</a>']);
+	showsubtitle(['', 'usergroups_title', '', 'usergroups_systemtype', 'usergroups_creditsrange', 'usergroups_stars', 'usergroups_color', '<input class="checkbox" type="checkbox" name="gcspecial" onclick="checkAll(\'value\', this.form, \'gspecial\', \'gcspecial\', 1)" /> <a href="javascript:;" onclick="if(getmultiids()) window.open(\''.ADMINSCRIPT.'?action=usergroups&operation=edit&multi=\' + getmultiids());return false;">'.$lang['multiedit'].'</a>']);
 	if($specialgroup['private']) {
 		echo $specialgroup['private'];
 	}
@@ -210,7 +210,7 @@ EOT;
 	}
 	if($specialgroup['up']) {
 		foreach($specialgroup['up'] as $groupid => $v) {
-			showsubtitle(['', $_G['setting']['upgroup_name'][$groupid]]);
+			echo '<tr><td>&nbsp;</td><td colspan="6"><strong>'.$_G['setting']['upgroup_name'][$groupid].'</strong></td></tr>';
 			echo $v;
 			echo '<tr><td>&nbsp;</td><td colspan="6"><div><a href="###" onclick="addrow(this, 2, '.$groupid.', '.$lastupgid[$groupid].')" class="addtr">'.$lang['usergroups_sepcialup_add'].'</a></div></td></tr>';
 		}
