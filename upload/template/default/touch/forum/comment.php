@@ -5,6 +5,13 @@
 		<h2 class="log_tit" id="return_comment"><a href="javascript:;" onclick="popup.close();"><span class="icon_close y">&nbsp;</span></a>{lang comments}</h2>
 		<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
 		<input type="hidden" name="handlekey" value="$_GET['handlekey']" />
+		<input type="hidden" name="rpid" id="rpid" value="$rpid" />
+		<!--{if $rpid && $reply_author}-->
+		<div id="reply_notice" class="cm-replying">
+			<span class="cm-replying-text">{lang reply} <a class="cm-replying-author" href="home.php?mod=space&uid=$reply_authorid">@$reply_author</a></span>
+			<a href="javascript:;" class="cm-replying-x" title="{lang cancel}" onclick="getID('rpid').value='0';getID('reply_notice').style.display='none';">&times;</a>
+		</div>
+		<!--{/if}-->
 		<!--{if $commentitem}-->
 		<ul class="post-box cl">
 			<!--{eval $items = range(0, 5);$itemlang = array('{lang comment_1}', '{lang comment_2}', '{lang comment_3}', '{lang comment_4}', '{lang comment_5}', '{lang comment_6}');$i = $cmm = 0;}-->

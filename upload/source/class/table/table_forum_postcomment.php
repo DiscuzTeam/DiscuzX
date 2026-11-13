@@ -157,14 +157,26 @@ class table_forum_postcomment extends discuz_table {
 
 	public function fetch_postcomment_by_pid($pids, $postcache, $commentcount, $totalcomment, $commentnumber) {
 		$query = DB::query('SELECT * FROM '.DB::table('forum_postcomment').' WHERE pid IN ('.dimplode($pids).') ORDER BY dateline DESC');
-		$commentcount = $comments = [];
+		$commentrows = [];
 		while($comment = DB::fetch($query)) {
+			$commentrows[] = $comment;
+		}
+		$replytargets = $this->fetch_reply_targets($commentrows);
+		$commentcount = $comments = [];
+		foreach($commentrows as $comment) {
 			if($comment['authorid'] > '-1') {
 				$commentcount[$comment['pid']]++;
 			}
 			if((!is_array($comments[$comment['pid']]) || count($comments[$comment['pid']]) < $commentnumber) && $comment['authorid'] > '-1') {
 				$comment['avatar'] = avatar($comment['authorid'], 'small');
 				$comment['comment'] = str_replace(['[b]', '[/b]', '[/color]'], ['<b>', '</b>', '</font>'], preg_replace('/\[color=([#\w]+?)\]/i', "<font color=\"\\1\">", $comment['comment']));
+				if(!empty($comment['rpid']) && !empty($replytargets[$comment['rpid']]) && !empty($replytargets[$comment['rpid']]['pid']) && $replytargets[$comment['rpid']]['pid'] == $comment['pid']) {
+					$comment['reply_author'] = $replytargets[$comment['rpid']]['author'];
+					$comment['reply_authorid'] = $replytargets[$comment['rpid']]['authorid'];
+				} else {
+					$comment['reply_author'] = '';
+					$comment['reply_authorid'] = 0;
+				}
 				$comments[$comment['pid']][] = $comment;
 			}
 			if($comment['authorid'] == '-1') {
@@ -176,6 +188,23 @@ class table_forum_postcomment extends discuz_table {
 			$postcache[$comment['pid']]['comment']['totalcomment'] = $totalcomment[$comment['pid']];
 		}
 		return [$comments, $postcache, $commentcount, $totalcomment];
+	}
+
+	public function fetch_reply_targets($comments) {
+		$rpids = [];
+		foreach($comments as $comment) {
+			if(!empty($comment['rpid'])) {
+				$rpids[intval($comment['rpid'])] = intval($comment['rpid']);
+			}
+		}
+		if(!$rpids) {
+			return [];
+		}
+		$targets = [];
+		foreach(DB::fetch_all('SELECT id, pid, author, authorid FROM %t WHERE '.DB::field('id', $rpids), [$this->_table]) as $target) {
+			$targets[$target['id']] = $target;
+		}
+		return $targets;
 	}
 
 	public function fetch_postcomment_by_pid_callback_1($matches) {

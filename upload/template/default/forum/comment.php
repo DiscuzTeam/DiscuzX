@@ -16,7 +16,14 @@
 		</h3>
 		<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
 		<input type="hidden" name="handlekey" value="$_GET['handlekey']" />
+		<input type="hidden" name="rpid" id="rpid" value="$rpid" />
 		<div class="c">
+			<!--{if $rpid && $reply_author}-->
+			<div id="reply_notice" class="cm-replying">
+				<span class="cm-replying-text">{lang reply} <a class="cm-replying-author" href="home.php?mod=space&uid=$reply_authorid" target="_blank">@$reply_author</a></span>
+				<a href="javascript:;" class="cm-replying-x" title="{lang cancel}" onclick="$('rpid').value='0';$('reply_notice').style.display='none';">&times;</a>
+			</div>
+			<!--{/if}-->
 			<div class="tedt">
 				<div class="bar cm">
 					<!--{eval $seditor = array('comment', array('bold', 'color'));}-->

@@ -1005,6 +1005,18 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 			.cmstar .itms_0 { width: 10px; text-indent: -9999px; }
 			.cmstv_1 .itms_1, .cmstv_2 .itms_1, .cmstv_2 .itms_2, .cmstv_3 .itms_1, .cmstv_3 .itms_2, .cmstv_3 .itms_3, .cmstv_4 .itms_1, .cmstv_4 .itms_2, .cmstv_4 .itms_3, .cmstv_4 .itms_4, .cmstv_5 em { color: #F90; }
 
+/* 点评回复 */
+	.cmlist .cm-to { display: inline-flex; align-items: center; max-width: 100%; height: 20px; margin-right: 6px; padding: 0 8px; background: {COMMONBG}; color: {LIGHTTEXT}; font-size: 12px; line-height: 20px; vertical-align: 1px; white-space: nowrap; border-radius: 999px; }
+		.cmlist .cm-to a { max-width: 10em; overflow: hidden; text-overflow: ellipsis; color: {HIGHLIGHTLINK}; font-weight: 700; text-decoration: none; }
+			.cmlist .cm-to a:hover { text-decoration: underline; }
+	.cmlist .cm-act { display: inline-block; padding: 0 5px; border-radius: 4px; color: {LIGHTTEXT}; text-decoration: none; transition: color .18s ease, background-color .18s ease; }
+		.cmlist .cm-act:hover { color: {HIGHLIGHTLINK}; background: {COMMONBG}; text-decoration: none; }
+	.cm-replying { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; padding: 7px 8px 7px 10px; border-left: 3px solid {HIGHLIGHTLINK}; border-radius: 6px; background: {COMMONBG}; color: {LIGHTTEXT}; line-height: 1.5; }
+		.cm-replying .cm-replying-author { color: {HIGHLIGHTLINK}; font-weight: 700; text-decoration: none; word-break: break-all; }
+			.cm-replying .cm-replying-author:hover { text-decoration: underline; }
+		.cm-replying .cm-replying-x { flex: none; margin-left: auto; width: 20px; height: 20px; line-height: 19px; text-align: center; border-radius: 50%; color: {LIGHTTEXT}; font-size: 14px; text-decoration: none; }
+			.cm-replying .cm-replying-x:hover { background: {WRAPBORDERCOLOR}; color: #FFF; text-decoration: none; }
+
 /* 屏蔽提示 */
 	#hiddenpoststip { line-height:40px;padding-left:20px;background: #FFFAF3; font-size: 12px; text-align: center; }
 	#hiddenpoststip a { display: block; text-indent: 25px; height: 29px; line-height: 29px; color: #EFAA00; }
