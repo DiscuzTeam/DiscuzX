@@ -710,6 +710,9 @@ $lang = [
 	'payment_error_50006' => '回调报文解密失败',
 	'payment_error_50007' => '支付状态非成功',
 	'payment_error_50008' => '回调报文格式错误',
+	'payment_error_50009' => '回调密钥未配置',
+	'payment_error_50010' => '渠道未启用下的回调',
+	'payment_error_50011' => '回调渠道与订单不一致',
 
 	'workwx_noDepartList' => '无法拉取部门信息，请检查参数设置',
 	'workwx_multiAgentRule_error' => '应用规则格式错误',

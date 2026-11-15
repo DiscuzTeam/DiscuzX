@@ -19,6 +19,10 @@ $discuz->init();
 
 $payment = new pay_qpay();
 
+if(!$payment->enabled()) {
+	payment::notifylog('qpay', 0, 50010, '', ['detail' => 'callback received while channel disabled']);
+}
+
 $data = $payment->qpay_sign_verify();
 if($data && $data['code'] == 200) {
 	$data = $data['data'];

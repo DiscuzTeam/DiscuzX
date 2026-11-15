@@ -6389,6 +6389,7 @@ URL转换绝对网址：<pre>
 	'ec_wechat_mch_id_comment' => '微信支付分配的商户号：微信商户平台 - 账户中心 - 商户信息。',
 	'ec_wechat_v1_key' => '(必须)APIv2密钥',
 	'ec_wechat_v1_key_comment' => '32 位，用于 APIv2 的 MD5 签名：微信商户平台 - 账户中心 - API安全 - 密钥设置 - APIv2密钥。',
+	'ec_wechat_v1_key_required' => '启用 APIv2 时必须填写「APIv2密钥」，否则签名串尾部为空，任何人都能自行计算出合法签名并伪造支付回调。请先填写密钥再提交，或改用 APIv3。',
 	'ec_wechat_v1_cert' => '(可选)支付证书路径',
 	'ec_wechat_v1_cert_comment' => '仅 APIv2 退款需要，不办理退款可不填。填写相对站点根目录的路径；安装包内没有该目录，需自行创建并随机化文件名以免被直接下载，如：source/data/{randomstr}.p12。APIv3 退款使用下方「API证书私钥」，无需此文件。',
 	'ec_wechat_v3_key' => '(必须)APIv3密钥',

@@ -44,6 +44,22 @@ if($_G['group']['allowcommentitem'] && !empty($_G['uid']) && $post['authorid'] !
 if(!$post || !($_G['setting']['commentpostself'] || $post['authorid'] != $_G['uid']) || !(($post['first'] && $_G['setting']['commentfirstpost'] && in_array($_G['group']['allowcommentpost'], [1, 3]) || (!$post['first'] && in_array($_G['group']['allowcommentpost'], [2, 3]))))) {
 	showmessage('postcomment_error');
 }
+$rpid = !empty($_GET['rpid']) ? intval($_GET['rpid']) : 0;
+$reply_author = '';
+$reply_authorid = 0;
+if($rpid) {
+	$reply_comment = table_forum_postcomment::t()->fetch($rpid);
+	if($reply_comment && $reply_comment['pid'] == $post['pid']) {
+		$reply_author = dhtmlspecialchars($reply_comment['author']);
+		$reply_authorid = intval($reply_comment['authorid']);
+	} else {
+		$rpid = 0;
+	}
+}
+$_GET['rpid'] = $rpid;
+$_GET['reply_author'] = $reply_author;
+$_GET['reply_authorid'] = $reply_authorid;
+
 $extra = !empty($_GET['extra']) ? rawurlencode($_GET['extra']) : '';
 list($seccodecheck, $secqaacheck) = seccheck('post', 'reply');
 

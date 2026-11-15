@@ -26,6 +26,13 @@ class pay_base {
 		}
 	}
 
+	/**
+	 * 供回调入口等外部场景查询渠道启用状态（enable() 为 protected）
+	 */
+	public function enabled() {
+		return $this->enable();
+	}
+
 	public function pay($order) {
 	}
 
