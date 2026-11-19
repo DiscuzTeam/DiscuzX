@@ -34,7 +34,7 @@ if(!submitcheck('typeoptionsubmit')) {
 			if($option['type'] != 'plugin') {
 				$type = $lang['threadtype_edit_vars_type_'.$option['type']];
 			} else {
-				$rules = unserialize($option['rules']);
+				$rules = dunserialize($option['rules']);
 				$type = strip_tags($plugins[$rules['pluginthreadtype']]);
 			}
 			$typeoptions .= showtablerow('', ['class="td25"', 'class="td28"'], [

@@ -185,6 +185,16 @@ if($_GET['op'] == 'edit') {
 		$return = true;
 		if($_GET['subop'] == 'update') {
 			foreach($_POST['title'] as $picid => $value) {
+				$picid = dintval($picid);
+				if(!$picid) {
+					continue;
+				}
+				if(!$managealbum) {
+					$_picowner = table_home_pic::t()->fetch($picid);
+					if(!$_picowner || $_picowner['uid'] != $_G['uid']) {
+						continue;
+					}
+				}
 				if($value == $_GET['oldtitle'][$picid]) {
 					continue;
 				}
@@ -197,9 +207,11 @@ if($_GET['op'] == 'edit') {
 				} else {
 					$pic_status = 0;
 				}
-				$wherearr = ['picid' => $picid];
-				if(!$managealbum) $wherearr['uid'] = $_G['uid'];
-				table_home_pic::t()->update($picid, ['title' => $title, 'status' => $pic_status]);
+				if($managealbum) {
+					table_home_pic::t()->update($picid, ['title' => $title, 'status' => $pic_status]);
+				} else {
+					table_home_pic::t()->update_for_uid($_G['uid'], $picid, ['title' => $title, 'status' => $pic_status]);
+				}
 			}
 		}
 		if($_GET['subop'] == 'delete') {

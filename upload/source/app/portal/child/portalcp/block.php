@@ -858,7 +858,7 @@ if($op == 'block') {
 		showmessage('block_no_right_recommend');
 	}
 	if(($_GET['dataid'] = dintval($_GET['dataid']))) {
-		table_common_block_item_data::t()->delete($_GET['dataid']);
+		table_common_block_item_data::t()->delete_by_dataid_bid($_GET['dataid'], $bid);
 		block_updatecache($bid, true);
 	}
 	showmessage('do_success');

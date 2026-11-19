@@ -270,9 +270,9 @@ class discuz_application extends discuz_base {
 			if(!empty($this->var['config']['memory']['redis'])) {
 				$m->init($this->var['config']['memory']['redis']);
 				if($m->enable) {
-					$data = unserialize($m->get('rToken_'.$_COOKIE['token']));
+					$data = dunserialize($m->get('rToken_'.$_COOKIE['token']));
 					if(is_array($data) && !empty($data['_session'])) {
-						$cookies = unserialize(base64_decode($data['_session']));
+						$cookies = dunserialize(base64_decode($data['_session']));
 						if(is_array($cookies)
 							&& !empty($cookies[$this->config['cookie']['cookiepre'].'auth'])
 							&& !empty($cookies[$this->config['cookie']['cookiepre'].'saltkey'])) {
