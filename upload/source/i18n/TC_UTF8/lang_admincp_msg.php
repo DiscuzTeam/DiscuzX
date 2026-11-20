@@ -710,6 +710,9 @@ $lang = [
 	'payment_error_50006' => '回調報文解密失敗',
 	'payment_error_50007' => '支付狀態非成功',
 	'payment_error_50008' => '回調報文格式錯誤',
+	'payment_error_50009' => '回調密鑰未配置',
+	'payment_error_50010' => '渠道未啓用下的回調',
+	'payment_error_50011' => '回調渠道與訂單不一致',
 
 	'workwx_noDepartList' => '無法拉取部門資訊，請檢查參數設定',
 	'workwx_multiAgentRule_error' => '應用規則格式錯誤',
