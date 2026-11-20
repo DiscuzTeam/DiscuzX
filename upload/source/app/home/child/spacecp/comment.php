@@ -12,6 +12,7 @@ if(!defined('IN_DISCUZ')) {
 
 $idtype_array = ['picid' => 'album', 'blogid' => 'blog', 'sid' => 'share', 'uid' => 'wall'];
 $tospace = $pic = $blog = $album = $share = $poll = [];
+$_GET['feedid'] = empty($_GET['feedid']) ? 0 : intval($_GET['feedid']);
 
 include_once libfile('class/bbcode');
 $bbcode = &bbcode::instance();
