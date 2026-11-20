@@ -309,7 +309,7 @@ if($_GET['op'] == 'edit') {
 	}
 
 	if($picid) {
-		if(!table_home_pic::t()->fetch_all_by_albumid(0, 0, 1, $picid, 0, 0, $_G['uid'])) {
+		if(!table_home_pic::t()->fetch_all_by_albumid($albumid, 0, 1, $picid)) {
 			showmessage('no_privilege_album_edit');
 		}
 	}
