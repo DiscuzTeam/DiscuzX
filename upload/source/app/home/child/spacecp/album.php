@@ -296,6 +296,24 @@ if($_GET['op'] == 'edit') {
 
 } elseif($_GET['op'] == 'setpic') {
 
+	if($albumid < 1) {
+		showmessage('photos_do_not_support_the_default_settings', "home.php?mod=spacecp&ac=album&uid={$_G['uid']}&op=editpic&quickforward=1");
+	}
+
+	if(!$album = table_home_album::t()->fetch_album($albumid)) {
+		showmessage('album_does_not_exist');
+	}
+
+	if($album['uid'] != $_G['uid'] && !checkperm('managealbum')) {
+		showmessage('no_privilege_album_edit');
+	}
+
+	if($picid) {
+		if(!table_home_pic::t()->fetch_all_by_albumid(0, 0, 1, $picid, 0, 0, $_G['uid'])) {
+			showmessage('no_privilege_album_edit');
+		}
+	}
+
 	album_update_pic($albumid, $picid);
 	showmessage('do_success', dreferer(), ['picid' => $picid], ['showmsg' => true, 'closetime' => true]);
 

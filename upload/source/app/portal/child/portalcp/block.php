@@ -544,7 +544,11 @@ if($op == 'block') {
 		$item['enddate'] = !empty($_POST['enddate']) ? strtotime($_POST['enddate']) : 0;
 		$item['itemtype'] = !empty($_POST['locked']) ? '1' : '2';
 		$item['title'] = dhtmlspecialchars($_POST['title']);
-		$item['url'] = $_POST['url'];
+		$item['url'] = trim($_POST['url']);
+		$item['url'] = preg_replace('/[\x00-\x20]+/', '', $item['url']);
+		if(preg_match('/^(?:javascript|vbscript|data):/i', $item['url'])) {
+		    $item['url'] = '';
+		}
 		$block['param']['summarylength'] = empty($block['param']['summarylength']) ? 80 : $block['param']['summarylength'];
 		$block['param']['titlelength'] = empty($block['param']['titlelength']) ? 40 : $block['param']['titlelength'];
 		$item['summary'] = cutstr($_POST['summary'], $block['param']['summarylength'], '');

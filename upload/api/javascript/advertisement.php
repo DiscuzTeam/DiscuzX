@@ -14,7 +14,10 @@ if(!defined('IN_API')) {
 
 loadcore();
 
-$adid = $_GET['adid'];
+$adid = getgpc('adid');
+if(!is_string($adid) || !preg_match('/^[a-z0-9_\-]+(?:\/[a-z0-9_\-]*)?$/i', $adid)) {
+	$adid = '';
+}
 $data = adshow($adid, false);
 
 dheader('Content-Type: application/javascript');

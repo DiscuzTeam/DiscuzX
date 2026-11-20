@@ -36,7 +36,7 @@ $lang =
 	'suggestion' => '建議您嘗試刷新頁面、關閉所有瀏覽器窗口重新進行操作',
 	'suggestion_user' => '如果無法解決，請您攜帶 BackTraceID 向站點管理員回饋此問題，以便快速定位問題',
 	'suggestion_plugin' => '建議您嘗試在管理中心關閉 <span class="guess">{guess}</span> 插件。如關閉插件後問題解決，請您憑完整截圖聯繫插件供應方獲得幫助',
-	'suggestion_admin' => '如果無法解決，請憑完整截圖通過 <a href="https://www.dismall.com/" target="_blank">Discuz! 官方論壇</a> 尋求幫助、或者在官方 Git 倉庫 <a href="https://gitee.com/discuz/DiscuzX/issues" target="_blank">提交 Issue</a> 給我們',
+	'suggestion_admin' => '如果無法解決，請憑完整截圖通過 <a href="https://www.dismall.com/?form=discuz_error" target="_blank">Discuz! 官方論壇</a>、 <a href="https://chat.discuz.vip/?group=pay" target="_blank">Discuz! 有偿服务</a>  尋求幫助，或者在官方 Git 倉庫 <a href="https://gitee.com/discuz/DiscuzX/issues" target="_blank">提交 Issue</a> 給我們',
 
 	'file_upload_error_-101' => '上傳失敗！上傳檔案不存在或不合法，請返回。',
 	'file_upload_error_-102' => '上傳失敗！非圖片類型檔案，請返回。',

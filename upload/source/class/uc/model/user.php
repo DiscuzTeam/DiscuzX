@@ -328,7 +328,7 @@ class usermodel {
 	}
 
 	function loginfailed($username, $ip = '') {
-		$username = substr(md5($username), 8, 15);
+		$username = substr(md5(strtolower(trim((string)$username))), 8, 15);
 		if(!$ip) {
 			$ip = $this->base->onlineip;
 		}
