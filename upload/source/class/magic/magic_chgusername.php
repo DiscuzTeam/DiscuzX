@@ -37,7 +37,7 @@ class magic_chgusername {
 
 		$censorexp = '/^('.str_replace(['\\*', "\r\n", ' '], ['.*', '|', ''], preg_quote(($_G['setting']['censoruser'] = trim($_G['setting']['censoruser'])), '/')).')$/i';
 
-		if($_G['settting']['censoruser'] && @preg_match($censorexp, $_GET['newusername'])) {
+		if($_G['setting']['censoruser'] && @preg_match($censorexp, $_GET['newusername'])) {
 			showmessage(lang('magic/chgusername', 'chgusername_name_badword'));
 		}
 
