@@ -223,7 +223,7 @@ class restful {
 		if(is_array($this->apiParam[$key])) {
 			$v = $this->apiParam[$key];
 		} else {
-			$_tmp = unserialize($this->apiParam[$key]);
+			$_tmp = dunserialize($this->apiParam[$key]);
 			$v = $_tmp === false ? $this->apiParam[$key] : $_tmp;
 		}
 		return $this->_replacePostParams($v);
@@ -298,8 +298,9 @@ class restful {
 	}
 
 	public function output($value) {
+		$return = [];
 		$this->_log($value);
-		$this->_setSysVar($return['data'], $value);
+		$this->_setSysVar($return, $value);
 		echo json_encode($value);
 		exit;
 	}
@@ -402,7 +403,7 @@ class restful {
 	}
 
 	public function sessionDecode() {
-		$session = unserialize(base64_decode($this->tokenData['_session']));
+		$session = dunserialize(base64_decode($this->tokenData['_session']));
 		if(!empty($this->postParam['_authSign'])) {
 			$this->decodeAuthSign($session);
 		}
@@ -486,6 +487,8 @@ class restful {
 	}
 
 	public function refreshTokenData() {
+		global $_G;
+
 		$v = $this->_getTokenData(true);
 		if(!$v) {
 			return false;

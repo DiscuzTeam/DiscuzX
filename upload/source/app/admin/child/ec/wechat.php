@@ -89,6 +89,9 @@ if(!submitcheck('wechatsubmit')) {
 		$value = daddslashes($value);
 		$wechatsettings[$name] = $value;
 	}
+	if(!empty($wechatsettings['on']) && empty($wechatsettings['ec_wechat_version']) && empty($wechatsettings['v1_key'])) {
+		cpmsg('ec_wechat_v1_key_required', 'action=ec&operation=wechat', 'error');
+	}
 	table_common_setting::t()->update_setting('ec_wechat', $wechatsettings);
 	updatecache('setting');
 

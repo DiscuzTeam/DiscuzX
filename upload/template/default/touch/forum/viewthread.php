@@ -289,7 +289,7 @@
 				<!--{if $relatedkeywords}--><span>$relatedkeywords</span><!--{/if}-->
 			</div>
 			<!--{/if}-->
-			<div id="comment_$post['pid']">
+			<div id="comment_$post['pid']" class="cmlist">
 			<!--{if $_GET['from'] != 'preview' && $_G['setting']['commentnumber'] && !empty($comments[$post['pid']])}-->
 				<h3 class="psth xs1"><span class="icon_ring vm"></span>{lang comments}</h3>
 				<!--{if $totalcomment[$post['pid']]}--><div class="pstl">$totalcomment[$post['pid']]</div><!--{/if}-->
@@ -309,10 +309,16 @@
 								</span>
 							</li>
 							<li class="mtime">
-								<em class="mgl"><!--{if $_G['forum']['ismoderator'] && $_G['group']['allowdelpost']}--><a href="forum.php?mod=topicadmin&action=delcomment&fid={$_G['fid']}&tid={$_G['tid']}&moderate[]={$_G['tid']}&topiclist[]={$comment['id']}&page={$_G['page']}" class="dialog">{lang delete}</a><!--{/if}--></em>
+								<em class="mgl"><!--{if $_G['forum']['ismoderator'] && $_G['group']['allowdelpost']}--><a href="forum.php?mod=topicadmin&action=delcomment&fid={$_G['fid']}&tid={$_G['tid']}&moderate[]={$_G['tid']}&topiclist[]={$comment['id']}&page={$_G['page']}" class="dialog cm-act">{lang delete}</a><!--{/if}--></em>
 								{lang poston} <!--{date($comment['dateline'], 'u')}-->
 							</li>
-							<li class="mtxt mt5">$comment['comment']</li>
+							<li class="mtxt mt5">
+								<!--{if !empty($comment['reply_author'])}-->
+								<span class="cm-to">{lang reply} <a href="home.php?mod=space&uid=$comment['reply_authorid']" title="{$comment['reply_author']}">@$comment['reply_author']</a></span>
+								<!--{/if}-->
+								$comment['comment']
+								<a href="forum.php?mod=misc&action=comment&tid=$comment[tid]&pid=$comment[pid]&rpid=$comment[id]&extra=$_GET[extra]&page=$page{if $_GET[from]}&from=$_GET[from]{/if}" class="xi2 dialog mgl cm-act">{lang reply}</a>
+							</li>
 						</ul>
 					</div>
 				</div>

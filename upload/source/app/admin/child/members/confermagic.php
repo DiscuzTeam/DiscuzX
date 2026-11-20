@@ -12,9 +12,12 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 
 $magics = '';
 foreach(table_common_magic::t()->fetch_all_data(1) as $magic) {
+	$eidentifier = explode(':', $magic['identifier']);
+
 	$magics .= showtablerow('', ['class="td25"', 'class="td23"', 'class="td25"', ''], [
 		"<input class=\"checkbox\" type=\"checkbox\" name=\"magic[]\" value=\"{$magic['magicid']}\" />",
-		"<img src=\"static/image/magic/{$magic['identifier']}.gif\" />",
+		(count($eidentifier) > 1 ? (file_exists(DISCUZ_PLUGIN($eidentifier[0]).'/magic/magic_'.$eidentifier[1].'.gif') ? '<img class="vmiddle" src="source/plugin/'.$eidentifier[0].'/magic/magic_'.$eidentifier[1].'.gif" />' : '')
+			: (file_exists(DISCUZ_ROOT.'./static/image/magic/'.$magic['identifier'].'.gif') ? '<img class="vmiddle" src="static/image/magic/'.$magic['identifier'].'.gif" />' : '')),
 		$magic['name'],
 		'<input class="txt" type="text" name="magicnum['.$magic['magicid'].']" value="1" size="3">'
 	], TRUE);

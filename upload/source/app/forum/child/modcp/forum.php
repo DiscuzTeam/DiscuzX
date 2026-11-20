@@ -55,6 +55,10 @@ if($_G['fid'] && $_G['forum']['ismoderator']) {
 		$ordernew = !empty($_GET['ordernew']) && is_array($_GET['ordernew']) ? $_GET['ordernew'] : [];
 
 		if(submitcheck('editsubmit') && $_G['forum']['modrecommend']['sort'] != 1) {
+			$validids = [];
+			foreach(table_forum_forumrecommend::t()->fetch_all_by_fid($_G['fid'], false, $useradd) as $validrow) {
+				$validids[$validrow['tid']] = $validrow['tid'];
+			}
 			$threads = [];
 			foreach($_GET['order'] as $id => $position) {
 				$threads[$id]['order'] = $position;
@@ -81,7 +85,16 @@ if($_G['fid'] && $_G['forum']['ismoderator']) {
 			}
 			if($_GET['delete']) {
 				$listupdate = true;
-				table_forum_forumrecommend::t()->delete($_GET['delete']);
+				$deleteids = [];
+				foreach((array)$_GET['delete'] as $deleteid) {
+					$deleteid = dintval($deleteid);
+					if($deleteid && isset($validids[$deleteid])) {
+						$deleteids[] = $deleteid;
+					}
+				}
+				if($deleteids) {
+					table_forum_forumrecommend::t()->delete($deleteids);
+				}
 			}
 			if(!empty($_GET['delete']) && is_array($_GET['delete'])) {
 				foreach($_GET['delete'] as $id) {
@@ -90,6 +103,9 @@ if($_G['fid'] && $_G['forum']['ismoderator']) {
 				}
 			}
 			foreach($threads as $id => $item) {
+				if(!isset($validids[$id])) {
+					continue;
+				}
 				$item['displayorder'] = intval($item['order']);
 				$item['subject'] = dhtmlspecialchars($item['subject']);
 				table_forum_forumrecommend::t()->update($id, [

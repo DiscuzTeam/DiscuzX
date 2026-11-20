@@ -116,8 +116,8 @@ if(submitcheck('settingsubmit')) {
 		showtagfooter('tbody');
 	} elseif($_GET['do'] == 'delete') {
 		$id = intval($_GET['id']);
-		table_forum_threadprofile::t()->delete($_GET['id']);
-		table_forum_threadprofile_group::t()->delete_by_tpid($_GET['id']);
+		table_forum_threadprofile::t()->delete($id);
+		table_forum_threadprofile_group::t()->delete_by_tpid($id);
 		updatecache('setting');
 		cpmsg('setting_update_succeed', 'action=setting&operation=styles&anchor=threadprofile', 'succeed');
 	}

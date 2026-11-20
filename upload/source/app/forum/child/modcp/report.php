@@ -14,25 +14,35 @@ if(!empty($_G['fid'])) {
 	$report_reward = dunserialize($_G['setting']['report_reward']);
 	if(submitcheck('reportsubmit')) {
 		if($_GET['reportids']) {
+			$_modfids = [];
+			foreach(explode(',', (string)$modforums['fids']) as $_fid) {
+				$_fid = intval($_fid);
+				if($_fid) {
+					$_modfids[$_fid] = true;
+				}
+			}
 			foreach($_GET['reportids'] as $reportid) {
-				if(table_common_report::t()->fetch_count(0, $reportid)) {
+				$reportid = intval($reportid);
+				$_report = table_common_report::t()->fetch($reportid);
+				if($_report && empty($_report['opuid']) && isset($_modfids[intval($_report['fid'])])) {
 					$creditchange = '';
-					$uid = $_GET['reportuids'][$reportid];
-					if($uid != $_G['uid']) {
+					$uid = intval($_report['uid']);
+					$_creditvalue = is_array($_GET['creditsvalue']) ? intval($_GET['creditsvalue'][$reportid] ?? 0) : 0;
+					if($uid && $uid != $_G['uid']) {
 						$msg = !empty($_GET['msg'][$reportid]) ? '<br />'.dhtmlspecialchars($_GET['msg'][$reportid]) : '';
-						if(!empty($_GET['creditsvalue'][$reportid])) {
-							$credittag = $_GET['creditsvalue'][$reportid] > 0 ? '+' : '';
-							if($report_reward['max'] < $_GET['creditsvalue'][$reportid] || $_GET['creditsvalue'][$reportid] < $report_reward['min']) {
+						if($_creditvalue) {
+							$credittag = $_creditvalue > 0 ? '+' : '';
+							if($report_reward['max'] < $_creditvalue || $_creditvalue < $report_reward['min']) {
 								showmessage('quickclear_noperm', "$cpscript?mod=modcp&action=report&fid={$_G['fid']}");
 							}
-							$creditchange = '<br />'.lang('forum/misc', 'report_msg_your').$_G['setting']['extcredits'][$curcredits]['title'].'&nbsp;'.$credittag.$_GET['creditsvalue'][$reportid];
-							updatemembercount($uid, [$curcredits => intval($_GET['creditsvalue'][$reportid])], true, 'RPC', $reportid);
+							$creditchange = '<br />'.lang('forum/misc', 'report_msg_your').$_G['setting']['extcredits'][$curcredits]['title'].'&nbsp;'.$credittag.$_creditvalue;
+							updatemembercount($uid, [$curcredits => $_creditvalue], true, 'RPC', $reportid);
 						}
 						if($creditchange || $msg) {
 							notification_add($uid, 'report', 'report_change_credits', ['creditchange' => $creditchange, 'msg' => $msg], 1);
 						}
 					}
-					$opresult = !empty($_GET['creditsvalue'][$reportid]) ? $curcredits."\t".intval($_GET['creditsvalue'][$reportid]) : 'ignore';
+					$opresult = $_creditvalue ? $curcredits."\t".$_creditvalue : 'ignore';
 					table_common_report::t()->update($reportid, ['opuid' => $_G['uid'], 'opname' => $_G['username'], 'optime' => TIMESTAMP, 'opresult' => $opresult]);
 				}
 			}

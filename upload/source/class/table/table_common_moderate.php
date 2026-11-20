@@ -124,19 +124,21 @@ class table_common_moderate extends discuz_table {
 		if(!isset($this->_tables[$idtype.'_cid'])) {
 			return $count ? 0 : [];
 		}
-		if(!empty($catid)) {
+		$sqlwhere = '';
+		$status = dintval($status);
+		if(($catid = dintval($catid))) {
 			$sqlwhere .= " AND a.catid='$catid'";
 		}
 		if(!empty($username)) {
-			$sqlwhere .= " AND a.username='$username'";
+			$sqlwhere .= " AND a.username='".addslashes($username)."'";
 		}
 		if($dateline != 'all') {
-			$sqlwhere .= " AND a.dateline>'".(TIMESTAMP - $dateline)."'";
+			$sqlwhere .= " AND a.dateline>'".(TIMESTAMP - dintval($dateline))."'";
 		}
 		if(!empty($keyword)) {
-			$sqlwhere .= " AND c.message LIKE '%$keyword%'";
+			$sqlwhere .= " AND c.message LIKE '%".addslashes($keyword)."%'";
 		}
-		$sqlwhere .= "AND c.idtype='$idtype'";
+		$sqlwhere .= " AND c.idtype='".addslashes($idtype)."'";
 		if($count) {
 			return DB::result_first('SELECT COUNT(*)
 			FROM '.DB::table($this->_get_table($idtype.'_cid')).' m

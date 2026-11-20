@@ -177,6 +177,12 @@ function updateattach($modnewthreads, $tid, $pid, $attachnew, $attachupdate = []
 			}
 		}
 		foreach($attachnew as $aid => $attach) {
+			if(!$newattach[$aid]) {
+				$attachexist = table_forum_attachment::t()->fetch($aid);
+				if(!$attachexist || ($attachexist['uid'] != $uid && !$_G['forum']['ismoderator'])) {
+					continue;
+				}
+			}
 			$update = [];
 			$update['readperm'] = $_G['group']['allowsetattachperm'] ? (!empty($attach['readperm']) ? $attach['readperm'] : 0) : 0;
 			$update['price'] = $_G['group']['maxprice'] ? (intval($attach['price']) <= $_G['group']['maxprice'] ? intval($attach['price']) : $_G['group']['maxprice']) : 0;

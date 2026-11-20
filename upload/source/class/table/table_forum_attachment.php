@@ -122,10 +122,10 @@ class table_forum_attachment extends discuz_table {
 			}
 			$sql .= " AND ($sqlkeywords)";
 		}
-		$sql .= $sizeless ? " AND a.filesize>'$sizeless'" : '';
-		$sql .= $sizemore ? " AND a.filesize<'$sizemore' " : '';
-		$sql .= $dlcountless ? " AND ai.downloads>'$dlcountless'" : '';
-		$sql .= $dlcountmore ? " AND ai.downloads<'$dlcountmore'" : '';
+		$sql .= $sizeless ? " AND a.filesize>'".intval($sizeless)."'" : '';
+		$sql .= $sizemore ? " AND a.filesize<'".intval($sizemore)."' " : '';
+		$sql .= $dlcountless ? " AND ai.downloads>'".intval($dlcountless)."'" : '';
+		$sql .= $dlcountmore ? " AND ai.downloads<'".intval($dlcountmore)."'" : '';
 		$sql .= $daysold ? " AND a.dateline<'".(TIMESTAMP - intval($daysold) * 86400)."'" : '';
 		if($count) {
 			return DB::result_first('SELECT COUNT(*)

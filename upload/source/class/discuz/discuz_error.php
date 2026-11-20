@@ -237,7 +237,7 @@ EOT;
 
 		echo '<p>Time: '.date('Y-m-d H:i:s O').' IP: '.$_G['clientip'].' BackTraceID: '.$backtraceid.'</p>';
 
-		if(!empty($errormsg) && (!isset($_G['config']['security']['error']['showerror']) || !empty($_G['config']['security']['error']['showerror']))) {
+		if(!empty($errormsg) && (!isset($_G['config']['security']['error']['showerror']) || $_G['config']['security']['error']['showerror'] == '1')) {
 			echo '<div class="info">'.$errormsg.'</div>';
 		}
 		if(isset($_G['config']['security']['error']['showerror']) && empty($_G['config']['security']['error']['showerror'])) {

@@ -22,7 +22,7 @@ class logging_ctl {
 		if(empty($_GET['lssubmit'])) {
 			return;
 		}
-		$auth = authcode($_GET['username']."\t".$_GET['password']."\t".($questionexist ? 1 : 0), 'ENCODE');
+		$auth = authcode($_GET['username']."\t".$_GET['password']."\t".($questionexist ? 1 : 0), 'ENCODE', '', 300);
 		$js = '<script type="text/javascript">showWindow(\'login\', \'member.php?mod=logging&action=login&auth='.rawurlencode($auth).'&referer='.rawurlencode(dreferer()).(!empty($_GET['cookietime']) ? '&cookietime=1' : '').'\')</script>';
 		showmessage('location_login', '', ['type' => 1], ['extrajs' => $js]);
 	}
@@ -200,7 +200,7 @@ class logging_ctl {
 					}
 					if($seccodecheck && !$secchecklogin2) {
 						clearcookies();
-						$auth = authcode($_GET['username']."\t".$_GET['password']."\t".($_GET['questionid'] ? 1 : 0)."\t1", 'ENCODE', $_G['config']['security']['authkey']);
+						$auth = authcode($_GET['username']."\t".$_GET['password']."\t".($_GET['questionid'] ? 1 : 0)."\t1", 'ENCODE', $_G['config']['security']['authkey'], 300);
 						$location = 'member.php?mod=logging&action=login&auth='.rawurlencode($auth).'&referer='.rawurlencode(dreferer()).(!empty($_GET['cookietime']) ? '&cookietime=1' : '');
 						if(defined('IN_MOBILE')) {
 							showmessage('login_seccheck2', $location);

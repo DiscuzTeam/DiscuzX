@@ -17,6 +17,14 @@ require '../../../source/class/class_core.php';
 $discuz = C::app();
 $discuz->init();
 
+$payment = class_exists('pay_alipay') ? new pay_alipay() : null;
+if(!$payment) {
+	exit('fail');
+}
+if(!$payment->enabled()) {
+	payment::notifylog('alipay', 0, 50010, '', ['detail' => 'callback received while channel disabled']);
+}
+
 if(empty($_POST['sign']) || empty($_POST['sign_type'])) {
 	payment::notifylog('alipay', 0, 50000, $_POST['out_trade_no'] ?? '');
 	exit('fail');
@@ -24,7 +32,6 @@ if(empty($_POST['sign']) || empty($_POST['sign_type'])) {
 $sign = $_POST['sign'];
 unset($_POST['sign']);
 
-$payment = new pay_alipay();
 $isright = $payment->alipay_sign_verify($sign, $_POST);
 if(!$isright) {
 	$_POST['sign'] = $sign;

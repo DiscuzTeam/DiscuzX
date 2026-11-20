@@ -120,7 +120,7 @@ class Core {
 	public static function GetSetting() {
 		global $_G;
 		if(!empty($_G['setting'][self::SettingKey])) {
-			return unserialize($_G['setting'][self::SettingKey]);
+			return dunserialize($_G['setting'][self::SettingKey]);
 		}
 		return [];
 	}

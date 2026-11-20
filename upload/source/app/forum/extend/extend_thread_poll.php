@@ -70,8 +70,11 @@ class extend_thread_poll extends extend_thread_base {
 			$polloptvalue = dhtmlspecialchars(trim($polloptvalue));
 			$polloptionid = table_forum_polloption::t()->insert(['tid' => $this->tid, 'polloption' => $polloptvalue], true);
 			if($this->pollarray['pollimage'][$ppkey]) {
-				table_forum_polloption_image::t()->update($this->pollarray['pollimage'][$ppkey], ['poid' => $polloptionid, 'tid' => $this->tid, 'pid' => $this->pid]);
-				$this->pollarray['isimage'] = 1;
+				$image = table_forum_polloption_image::t()->fetch($this->pollarray['pollimage'][$ppkey]);
+				if (!empty($image) && ($image['uid'] == $this->member['uid'] || $this->group['alloweditpoll'])) {
+					table_forum_polloption_image::t()->update($this->pollarray['pollimage'][$ppkey], ['poid' => $polloptionid, 'tid' => $this->tid, 'pid' => $this->pid]);
+					$this->pollarray['isimage'] = 1;
+				}
 			}
 		}
 		$this->polloptionpreview = '';
@@ -171,8 +174,11 @@ class extend_thread_poll extends extend_thread_base {
 						} else {
 							$polloptionid = table_forum_polloption::t()->insert(['tid' => $this->thread['tid'], 'displayorder' => $pollarray['displayorder'][$key], 'polloption' => $value], true);
 							if($pollarray['pollimage'][$key]) {
-								table_forum_polloption_image::t()->update($pollarray['pollimage'][$key], ['poid' => $polloptionid, 'tid' => $this->thread['tid'], 'pid' => $this->post['pid']]);
-								$pollarray['isimage'] = 1;
+								$image = table_forum_polloption_image::t()->fetch($pollarray['pollimage'][$key]);
+								if (!empty($image) && ($image['uid'] == $this->member['uid'] || $this->group['alloweditpoll'])) {
+									table_forum_polloption_image::t()->update($pollarray['pollimage'][$key], ['poid' => $polloptionid, 'tid' => $this->thread['tid'], 'pid' => $this->post['pid']]);
+									$pollarray['isimage'] = 1;
+								}
 							}
 						}
 					}

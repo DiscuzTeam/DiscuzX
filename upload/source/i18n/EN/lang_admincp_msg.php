@@ -710,6 +710,9 @@ $lang = [
 	'payment_error_50006' => 'Callback payload decryption failed',
 	'payment_error_50007' => 'Payment status is not success',
 	'payment_error_50008' => 'Invalid callback payload format',
+	'payment_error_50009' => 'Callback key not configured',
+	'payment_error_50010' => 'Callback received for a disabled channel',
+	'payment_error_50011' => 'Callback channel does not match the order',
 
 	'workwx_noDepartList' => 'Unable to fetch department information, please check parameter settings',
 	'workwx_multiAgentRule_error' => 'Application rule format error',

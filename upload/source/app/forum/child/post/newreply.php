@@ -82,6 +82,16 @@ if($_G['setting']['commentnumber'] && !empty($_GET['comment'])) {
 	if(!$comment) {
 		showmessage('post_sm_isnull');
 	}
+	$rpid = !empty($_GET['rpid']) ? intval($_GET['rpid']) : 0;
+	$reply_authorid = 0;
+	if($rpid) {
+		$reply_comment = table_forum_postcomment::t()->fetch($rpid);
+		if($reply_comment && $reply_comment['pid'] == $post['pid']) {
+			$reply_authorid = intval($reply_comment['authorid']);
+		} else {
+			$rpid = 0;
+		}
+	}
 	$pcid = table_forum_postcomment::t()->insert([
 		'tid' => $post['tid'],
 		'pid' => $post['pid'],
@@ -91,14 +101,25 @@ if($_G['setting']['commentnumber'] && !empty($_GET['comment'])) {
 		'comment' => $comment,
 		'score' => $commentscore ? 1 : 0,
 		'useip' => $_G['clientip'],
-		'port' => $_G['remoteport']
+		'port' => $_G['remoteport'],
+		'rpid' => $rpid
 	], true);
 	table_forum_post::t()->update_post('tid:'.$_G['tid'], $_GET['pid'], ['comment' => 1]);
 
 	$comments = $thread['comments'] ? $thread['comments'] + 1 : table_forum_postcomment::t()->count_by_tid($_G['tid']);
 	table_forum_thread::t()->update($_G['tid'], ['comments' => $comments]);
 	!empty($_G['uid']) && $thread['displayorder'] != -4 && updatepostcredits('+', $_G['uid'], 'reply', $_G['fid']);
-	if(!empty($_G['uid']) && $_G['uid'] != $post['authorid']) {
+	if(!empty($_G['uid']) && $reply_authorid && $reply_authorid != $_G['uid']) {
+		notification_add($reply_authorid, 'pcomment', 'comment_reply', [
+			'tid' => $_G['tid'],
+			'pid' => $_GET['pid'],
+			'pcid' => $pcid,
+			'subject' => $thread['subject'],
+			'from_id' => $_G['tid'],
+			'from_idtype' => 'pcomment',
+			'commentmsg' => cutstr(str_replace(['[b]', '[/b]', '[/color]'], '', preg_replace('/\[color=([#\w]+?)\]/i', '', $comment)), 200)
+		]);
+	} elseif(!empty($_G['uid']) && $_G['uid'] != $post['authorid']) {
 		notification_add($post['authorid'], 'pcomment', 'comment_add', [
 			'tid' => $_G['tid'],
 			'pid' => $_GET['pid'],

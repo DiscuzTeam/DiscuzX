@@ -36,7 +36,7 @@ $lang =
 	'suggestion' => 'It is recommended that you try refreshing the page, closing all browser windows and re-operating',
 	'suggestion_user' => 'If the problem persists, please provide the BackTraceID to the site administrator to report this issue for quick identification',
 	'suggestion_plugin' => 'It is recommended that you try disabling the <span class="guess">{guess}</span> plugin in the Admin CP. If the problem is resolved after disabling the plugin, please contact the plugin provider with a complete screenshot for assistance',
-	'suggestion_admin' => 'If the problem persists, please seek help through the <a href="https://www.dismall.com/" target="_blank">Discuz! Official Forum</a> with a complete screenshot, or submit an Issue to us at the official Git repository <a href="https://gitee.com/discuz/DiscuzX/issues" target="_blank">here</a>',
+	'suggestion_admin' => 'If the problem cannot be resolved, please send a complete screenshot and seek help through the <a href="https://www.dismall.com/?form=discuz_error" target="_blank">Discuz! Official Forum</a> or <a href="https://chat.discuz.vip/?group=pay" target="_blank">Discuz! Paid Services</a>, or submit an Issue to us in the official Git repository <a href="https://gitee.com/discuz/DiscuzX/issues" target="_blank">here</a>',
 
 	'file_upload_error_-101' => 'Upload failed! Uploaded file does not exist or is invalid, please go back.',
 	'file_upload_error_-102' => 'Upload failed! Non-image type file, please go back.',

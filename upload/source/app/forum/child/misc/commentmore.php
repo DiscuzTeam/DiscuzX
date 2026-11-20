@@ -27,11 +27,20 @@ require_once libfile('function/discuzcode');
 $commentlimit = intval($_G['setting']['commentnumber']);
 $page = max(1, $_G['page']);
 $start_limit = ($page - 1) * $commentlimit;
+$commentrows = table_forum_postcomment::t()->fetch_all_by_search(null, $_GET['pid'], null, null, null, null, null, $start_limit, $commentlimit);
+$replytargets = table_forum_postcomment::t()->fetch_reply_targets($commentrows);
 $comments = [];
-foreach(table_forum_postcomment::t()->fetch_all_by_search(null, $_GET['pid'], null, null, null, null, null, $start_limit, $commentlimit) as $comment) {
+foreach($commentrows as $comment) {
 	$comment['avatar'] = avatar($comment['authorid'], 'small');
 	$comment['dateline'] = dgmdate($comment['dateline'], 'u');
 	$comment['comment'] = str_replace(['[b]', '[/b]', '[/color]'], ['<b>', '</b>', '</font>'], preg_replace('/\[color=([#\w]+?)\]/i', "<font color=\"\\1\">", $comment['comment']));
+	if(!empty($comment['rpid']) && !empty($replytargets[$comment['rpid']]) && $replytargets[$comment['rpid']]['pid'] == $comment['pid']) {
+		$comment['reply_author'] = $replytargets[$comment['rpid']]['author'];
+		$comment['reply_authorid'] = $replytargets[$comment['rpid']]['authorid'];
+	} else {
+		$comment['reply_author'] = '';
+		$comment['reply_authorid'] = 0;
+	}
 	$comments[] = $comment;
 }
 forum_misc_commentmore_callback_1(0, 1);

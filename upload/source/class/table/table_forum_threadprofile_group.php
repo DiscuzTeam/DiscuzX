@@ -42,7 +42,7 @@ class table_forum_threadprofile_group extends discuz_table {
 	}
 
 	public function delete_by_tpid($tpid) {
-		DB::delete($this->table, "tpid='$tpid'");
+		DB::delete($this->table, DB::field('tpid', $tpid));
 	}
 
 }
