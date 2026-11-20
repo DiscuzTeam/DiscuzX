@@ -175,12 +175,6 @@ class discuz_upload {
 		}
 		$patterns = [
 			'/\<\?php/i',
-			'/\<\?=/i',
-			'/\<\?[^a-zA-Z]/',
-			'/\<script[^>]*language\s*=\s*[\'"]?php/i',
-			'/<script[^>]*>/i',
-			'/<%[=@]?/',
-			'/on(?:error|load|mouseover|focus|click)\s*=\s*[\'"]?(?:javascript|alert|data\s*:)/i',
 		];
 		$chunk = 65536;
 		$read = 0;
