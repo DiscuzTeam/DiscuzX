@@ -60,7 +60,7 @@ if(!$item) {
 	showmessage('click_item_error');
 }
 
-$hash = md5($item['uid']."\t".$item['dateline']);
+$hash = dsign($item['uid']."\t".$item['dateline']);
 if($_GET['op'] == 'add') {
 	if(!checkperm('allowclick') || $_GET['hash'] != $hash) {
 		showmessage('no_privilege_click');

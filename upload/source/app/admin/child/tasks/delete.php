@@ -14,7 +14,7 @@ if(empty($id)) {
 	cpmsg('undefined_action');
 }
 
-if(!$_GET['confirmed']) {
+if(!$_GET['confirmed'] || $_GET['formhash'] != FORMHASH) {
 	cpmsg('tasks_del_confirm', "action=tasks&operation=delete&id=$id", 'form');
 }
 

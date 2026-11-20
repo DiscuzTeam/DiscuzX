@@ -29,7 +29,7 @@
 	<a href="{ADMINSCRIPT}?action=plugins&operation=edit&pluginid={$plugin['pluginid']}" class="control_btn"><img src="./static/image/admincp/svg/design.svg">{$lang['plugins_editlink']}</a>&nbsp;&nbsp;
 <!--{/if}-->
 <!--{if !$plugin['modules']['system']}-->
-	<a href="{ADMINSCRIPT}?action=plugins&operation=delete&pluginid={$plugin['pluginid']}" onclick="return confirm('$uninstalltips');" class="control_btn"><img src="./static/image/admincp/svg/uninstall.svg">{$lang['plugins_config_uninstall']}</a>&nbsp;&nbsp;
+	<a href="{ADMINSCRIPT}?action=plugins&operation=delete&pluginid={$plugin['pluginid']}&formhash={FORMHASH}" onclick="return confirm('$uninstalltips');" class="control_btn"><img src="./static/image/admincp/svg/uninstall.svg">{$lang['plugins_config_uninstall']}</a>&nbsp;&nbsp;
 <!--{/if}-->
 <!--{if !$plugin['available']}-->
 	<a href="{ADMINSCRIPT}?action=plugins&operation=enable&pluginid={$plugin['pluginid']}&formhash={FORMHASH}<!--{if !empty($_GET['system'])}-->&system=1<!--{/if}-->" class="control_btn"><img src="./static/image/admincp/svg/switch.svg">{$lang['enable']}</a>&nbsp;&nbsp;

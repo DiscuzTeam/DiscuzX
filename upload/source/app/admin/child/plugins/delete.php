@@ -10,6 +10,10 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
 }
 
+if(FORMHASH != $_GET['formhash']) {
+	cpmsg('undefined_action');
+}
+
 $plugin = table_common_plugin::t()->fetch($pluginid);
 $dir = substr($plugin['directory'], 0, -1);
 $modules = dunserialize($plugin['modules']);

@@ -35,7 +35,7 @@ class magic_chgusername {
 			showmessage(lang('magic/chgusername', 'chgusername_info_nonexistence'));
 		}
 
-		$censorexp = '/^('.str_replace(['\\*', "\r\n", ' '], ['.*', '|', ''], preg_quote(($_G['settting']['censoruser'] = trim($_G['settting']['censoruser'])), '/')).')$/i';
+		$censorexp = '/^('.str_replace(['\\*', "\r\n", ' '], ['.*', '|', ''], preg_quote(($_G['setting']['censoruser'] = trim($_G['setting']['censoruser'])), '/')).')$/i';
 
 		if($_G['settting']['censoruser'] && @preg_match($censorexp, $_GET['newusername'])) {
 			showmessage(lang('magic/chgusername', 'chgusername_name_badword'));

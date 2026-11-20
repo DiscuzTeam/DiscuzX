@@ -319,58 +319,6 @@ function import_diy_file($tpldir, $importfile, $primaltplname, $targettplname) {
 	}
 }
 
-function import_block($xmlurl, $clientid, $xmlkey = '', $signtype = '', $ignoreversion = 1, $update = 0) {
-	global $_G, $importtxt;
-	$_GET['importtype'] = $_GET['importtxt'] = '';
-	$xmlurl = strip_tags($xmlurl);
-	$clientid = strip_tags($clientid);
-	$xmlkey = strip_tags($xmlkey);
-	$parse = parse_url($xmlurl);
-	if(!empty($parse['host'])) {
-		$queryarr = explode('&', $parse['query']);
-		$para = [];
-		foreach($queryarr as $value) {
-			$k = $v = '';
-			list($k, $v) = explode('=', $value);
-			if(!empty($k) && !empty($v)) {
-				$para[$k] = $v;
-			}
-		}
-		$para['clientid'] = $clientid;
-		$para['op'] = 'getconfig';
-		$para['charset'] = CHARSET;
-		$signurl = create_sign_url($para, $xmlkey, $signtype);
-		$pos = strpos($xmlurl, '?');
-		$pos = $pos === false ? strlen($xmlurl) : $pos;
-		$signurl = substr($xmlurl, 0, $pos).'?'.$signurl;
-		$importtxt = @dfsockopen($signurl);
-	} else {
-		$importtxt = @implode('', file($xmlurl));
-	}
-	$blockarrays = getimportdata('Discuz! Block', 0);
-	if(empty($blockarrays['name']) || empty($blockarrays['fields']) || empty($blockarrays['getsetting'])) {
-		cpmsg(cplang('import_data_typeinvalid').cplang($importtxt), '', 'error');
-	}
-	require_once libfile('function/cloudaddons');
-	if(empty($ignoreversion) && !versioncompatible($blockarrays['version'])) {
-		cpmsg(cplang('blockxml_import_version_invalid'), '', 'error', ['cur_version' => $blockarrays['version'], 'set_version' => $_G['setting']['version']]);
-	}
-	$data = [
-		'name' => dhtmlspecialchars($blockarrays['name']),
-		'version' => dhtmlspecialchars($blockarrays['version']),
-		'url' => $xmlurl,
-		'clientid' => $clientid,
-		'key' => $xmlkey,
-		'signtype' => !empty($signtype) ? 'MD5' : '',
-		'data' => serialize($blockarrays)
-	];
-	if(!$update) {
-		table_common_block_xml::t()->insert($data);
-	} else {
-		table_common_block_xml::t()->update($update, $data);
-	}
-}
-
 function create_sign_url($para, $key = '', $signtype = '') {
 	ksort($para);
 	$url = http_build_query($para);

@@ -14,7 +14,7 @@ if(empty($_GET['script'])) {
 	cpmsg('undefined_action');
 }
 
-if(!$_GET['confirmed']) {
+if(!$_GET['confirmed'] || $_GET['formhash'] != FORMHASH) {
 	cpmsg('tasks_uninstall_confirm', "action=tasks&operation=uninstall&script={$_GET['script']}", 'form');
 }
 

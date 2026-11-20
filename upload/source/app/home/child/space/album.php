@@ -233,7 +233,7 @@ if($id) {
 	}
 	$pic_url2 = rawurlencode($pic['pic']);
 
-	$hash = md5($pic['uid']."\t".$pic['dateline']);
+	$hash = dsign($pic['uid']."\t".$pic['dateline']);
 	$id = $pic['picid'];
 	$idtype = 'picid';
 

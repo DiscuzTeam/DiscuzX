@@ -16,7 +16,7 @@ list(, $isSub) = explode('/', $rule['action']);
 if(!$isSub) {
 	cpmsg('undefined_action', '', 'error');
 }
-if(empty($_GET['confirm'])) {
+if(empty($_GET['confirm']) || $_GET['formhash'] != FORMHASH) {
 	cpmsg('credits_rule_delete_confirm', 'action=credits&operation=del&rid='.$rid.'&confirm=yes', 'form');
 }
 table_common_credit_rule::t()->delete($rid);

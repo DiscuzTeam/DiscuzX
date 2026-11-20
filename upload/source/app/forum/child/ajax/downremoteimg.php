@@ -130,7 +130,7 @@ if(is_array($temp) && !empty($temp)) {
 					'width' => $width,
 					'height' => $height
 				];
-				C::t('forum_attachment_unused')->insert($setarr);
+				table_forum_attachment_unused::t()->insert($setarr);
 				$attachaids[$hash] = $imagereplace['newimageurl'][] = '[attachimg]'.$aid.'[/attachimg]';
 
 			} else {
@@ -143,7 +143,7 @@ if(is_array($temp) && !empty($temp)) {
 	}
 	$_GET['message'] = str_replace($imagereplace['oldimageurl'], $imagereplace['newimageurl'], $_GET['message']);
 }
-$_GET['message'] = addcslashes($_GET['message'], '/"\'');
+$_GET['message'] = dhtmlspecialchars(addcslashes($_GET['message'], '/"\''));
 print <<<EOF
 		<script type="text/javascript">
 			parent.ATTACHORIMAGE = 1;

@@ -234,7 +234,7 @@ if($article['allowcomment']) {
 	}
 }
 
-$hash = md5($article['uid']."\t".$article['dateline']);
+$hash = dsign($article['uid']."\t".$article['dateline']);
 $id = $article['aid'];
 $idtype = 'aid';
 

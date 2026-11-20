@@ -123,6 +123,9 @@ if(!submitcheck('searchsortsubmit', 1) && !submitcheck('delsortsubmit') && !subm
 		if($_GET['searchoption']) {
 			foreach($_GET['searchoption'] as $optionid => $option) {
 				$fieldname = $sortoptionarray[$optionid]['identifier'] ? $sortoptionarray[$optionid]['identifier'] : 1;
+				if(!preg_match('/^\w+$/', (string)$fieldname)) {
+					continue;
+				}
 				if($option['value']) {
 					if(in_array($option['type'], ['number', 'radio'])) {
 						$option['value'] = intval($option['value']);
@@ -150,11 +153,11 @@ if(!submitcheck('searchsortsubmit', 1) && !submitcheck('delsortsubmit') && !subm
 						}
 						$sql = "$fieldname IN (".dimplode($subvalues).')';
 					} elseif($option['type'] == 'checkbox') {
-						$sql = "$fieldname LIKE '%".(implode('%', $option['value']))."%'";
+						$sql = "$fieldname LIKE '%".addslashes(implode('%', (array)$option['value']))."%'";
 					} elseif($option['type'] == 'range') {
 						$sql = $option['value']['min'] || $option['value']['max'] ? "$fieldname BETWEEN ".intval($option['value']['min']).' AND '.intval($option['value']['max']).'' : '';
 					} else {
-						$sql = "$fieldname LIKE '%{$option['value']}%'";
+						$sql = "$fieldname LIKE '%".addslashes((string)$option['value'])."%'";
 					}
 					$selectsql .= $and."$sql ";
 					$and = 'AND ';

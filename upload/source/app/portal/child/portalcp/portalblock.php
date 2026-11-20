@@ -145,7 +145,7 @@ if(submitcheck('getblocklistsubmit') || submitcheck('verifieddatasubmit') || sub
 			$bid = intval($match[1]);
 			$wherearr[] = " (b.bid='$bid' OR b.name='$bid')";
 		} else {
-			$wherearr[] = " b.name LIKE '%".stripsearchkey($_GET['searchkey'])."%'";
+			$wherearr[] = " b.name LIKE '%".addslashes(stripsearchkey($_GET['searchkey']))."%'";
 			$perpage = 10000;
 		}
 		$_GET['searchkey'] = dhtmlspecialchars($_GET['searchkey']);

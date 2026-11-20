@@ -134,7 +134,7 @@ function getblockhtml($blockname, $parameters = []) {
 				if(helper_access::check_module('follower')) {
 					$follow = table_home_follow::t()->fetch_by_uid_followuid($_G['uid'], $uid);
 					if($follow) {
-						$html .= "<li class='ul_flw'><a href=\"home.php?mod=spacecp&ac=follow&op=del&fuid={$space['uid']}\" id=\"followmod\" onclick=\"showWindow(this.id, this.href, 'get', 0);\">".lang('space', 'follow_cancle_follow').'</a></li>';
+						$html .= "<li class='ul_flw'><a href=\"home.php?mod=spacecp&ac=follow&op=del&hash=".FORMHASH."&fuid={$space['uid']}\" id=\"followmod\" onclick=\"showWindow(this.id, this.href, 'get', 0);\">".lang('space', 'follow_cancle_follow').'</a></li>';
 					} else {
 						$html .= "<li class='ul_flw'><a href=\"home.php?mod=spacecp&ac=follow&op=add&hash=".FORMHASH."&fuid={$space['uid']}\" id=\"followmod\" onclick=\"showWindow(this.id, this.href, 'get', 0);\">".lang('space', 'follow_follow_ta').'</a></li>';
 					}

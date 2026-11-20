@@ -203,7 +203,6 @@ $lang =
 	'menu_block' => '模組管理',
 	'menu_blockstyle' => '模組模板',
 	'menu_portalpermission' => '權限列表',
-	'menu_blockxml' => '第三方模組',
 	'menu_topic' => '專題管理',
 	'menu_html' => 'HTML管理',
 	'menu_diytemplate' => '頁面管理',

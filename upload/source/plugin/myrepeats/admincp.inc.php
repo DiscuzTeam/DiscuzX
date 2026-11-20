@@ -12,7 +12,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 
 $Plang = $scriptlang['myrepeats'];
 
-if($_GET['op'] == 'lock') {
+if($_GET['op'] == 'lock' && FORMHASH == $_GET['formhash']) {
 	$myrepeat = myrepeats\table_myrepeats::t()->fetch_all_by_uid_username($_GET['uid'], $_GET['username']);
 	$lock = $myrepeat[0]['locked'];
 	$locknew = $lock ? 0 : 1;
@@ -20,7 +20,7 @@ if($_GET['op'] == 'lock') {
 	ajaxshowheader();
 	echo $lock ? $Plang['normal'] : $Plang['lock'];
 	ajaxshowfooter();
-} elseif($_GET['op'] == 'delete') {
+} elseif($_GET['op'] == 'delete' && FORMHASH == $_GET['formhash']) {
 	myrepeats\table_myrepeats::t()->delete_by_uid_usernames($_GET['uid'], $_GET['username']);
 	ajaxshowheader();
 	echo $Plang['deleted'];
@@ -44,7 +44,7 @@ if(!empty($_GET['srchuid'])) {
 } elseif(!empty($_GET['srchrepeat'])) {
 	$extra = '&srchrepeat='.rawurlencode($_GET['srchrepeat']);
 	$srchadd = "AND username='".addslashes($_GET['srchrepeat'])."'";
-	$searchtext = $Plang['search'].' "'.$_GET['srchrepeat'].'" '.$Plang['repeats'].'&nbsp;';
+	$searchtext = $Plang['search'].' "'.dhtmlspecialchars($_GET['srchrepeat']).'" '.$Plang['repeats'].'&nbsp;';
 }
 
 if($srchuid) {
@@ -97,8 +97,8 @@ if(!$resultempty) {
 			'<td>'.$_G['cache']['usergroups'][$users[$myrepeat['uid']]['groupid']]['grouptitle'].'</td>'.
 			'<td><a href="'.ADMINSCRIPT.'?action=plugins&operation=config&do='.$pluginid.'&identifier=myrepeats&pmod=admincp&srchrepeat='.rawurlencode($myrepeat['username']).'" title="'.htmlspecialchars($myrepeat['comment']).'">'.$myrepeat['username'].'</a>'.'</td>'.
 			'<td>'.($myrepeat['lastswitch'] ? $myrepeat['lastswitch'] : '').'</td>'.
-			'<td><a id="d'.$i.'" onclick="ajaxget(this.href, this.id, \'\');return false" href="'.ADMINSCRIPT.'?action=plugins&operation=config&do='.$pluginid.'&identifier=myrepeats&pmod=admincp&uid='.$myrepeat['uid'].'&username='.$myrepeat['usernameenc'].'&op=lock">'.$opstr.'</a></td>'.
-			'<td><a id="p'.$i.'" onclick="ajaxget(this.href, this.id, \'\');return false" href="'.ADMINSCRIPT.'?action=plugins&operation=config&do='.$pluginid.'&identifier=myrepeats&pmod=admincp&uid='.$myrepeat['uid'].'&username='.$myrepeat['usernameenc'].'&op=delete">['.$lang['delete'].']</a></td></tr>';
+			'<td><a id="d'.$i.'" onclick="ajaxget(this.href, this.id, \'\');return false" href="'.ADMINSCRIPT.'?action=plugins&operation=config&do='.$pluginid.'&identifier=myrepeats&pmod=admincp&uid='.$myrepeat['uid'].'&username='.$myrepeat['usernameenc'].'&op=lock&formhash='.FORMHASH.'">'.$opstr.'</a></td>'.
+			'<td><a id="p'.$i.'" onclick="ajaxget(this.href, this.id, \'\');return false" href="'.ADMINSCRIPT.'?action=plugins&operation=config&do='.$pluginid.'&identifier=myrepeats&pmod=admincp&uid='.$myrepeat['uid'].'&username='.$myrepeat['usernameenc'].'&op=delete&formhash='.FORMHASH.'">['.$lang['delete'].']</a></td></tr>';
 	}
 }
 showtablefooter();

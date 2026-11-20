@@ -153,22 +153,24 @@ class forum_upload {
 			if($needupdate) {
 				$upload->ftpupload();
 			}
-		}
-		if($thumbBase64 != '' && preg_match('/^(data:\s*image\/(\w+);base64,)/', $thumbBase64, $_r)) {
+		} elseif($thumbBase64 != '' && preg_match('/^(data:\s*image\/(\w+);base64,)/', $thumbBase64, $_r)) {
 			$content = base64_decode(str_replace($_r[1], '', $thumbBase64));
 			if(strlen($content) > 0) {
-				$thumbFile = getimgthumbname($upload->attach['target']);
-				file_put_contents($thumbFile, $content);
-				$imginfo = @getimagesize($thumbFile);
-				if($imginfo !== FALSE) {
-					$thumb = 1;
-					if($_G['setting']['thumbstatus']) {
-						require_once libfile('class/image');
-						$image = new image;
-						$image->Thumb($thumbFile, 'forum/'.$upload->attach['attachdir'].basename($thumbFile), $_G['setting']['thumbwidth'], $_G['setting']['thumbheight'], $_G['setting']['thumbstatus'], 0);
+				$thumbinfo = strlen($content) <= 5 * 1024 * 1024 ? @getimagesizefromstring($content) : false;
+				if($thumbinfo !== false && in_array($thumbinfo[2], [1, 2, 3, 6, 18])) {
+					$thumbFile = getimgthumbname($upload->attach['target']);
+					file_put_contents($thumbFile, $content);
+					$imginfo = @getimagesize($thumbFile);
+					if($imginfo !== FALSE) {
+						$thumb = 1;
+						if($_G['setting']['thumbstatus']) {
+							require_once libfile('class/image');
+							$image = new image;
+							$image->Thumb($thumbFile, 'forum/'.$upload->attach['attachdir'].basename($thumbFile), $_G['setting']['thumbwidth'], $_G['setting']['thumbheight'], $_G['setting']['thumbstatus'], 0);
+						}
+					} else {
+						@unlink($thumbFile);
 					}
-				} else {
-					@unlink($thumbFile);
 				}
 				$upload->attach['isimage'] = 2;
 			}

@@ -58,9 +58,6 @@ $srhfid = intval($_GET['srhfid']);
 $keyword = isset($srchtxt) ? dhtmlspecialchars(trim($srchtxt)) : '';
 
 $forumselect = forumselect();
-if(!empty($srchfid) && !is_numeric($srchfid)) {
-	$forumselect = str_replace('<option value="'.$srchfid.'">', '<option value="'.$srchfid.'" selected="selected">', $forumselect);
-}
 
 if(!submitcheck('searchsubmit', 1)) {
 
@@ -95,7 +92,7 @@ if(!submitcheck('searchsubmit', 1)) {
 		$searchstring = explode('|', $index['searchstring']);
 		$index['searchtype'] = $searchstring[0];//preg_replace("/^([a-z]+)\|.*/", "\\1", $index['searchstring']);
 		$searchstring[2] = base64_decode($searchstring[2]);
-		$srchuname = $searchstring[4];
+		$srchuname = dhtmlspecialchars($searchstring[4]);
 		$modfid = 0;
 		if($keyword) {
 			$modkeyword = str_replace(' ', ',', $keyword);
@@ -182,14 +179,9 @@ if(!submitcheck('searchsubmit', 1)) {
 			}
 		}
 
-		if($_G['setting']['threadplugins'] && $specialplugin) {
-			$specialpluginstr = implode("','", $specialplugin);
-			$special[] = 127;
-		} else {
-			$specialpluginstr = '';
-		}
+		$specialpluginstr = '';
 		$special = getgpc('special');
-		$specials = $special ? implode(',', $special) : '';
+		$specials = $special ? implode(',', dintval($special, true)) : '';
 		$srchfilter = in_array(getgpc('srchfilter'), ['all', 'digest', 'top']) ? $_GET['srchfilter'] : 'all';
 
 		$searchstring = 'forum|'.$srchtype.'|'.base64_encode($srchtxt).'|'.intval($srchuid).'|'.$srchuname.'|'.addslashes($fids).'|'.intval($srchfrom).'|'.intval($before).'|'.$srchfilter.'|'.$specials.'|'.$specialpluginstr.'|'.$seltableid;

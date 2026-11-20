@@ -597,7 +597,7 @@ class discuz_application extends discuz_base {
 						$user['groupid'] = $groupnew['groupid'];
 					}
 					$user['adminid'] = $groupterms['main']['adminid'];
-					C::t('common_member')->update($user['uid'], ['groupexpiry' => 0, 'groupid' => $user['groupid'], 'adminid' => $user['adminid']]);
+					table_common_member::t()->update($user['uid'], ['groupexpiry' => 0, 'groupid' => $user['groupid'], 'adminid' => $user['adminid']]);
 					unset($groupterms['main'], $groupterms['ext'][$this->var['member']['groupid']]);
 					$this->var['member'] = $user;
 					table_common_member_field_forum::t()->update($discuz_uid, ['groupterms' => serialize($groupterms)]);

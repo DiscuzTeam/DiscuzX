@@ -2763,8 +2763,8 @@ function dunserialize($data) {
 	// 考虑到 PHP 8 增强了类型体系, 此类数据直接送 unserialize 会导致 Fatal Error, 需要通过代码层面对此情况进行规避.
 	if(is_array($data)) {
 		$ret = $data;
-	} elseif(($ret = @unserialize($data)) === false) {
-		$ret = @unserialize(stripslashes($data));
+	} elseif(($ret = @unserialize($data, ['allowed_classes' => false])) === false) {
+		$ret = @unserialize(stripslashes($data), ['allowed_classes' => false]);
 	}
 	return $ret;
 }

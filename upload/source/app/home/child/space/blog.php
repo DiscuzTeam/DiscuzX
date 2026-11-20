@@ -118,7 +118,7 @@ if($id) {
 		dsetcookie('viewid', 'blog_'.$blog['blogid']);
 	}
 
-	$hash = md5($blog['uid']."\t".$blog['dateline']);
+	$hash = dsign($blog['uid']."\t".$blog['dateline']);
 	$id = $blog['blogid'];
 	$idtype = 'blogid';
 

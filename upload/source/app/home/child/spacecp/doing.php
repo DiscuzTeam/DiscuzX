@@ -1073,16 +1073,19 @@ if($_GET['op'] == 'delete') {
 				// 保存客户端截取的视频封面（DPlayer 默认读取「附件名.thumb.jpg」作为封面）
 				if (!empty($_POST['videoposter']) && preg_match('/^data:image\/(?:jpeg|jpg|png);base64,([A-Za-z0-9+\/=]+)$/', trim($_POST['videoposter']), $pmatch)) {
 					$posterdata = base64_decode($pmatch[1], true);
-					if ($posterdata && strlen($posterdata) < 5 * 1024 * 1024) {
-						$thumbname = getimgthumbname($value['attachment']);
-						$thumbpath = $_G['setting']['attachdir'].'/doing/'.$thumbname;
-						if (!is_dir(dirname($thumbpath))) {
-							dmkdir(dirname($thumbpath));
-						}
-						if (@file_put_contents($thumbpath, $posterdata)) {
-							// 远程附件时同步封面到 FTP
-							if (!empty($value['remote']) && $_G['setting']['ftp']['on']) {
-								ftpcmd('upload', 'doing/'.$thumbname);
+					if (strlen($posterdata) > 0) {
+						$thumbinfo = strlen($posterdata) <= 5 * 1024 * 1024 ? @getimagesizefromstring($posterdata) : false;
+						if($thumbinfo !== false && in_array($thumbinfo[2], [1, 2, 3, 6, 18])) {
+							$thumbname = getimgthumbname($value['attachment']);
+							$thumbpath = $_G['setting']['attachdir'].'/doing/'.$thumbname;
+							if (!is_dir(dirname($thumbpath))) {
+								dmkdir(dirname($thumbpath));
+							}
+							if (@file_put_contents($thumbpath, $posterdata)) {
+								// 远程附件时同步封面到 FTP
+								if (!empty($value['remote']) && $_G['setting']['ftp']['on']) {
+									ftpcmd('upload', 'doing/'.$thumbname);
+								}
 							}
 						}
 					}

@@ -39,7 +39,7 @@ if(submitcheck('lostpwsubmit')) {
 	if(!$member) {
 		showmessage('getpasswd_account_notmatch');
 	} elseif($member['adminid'] == 1 || $member['adminid'] == 2) {
-		showmessage('getpasswd_account_invalid');
+		showmessage('getpasswd_account_notmatch');
 	}
 
 	$table_ext = $member['_inarchive'] ? '_archive' : '';
